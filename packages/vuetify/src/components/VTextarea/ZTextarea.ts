@@ -1,0 +1,33 @@
+import mixins from '../../util/mixins'
+
+import VTextarea from './VTextarea'
+import generateZSizeable from '../../zui/util/generateZSizeable'
+
+const ZTextareaSizeable = generateZSizeable([
+  'z-textarea-size--x-small',
+  'z-textarea-size--small',
+  'z-textarea-size--default',
+  'z-textarea-size--large',
+  'z-textarea-size--x-large',
+])
+
+export const ZTextarea = mixins(ZTextareaSizeable, VTextarea).extend({
+  name: 'z-textarea',
+  props: {
+    hideDetails: {
+      type: [Boolean, String],
+      default: 'auto',
+    },
+  },
+  computed: {
+    classes () {
+      const sizeableClasses = (this as any).sizeableClasses
+      return {
+        ...VTextarea.options.computed.classes.call(this),
+        ...sizeableClasses,
+      }
+    },
+  },
+})
+
+export default ZTextarea
