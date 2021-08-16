@@ -171,7 +171,7 @@ const getApi = (name, locales) => {
 const getComponentsApi = locales => {
   const components = []
   const installedComponents = Vue.options._base.options.components
-  const componentNameRegex = /^(?:V[A-Z]|v-[a-z])/
+  const componentNameRegex = /^(?:V[A-Z]|v-[a-z]|Z[A-Z]|z-[a-z])/
 
   for (const componentName in installedComponents) {
     if (!componentNameRegex.test(componentName)) continue
