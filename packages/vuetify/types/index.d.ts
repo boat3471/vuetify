@@ -17,6 +17,7 @@ import {
 
 // Service Options
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
+import { UICore, ZMessageCore, ZMessageItem, ZModalCore } from './zui';
 
 export default class Vuetify {
   constructor (preset?: Partial<UserVuetifyPreset>)
@@ -60,6 +61,13 @@ export interface Framework {
 declare module 'vue/types/vue' {
   export interface Vue {
     $vuetify: Framework
+    $ui: UICore
+    $message: ZMessageCore
+    $modal: ZModalCore
+    $p(key: string): boolean
+    $l(key: string): string
+    getMessageList(): ZMessageItem[]
+    getModalList(): void
   }
 }
 
@@ -72,6 +80,9 @@ declare module 'vue/types/options' {
     PropsDef=PropsDefinition<DefaultProps>,
     Props=DefaultProps> {
     vuetify?: Vuetify
+    ui?: UICore
+    message?: ZMessageCore
+    modal?: ZModalCore
   }
 }
 
