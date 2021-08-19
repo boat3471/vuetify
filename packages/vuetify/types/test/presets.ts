@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 import Vue from 'vue'
-import Vuetify, { colors } from 'vuetify/lib'
+import Vuetify, { colors } from '@zwd/z-ui/lib'
 import { VuetifyParsedTheme } from '../services/theme'
 
 new Vuetify()

@@ -1,12 +1,12 @@
 import Vue from 'vue'
 
 import Vuetify, {
-  VBtn,
-  VCard,
-  VCardText,
-} from 'vuetify/lib'
+  ZBtn,
+  ZCard,
+  ZCardText,
+} from '@zwd/z-ui/lib'
 
-import * as directives from 'vuetify/lib/directives'
+import * as directives from '@zwd/z-ui/lib/directives'
 
 Vuetify.install(Vue)
 
@@ -14,9 +14,9 @@ Vuetify.install(Vue, {})
 
 Vuetify.install(Vue, {
   components: {
-    VBtn,
-    VCard,
-    VCardText,
+    ZBtn,
+    ZCard,
+    ZCardText,
   },
   directives,
 })
@@ -26,8 +26,8 @@ new Vue({
   vuetify: new Vuetify(),
 })
 
-VBtn.extend()
+ZBtn.extend()
 
 Vue.extend({
-  extends: VBtn,
+  extends: ZBtn,
 })

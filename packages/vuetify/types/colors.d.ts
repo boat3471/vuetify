@@ -1,4 +1,4 @@
-declare module 'vuetify/es5/util/colors' {
+declare module '@zwd/z-ui/es5/util/colors' {
   interface BaseColor {
     readonly base: string
     readonly lighten5: string
@@ -52,7 +52,7 @@ declare module 'vuetify/es5/util/colors' {
   export default colors
 }
 
-declare module 'vuetify/lib/util/colors' {
+declare module '@zwd/z-ui/lib/util/colors' {
   interface BaseColor {
     readonly base: string
     readonly lighten5: string

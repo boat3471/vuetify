@@ -1,18 +1,18 @@
-declare module 'vuetify/es5/install' {
+declare module '@zwd/z-ui/es5/install' {
   import { VueConstructor } from 'vue'
 
   const install: (Vue: VueConstructor, args: {}) => void
 
   export { install }
 }
-declare module 'vuetify/es5/components/Vuetify' {
-  import Vuetify from 'vuetify'
+declare module '@zwd/z-ui/es5/components/Vuetify' {
+  import Vuetify from '@zwd/z-ui'
 
   export default Vuetify
 }
 
-declare module 'vuetify/es5/components/*' {
-  import { ComponentOrPack } from 'vuetify'
+declare module '@zwd/z-ui/es5/components/*' {
+  import { ComponentOrPack } from '@zwd/z-ui'
   import { VueConstructor } from 'vue'
 
   const VuetifyComponent: {
@@ -23,7 +23,7 @@ declare module 'vuetify/es5/components/*' {
   export = VuetifyComponent
 }
 
-declare module 'vuetify/es5/directives' {
+declare module '@zwd/z-ui/es5/directives' {
   import { DirectiveOptions } from 'vue'
 
   const ClickOutside: DirectiveOptions
@@ -41,6 +41,6 @@ declare module 'vuetify/es5/directives' {
     Ripple,
     Resize,
     Scroll,
-    Touch
+    Touch,
   }
 }
