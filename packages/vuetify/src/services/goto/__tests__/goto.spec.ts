@@ -9,7 +9,7 @@ import goTo, { Goto } from '../index'
 import { Application } from '../../application/index'
 
 // Types
-import { VuetifyServiceContract } from 'vuetify/types/services'
+import { VuetifyServiceContract } from '@zwd/z-ui/types/services'
 
 describe('$vuetify.goTo', () => {
   (global as any).performance = require('perf_hooks').performance

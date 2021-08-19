@@ -14,7 +14,7 @@ import {
   VTime,
   MINUTES_IN_DAY,
 } from '../util/timestamp'
-import { CalendarTimestamp, CalendarFormatter, CalendarDayBodySlotScope } from 'vuetify/types'
+import { CalendarTimestamp, CalendarFormatter, CalendarDayBodySlotScope } from '@zwd/z-ui/types'
 
 /* @vue/component */
 export default CalendarBase.extend({

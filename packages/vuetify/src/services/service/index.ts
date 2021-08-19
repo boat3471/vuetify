@@ -1,5 +1,5 @@
 // Contracts
-import { VuetifyServiceContract } from 'vuetify/types/services/index'
+import { VuetifyServiceContract } from '@zwd/z-ui/types/services/index'
 
 // Types
 import Vue from 'vue'

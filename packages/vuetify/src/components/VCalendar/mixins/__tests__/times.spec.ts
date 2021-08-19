@@ -5,7 +5,7 @@ import {
   MountOptions,
 } from '@vue/test-utils'
 import { ExtractVue } from '../../../../util/mixins'
-import { CalendarTimestamp } from 'vuetify/types'
+import { CalendarTimestamp } from '@zwd/z-ui/types'
 
 const Mock = Times.extend({
   render: h => h('div'),

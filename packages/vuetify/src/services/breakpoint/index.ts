@@ -2,8 +2,8 @@
 import { Service } from '../service'
 
 // Types
-import { VuetifyPreset } from 'vuetify/types/services/presets'
-import { Breakpoint as IBreakpoint } from 'vuetify/types/services/breakpoint'
+import { VuetifyPreset } from '@zwd/z-ui/types/services/presets'
+import { Breakpoint as IBreakpoint } from '@zwd/z-ui/types/services/breakpoint'
 
 export class Breakpoint extends Service implements IBreakpoint {
   public static property: 'breakpoint' = 'breakpoint'

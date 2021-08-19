@@ -41,7 +41,7 @@ import {
   CalendarEvent,
   CalendarEventCategoryFunction,
   CalendarCategory,
-} from 'vuetify/types'
+} from '@zwd/z-ui/types'
 
 // Types
 type VEventGetter<D> = (day: D) => CalendarEventParsed[]

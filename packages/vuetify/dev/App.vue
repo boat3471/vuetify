@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-main>
+  <z-app>
+    <z-main>
       <playground></playground>
-    </v-main>
-  </v-app>
+    </z-main>
+  </z-app>
 </template>
 
 <script>

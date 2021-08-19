@@ -1,5 +1,5 @@
 import CalendarWithIntervals from '../calendar-with-intervals'
-import { CalendarTimestamp } from 'vuetify/types'
+import { CalendarTimestamp } from '@zwd/z-ui/types'
 import { parseTimestamp } from '../../util/timestamp'
 import {
   mount,

@@ -1,6 +1,6 @@
 // Types
 import Vue, { VNode, PropType } from 'vue'
-import { DataTableHeader } from 'vuetify/types'
+import { DataTableHeader } from '@zwd/z-ui/types'
 
 // Utils
 import { getObjectValueByPath } from '../../util/helpers'

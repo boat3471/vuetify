@@ -1,4 +1,4 @@
-import { CalendarEventOverlapMode } from 'vuetify/types'
+import { CalendarEventOverlapMode } from '@zwd/z-ui/types'
 import { stack } from './stack'
 import { column } from './column'
 

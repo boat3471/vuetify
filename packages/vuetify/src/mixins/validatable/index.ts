@@ -10,7 +10,7 @@ import mixins from '../../util/mixins'
 
 // Types
 import { PropValidator } from 'vue/types/options'
-import { InputMessage, InputValidationRules } from 'vuetify/types'
+import { InputMessage, InputValidationRules } from '@zwd/z-ui/types'
 
 const baseMixins = mixins(
   Colorable,

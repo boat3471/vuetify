@@ -1,5 +1,5 @@
 // Types
-import { BreakpointName } from 'vuetify/types/services/breakpoint'
+import { BreakpointName } from '@zwd/z-ui/types/services/breakpoint'
 import { deprecate } from '../../util/console'
 import Vue, { PropType } from 'vue'
 

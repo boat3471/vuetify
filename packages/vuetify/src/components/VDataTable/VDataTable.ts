@@ -14,7 +14,7 @@ import {
   ItemGroup,
   RowClassFunction,
   DataTableItemProps,
-} from 'vuetify/types'
+} from '@zwd/z-ui/types'
 
 // Components
 import { VData } from '../VData'

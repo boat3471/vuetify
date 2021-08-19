@@ -1,6 +1,6 @@
 import { VNodeDirective, VNode } from 'vue/types/vnode'
 import { keys } from '../../util/helpers'
-import { TouchHandlers, TouchValue, TouchWrapper } from 'vuetify/types'
+import { TouchHandlers, TouchValue, TouchWrapper } from '@zwd/z-ui/types'
 
 export interface TouchStoredHandlers {
   touchstart: (e: TouchEvent) => void

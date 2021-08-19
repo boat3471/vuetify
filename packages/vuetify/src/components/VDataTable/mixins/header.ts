@@ -6,7 +6,7 @@ import ripple from '../../../directives/ripple'
 import Vue from 'vue'
 import { PropValidator } from 'vue/types/options'
 import mixins from '../../../util/mixins'
-import { DataOptions, DataTableHeader } from 'vuetify/types'
+import { DataOptions, DataTableHeader } from '@zwd/z-ui/types'
 
 type VDataTableInstance = InstanceType<typeof VDataTable>
 

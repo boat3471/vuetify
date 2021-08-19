@@ -8,6 +8,8 @@ import {
 } from './index'
 import generateZSizeable from '../../zui/util/generateZSizeable'
 
+import '../../zui/styles/ZTabs/index.scss'
+
 const Sizeable = generateZSizeable([
   'v-tabs-size--x-small',
   'v-tabs-size--small',
@@ -16,7 +18,7 @@ const Sizeable = generateZSizeable([
   'v-tabs-size--x-large',
 ])
 
-export const ZTabs = mixins(Sizeable, VTabs).extend({
+export const ZTabs = mixins(VTabs, Sizeable).extend({
   name: 'z-tabs',
   computed: {
     classes () {

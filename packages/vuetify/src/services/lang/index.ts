@@ -6,11 +6,11 @@ import { getObjectValueByPath } from '../../util/helpers'
 import { consoleError, consoleWarn } from '../../util/console'
 
 // Types
-import { VuetifyPreset } from 'vuetify/types/services/presets'
+import { VuetifyPreset } from '@zwd/z-ui/types/services/presets'
 import {
   VuetifyLocale,
   Lang as ILang,
-} from 'vuetify/types/services/lang'
+} from '@zwd/z-ui/types/services/lang'
 
 const LANG_PREFIX = '$vuetify.'
 const fallback = Symbol('Lang fallback')

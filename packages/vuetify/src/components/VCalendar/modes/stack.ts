@@ -1,4 +1,4 @@
-import { CalendarEventOverlapMode, CalendarEventVisual } from 'vuetify/types'
+import { CalendarEventOverlapMode, CalendarEventVisual } from '@zwd/z-ui/types'
 import { getOverlapGroupHandler, getVisuals, hasOverlap, getNormalizedRange } from './common'
 import { getTimestampIdentifier } from '../util/timestamp'
 

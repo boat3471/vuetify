@@ -2,6 +2,8 @@ import mixins from '../../util/mixins'
 import VTextField from './VTextField'
 import generateZSizeable from '../../zui/util/generateZSizeable'
 
+import '../../zui/styles/ZTextField/index.scss'
+
 const Sizeable = generateZSizeable([
   'v-text-field-size--x-small',
   'v-text-field-size--small',
@@ -10,7 +12,7 @@ const Sizeable = generateZSizeable([
   'v-text-field-size--x-large',
 ])
 
-export const ZTextField = mixins(Sizeable, VTextField).extend({
+export const ZTextField = mixins(VTextField, Sizeable).extend({
   name: 'z-text-field',
   props: {
     hideDetails: {

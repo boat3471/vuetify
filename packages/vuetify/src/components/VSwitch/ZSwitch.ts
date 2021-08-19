@@ -1,5 +1,6 @@
 import mixins from '../../util/mixins'
 import VSwitch from './VSwitch'
+import '../../zui/styles/ZSwitch/index.scss'
 
 export const ZSwitch = mixins(VSwitch).extend({
   name: 'z-switch',

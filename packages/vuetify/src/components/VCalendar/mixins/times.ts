@@ -5,7 +5,7 @@ import {
   parseTimestamp,
   parseDate,
 } from '../util/timestamp'
-import { CalendarTimestamp } from 'vuetify/types'
+import { CalendarTimestamp } from '@zwd/z-ui/types'
 
 export default Vue.extend({
   name: 'times',

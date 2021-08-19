@@ -19,7 +19,7 @@ import {
   getDayIdentifier,
   createNativeLocaleFormatter,
 } from './util/timestamp'
-import { CalendarTimestamp, CalendarFormatter } from 'vuetify/types'
+import { CalendarTimestamp, CalendarFormatter } from '@zwd/z-ui/types'
 
 /* @vue/component */
 export default CalendarBase.extend({

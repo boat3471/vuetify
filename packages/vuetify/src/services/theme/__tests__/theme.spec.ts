@@ -13,7 +13,7 @@ import {
   VuetifyParsedTheme,
   VuetifyThemeVariant,
   ThemeOptions,
-} from 'vuetify/types/services/theme'
+} from '@zwd/z-ui/types/services/theme'
 
 const FillVariant = (variant: Partial<VuetifyThemeVariant> = {}) => {
   return {

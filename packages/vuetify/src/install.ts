@@ -1,5 +1,5 @@
 import OurVue, { VueConstructor } from 'vue'
-import { VuetifyUseOptions } from 'vuetify/types'
+import { VuetifyUseOptions } from '@zwd/z-ui/types'
 import { consoleError } from './util/console'
 
 export function install (Vue: VueConstructor, args: VuetifyUseOptions = {}) {

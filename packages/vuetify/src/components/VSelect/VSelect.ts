@@ -28,7 +28,7 @@ import { consoleError } from '../../util/console'
 import mixins from '../../util/mixins'
 import { VNode, VNodeDirective, PropType, VNodeData } from 'vue'
 import { PropValidator } from 'vue/types/options'
-import { SelectItemKey } from 'vuetify/types'
+import { SelectItemKey } from '@zwd/z-ui/types'
 
 export const defaultMenuProps = {
   closeOnClick: false,

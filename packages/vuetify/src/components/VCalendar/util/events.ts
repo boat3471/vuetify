@@ -5,7 +5,7 @@ import {
   isTimedless,
   updateHasTime,
 } from './timestamp'
-import { CalendarTimestamp, CalendarEvent, CalendarEventParsed } from 'vuetify/types'
+import { CalendarTimestamp, CalendarEvent, CalendarEventParsed } from '@zwd/z-ui/types'
 
 export function parseEvent (
   input: CalendarEvent,

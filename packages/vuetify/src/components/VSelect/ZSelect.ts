@@ -4,6 +4,7 @@ import VSelect from './VSelect'
 import VSelectList from './VSelectList'
 
 import generateZSizeable from '../../zui/util/generateZSizeable'
+import '../../zui/styles/ZSelect/index.scss'
 
 const Sizeable = generateZSizeable([
   'v-select-size--x-small',
@@ -29,7 +30,7 @@ const ZSelectList = mixins(VSelectList).extend({
   },
 })
 
-export const ZSelect = mixins(Sizeable, VSelect).extend({
+export const ZSelect = mixins(VSelect, Sizeable).extend({
   props: {
     dense: {
       type: Boolean,

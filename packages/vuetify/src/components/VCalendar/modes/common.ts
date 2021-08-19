@@ -1,4 +1,4 @@
-import { CalendarEventParsed, CalendarEventVisual, CalendarTimestamp } from 'vuetify/types'
+import { CalendarEventParsed, CalendarEventVisual, CalendarTimestamp } from '@zwd/z-ui/types'
 import { getTimestampIdentifier } from '../util/timestamp'
 
 const MILLIS_IN_DAY = 86400000

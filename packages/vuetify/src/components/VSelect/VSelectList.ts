@@ -27,7 +27,7 @@ import {
 import mixins from '../../util/mixins'
 import { VNode, PropType, VNodeChildren } from 'vue'
 import { PropValidator } from 'vue/types/options'
-import { SelectItemKey } from 'vuetify/types'
+import { SelectItemKey } from '@zwd/z-ui/types'
 
 type ListTile = { item: any, disabled?: null | boolean, value?: boolean, index: number };
 

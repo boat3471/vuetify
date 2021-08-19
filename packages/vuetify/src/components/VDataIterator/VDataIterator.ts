@@ -14,7 +14,7 @@ import { breaking, removed } from '../../util/console'
 // Types
 import { VNode, VNodeChildren } from 'vue'
 import { PropValidator } from 'vue/types/options'
-import { DataItemProps, DataScopeProps } from 'vuetify/types'
+import { DataItemProps, DataScopeProps } from '@zwd/z-ui/types'
 
 /* @vue/component */
 export default mixins(

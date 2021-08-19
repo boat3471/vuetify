@@ -5,11 +5,11 @@ import Vue from 'vue'
 import {
   UserVuetifyPreset,
   VuetifyPreset,
-} from 'vuetify/types/services/presets'
+} from '@zwd/z-ui/types/services/presets'
 import {
   VuetifyService,
   VuetifyServiceContract,
-} from 'vuetify/types/services'
+} from '@zwd/z-ui/types/services'
 
 // Services
 import * as services from './services'

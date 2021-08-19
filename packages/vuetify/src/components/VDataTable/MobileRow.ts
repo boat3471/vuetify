@@ -1,6 +1,6 @@
 import Vue, { VNode, PropType } from 'vue'
 import { getObjectValueByPath } from '../../util/helpers'
-import { DataTableHeader } from 'vuetify/types'
+import { DataTableHeader } from '@zwd/z-ui/types'
 
 export default Vue.extend({
   name: 'row',

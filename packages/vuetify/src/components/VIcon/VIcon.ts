@@ -12,7 +12,7 @@ import { convertToUnit, keys, remapInternalIcon } from '../../util/helpers'
 // Types
 import Vue, { CreateElement, VNode, VNodeChildren, VNodeData } from 'vue'
 import mixins from '../../util/mixins'
-import { VuetifyIcon, VuetifyIconComponent } from 'vuetify/types/services/icons'
+import { VuetifyIcon, VuetifyIconComponent } from '@zwd/z-ui/types/services/icons'
 
 enum SIZE_MAP {
   xSmall = '12px',

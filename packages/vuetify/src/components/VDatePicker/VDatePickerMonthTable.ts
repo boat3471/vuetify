@@ -7,7 +7,7 @@ import mixins from '../../util/mixins'
 
 // Types
 import { VNode } from 'vue'
-import { DatePickerFormatter } from 'vuetify/types'
+import { DatePickerFormatter } from '@zwd/z-ui/types'
 
 export default mixins(
   DatePickerTable

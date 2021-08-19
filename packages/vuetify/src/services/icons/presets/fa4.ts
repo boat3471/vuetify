@@ -1,4 +1,4 @@
-import { VuetifyIcons } from 'vuetify/types/services/icons'
+import { VuetifyIcons } from '@zwd/z-ui/types/services/icons'
 
 const icons: VuetifyIcons = {
   complete: 'fa fa-check',

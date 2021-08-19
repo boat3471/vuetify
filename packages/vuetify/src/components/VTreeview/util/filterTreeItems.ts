@@ -1,5 +1,5 @@
 import { getObjectValueByPath } from '../../../util/helpers'
-import { TreeviewItemFunction } from 'vuetify/types'
+import { TreeviewItemFunction } from '@zwd/z-ui/types'
 
 export function filterTreeItem (item: object, search: string, textKey: string): boolean {
   const text = getObjectValueByPath(item, textKey)

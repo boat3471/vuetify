@@ -1,5 +1,5 @@
 import pad from './pad'
-import { DatePickerFormatter } from 'vuetify/types'
+import { DatePickerFormatter } from '@zwd/z-ui/types'
 
 interface SubstrOptions {
   start?: number
