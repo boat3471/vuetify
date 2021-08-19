@@ -1,0 +1,47 @@
+@import "../scrollbar";
+
+.v-data-table {
+    &.v-data-table--dense {
+        > .v-data-table__wrapper {
+            table {
+                tr > td {
+                    font-size: 0.6rem;
+                }
+            }
+
+            .v-data-table__checkbox.v-simple-checkbox {
+                .v-icon {
+                    font-size: 18px;
+                }
+
+                .v-input--selection-controls__ripple {
+                    width: 28px;
+                    height: 28px;
+                    top: calc(50% - 21px);
+                }
+            }
+        }
+
+        &.v-data-table--fixed-header {
+            &.theme--dark {
+                @include dark-scrollbar(32px);
+            }
+
+            &.theme--light {
+                @include light-scrollbar(32px);
+            }
+        }
+    }
+
+    &.v-data-table--fixed-header {
+        &:not(.v-data-table--dense) {
+            &.theme--dark {
+                @include dark-scrollbar(48px);
+            }
+
+            &.theme--light {
+                @include light-scrollbar(48px);
+            }
+        }
+    }
+}

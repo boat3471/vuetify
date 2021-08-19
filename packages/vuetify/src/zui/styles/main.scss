@@ -1,0 +1,33 @@
+@import "./base";
+@import "./message";
+@import "./scrollbar";
+
+.v-btn {
+    text-transform: initial;
+}
+
+.v-data-table--dense {
+    &.v-data-table {
+        td {
+            font-family: system-ui, Consolas, serif;
+            font-size: 0.675rem;
+        }
+    }
+}
+
+.v-label {
+    font-size: 14px;
+}
+
+.v-input--dense {
+    .v-label {
+        font-size: 12px;
+    }
+}
+
+.v-input--selection-controls {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+

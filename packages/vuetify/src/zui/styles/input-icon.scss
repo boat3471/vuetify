@@ -1,0 +1,23 @@
+@mixin input-icon($fontSize: 12px, $inner: 0, $outer: 0) {
+    .v-input__prepend-inner,
+    .v-input__append-inner {
+        margin-top: $inner;
+
+        > .v-input__icon {
+            > .v-icon {
+                font-size: $fontSize;
+            }
+        }
+    }
+
+    .v-input__prepend-outer,
+    .v-input__append-outer {
+        margin-top: $outer;
+
+        > .v-input__icon {
+            > .v-icon {
+                font-size: $fontSize;
+            }
+        }
+    }
+}

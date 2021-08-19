@@ -1,0 +1,49 @@
+@import "../input-icon";
+
+$currentHeight: 28px;
+$inputFontSize: 13px;
+$closeTop: 3px;
+
+.v-text-field-size--small,
+.v-text-field-size--x-small {
+    &.v-input {
+        font-size: $inputFontSize;
+    }
+
+    &.v-text-field {
+        &.v-text-field--solo,
+        &.v-text-field--filled,
+        &.v-text-field--outlined {
+            > .v-input__control {
+                min-height: $currentHeight;
+
+                > .v-input__slot {
+                    min-height: $currentHeight;
+
+                    > .v-text-field__slot {
+                        input {
+                            max-height: $currentHeight;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.v-text-field--solo {
+            /* solo 输入框 icon 定制 */
+            @include input-icon($inputFontSize + 3, null, $closeTop);
+        }
+    }
+
+    .v-label {
+        font-size: $inputFontSize;
+    }
+
+    &.v-text-field--enclosed {
+        &.v-text-field--filled,
+        &.v-text-field--outlined {
+            /* filled, outlined 输入框 icon 定制 */
+            @include input-icon($inputFontSize + 3, $closeTop, $closeTop);
+        }
+    }
+}

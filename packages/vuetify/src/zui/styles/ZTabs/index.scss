@@ -1,0 +1,98 @@
+.v-tabs--vertical {
+    .v-tab {
+        justify-content: left;
+    }
+}
+
+.v-tabs-size--x-small {
+    &:not(.v-tabs--vertical) {
+        .v-tabs-bar {
+            height: 32px;
+
+            .v-tab {
+                font-size: 0.6rem;
+            }
+        }
+    }
+
+    &.v-tabs--vertical {
+        > .v-tabs-bar {
+            .v-tab {
+                height: 32px;
+            }
+        }
+    }
+}
+
+.v-tabs-size--small {
+    &:not(.v-tabs--vertical) {
+        .v-tabs-bar {
+            height: 38px;
+        }
+    }
+
+    &.v-tabs--vertical {
+        > .v-tabs-bar {
+            .v-tab {
+                height: 38px;
+            }
+        }
+    }
+}
+
+.v-tabs-size--default {
+    &:not(.v-tabs--vertical) {
+        .v-tabs-bar {
+            height: 44px;
+        }
+    }
+
+    &.v-tabs--vertical {
+        > .v-tabs-bar {
+            .v-tab {
+                height: 44px;
+            }
+        }
+    }
+}
+
+.v-tabs-size--large {
+    &:not(.v-tabs--vertical) {
+        .v-tabs-bar {
+            height: 48px;
+
+            .v-tab {
+                font-size: 0.92rem;
+            }
+        }
+    }
+
+    &.v-tabs--vertical {
+        > .v-tabs-bar {
+            .v-tab {
+                height: 48px;
+            }
+        }
+    }
+}
+
+.v-tabs-size--x-large {
+    &:not(.v-tabs--vertical) {
+        .v-tabs-bar {
+            height: 52px;
+
+            .v-tab {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &.v-tabs--vertical {
+        > .v-tabs-bar {
+            .v-tab {
+                height: 52px;
+                font-size: 1rem;
+            }
+        }
+    }
+}

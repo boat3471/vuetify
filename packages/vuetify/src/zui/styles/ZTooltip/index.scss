@@ -1,0 +1,36 @@
+.v-tooltip__content {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 2px 6px;
+
+    &.v-tooltip-size--x-small {
+        font-size: 12px;
+        line-height: 16px;
+        padding: 2px 6px;
+    }
+
+    &.v-tooltip-size--small {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 2px 6px;
+    }
+
+    &.v-tooltip-size--default {
+        font-size: 12px;
+        line-height: 22px;
+        padding: 2px 8px;
+    }
+
+    &.v-tooltip-size--large {
+        font-size: 14px;
+        line-height: 28px;
+        padding: 4px 12px;
+    }
+
+    &.v-tooltip-size--x-large {
+        font-size: 16px;
+        line-height: 32px;
+        padding: 6px 16px;
+    }
+}
+

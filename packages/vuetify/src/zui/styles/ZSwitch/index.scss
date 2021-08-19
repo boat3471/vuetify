@@ -1,0 +1,13 @@
+.z-switch {
+    &.v-input {
+        input {
+            max-height: 24px;
+            font-size: 12px;
+        }
+    }
+
+    &.v-input--selection-controls {
+        margin-top: 0;
+        padding-top: 0;
+    }
+}
