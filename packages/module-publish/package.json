@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@zwd/z-ui-module-publish",
-  "version": "2.5.6-rc.2",
+  "version": "2.5.6-rc.3",
   "scripts": {
     "dev:all": "vite",
     "build:all": "vue-tsc --noEmit && vite build && npm run module:vue && npm run module:vuetify",
