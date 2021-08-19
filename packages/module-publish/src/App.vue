@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <v-btn>Vuetify</v-btn>
+  </div>
+</template>
+
+<script>
+  export default {
+    mounted () {
+      console.info(1)
+    },
+  }
+</script>
+
+<style>
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+</style>
