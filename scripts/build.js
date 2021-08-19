@@ -2,9 +2,8 @@ const spawn = require('cross-spawn')
 
 let target = process.argv[2]
 const alias = {
-  api: '@vuetify/api-generator',
-  docs: 'vuetifyjs.com',
-  dev: 'vuetify',
+  api: '@zwd/z-ui-api-generator',
+  dev: '@zwd/z-ui',
 }
 target = alias[target] || target
 

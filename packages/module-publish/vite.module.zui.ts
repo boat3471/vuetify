@@ -24,9 +24,8 @@ export default defineConfig({
           vue: 'Vue',
         },
         chunkFileNames () {
-          const pkg = require('./package.json')
-          const v = pkg.dependencies['@zwd/z-ui']
-          return `zui.${v}.module.js`
+          const pkg = require('../vuetify/package.json')
+          return `zui.${pkg.version}.module.js`
         },
         minifyInternalExports: false,
       },
