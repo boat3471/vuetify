@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@zwd/z-ui-module-publish",
-  "version": "2.5.6-rc.0",
+  "version": "2.5.6-rc.2",
   "scripts": {
     "dev:all": "vite",
     "build:all": "vue-tsc --noEmit && vite build && npm run module:vue && npm run module:vuetify",
@@ -20,8 +20,8 @@
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",
-    "vue-tsc": "^0.2.2",
     "vite-plugin-vue2": "^1.8.1",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "vue-tsc": "^0.2.2"
   }
 }
