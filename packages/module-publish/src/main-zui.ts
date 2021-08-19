@@ -5,7 +5,6 @@ Vue.use(Zui)
 
 const vuetify = new Zui({})
 
-// eslint-disable-next-line no-new
 new Vue({
   el: '#app',
   vuetify,
