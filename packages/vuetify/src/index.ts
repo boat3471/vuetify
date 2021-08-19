@@ -1,13 +1,13 @@
 import * as components from './components'
 import * as directives from './directives'
-import Vuetify from './framework'
+import Zui from './framework'
 
-export default Vuetify
+export default Zui
 
-const install = Vuetify.install
+const install = Zui.install
 
-Vuetify.install = (Vue, args) => {
-  install.call(Vuetify, Vue, {
+Zui.install = (Vue, args) => {
+  install.call(Zui, Vue, {
     components,
     directives,
     ...args,
@@ -15,5 +15,5 @@ Vuetify.install = (Vue, args) => {
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Vuetify)
+  window.Vue.use(Zui)
 }
