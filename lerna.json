@@ -9,7 +9,7 @@
       "message": "chore(release): publish %s"
     },
     "version": {
-      "push": true
+      "push": false
     }
   },
   "npmClient": "yarn",
