@@ -1,7 +1,7 @@
 {
   "name": "@zwd/z-ui",
   "description": "Vue Material Component Framework",
-  "version": "2.5.6-rc.4",
+  "version": "2.5.6-rc.5",
   "vuetifyVersion": "2.5.6",
   "author": {
     "name": "xinwenchao"
@@ -32,8 +32,9 @@
   "scripts": {
     "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --hot",
-    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:json && yarn build:module",
+    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
+    "build:version": "node build/build-version.js",
     "build:json": "node build/build-json.js",
     "build:module": "node build/build-module.js",
     "tsc": "tsc",
