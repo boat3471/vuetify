@@ -17,6 +17,6 @@ if (!fs.existsSync(resolve(devTargetFile))) {
   const gridUnknownAttributesPath = path.resolve(__dirname, '..', 'node_modules/eslint-plugin-vuetify/lib/rules/grid-unknown-attributes.js')
   if (fs.existsSync(gridUnknownAttributesPath)) {
     const content = fs.readFileSync(gridUnknownAttributesPath).toString()
-    fs.writeFileSync(gridUnknownAttributesPath, content.replace('vuetify/es5/components', '@zwd/z-ui/es5/components'))
+    fs.writeFileSync(gridUnknownAttributesPath, content.replace(/vuetify\/es5\/components/g, '@zwd/z-ui/es5/components'))
   }
 })()
