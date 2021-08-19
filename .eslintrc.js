@@ -110,6 +110,7 @@ module.exports = {
     {
       files: '**/*.ts',
       rules: {
+        'no-new': 'off',
         // Can't overload function exports with this enabled
         'import/export': 'off',
 
