@@ -19,7 +19,7 @@ import {
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
 import { UICore, ZMessageCore, ZMessageItem, ZModalCore } from './zui';
 
-export default class Vuetify {
+export default class Zui {
   constructor (preset?: Partial<UserVuetifyPreset>)
 
   static install: PluginFunction<VuetifyUseOptions>
@@ -79,7 +79,7 @@ declare module 'vue/types/options' {
     Computed=DefaultComputed,
     PropsDef=PropsDefinition<DefaultProps>,
     Props=DefaultProps> {
-    vuetify?: Vuetify
+    vuetify?: Zui
     ui?: UICore
     message?: ZMessageCore
     modal?: ZModalCore

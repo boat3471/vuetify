@@ -1,6 +1,6 @@
 // Libraries
 import Vue from 'vue'
-import Vuetify from '../../../framework'
+import Zui from '../../../framework'
 
 // Components
 import VForm from '../VForm'
@@ -33,7 +33,7 @@ describe('VForm.ts', () => {
   beforeEach(() => {
     document.body.setAttribute('data-app', 'true')
 
-    vuetify = new Vuetify({
+    vuetify = new Zui({
       mocks: {
         $vuetify: {
           lang: {

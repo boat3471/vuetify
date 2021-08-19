@@ -1,29 +1,29 @@
 /* eslint-disable no-new */
 import Vue from 'vue'
-import Vuetify, { colors } from '@zwd/z-ui/lib'
+import Zui, { colors } from '@zwd/z-ui/lib'
 import { VuetifyParsedTheme } from '../services/theme'
 
-new Vuetify()
+new Zui()
 
-new Vuetify({})
+new Zui({})
 
-new Vuetify({
+new Zui({
   breakpoint: {},
 })
 
-new Vuetify({
+new Zui({
   breakpoint: {
     scrollBarWidth: 20,
   },
 })
 
-new Vuetify({
+new Zui({
   breakpoint: {
     mobileBreakpoint: 900,
   },
 })
 
-new Vuetify({
+new Zui({
   breakpoint: {
     thresholds: {
       lg: 1,
@@ -34,19 +34,19 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   icons: {
     iconfont: 'fa',
   },
 })
 
-new Vuetify({
+new Zui({
   icons: {
     component: {},
   },
 })
 
-new Vuetify({
+new Zui({
   icons: {
     iconfont: 'fa',
     values: {
@@ -55,7 +55,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   locale: {
     locales: {
       foo: {
@@ -65,7 +65,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   locale: {
     current: 'foo',
     locales: {
@@ -76,7 +76,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   locale: {
     current: 'foo',
     locales: {
@@ -88,7 +88,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   locale: {
     current: 'foo',
     locales: {
@@ -100,29 +100,29 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {},
 })
 
-new Vuetify({
+new Zui({
   theme: {
     dark: true,
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {
     disable: true,
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {
     default: 'dark',
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {
     themes: {
       light: {
@@ -132,7 +132,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {
     themes: {
       dark: {
@@ -148,7 +148,7 @@ new Vuetify({
   },
 })
 
-new Vuetify({
+new Zui({
   theme: {
     options: {
       cspNonce: 'foo',
@@ -164,6 +164,6 @@ new Vuetify({
 })
 
 new Vue({
-  vuetify: new Vuetify(),
+  vuetify: new Zui(),
   render: h => h('div'),
 })

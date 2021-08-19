@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import Vuetify from '../framework'
+import Zui from '../framework'
 
 function createMessage (message: string, vm?: any, parent?: any): string | void {
-  if (Vuetify.config.silent) return
+  if (Zui.config.silent) return
 
   if (parent) {
     vm = {

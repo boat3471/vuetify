@@ -6,9 +6,9 @@ declare module '@zwd/z-ui/es5/install' {
   export { install }
 }
 declare module '@zwd/z-ui/es5/components/Vuetify' {
-  import Vuetify from '@zwd/z-ui'
+  import Zui from '@zwd/z-ui'
 
-  export default Vuetify
+  export default Zui
 }
 
 declare module '@zwd/z-ui/es5/components/*' {

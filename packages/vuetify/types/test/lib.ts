@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import Vuetify, {
+import Zui, {
   ZBtn,
   ZCard,
   ZCardText,
@@ -8,11 +8,11 @@ import Vuetify, {
 
 import * as directives from '@zwd/z-ui/lib/directives'
 
-Vuetify.install(Vue)
+Zui.install(Vue)
 
-Vuetify.install(Vue, {})
+Zui.install(Vue, {})
 
-Vuetify.install(Vue, {
+Zui.install(Vue, {
   components: {
     ZBtn,
     ZCard,
@@ -23,7 +23,7 @@ Vuetify.install(Vue, {
 
 /* eslint-disable-next-line no-new */
 new Vue({
-  vuetify: new Vuetify(),
+  vuetify: new Zui(),
 })
 
 ZBtn.extend()

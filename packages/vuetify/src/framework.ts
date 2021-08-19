@@ -14,7 +14,7 @@ import {
 // Services
 import * as services from './services'
 
-export default class Vuetify {
+export default class Zui {
   static install = install
 
   static installed = false

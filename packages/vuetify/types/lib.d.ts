@@ -1,8 +1,8 @@
 declare module '@zwd/z-ui/lib' {
-  import Vuetify from '@zwd/z-ui'
+  import Zui from '@zwd/z-ui'
   import { Colors } from '@zwd/z-ui/lib/util/colors'
 
-  export default Vuetify
+  export default Zui
 
   const colors: Colors
 
