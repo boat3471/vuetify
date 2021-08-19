@@ -1,5 +1,5 @@
 {
-  "name": "@vuetify/api-generator",
+  "name": "@zwd/z-ui-api-generator",
   "version": "2.5.6",
   "private": true,
   "description": "",
@@ -15,9 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "deepmerge": "^4.0.0",
-    "rimraf": "^3.0.2",
-    "vue": "^2.6.11",
-    "vuetify": "^2.5.6"
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@babel/node": "^7.5.5",

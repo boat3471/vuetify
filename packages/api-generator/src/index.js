@@ -1,5 +1,5 @@
 const Vue = require('vue')
-const Vuetify = require('vuetify')
+const Vuetify = require('../../vuetify')
 const { components: excludes } = require('./helpers/excludes')
 const { camelCase, kebabCase, pascalize } = require('./helpers/text')
 const { parseComponent, parseSassVariables, parseGlobalSassVariables } = require('./helpers/parsing')
