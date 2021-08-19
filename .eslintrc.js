@@ -76,6 +76,8 @@ module.exports = {
     'vue/require-prop-types': 'off',
     'vue/one-component-per-file': 'off',
     'vue/custom-event-name-casing': ['error', { ignores: ['/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u'] }],
+
+    'import/no-duplicates': 'off',
   },
   overrides: [
     {
@@ -139,7 +141,7 @@ module.exports = {
             delimiter: 'comma',
           },
         }],
-        '@typescript-eslint/member-ordering': 'error',
+        '@typescript-eslint/member-ordering': 'off',
         '@typescript-eslint/type-annotation-spacing': 'error',
         '@typescript-eslint/no-inferrable-types': 'error',
         '@typescript-eslint/unified-signatures': 'error',
