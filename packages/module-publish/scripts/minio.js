@@ -12,36 +12,138 @@ const options = {
 }
 const minioClient = new Minio.Client(options)
 
-minioClient.bucketExists(options.bucketName, function (err) {
-  // err 为null 表示桶存在
-  if (!err) {
-    // minioClient.makeBucket(options.bucketName, 'cn-north-1', function (err) {
-    //   if (err) return console.log(err)
-    //   console.log('Bucket created successfully in "us-east-1".')
-    // })
-  } else {
-    if (err.code === 'NoSuchBucket') {
-      console.log('bucket does not exist.')
-      return
-    }
-    console.log(err)
+function uploadJs (name, reg, files, pakPath) {
+  const list = []
+  const metaData = {
+    'Content-Type': 'application/x-javascript',
   }
-})
 
-const metaData = {
-  'Content-Type': 'application/x-javascript',
-}
-const distPath = path.resolve(__dirname, '../dist')
-const moduleFiles = fs.readdirSync(distPath)
-
-moduleFiles.forEach(file => {
-  const dirPath = path.resolve(distPath, file)
-  const files = fs.readdirSync(dirPath)
-  const fileName = files.find(i => /(.+)\.module\.js/.test(i))
-  const moduleFilePath = path.resolve(dirPath, fileName)
-  const objectName = 'ui/' + fileName
-  minioClient.fPutObject(options.bucketName, objectName, moduleFilePath, metaData, function (err, etag) {
-    if (err) return console.log(err)
-    console.log('File uploaded successfully.', objectName)
+  files.forEach(filePath => {
+    list.push(new Promise((resolve, reject) => {
+      const pkg = require(pakPath)
+      const fileName = path.basename(filePath).replace(reg, `${name}.${pkg.version}`)
+      const objectName = 'ui/' + fileName
+      minioClient.fPutObject(options.bucketName, objectName, filePath, metaData, (err, etag) => {
+        if (err) {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject(`File uploaded error [${objectName}], ${err}`)
+        } else {
+          resolve(`File uploaded successfully. ${objectName}`)
+        }
+      })
+    }))
   })
-})
+  return Promise.all(list)
+}
+
+function uploadModuleJs (dirPath) {
+  const list = []
+  const metaData = {
+    'Content-Type': 'application/x-javascript',
+  }
+  const files = fs.readdirSync(dirPath).filter(i => /(.+)\.module\.js/.test(i))
+  files.forEach(fileName => {
+    list.push(new Promise((resolve, reject) => {
+      const filePath = path.join(dirPath, fileName)
+      const objectName = 'ui/' + fileName
+      // eslint-disable-next-line sonarjs/no-identical-functions
+      minioClient.fPutObject(options.bucketName, objectName, filePath, metaData, (err, etag) => {
+        if (err) {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject(`File uploaded error [${objectName}], ${err}`)
+        } else {
+          resolve(`File uploaded successfully. ${objectName}`)
+        }
+      })
+    }))
+  })
+  return Promise.all(list)
+}
+
+function uploadCss (distPath, name, version) {
+  const list = []
+  const metaData = {
+    'Content-Type': 'text/css',
+  }
+  const cssFiles = fs.readdirSync(distPath)
+  cssFiles.forEach(file => {
+    const cssPath = path.resolve(distPath, file)
+    if (/vuetify(\.min)?\.css$/.test(file)) {
+      const fileName = file.replace('vuetify', `${name}.${version}`)
+      const objectName = 'ui/' + fileName
+      list.push(new Promise((resolve, reject) => {
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        minioClient.fPutObject(options.bucketName, objectName, cssPath, metaData, (err, etag) => {
+          if (err) {
+            // eslint-disable-next-line prefer-promise-reject-errors
+            reject(`File uploaded error [${objectName}], ${err}`)
+          } else {
+            resolve(`File uploaded successfully. ${objectName}`)
+          }
+        })
+      }))
+    }
+  })
+  return Promise.all(list)
+}
+
+(async () => {
+  let distPath
+  let err
+
+  // 处理 vue js
+  err = await uploadJs('vue', 'vue',
+    [
+      path.resolve(__dirname, '../node_modules/vue/dist/vue.js'),
+      path.resolve(__dirname, '../node_modules/vue/dist/vue.min.js'),
+    ],
+    path.resolve(__dirname, '../node_modules/vue/package.json'),
+  )
+  console.info(err.join('\n'))
+  // 处理 vue module js
+  err = await uploadModuleJs(path.resolve(__dirname, '../dist/vue/'))
+  console.info(err.join('\n'))
+  console.info()
+
+  // 处理 vuetify js
+  err = await uploadJs('vuetify', 'vuetify',
+    [
+      path.resolve(__dirname, '../node_modules/vuetify/dist/vuetify.js'),
+      path.resolve(__dirname, '../node_modules/vuetify/dist/vuetify.min.js'),
+    ],
+    path.resolve(__dirname, '../node_modules/vuetify/package.json'),
+  )
+  console.info(err.join('\n'))
+
+  // 处理 vuetify module js
+  err = await uploadModuleJs(path.resolve(__dirname, '../dist/vuetify/'))
+  console.info(err.join('\n'))
+
+  // 处理 vuetify css
+  distPath = path.resolve(__dirname, '../node_modules/vuetify/dist')
+  const vuetifyPkg = require('vuetify')
+  err = await uploadCss(distPath, 'vuetify', vuetifyPkg.version)
+  console.info(err.join('\n'))
+  console.info()
+
+  // 处理 zui js
+  err = await uploadJs('zui', 'vuetify',
+    [
+      path.resolve(__dirname, '../../vuetify/dist/vuetify.js'),
+      path.resolve(__dirname, '../../vuetify/dist/vuetify.min.js'),
+    ],
+    path.resolve(__dirname, '../../vuetify/package.json'),
+  )
+  console.info(err.join('\n'))
+
+  // 处理 zui module js
+  err = await uploadModuleJs(path.resolve(__dirname, '../dist/zui/'))
+  console.info(err.join('\n'))
+
+  // 处理 zui css
+  distPath = path.resolve(__dirname, '../../vuetify/dist')
+  const zuiPkg = require('../../vuetify/package.json')
+  err = await uploadCss(distPath, 'zui', zuiPkg.version)
+  console.info(err.join('\n'))
+  console.info()
+})()
