@@ -78,3 +78,5 @@ export * from './VTreeview/ZTreeview'
 export * from './VVirtualScroll/ZVirtualScroll'
 export * from './VWindow/ZWindow'
 export * from './transitions'
+
+export * from '../zui/components'
