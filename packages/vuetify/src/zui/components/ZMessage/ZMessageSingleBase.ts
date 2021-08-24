@@ -1,9 +1,9 @@
-import mixins from '../../util/mixins'
-import { ZSnackbar } from '../VSnackbar/ZSnackbar'
-import { ZMessageItem } from './ZMessageItem'
+import mixins from '../../../util/mixins'
+import { ZSnackbar } from '../../../components/VSnackbar/ZSnackbar'
+import { ZMessageItem } from '@zwd/z-ui/types'
 
-export const ZMessage = mixins(ZSnackbar).extend({
-  name: 'z-message',
+export const ZMessageSingleBase = mixins(ZSnackbar).extend({
+  name: 'z-message-single-base',
   props: {
     offsetTop: {
       type: Number,
@@ -25,20 +25,29 @@ export const ZMessage = mixins(ZSnackbar).extend({
   mounted () {
     const { duration } = this.$props
     const that = this as any
-    const list = this.getMessageList()
+    const list = this.getList()
     const wrapper = this.$refs.wrapper as HTMLDivElement
-    wrapper.style.opacity = '1'
-    list.push({
-      id: that._uid,
-      duration: duration <= 0 ? -1 : duration,
-      vnode: that,
-      el: wrapper,
-      index: list.length,
-    })
+    if (wrapper) {
+      wrapper.style.opacity = '1'
+      list.push({
+        id: that._uid,
+        duration: duration <= 0 ? -1 : duration,
+        vnode: that,
+        el: wrapper,
+        index: list.length,
+      })
+    }
   },
   methods: {
+    getList (): ZMessageItem[] {
+      if (this.$message) {
+        const { getMessageList } = this.$message
+        return getMessageList ? getMessageList() : []
+      }
+      return []
+    },
     genWrapper () {
-      const list = this.getMessageList()
+      const list = this.getList()
       const wrapper = (ZSnackbar as any).options.methods.genWrapper.call(this)
       const currentTop = this.offsetTop + (list.length * (this.itemGap + this.itemHeight))
       wrapper.data.style = {
@@ -64,7 +73,7 @@ export const ZMessage = mixins(ZSnackbar).extend({
     },
     resetLocation () {
       const that = this as any
-      const list = this.getMessageList() as ZMessageItem[]
+      const list = this.getList()
       const item = list.find(i => i.id === that._uid)
       if (item) {
         // 从池子中删除当前弹窗
@@ -83,7 +92,7 @@ export const ZMessage = mixins(ZSnackbar).extend({
       }, 400)
     },
     resetAll (index = 0) {
-      const list = this.getMessageList() as ZMessageItem[]
+      const list = this.getList()
       list.forEach((item, i) => {
         if (i >= index) {
           const top = this.offsetTop + (i * (this.itemGap + this.itemHeight))
@@ -93,17 +102,16 @@ export const ZMessage = mixins(ZSnackbar).extend({
       })
     },
   },
-  render (createElement) {
-    const that = this as any
-    if (!that.isActive) {
+  render (createElement): any {
+    if (!this.isActive) {
       return createElement('')
     }
     return createElement('div', {
       staticClass: 'v-snack',
-      class: that.classes,
-      style: that.styles,
-    }, [that.transition !== false ? that.genTransition() : that.genWrapper()])
+      class: this.classes,
+      style: this.styles,
+    }, [this.transition !== false ? this.genTransition() : this.genWrapper()])
   },
 })
 
-export default ZMessage
+export default ZMessageSingleBase

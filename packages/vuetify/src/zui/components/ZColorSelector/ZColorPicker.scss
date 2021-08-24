@@ -1,0 +1,22 @@
+.z-color-selector-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 300px;
+  font-size: 12px;
+
+  .theme-colors,
+  .history-colors {
+    display: flex;
+    flex-wrap: wrap;
+
+    .color--item {
+      height: 22px;
+      width: 22px;
+    }
+  }
+}
+
+.v-color-picker__dot {
+  border: solid 1px #000 !important;
+}

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify'
+import { Zui } from 'vuetify'
 import * as locales from '../src/locale'
 import '@mdi/font/css/materialdesignicons.css'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -9,9 +9,9 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle'
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 library.add(faTimesCircle)
 
-Vue.use(Vuetify)
+Vue.use(Zui)
 
-export default new Vuetify({
+export default new Zui({
   lang: {
     locales,
   },

@@ -1,2 +1,2 @@
-export * from './ZMessage'
 export * from './ZMessageContainer'
+export * from './ZMessageSingle'

@@ -6,7 +6,7 @@ import { consoleWarn } from '../../util/console'
 import { mergeDeep } from '../../util/helpers'
 
 // Types
-import Zui from '@zwd/z-ui/types'
+import { Zui } from '@zwd/z-ui/types'
 import { Service } from '../service'
 import {
   UserVuetifyPreset,

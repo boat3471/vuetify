@@ -1,6 +1,6 @@
 // Types
 import Vue from 'vue'
-import Framework from '../'
+import { Zui } from '@zwd/z-ui/'
 import { VuetifyPreset } from '@zwd/z-ui/types/services/presets'
 
 export interface VuetifyServiceContract {
@@ -12,6 +12,6 @@ export interface VuetifyService {
   property: string
   new (
     preset: VuetifyPreset,
-    parent: InstanceType<typeof Framework>
+    parent: InstanceType<typeof Zui>
   ): VuetifyServiceContract
 }

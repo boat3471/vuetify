@@ -2,6 +2,10 @@ import OurVue, { VueConstructor } from 'vue'
 import { VuetifyUseOptions } from '@zwd/z-ui/types'
 import { consoleError } from './util/console'
 
+const cache: any = {
+  $vuetify: null,
+}
+
 export function install (Vue: VueConstructor, args: VuetifyUseOptions = {}) {
   if ((install as any).installed) return
   (install as any).installed = true
@@ -47,9 +51,11 @@ If you're seeing "$attrs is readonly", it's caused by this`)
 
       if (options.vuetify) {
         options.vuetify.init(this, this.$ssrContext)
-        this.$vuetify = Vue.observable(options.vuetify.framework)
+        const $vuetify = Vue.observable(options.vuetify.framework)
+        this.$vuetify = $vuetify
+        cache.$vuetify = $vuetify
       } else {
-        this.$vuetify = (options.parent && options.parent.$vuetify) || this
+        this.$vuetify = (options.parent && options.parent.$vuetify) || cache.$vuetify || this
       }
     },
     beforeMount () {

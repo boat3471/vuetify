@@ -1,8 +1,9 @@
 import * as components from './components'
 import * as directives from './directives'
 import Zui from './framework'
+import { ZMessage } from './zui'
 
-export default Zui
+export { Zui, ZMessage }
 
 const install = Zui.install
 

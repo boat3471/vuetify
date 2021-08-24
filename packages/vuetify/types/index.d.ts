@@ -17,9 +17,13 @@ import {
 
 // Service Options
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
-import { UICore, ZMessageCore, ZMessageItem, ZModalCore } from './zui';
 
-export default class Zui {
+// z-ui
+import { ZUICore, ZMessage, ZModalManager } from './zui/';
+
+export * from './zui/'
+
+export class Zui {
   constructor (preset?: Partial<UserVuetifyPreset>)
 
   static install: PluginFunction<VuetifyUseOptions>
@@ -61,13 +65,11 @@ export interface Framework {
 declare module 'vue/types/vue' {
   export interface Vue {
     $vuetify: Framework
-    $ui: UICore
-    $message: ZMessageCore
-    $modal: ZModalCore
+    $ui: ZUICore
+    $message: ZMessage
+    $modal: ZModalManager
     $p(key: string): boolean
     $l(key: string): string
-    getMessageList(): ZMessageItem[]
-    getModalList(): void
   }
 }
 
@@ -80,9 +82,6 @@ declare module 'vue/types/options' {
     PropsDef=PropsDefinition<DefaultProps>,
     Props=DefaultProps> {
     vuetify?: Zui
-    ui?: UICore
-    message?: ZMessageCore
-    modal?: ZModalCore
   }
 }
 
