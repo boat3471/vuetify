@@ -19,7 +19,7 @@ import {
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
 
 // z-ui
-import { ZUICore, ZMessage, ZModalManager } from './zui/';
+import { ZUICore, ZMessage, ZModal } from './zui/';
 
 export * from './zui/'
 
@@ -67,9 +67,10 @@ declare module 'vue/types/vue' {
     $vuetify: Framework
     $ui: ZUICore
     $message: ZMessage
-    $modal: ZModalManager
+    $modal: ZModal
     $p(key: string): boolean
     $l(key: string): string
+    getAppRoot(): any
   }
 }
 

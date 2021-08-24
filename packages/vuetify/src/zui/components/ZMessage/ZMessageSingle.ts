@@ -31,9 +31,6 @@ export const ZMessageSingle = Vue.extend({
       return this.duration <= 0 ? -1 : this.duration
     },
   },
-  mounted () {
-    (this.$refs.message as HTMLElement).innerHTML = this.message
-  },
   methods: {
     getClasses (): string {
       const list = ['z-message']
@@ -69,7 +66,9 @@ export const ZMessageSingle = Vue.extend({
     genMessage (): VNode {
       return this.$createElement('div', {
         staticClass: 'text',
-        ref: 'message',
+        domProps: {
+          innerHTML: this.message,
+        },
       })
     },
     genActionSlot ({ attrs }: VNodeData): VNode | null {
