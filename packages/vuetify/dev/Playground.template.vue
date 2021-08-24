@@ -1,7 +1,7 @@
 <template>
   <z-container>
     <!--  -->
-  </v-container>
+  </z-container>
 </template>
 
 <script>

@@ -22,11 +22,12 @@ export default function generateZSizeable (classs: string[]) {
         // 读取全局设置
         if (!(xs || s || m || l || xl)) {
           const { defaultSize } = this.$ui || {}
-          xs = defaultSize === 'xs'
-          s = defaultSize === 's'
-          m = defaultSize === 'm'
-          l = defaultSize === 'l'
-          xl = defaultSize === 'xl'
+          const size = defaultSize || 'm'
+          xs = size === 'xs'
+          s = size === 's'
+          m = size === 'm'
+          l = size === 'l'
+          xl = size === 'xl'
         }
 
         const result: any = {}

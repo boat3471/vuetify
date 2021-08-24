@@ -1,7 +1,6 @@
 import Vue from 'vue'
-import { Zui } from 'vuetify'
+import { Zui } from '../'
 import * as locales from '../src/locale'
-import '@mdi/font/css/materialdesignicons.css'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle'
