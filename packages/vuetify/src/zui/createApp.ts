@@ -1,10 +1,10 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
-import { ZApp } from '../components/'
-import { getVuetify } from './installVuetify'
-import { ZMessageContainer } from './components/ZMessage'
-import { UICore } from './UICore'
-// import './installDirectives'
-import { CreateAppOptions } from '@zwd/z-ui'
+import { CreateAppOptions } from '../../types'
+import { ZApp } from '../components'
+import { ZMessage } from './ZMessage'
+import { ZModal } from './ZModal'
+import { ZuiCore, ZuiManager } from './ZuiCore'
+import { createZui } from './createZui'
 
 /**
  * 创建主程序
@@ -25,7 +25,6 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
     // 子元素列表
     [
       options.appHome ? createElement(options.appHome) : null,
-      createElement(ZMessageContainer),
     ]
   )
 }
@@ -35,18 +34,23 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  * @param options
  */
 export function createApp (options: CreateAppOptions): Vue {
-  UICore.setting(options || {})
+  Vue.use(ZMessage)
+  Vue.use(ZModal)
+  Vue.use(ZuiCore)
+
+  ZuiManager.setting(options || {})
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
-  const vuetify = getVuetify(options.vuetifyOptions)
-  UICore.$vuetify = vuetify.framework
-  UICore.$vuetifyInstalled = true
-  UICore.$app = new Vue({
+  const ui = createZui(options.vuetifyOptions)
+  ZuiManager.$vuetify = ui.framework
+  ZuiManager.$vuetifyInstalled = true
+  ZuiManager.$app = new Vue({
     el: '#app',
-    vuetify,
+    // @ts-ignore
+    vuetify: ui,
     render (createElement) {
       return createMain(createElement, options)
     },
     ...componentOptions,
   })
-  return UICore.$app
+  return ZuiManager.$app
 }

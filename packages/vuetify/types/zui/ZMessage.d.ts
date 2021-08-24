@@ -55,16 +55,10 @@ export interface ShowMessageOptions extends MessageOptions {
 
 export class ZMessage {
   show (options: ShowMessageOptions | string): any
-
   info (message: string, options?: MessageOptions): any
-
   success (message: string, options?: MessageOptions): any
-
   warn (message: string, options?: MessageOptions): any
-
   warning (message: string, options?: MessageOptions): any
-
   error (message: string, options?: MessageOptions): any
-
   getMessageList (): ZMessageItem[]
 }

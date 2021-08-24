@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import Zui from '../framework'
+import { Zui } from '../framework'
 
 function createMessage (message: string, vm?: any, parent?: any): string | void {
   if (Zui.config.silent) return

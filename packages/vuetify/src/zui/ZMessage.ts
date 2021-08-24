@@ -1,6 +1,6 @@
 import Vue, { VueConstructor } from 'vue'
 import { ZMessageSingle, ZMessageContainer } from './components'
-import { MessageOptions, ShowMessageOptions, ZMessageItem } from '@zwd/z-ui'
+import { MessageOptions, ShowMessageOptions, ZMessageItem } from '../../types'
 
 /**
  * 消息管理器

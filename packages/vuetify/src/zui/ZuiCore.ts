@@ -1,17 +1,72 @@
+import { VueConstructor } from 'vue'
+import { UIOptions, ZuiCore as ZuiCoreType, ThemeColorsOptions, ThemeCustomOptions, AdminAuthOptions, AdminMainMenuOption } from '../../types'
 import { DarkDefaultColors, LightDefaultColors, themeStore } from './services/theme'
 import { UIEvent } from './UIEvent'
-import { UIOptions } from '@zwd/z-ui'
-import { ThemeColorsOptions, ThemeCustomOptions } from '@zwd/z-ui'
-import { AdminAuthOptions, AdminMainMenuOption } from '@zwd/z-ui'
 
-export class UICore extends UIEvent {
+export class ZuiManager extends UIEvent {
+  /**
+   * App名称
+   */
+  get appName () {
+    return ZuiManager.$options.appName || ''
+  }
+
+  /**
+   * App编号
+   */
+  get appId () {
+    return ZuiManager.$options.appId
+  }
+
+  /**
+   * 获取主菜单列表
+   */
+  get menus (): AdminMainMenuOption[] {
+    return ZuiManager.$menus
+  }
+
+  /**
+   * 获取主菜单列表
+   */
+  get auth (): AdminAuthOptions {
+    return ZuiManager.$auth
+  }
+
+  /**
+   * 获取默认主题状态
+   */
+  get darkStatus (): boolean {
+    return themeStore.theme.darkStatus || false
+  }
+
+  /**
+   * 获取默认主题大小
+   */
+  get defaultSize (): string {
+    return ZuiManager.$options.defaultSize || 's'
+  }
+
+  /**
+   * 获取默认的提示背景色
+   */
+  get defaultTooltipColor (): string {
+    return ZuiManager.$options.defaultTooltipColor || '#616161'
+  }
+
+  /**
+   * 获取默认的提示背景色
+   */
+  get defaultTooltipSize (): string {
+    return ZuiManager.$options.defaultTooltipSize || 's'
+  }
+
   /**
    * 改变主题暗色
    */
   changeDark (status = false) {
-    if (UICore.$vuetifyInstalled) {
+    if (ZuiManager.$vuetifyInstalled) {
       // 更新vuetify
-      UICore.$vuetify.theme.dark = status
+      ZuiManager.$vuetify.theme.dark = status
 
       // 更新store
       themeStore.settingTheme({
@@ -34,24 +89,24 @@ export class UICore extends UIEvent {
    * @param options
    */
   changeThemeColors (options: ThemeColorsOptions) {
-    if (UICore.$vuetify && options) {
+    if (ZuiManager.$vuetify && options) {
       if (options.darkColors) {
-        const darkDefault = UICore.$vuetify.theme.themes.dark || {}
+        const darkDefault = ZuiManager.$vuetify.theme.themes.dark || {}
         const dark = {
           ...options.darkColors,
           ...darkDefault,
         }
-        UICore.$vuetify.theme.themes.dark = dark
+        ZuiManager.$vuetify.theme.themes.dark = dark
         themeStore.settingDarkColor(dark)
       }
 
       if (options.lightColors) {
-        const lightDefault = UICore.$vuetify.theme.themes.light || {}
+        const lightDefault = ZuiManager.$vuetify.theme.themes.light || {}
         const light = {
           ...options.lightColors,
           ...lightDefault,
         }
-        UICore.$vuetify.theme.themes.light = light
+        ZuiManager.$vuetify.theme.themes.light = light
         themeStore.settingLightColor(light)
       }
 
@@ -67,14 +122,14 @@ export class UICore extends UIEvent {
     const { darkStatus } = themeStore.theme
     if (darkStatus) {
       themeStore.settingDarkColor({ primary: color })
-      if (UICore.$vuetify) {
-        UICore.$vuetify.theme.themes.dark.primary = color
+      if (ZuiManager.$vuetify) {
+        ZuiManager.$vuetify.theme.themes.dark.primary = color
         this.emit('changePrimaryColor', color)
       }
     } else {
       themeStore.settingLightColor({ primary: color })
-      if (UICore.$vuetify) {
-        UICore.$vuetify.theme.themes.light.primary = color
+      if (ZuiManager.$vuetify) {
+        ZuiManager.$vuetify.theme.themes.light.primary = color
         this.emit('changePrimaryColor', color)
       }
     }
@@ -114,66 +169,10 @@ export class UICore extends UIEvent {
   }
 
   /**
-   * 获取默认主题状态
-   */
-  get darkStatus (): boolean {
-    return themeStore.theme.darkStatus || false
-  }
-
-  /**
-   * 获取默认主题大小
-   */
-  get defaultSize (): string {
-    return UICore.$options.defaultSize || 's'
-  }
-
-  /**
-   * 获取默认的提示背景色
-   */
-  get defaultTooltipColor (): string {
-    return UICore.$options.defaultTooltipColor || '#616161'
-  }
-
-  /**
-   * 获取默认的提示背景色
-   */
-  get defaultTooltipSize (): string {
-    return UICore.$options.defaultTooltipSize || 's'
-  }
-
-  /**
-   * App名称
-   */
-  get appName () {
-    return UICore.$options.appName || ''
-  }
-
-  /**
-   * App编号
-   */
-  get appId () {
-    return UICore.$options.appId
-  }
-
-  /**
-   * 获取主菜单列表
-   */
-  get menus (): AdminMainMenuOption[] {
-    return UICore.$menus
-  }
-
-  /**
-   * 获取主菜单列表
-   */
-  get auth (): AdminAuthOptions {
-    return UICore.$auth
-  }
-
-  /**
    * 回到首页
    */
   openHome () {
-    const { openHome } = UICore.$options as any
+    const { openHome } = ZuiManager.$options as any
 
     if (openHome) {
       openHome()
@@ -186,21 +185,11 @@ export class UICore extends UIEvent {
    * 回到登录页面
    */
   openLogin () {
-    const { openLogin } = UICore.$options as any
+    const { openLogin } = ZuiManager.$options as any
 
     if (openLogin) {
       openLogin()
     }
-  }
-
-  /**
-   * 设置UI配置
-   * @internal
-   * @param options
-   */
-  static setting (options: UIOptions) {
-    UICore.$options = options
-    themeStore.settingThemeData(options.appId || 'app')
   }
 
   static $app: Vue;
@@ -225,12 +214,22 @@ export class UICore extends UIEvent {
   static $auth: AdminAuthOptions = {};
 
   /**
+   * 设置UI配置
+   * @internal
+   * @param options
+   */
+  static setting (options: UIOptions) {
+    ZuiManager.$options = options
+    themeStore.settingThemeData(options.appId || 'app')
+  }
+
+  /**
    * 设置菜单配置信息
    * @internal
    * @param menus
    */
   static settingMenus (menus: AdminMainMenuOption[]) {
-    UICore.$menus = menus
+    ZuiManager.$menus = menus
   }
 
   /**
@@ -239,6 +238,37 @@ export class UICore extends UIEvent {
    * @param options
    */
   static settingAuth (options: AdminAuthOptions) {
-    UICore.$auth = options
+    ZuiManager.$auth = options
+  }
+
+  static __installed = false
+
+  static __instance: ZuiManager
+
+  static genInstance (): ZuiManager {
+    if (!ZuiManager.__instance) {
+      ZuiManager.__instance = new ZuiManager()
+    }
+    return ZuiManager.__instance
+  }
+
+  install (Vue: VueConstructor) {
+    Vue.mixin({
+      beforeCreate () {
+        const $options = this.$options
+        if (!this.$ui) {
+          this.$ui = ZuiManager.genInstance() as ZuiCoreType
+        } else {
+          $options.parent && (this.$ui = $options.parent.$ui)
+        }
+      },
+    })
   }
 }
+
+/**
+ * 全局通知实例:
+ * 1. 可在vue组件内部使用 `this.$ui` <br>
+ * 2. 可引入使用 `import {ZuiManager} = '@zwd/z-ui';`
+ */
+export const ZuiCore = ZuiManager.genInstance()

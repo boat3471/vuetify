@@ -1,3 +1,5 @@
+import * as components from './components'
+import * as directives from './directives'
 import { install } from './install'
 
 // Types
@@ -14,7 +16,7 @@ import {
 // Services
 import * as services from './services'
 
-export default class Zui {
+export class Zui {
   static install = install
 
   static installed = false
@@ -76,3 +78,13 @@ export default class Zui {
     this.installed.push(property)
   }
 }
+
+Zui.install = (Vue, args) => {
+  install.call(Zui, Vue, {
+    components,
+    directives,
+    ...args,
+  })
+}
+
+export default Zui

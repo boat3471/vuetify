@@ -84,14 +84,14 @@ export class ZModal {
    * 自定义提示
    * @param options
    */
-  show (options: ShowModalOptions | string): ModalResult
+  static show (options: ShowModalOptions | string): ModalResult
 
   /**
    * 常规提示
    * @param message
    * @param options
    */
-  info (message: string, options?: ModalOptions): ModalResult
+  static info (message: string, options?: ModalOptions): ModalResult
 
   /**
    * 成功提示

@@ -1,11 +1,11 @@
 const Vue = require('vue')
-const Vuetify = require('../../vuetify')
+const { Zui } = require('../../vuetify')
 const { components: excludes } = require('./helpers/excludes')
 const { camelCase, kebabCase, pascalize } = require('./helpers/text')
 const { parseComponent, parseSassVariables, parseGlobalSassVariables } = require('./helpers/parsing')
 const deepmerge = require('./helpers/merge')
 
-Vue.use(Vuetify)
+Vue.use(Zui)
 
 const loadLocale = (componentName, locale, fallback = {}) => {
   try {
@@ -126,7 +126,11 @@ const getComponentApi = (componentName, locales) => {
   const slotsEventsAndFunctions = loadMap(componentName, { slots: [], events: [], functions: [] })
   const sassVariables = parseSassVariables(componentName)
 
-  const api = deepmerge(propsAndMixins, slotsEventsAndFunctions, { name: componentName, sass: sassVariables, component: true })
+  const api = deepmerge(propsAndMixins, slotsEventsAndFunctions, {
+    name: componentName,
+    sass: sassVariables,
+    component: true,
+  })
   api.props = api.props.sort((a, b) => a.name.localeCompare(b.name))
 
   return addComponentApiDescriptions(componentName, api, locales)

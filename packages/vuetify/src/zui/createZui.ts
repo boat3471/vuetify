@@ -1,16 +1,11 @@
 import Vue from 'vue'
-import { Zui } from '@zwd/z-ui'
+import Zui from '../framework'
+import { themeStore } from './services/theme'
+import { GlobalVuetifyPreset } from '../../types/services/presets'
+import { VuetifyThemeVariant } from '../../types/services/theme'
 
-// import '../styles/vuetify.scss'
-// import '@mdi/font/css/materialdesignicons.css'
-
-import { themeStore } from './services/theme/'
-import { GlobalVuetifyPreset } from '@zwd/z-ui/types/services/presets'
-import { VuetifyThemeVariant } from '@zwd/z-ui/types/services/theme'
-
-Vue.use(Zui)
-
-export function getVuetify (options?: GlobalVuetifyPreset) {
+export function createZui (options?: GlobalVuetifyPreset) {
+  Vue.use(Zui)
   const { darkStatus, darkColors, lightColors } = themeStore.theme
   const html: HTMLHtmlElement = document.documentElement as HTMLHtmlElement
   html.className = darkStatus ? 'theme--dark' : 'theme--light'
@@ -23,7 +18,6 @@ export function getVuetify (options?: GlobalVuetifyPreset) {
         light: lightColors as VuetifyThemeVariant,
       },
     },
-    icons: {},
     ...options,
   })
 }

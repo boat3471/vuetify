@@ -1,5 +1,5 @@
 import { VueConstructor } from 'vue'
-import { ModalOptions, ModalResult, ShowModalOptions } from '@zwd/z-ui'
+import { ModalOptions, ModalResult, ShowModalOptions } from '../../types'
 
 import { ZModalSingle } from './components'
 
