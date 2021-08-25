@@ -1,35 +1,35 @@
 import { VueConstructor } from 'vue'
-import { UIOptions, ZuiCore as ZuiCoreType, ThemeColorsOptions, ThemeCustomOptions, AdminAuthOptions, AdminMainMenuOption } from '../../types'
+import { UIOptions, ZuiTool as ZuiToolType, ThemeColorsOptions, ThemeCustomOptions, AdminAuthOptions, AdminMainMenuOption } from '../../types'
 import { DarkDefaultColors, LightDefaultColors, themeStore } from './services/theme'
-import { UIEvent } from './UIEvent'
+import { UIEvent } from './util/UIEvent'
 
-export class ZuiManager extends UIEvent {
+export class ZuiCore extends UIEvent {
   /**
    * App名称
    */
   get appName () {
-    return ZuiManager.$options.appName || ''
+    return ZuiCore.$options.appName || ''
   }
 
   /**
    * App编号
    */
   get appId () {
-    return ZuiManager.$options.appId
+    return ZuiCore.$options.appId
   }
 
   /**
    * 获取主菜单列表
    */
   get menus (): AdminMainMenuOption[] {
-    return ZuiManager.$menus
+    return ZuiCore.$menus
   }
 
   /**
    * 获取主菜单列表
    */
   get auth (): AdminAuthOptions {
-    return ZuiManager.$auth
+    return ZuiCore.$auth
   }
 
   /**
@@ -43,30 +43,30 @@ export class ZuiManager extends UIEvent {
    * 获取默认主题大小
    */
   get defaultSize (): string {
-    return ZuiManager.$options.defaultSize || 's'
+    return ZuiCore.$options.defaultSize || 's'
   }
 
   /**
    * 获取默认的提示背景色
    */
   get defaultTooltipColor (): string {
-    return ZuiManager.$options.defaultTooltipColor || '#616161'
+    return ZuiCore.$options.defaultTooltipColor || '#616161'
   }
 
   /**
    * 获取默认的提示背景色
    */
   get defaultTooltipSize (): string {
-    return ZuiManager.$options.defaultTooltipSize || 's'
+    return ZuiCore.$options.defaultTooltipSize || 's'
   }
 
   /**
    * 改变主题暗色
    */
   changeDark (status = false) {
-    if (ZuiManager.$vuetifyInstalled) {
+    if (ZuiCore.$vuetifyInstalled) {
       // 更新vuetify
-      ZuiManager.$vuetify.theme.dark = status
+      ZuiCore.$vuetify.theme.dark = status
 
       // 更新store
       themeStore.settingTheme({
@@ -89,24 +89,24 @@ export class ZuiManager extends UIEvent {
    * @param options
    */
   changeThemeColors (options: ThemeColorsOptions) {
-    if (ZuiManager.$vuetify && options) {
+    if (ZuiCore.$vuetify && options) {
       if (options.darkColors) {
-        const darkDefault = ZuiManager.$vuetify.theme.themes.dark || {}
+        const darkDefault = ZuiCore.$vuetify.theme.themes.dark || {}
         const dark = {
           ...options.darkColors,
           ...darkDefault,
         }
-        ZuiManager.$vuetify.theme.themes.dark = dark
+        ZuiCore.$vuetify.theme.themes.dark = dark
         themeStore.settingDarkColor(dark)
       }
 
       if (options.lightColors) {
-        const lightDefault = ZuiManager.$vuetify.theme.themes.light || {}
+        const lightDefault = ZuiCore.$vuetify.theme.themes.light || {}
         const light = {
           ...options.lightColors,
           ...lightDefault,
         }
-        ZuiManager.$vuetify.theme.themes.light = light
+        ZuiCore.$vuetify.theme.themes.light = light
         themeStore.settingLightColor(light)
       }
 
@@ -122,14 +122,14 @@ export class ZuiManager extends UIEvent {
     const { darkStatus } = themeStore.theme
     if (darkStatus) {
       themeStore.settingDarkColor({ primary: color })
-      if (ZuiManager.$vuetify) {
-        ZuiManager.$vuetify.theme.themes.dark.primary = color
+      if (ZuiCore.$vuetify) {
+        ZuiCore.$vuetify.theme.themes.dark.primary = color
         this.emit('changePrimaryColor', color)
       }
     } else {
       themeStore.settingLightColor({ primary: color })
-      if (ZuiManager.$vuetify) {
-        ZuiManager.$vuetify.theme.themes.light.primary = color
+      if (ZuiCore.$vuetify) {
+        ZuiCore.$vuetify.theme.themes.light.primary = color
         this.emit('changePrimaryColor', color)
       }
     }
@@ -172,7 +172,7 @@ export class ZuiManager extends UIEvent {
    * 回到首页
    */
   openHome () {
-    const { openHome } = ZuiManager.$options as any
+    const { openHome } = ZuiCore.$options as any
 
     if (openHome) {
       openHome()
@@ -185,7 +185,7 @@ export class ZuiManager extends UIEvent {
    * 回到登录页面
    */
   openLogin () {
-    const { openLogin } = ZuiManager.$options as any
+    const { openLogin } = ZuiCore.$options as any
 
     if (openLogin) {
       openLogin()
@@ -219,7 +219,7 @@ export class ZuiManager extends UIEvent {
    * @param options
    */
   static setting (options: UIOptions) {
-    ZuiManager.$options = options
+    ZuiCore.$options = options
     themeStore.settingThemeData(options.appId || 'app')
   }
 
@@ -229,7 +229,7 @@ export class ZuiManager extends UIEvent {
    * @param menus
    */
   static settingMenus (menus: AdminMainMenuOption[]) {
-    ZuiManager.$menus = menus
+    ZuiCore.$menus = menus
   }
 
   /**
@@ -238,26 +238,27 @@ export class ZuiManager extends UIEvent {
    * @param options
    */
   static settingAuth (options: AdminAuthOptions) {
-    ZuiManager.$auth = options
+    ZuiCore.$auth = options
   }
 
-  static __installed = false
+  static __instance: ZuiCore
 
-  static __instance: ZuiManager
-
-  static genInstance (): ZuiManager {
-    if (!ZuiManager.__instance) {
-      ZuiManager.__instance = new ZuiManager()
+  static genInstance (): ZuiCore {
+    if (!ZuiCore.__instance) {
+      ZuiCore.__instance = new ZuiCore()
     }
-    return ZuiManager.__instance
+    return ZuiCore.__instance
   }
 
-  install (Vue: VueConstructor) {
+  static install (Vue: VueConstructor, options: any) {
+    if ((ZuiCore.install as any).__installed) return
+    (ZuiCore.install as any).__installed = true
+
     Vue.mixin({
       beforeCreate () {
         const $options = this.$options
         if (!this.$ui) {
-          this.$ui = ZuiManager.genInstance() as ZuiCoreType
+          this.$ui = ZuiCore.genInstance() as ZuiToolType
         } else {
           $options.parent && (this.$ui = $options.parent.$ui)
         }
@@ -269,6 +270,6 @@ export class ZuiManager extends UIEvent {
 /**
  * 全局通知实例:
  * 1. 可在vue组件内部使用 `this.$ui` <br>
- * 2. 可引入使用 `import {ZuiManager} = '@zwd/z-ui';`
+ * 2. 可引入使用 `import {ZuiTool} = '@zwd/z-ui';`
  */
-export const ZuiCore = ZuiManager.genInstance()
+export const ZuiTool = ZuiCore.genInstance()

@@ -1,5 +1,5 @@
 import OurVue, { VueConstructor } from 'vue'
-import { VuetifyUseOptions } from '@zwd/z-ui/types'
+import { VuetifyUseOptions } from '../types'
 import { consoleError } from './util/console'
 
 const cache: any = {

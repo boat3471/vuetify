@@ -3,7 +3,7 @@ import * as directives from './directives'
 import { install } from './install'
 
 // Types
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
 import {
   UserVuetifyPreset,
   VuetifyPreset,
@@ -17,8 +17,6 @@ import {
 import * as services from './services'
 
 export class Zui {
-  static install = install
-
   static installed = false
 
   static version = __VUETIFY_VERSION__
@@ -77,13 +75,15 @@ export class Zui {
     this.framework[property] = new Service(this.preset, this as any)
     this.installed.push(property)
   }
+
+  static install: (Vue: VueConstructor, options: any) => void;
 }
 
-Zui.install = (Vue, args) => {
-  install.call(Zui, Vue, {
+Zui.install = (IVue, options) => {
+  install.call(Zui, IVue, {
     components,
     directives,
-    ...args,
+    ...options,
   })
 }
 

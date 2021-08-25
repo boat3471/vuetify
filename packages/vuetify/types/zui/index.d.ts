@@ -4,6 +4,6 @@ import { CreateAppOptions } from './options'
 export * from './options'
 export * from './ZMessage'
 export * from './ZModal'
-export * from './ZuiCore'
+export * from './ZuiTool'
 
 export function createApp (options: CreateAppOptions): Vue

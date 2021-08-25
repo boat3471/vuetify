@@ -1,14 +1,12 @@
 import { VueConstructor } from 'vue'
 import { ModalOptions, ModalResult, ShowModalOptions } from '../../types'
 
-import { ZModalSingle } from './components'
+import { ZModalSingle } from './components/ZModal'
 
 /**
  * 消息管理器
  */
-class ZModalCore {
-  static __installed = false
-
+export class ZModalCore {
   static __instance: ZModalCore
 
   static MODAL_LIST: any[] = []
@@ -181,9 +179,9 @@ class ZModalCore {
     return list
   }
 
-  install (Vue: VueConstructor) {
-    if (ZModalCore.__installed) return
-    ZModalCore.__installed = true
+  static install (Vue: VueConstructor, options: any) {
+    if ((ZModalCore.install as any).__installed) return
+    (ZModalCore.install as any).__installed = true
 
     Vue.mixin({
       beforeCreate () {

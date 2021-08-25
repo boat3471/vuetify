@@ -1,14 +1,12 @@
 import Vue, { VueConstructor } from 'vue'
-import { ZMessageSingle, ZMessageContainer } from './components'
+import { ZMessageSingle, ZMessageContainer } from './components/ZMessage'
 import { MessageOptions, ShowMessageOptions, ZMessageItem } from '../../types'
 
 /**
  * 消息管理器
  */
-class ZMessageCore {
+export class ZMessageCore {
   static __wrapper: Vue
-
-  static __installed = false
 
   static __instance: ZMessageCore
 
@@ -163,9 +161,9 @@ class ZMessageCore {
     return list
   }
 
-  install (Vue: VueConstructor) {
-    if (ZMessageCore.__installed) return
-    ZMessageCore.__installed = true
+  static install (Vue: VueConstructor, options: any) {
+    if ((ZMessageCore.install as any).__installed) return
+    (ZMessageCore.install as any).__installed = true
 
     Vue.mixin({
       beforeCreate () {

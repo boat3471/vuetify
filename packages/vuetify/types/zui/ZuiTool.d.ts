@@ -1,6 +1,15 @@
 import { AdminAuthOptions, AdminMainMenuOption, ThemeColorsOptions, ThemeCustomOptions } from './options'
 
-export class ZuiCore {
+export type DefaultUIEventType =
+  'changeDark'
+  | 'changeTheme'
+  | 'changePrimaryColor'
+  | 'changeThemeColors'
+  | 'initMenus'
+  | 'menuViewComplete'
+  | string;
+
+export class ZuiTool {
   get appName (): string
   get appId (): string
   get menus (): AdminMainMenuOption[]
@@ -18,4 +27,9 @@ export class ZuiCore {
   getPrimaryColor (): string
   openHome (): void
   openLogin (): void
+
+  emit (event: DefaultUIEventType, ...args: any[]): void
+  on (event: DefaultUIEventType | DefaultUIEventType[], callback: Function): void
+  once (event: DefaultUIEventType | DefaultUIEventType[], callback: Function): void
+  off (event?: DefaultUIEventType | DefaultUIEventType[], callback?: Function): void
 }

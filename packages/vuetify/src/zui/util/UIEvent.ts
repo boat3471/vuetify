@@ -1,13 +1,5 @@
 import Vue from 'vue'
-
-export type DefaultUIEventType =
-    'changeDark'
-    | 'changeTheme'
-    | 'changePrimaryColor'
-    | 'changeThemeColors'
-    | 'initMenus'
-    | 'menuViewComplete'
-    | string;
+import { DefaultUIEventType } from '../../../types'
 
 export class UIEvent {
     private events = new Vue();

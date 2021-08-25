@@ -1,9 +1,8 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
 import { CreateAppOptions } from '../../types'
 import { ZApp } from '../components'
-import { ZMessage } from './ZMessage'
-import { ZModal } from './ZModal'
-import { ZuiCore, ZuiManager } from './ZuiCore'
+import { ZuiCore } from './ZuiCore'
+import './directives/install'
 import { createZui } from './createZui'
 
 /**
@@ -34,16 +33,12 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  * @param options
  */
 export function createApp (options: CreateAppOptions): Vue {
-  Vue.use(ZMessage)
-  Vue.use(ZModal)
-  Vue.use(ZuiCore)
-
-  ZuiManager.setting(options || {})
+  ZuiCore.setting(options || {})
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(options.vuetifyOptions)
-  ZuiManager.$vuetify = ui.framework
-  ZuiManager.$vuetifyInstalled = true
-  ZuiManager.$app = new Vue({
+  ZuiCore.$vuetify = ui.framework
+  ZuiCore.$vuetifyInstalled = true
+  ZuiCore.$app = new Vue({
     el: '#app',
     // @ts-ignore
     vuetify: ui,
@@ -52,5 +47,5 @@ export function createApp (options: CreateAppOptions): Vue {
     },
     ...componentOptions,
   })
-  return ZuiManager.$app
+  return ZuiCore.$app
 }
