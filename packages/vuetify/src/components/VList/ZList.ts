@@ -42,19 +42,19 @@ export const ZListItemIcon = mixins(VListItemIcon).extend({
   name: 'z-list-item-icon',
 })
 
-const ZListItemActionText = mixins(VListItemActionText).extend({
+export const ZListItemActionText = mixins(VListItemActionText).extend({
   name: 'z-list-item-action-text',
 })
 
-const ZListItemContent = mixins(VListItemContent).extend({
+export const ZListItemContent = mixins(VListItemContent).extend({
   name: 'z-list-item-content',
 })
 
-const ZListItemSubtitle = mixins(VListItemSubtitle).extend({
+export const ZListItemSubtitle = mixins(VListItemSubtitle).extend({
   name: 'z-list-item-subtitle',
 })
 
-const ZListItemTitle = mixins(VListItemTitle).extend({
+export const ZListItemTitle = mixins(VListItemTitle).extend({
   name: 'z-list-item-title',
 })
 
