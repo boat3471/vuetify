@@ -1,7 +1,7 @@
 import { PluginFunction } from 'vue'
 import { ZModalOptions, ZModalResult, ZModalShowOptions, ZModalUseOptions } from './options'
 
-export class ZModalClass {
+export class ZModalDescription {
   static install: PluginFunction<ZModalUseOptions>
 
   /**

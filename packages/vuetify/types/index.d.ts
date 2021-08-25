@@ -19,17 +19,17 @@ import {
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
 
 // z-ui
-import { ZuiToolClass } from './zui/ZuiTool';
-import { ZMessageClass } from './zui/ZMessage';
-import { ZModalClass } from './zui/ZModal';
+import { ZuiToolDescription } from './zui/ZuiTool';
+import { ZMessageDescription } from './zui/ZMessage';
+import { ZModalDescription } from './zui/ZModal';
 
 export * from './zui'
 
-export type ZuiTool = ZuiToolClass
-export type ZMessage = ZMessageClass
-export type ZModal = ZModalClass
+export type ZuiTool = ZuiToolDescription
+export type ZMessage = ZMessageDescription
+export type ZModal = ZModalDescription
 
-export { ZuiToolClass }
+export { ZuiToolDescription, ZMessageDescription, ZModalDescription }
 
 export class Zui {
   constructor (preset?: Partial<UserVuetifyPreset>)

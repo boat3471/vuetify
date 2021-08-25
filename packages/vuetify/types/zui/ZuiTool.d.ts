@@ -1,7 +1,7 @@
 import { ZAuthOptions, ZMainMenuOption, ThemeColorsOptions, ThemeCustomOptions, ZuiToolUseOptions, ZuiEventType } from './options'
 import { PluginFunction } from 'vue'
 
-export class ZuiToolClass {
+export class ZuiToolDescription {
   static install: PluginFunction<ZuiToolUseOptions>
 
   get appName (): string
