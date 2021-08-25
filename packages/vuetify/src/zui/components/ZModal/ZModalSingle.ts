@@ -204,7 +204,8 @@ export const ZModalSingle = Vue.extend({
       const cancelBtn = this.$createElement(ZBtn, {
         props: {
           color: 'secondary',
-          outlined: true,
+          outlined: false,
+          text: true,
           xs: true,
         },
         on: {
@@ -216,8 +217,9 @@ export const ZModalSingle = Vue.extend({
       const sureBtn = this.$createElement(ZBtn, {
         props: {
           color: this.color,
-          elevation: 1,
-          outlined: true,
+          // elevation: 1,
+          outlined: false,
+          text: true,
           disabled: this.delayCount > 0,
           xs: true,
         },
