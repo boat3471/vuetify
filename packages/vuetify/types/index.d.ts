@@ -19,9 +19,17 @@ import {
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
 
 // z-ui
-import { ZuiTool, ZMessage, ZModal } from './zui/';
+import { ZuiToolClass } from './zui/ZuiTool';
+import { ZMessageClass } from './zui/ZMessage';
+import { ZModalClass } from './zui/ZModal';
 
 export * from './zui'
+
+export type ZuiTool = ZuiToolClass
+export type ZMessage = ZMessageClass
+export type ZModal = ZModalClass
+
+export { ZuiToolClass }
 
 export class Zui {
   constructor (preset?: Partial<UserVuetifyPreset>)
@@ -70,7 +78,6 @@ declare module 'vue/types/vue' {
     $modal: ZModal
     $p(key: string): boolean
     $l(key: string): string
-    getAppRoot(): any
   }
 }
 

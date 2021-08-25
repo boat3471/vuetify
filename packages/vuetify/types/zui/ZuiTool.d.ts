@@ -1,19 +1,13 @@
-import { AdminAuthOptions, AdminMainMenuOption, ThemeColorsOptions, ThemeCustomOptions } from './options'
+import { ZAuthOptions, ZMainMenuOption, ThemeColorsOptions, ThemeCustomOptions, ZuiToolUseOptions, ZuiEventType } from './options'
+import { PluginFunction } from 'vue'
 
-export type DefaultUIEventType =
-  'changeDark'
-  | 'changeTheme'
-  | 'changePrimaryColor'
-  | 'changeThemeColors'
-  | 'initMenus'
-  | 'menuViewComplete'
-  | string;
+export class ZuiToolClass {
+  static install: PluginFunction<ZuiToolUseOptions>
 
-export class ZuiTool {
   get appName (): string
   get appId (): string
-  get menus (): AdminMainMenuOption[]
-  get auth (): AdminAuthOptions
+  get menus (): ZMainMenuOption[]
+  get auth (): ZAuthOptions
   get darkStatus(): boolean
   get defaultSize(): string
   get defaultTooltipColor(): string
@@ -28,8 +22,8 @@ export class ZuiTool {
   openHome (): void
   openLogin (): void
 
-  emit (event: DefaultUIEventType, ...args: any[]): void
-  on (event: DefaultUIEventType | DefaultUIEventType[], callback: Function): void
-  once (event: DefaultUIEventType | DefaultUIEventType[], callback: Function): void
-  off (event?: DefaultUIEventType | DefaultUIEventType[], callback?: Function): void
+  emit (event: ZuiEventType, ...args: any[]): void
+  on (event: ZuiEventType | ZuiEventType[], callback: Function): void
+  once (event: ZuiEventType | ZuiEventType[], callback: Function): void
+  off (event?: ZuiEventType | ZuiEventType[], callback?: Function): void
 }
