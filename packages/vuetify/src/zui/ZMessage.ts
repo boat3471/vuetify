@@ -1,33 +1,33 @@
 import Vue, { VueConstructor } from 'vue'
 import { ZMessageSingle, ZMessageContainer } from './components/ZMessage'
-import { MessageOptions, ShowMessageOptions, ZMessageItem } from '../../types'
+import { ZMessageOptions, ZMessageShowOptions, ZMessageItem } from '../../types'
 
 /**
  * 消息管理器
  */
-export class ZMessageCore {
+export class ZMessageClass {
   static __wrapper: Vue
 
-  static __instance: ZMessageCore
+  static __instance: ZMessageClass
 
   static MESSAGE_LIST: ZMessageItem[] = []
 
   static genWrapper () {
-    if (!ZMessageCore.__wrapper) {
+    if (!ZMessageClass.__wrapper) {
       const app = document.getElementById('app')
       const div = document.createElement('div')
       app && app.appendChild(div)
-      ZMessageCore.__wrapper = new ZMessageContainer({
+      ZMessageClass.__wrapper = new ZMessageContainer({
       }).$mount(div)
     }
-    return ZMessageCore.__wrapper
+    return ZMessageClass.__wrapper
   }
 
-  static genInstance (): ZMessageCore {
-    if (!ZMessageCore.__instance) {
-      ZMessageCore.__instance = new ZMessageCore()
+  static genInstance (): ZMessageClass {
+    if (!ZMessageClass.__instance) {
+      ZMessageClass.__instance = new ZMessageClass()
     }
-    return ZMessageCore.__instance
+    return ZMessageClass.__instance
   }
 
   // eslint-disable-next-line no-useless-constructor
@@ -39,7 +39,7 @@ export class ZMessageCore {
    * 显示消息
    * @param options
    */
-  show (options: ShowMessageOptions | string) {
+  show (options: ZMessageShowOptions | string) {
     let content = ''
     if (typeof options !== 'object') {
       content = options + ''
@@ -72,8 +72,8 @@ export class ZMessageCore {
    * @param message
    * @param options
    */
-  info (message: string, options?: MessageOptions) {
-    const container = ZMessageCore.genWrapper()
+  info (message: string, options?: ZMessageOptions) {
+    const container = ZMessageClass.genWrapper()
     const comp = new ZMessageSingle({
       propsData: {
         ...options,
@@ -91,8 +91,8 @@ export class ZMessageCore {
    * @param message
    * @param options
    */
-  success (message: string, options?: MessageOptions) {
-    const container = ZMessageCore.genWrapper()
+  success (message: string, options?: ZMessageOptions) {
+    const container = ZMessageClass.genWrapper()
     const comp = new ZMessageSingle({
       propsData: {
         ...options,
@@ -110,7 +110,7 @@ export class ZMessageCore {
    * @param message
    * @param options
    */
-  warn (message: string, options?: MessageOptions) {
+  warn (message: string, options?: ZMessageOptions) {
     return this.warning(message, options)
   }
 
@@ -119,8 +119,8 @@ export class ZMessageCore {
    * @param message
    * @param options
    */
-  warning (message: string, options?: MessageOptions) {
-    const container = ZMessageCore.genWrapper()
+  warning (message: string, options?: ZMessageOptions) {
+    const container = ZMessageClass.genWrapper()
     const comp = new ZMessageSingle({
       propsData: {
         ...options,
@@ -138,8 +138,8 @@ export class ZMessageCore {
    * @param message
    * @param options
    */
-  error (message: string, options?: MessageOptions) {
-    const container = ZMessageCore.genWrapper()
+  error (message: string, options?: ZMessageOptions) {
+    const container = ZMessageClass.genWrapper()
     const comp = new ZMessageSingle({
       propsData: {
         ...options,
@@ -153,23 +153,23 @@ export class ZMessageCore {
   }
 
   getMessageList (): ZMessageItem[] {
-    let list = ZMessageCore.MESSAGE_LIST
+    let list = ZMessageClass.MESSAGE_LIST
     if (!list) {
       list = []
-      ZMessageCore.MESSAGE_LIST = list
+      ZMessageClass.MESSAGE_LIST = list
     }
     return list
   }
 
   static install (Vue: VueConstructor, options: any) {
-    if ((ZMessageCore.install as any).__installed) return
-    (ZMessageCore.install as any).__installed = true
+    if ((ZMessageClass.install as any).__installed) return
+    (ZMessageClass.install as any).__installed = true
 
     Vue.mixin({
       beforeCreate () {
         const $options = this.$options
         if (!this.$message) {
-          this.$message = ZMessageCore.genInstance()
+          this.$message = ZMessageClass.genInstance()
         } else {
           $options.parent && (this.$message = $options.parent.$message)
         }
@@ -183,4 +183,4 @@ export class ZMessageCore {
  * 1. 可在vue组件内部使用 `this.$message` <br>
  * 2. 可引入使用 `import {ZMessage} = '@zwd/z-ui';`
  */
-export const ZMessage = ZMessageCore.genInstance()
+export const ZMessage = ZMessageClass.genInstance()

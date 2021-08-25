@@ -1,6 +1,6 @@
 import mixins from '../../../util/mixins'
 import { ZSnackbar } from '../../../components/VSnackbar/ZSnackbar'
-import { ZMessageItem } from '@zwd/z-ui/types'
+import { ZMessageItem } from '../../../../types'
 
 export const ZMessageSingleBase = mixins(ZSnackbar).extend({
   name: 'z-message-single-base',

@@ -1,35 +1,35 @@
 import { VueConstructor } from 'vue'
-import { UIOptions, ZuiTool as ZuiToolType, ThemeColorsOptions, ThemeCustomOptions, AdminAuthOptions, AdminMainMenuOption } from '../../types'
+import { ZuiOptions, ZuiToolDescription, ThemeColorsOptions, ThemeCustomOptions, ZAuthOptions, ZMainMenuOption } from '../../types'
 import { DarkDefaultColors, LightDefaultColors, themeStore } from './services/theme'
 import { UIEvent } from './util/UIEvent'
 
-export class ZuiCore extends UIEvent {
+export class ZuiToolClass extends UIEvent {
   /**
    * App名称
    */
   get appName () {
-    return ZuiCore.$options.appName || ''
+    return ZuiToolClass.$options.appName || ''
   }
 
   /**
    * App编号
    */
   get appId () {
-    return ZuiCore.$options.appId
+    return ZuiToolClass.$options.appId
   }
 
   /**
    * 获取主菜单列表
    */
-  get menus (): AdminMainMenuOption[] {
-    return ZuiCore.$menus
+  get menus (): ZMainMenuOption[] {
+    return ZuiToolClass.$menus
   }
 
   /**
    * 获取主菜单列表
    */
-  get auth (): AdminAuthOptions {
-    return ZuiCore.$auth
+  get auth (): ZAuthOptions {
+    return ZuiToolClass.$auth
   }
 
   /**
@@ -43,30 +43,30 @@ export class ZuiCore extends UIEvent {
    * 获取默认主题大小
    */
   get defaultSize (): string {
-    return ZuiCore.$options.defaultSize || 's'
+    return ZuiToolClass.$options.defaultSize || 's'
   }
 
   /**
    * 获取默认的提示背景色
    */
   get defaultTooltipColor (): string {
-    return ZuiCore.$options.defaultTooltipColor || '#616161'
+    return ZuiToolClass.$options.defaultTooltipColor || '#616161'
   }
 
   /**
    * 获取默认的提示背景色
    */
   get defaultTooltipSize (): string {
-    return ZuiCore.$options.defaultTooltipSize || 's'
+    return ZuiToolClass.$options.defaultTooltipSize || 's'
   }
 
   /**
    * 改变主题暗色
    */
   changeDark (status = false) {
-    if (ZuiCore.$vuetifyInstalled) {
+    if (ZuiToolClass.$vuetifyInstalled) {
       // 更新vuetify
-      ZuiCore.$vuetify.theme.dark = status
+      ZuiToolClass.$vuetify.theme.dark = status
 
       // 更新store
       themeStore.settingTheme({
@@ -89,24 +89,24 @@ export class ZuiCore extends UIEvent {
    * @param options
    */
   changeThemeColors (options: ThemeColorsOptions) {
-    if (ZuiCore.$vuetify && options) {
+    if (ZuiToolClass.$vuetify && options) {
       if (options.darkColors) {
-        const darkDefault = ZuiCore.$vuetify.theme.themes.dark || {}
+        const darkDefault = ZuiToolClass.$vuetify.theme.themes.dark || {}
         const dark = {
           ...options.darkColors,
           ...darkDefault,
         }
-        ZuiCore.$vuetify.theme.themes.dark = dark
+        ZuiToolClass.$vuetify.theme.themes.dark = dark
         themeStore.settingDarkColor(dark)
       }
 
       if (options.lightColors) {
-        const lightDefault = ZuiCore.$vuetify.theme.themes.light || {}
+        const lightDefault = ZuiToolClass.$vuetify.theme.themes.light || {}
         const light = {
           ...options.lightColors,
           ...lightDefault,
         }
-        ZuiCore.$vuetify.theme.themes.light = light
+        ZuiToolClass.$vuetify.theme.themes.light = light
         themeStore.settingLightColor(light)
       }
 
@@ -122,14 +122,14 @@ export class ZuiCore extends UIEvent {
     const { darkStatus } = themeStore.theme
     if (darkStatus) {
       themeStore.settingDarkColor({ primary: color })
-      if (ZuiCore.$vuetify) {
-        ZuiCore.$vuetify.theme.themes.dark.primary = color
+      if (ZuiToolClass.$vuetify) {
+        ZuiToolClass.$vuetify.theme.themes.dark.primary = color
         this.emit('changePrimaryColor', color)
       }
     } else {
       themeStore.settingLightColor({ primary: color })
-      if (ZuiCore.$vuetify) {
-        ZuiCore.$vuetify.theme.themes.light.primary = color
+      if (ZuiToolClass.$vuetify) {
+        ZuiToolClass.$vuetify.theme.themes.light.primary = color
         this.emit('changePrimaryColor', color)
       }
     }
@@ -172,7 +172,7 @@ export class ZuiCore extends UIEvent {
    * 回到首页
    */
   openHome () {
-    const { openHome } = ZuiCore.$options as any
+    const { openHome } = ZuiToolClass.$options as any
 
     if (openHome) {
       openHome()
@@ -185,7 +185,7 @@ export class ZuiCore extends UIEvent {
    * 回到登录页面
    */
   openLogin () {
-    const { openLogin } = ZuiCore.$options as any
+    const { openLogin } = ZuiToolClass.$options as any
 
     if (openLogin) {
       openLogin()
@@ -205,21 +205,21 @@ export class ZuiCore extends UIEvent {
   };
 
   /** @internal */
-  static $options: UIOptions = {};
+  static $options: ZuiOptions = {};
 
   /** @internal */
-  static $menus: AdminMainMenuOption[] = [];
+  static $menus: ZMainMenuOption[] = [];
 
   /** @internal */
-  static $auth: AdminAuthOptions = {};
+  static $auth: ZAuthOptions = {};
 
   /**
    * 设置UI配置
    * @internal
    * @param options
    */
-  static setting (options: UIOptions) {
-    ZuiCore.$options = options
+  static setting (options: ZuiOptions) {
+    ZuiToolClass.$options = options
     themeStore.settingThemeData(options.appId || 'app')
   }
 
@@ -228,8 +228,8 @@ export class ZuiCore extends UIEvent {
    * @internal
    * @param menus
    */
-  static settingMenus (menus: AdminMainMenuOption[]) {
-    ZuiCore.$menus = menus
+  static settingMenus (menus: ZMainMenuOption[]) {
+    ZuiToolClass.$menus = menus
   }
 
   /**
@@ -237,28 +237,28 @@ export class ZuiCore extends UIEvent {
    * @internal
    * @param options
    */
-  static settingAuth (options: AdminAuthOptions) {
-    ZuiCore.$auth = options
+  static settingAuth (options: ZAuthOptions) {
+    ZuiToolClass.$auth = options
   }
 
-  static __instance: ZuiCore
+  static __instance: ZuiToolClass
 
-  static genInstance (): ZuiCore {
-    if (!ZuiCore.__instance) {
-      ZuiCore.__instance = new ZuiCore()
+  static genInstance (): ZuiToolClass {
+    if (!ZuiToolClass.__instance) {
+      ZuiToolClass.__instance = new ZuiToolClass()
     }
-    return ZuiCore.__instance
+    return ZuiToolClass.__instance
   }
 
   static install (Vue: VueConstructor, options: any) {
-    if ((ZuiCore.install as any).__installed) return
-    (ZuiCore.install as any).__installed = true
+    if ((ZuiToolClass.install as any).__installed) return
+    (ZuiToolClass.install as any).__installed = true
 
     Vue.mixin({
       beforeCreate () {
         const $options = this.$options
         if (!this.$ui) {
-          this.$ui = ZuiCore.genInstance() as ZuiToolType
+          this.$ui = ZuiToolClass.genInstance() as ZuiToolDescription
         } else {
           $options.parent && (this.$ui = $options.parent.$ui)
         }
@@ -272,4 +272,4 @@ export class ZuiCore extends UIEvent {
  * 1. 可在vue组件内部使用 `this.$ui` <br>
  * 2. 可引入使用 `import {ZuiTool} = '@zwd/z-ui';`
  */
-export const ZuiTool = ZuiCore.genInstance()
+export const ZuiTool = ZuiToolClass.genInstance()

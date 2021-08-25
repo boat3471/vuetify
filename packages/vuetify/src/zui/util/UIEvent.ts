@@ -1,22 +1,22 @@
 import Vue from 'vue'
-import { DefaultUIEventType } from '../../../types'
+import { ZuiEventType } from '../../../types'
 
 export class UIEvent {
     private events = new Vue();
 
-    emit (event: DefaultUIEventType, ...args: any[]) {
+    emit (event: ZuiEventType, ...args: any[]) {
       this.events.$emit(event, ...args)
     }
 
-    on (event: DefaultUIEventType | DefaultUIEventType[], callback: Function) {
+    on (event: ZuiEventType | ZuiEventType[], callback: Function) {
       this.events.$on(event, callback)
     }
 
-    once (event: DefaultUIEventType | DefaultUIEventType[], callback: Function) {
+    once (event: ZuiEventType | ZuiEventType[], callback: Function) {
       this.events.$once(event, callback)
     }
 
-    off (event?: DefaultUIEventType | DefaultUIEventType[], callback?: Function) {
+    off (event?: ZuiEventType | ZuiEventType[], callback?: Function) {
       this.events.$off(event, callback)
     }
 }

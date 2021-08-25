@@ -1,21 +1,21 @@
 import { VueConstructor } from 'vue'
-import { ModalOptions, ModalResult, ShowModalOptions } from '../../types'
+import { ZModalOptions, ZModalResult, ZModalShowOptions } from '../../types'
 
 import { ZModalSingle } from './components/ZModal'
 
 /**
  * 消息管理器
  */
-export class ZModalCore {
-  static __instance: ZModalCore
+export class ZModalClass {
+  static __instance: ZModalClass
 
   static MODAL_LIST: any[] = []
 
-  static genInstance (): ZModalCore {
-    if (!ZModalCore.__instance) {
-      ZModalCore.__instance = new ZModalCore()
+  static genInstance (): ZModalClass {
+    if (!ZModalClass.__instance) {
+      ZModalClass.__instance = new ZModalClass()
     }
-    return ZModalCore.__instance
+    return ZModalClass.__instance
   }
 
   // eslint-disable-next-line no-useless-constructor
@@ -27,8 +27,8 @@ export class ZModalCore {
    * 显示消息
    * @param options
    */
-  show (options: ShowModalOptions | string): ModalResult {
-    let propsData: ModalOptions = {
+  show (options: ZModalShowOptions | string): ZModalResult {
+    let propsData: ZModalOptions = {
       message: '',
     }
     if (typeof options === 'string') {
@@ -36,7 +36,7 @@ export class ZModalCore {
     }
 
     if (typeof options === 'object') {
-      propsData = options as ModalOptions
+      propsData = options as ZModalOptions
       propsData.top = options.top ? options.top + '' : ''
     }
 
@@ -65,7 +65,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  info (message: string, options?: ModalOptions): ModalResult {
+  info (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       message: message || '',
@@ -81,7 +81,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  success (message: string, options?: ModalOptions): ModalResult {
+  success (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       message: message || '',
@@ -97,7 +97,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  warn (message: string, options?: ModalOptions): ModalResult {
+  warn (message: string, options?: ZModalOptions): ZModalResult {
     return this.warning(message, options)
   }
 
@@ -106,7 +106,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  warning (message: string, options?: ModalOptions): ModalResult {
+  warning (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       message: message || '',
@@ -122,7 +122,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  error (message: string, options?: ModalOptions): ModalResult {
+  error (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       message: message || '',
@@ -138,7 +138,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  system (message: string, options?: ModalOptions): ModalResult {
+  system (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       title: options ? options.title : '提示',
@@ -154,7 +154,7 @@ export class ZModalCore {
    * @param message
    * @param options
    */
-  confirm (message: string, options?: ModalOptions): ModalResult {
+  confirm (message: string, options?: ZModalOptions): ZModalResult {
     return this.show({
       ...options,
       message: message || '',
@@ -171,23 +171,23 @@ export class ZModalCore {
   }
 
   getModalList (): any[] {
-    let list = ZModalCore.MODAL_LIST
+    let list = ZModalClass.MODAL_LIST
     if (!list) {
       list = []
-      ZModalCore.MODAL_LIST = list
+      ZModalClass.MODAL_LIST = list
     }
     return list
   }
 
   static install (Vue: VueConstructor, options: any) {
-    if ((ZModalCore.install as any).__installed) return
-    (ZModalCore.install as any).__installed = true
+    if ((ZModalClass.install as any).__installed) return
+    (ZModalClass.install as any).__installed = true
 
     Vue.mixin({
       beforeCreate () {
         const $options = this.$options
         if (!this.$modal) {
-          this.$modal = ZModalCore.genInstance()
+          this.$modal = ZModalClass.genInstance()
         } else {
           $options.parent && (this.$modal = $options.parent.$modal)
         }
@@ -201,4 +201,4 @@ export class ZModalCore {
  * 1. 可在vue组件内部使用 `this.$modal` <br>
  * 2. 可引入使用 `import {ZModal} = '@zwd/z-ui';`
  */
-export const ZModal = ZModalCore.genInstance()
+export const ZModal = ZModalClass.genInstance()

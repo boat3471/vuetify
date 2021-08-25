@@ -1,7 +1,7 @@
 import { Zui } from './framework'
 import { ZMessage } from './zui/ZMessage'
 import { ZModal } from './zui/ZModal'
-import { ZuiTool } from './zui/ZuiCore'
+import { ZuiTool } from './zui/ZuiTool'
 import { createApp } from './zui/createApp'
 
 if (typeof window !== 'undefined' && window.Vue) {
