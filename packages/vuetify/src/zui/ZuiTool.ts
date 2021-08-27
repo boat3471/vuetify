@@ -1,7 +1,16 @@
-import { VueConstructor } from 'vue'
-import { ZuiOptions, ZuiToolDescription, ThemeColorsOptions, ThemeCustomOptions, ZAuthOptions, ZMainMenuOption } from '../../types'
-import { DarkDefaultColors, LightDefaultColors, themeStore } from './services/theme'
+import Vue, { VueConstructor } from 'vue'
+import {
+  ZuiOptions,
+  ZuiToolDescription,
+  ThemeColorsOptions,
+  ThemeCustomOptions,
+  ZAuthOptions,
+  ZMainMenuOption,
+  ZuiGlobalPreset,
+} from '../../types'
+import { themeTool, themeStore } from './services/ZuiTheme'
 import { UIEvent } from './util/UIEvent'
+import { VuetifyThemeVariant } from '../../types/services/theme'
 
 export class ZuiToolClass extends UIEvent {
   /**
@@ -36,7 +45,7 @@ export class ZuiToolClass extends UIEvent {
    * 获取默认主题状态
    */
   get darkStatus (): boolean {
-    return themeStore.theme.darkStatus || false
+    return themeStore.darkStatus || false
   }
 
   /**
@@ -69,15 +78,15 @@ export class ZuiToolClass extends UIEvent {
       ZuiToolClass.$vuetify.theme.dark = status
 
       // 更新store
-      themeStore.settingTheme({
+      themeTool.settingTheme({
         darkStatus: status,
       })
 
       // 更新视图
-      const html: HTMLHtmlElement = document.documentElement as HTMLHtmlElement
-      html.className = status ? 'theme--dark' : 'theme--light'
+      themeTool.settingHtmlClass()
 
-      // 切换颜色
+      // 更新颜色
+      themeTool.updateColorByDark()
 
       // 通知视图
       this.emit('changeDark', status)
@@ -97,7 +106,7 @@ export class ZuiToolClass extends UIEvent {
           ...darkDefault,
         }
         ZuiToolClass.$vuetify.theme.themes.dark = dark
-        themeStore.settingDarkColor(dark)
+        themeTool.settingDarkColor(dark)
       }
 
       if (options.lightColors) {
@@ -107,7 +116,7 @@ export class ZuiToolClass extends UIEvent {
           ...lightDefault,
         }
         ZuiToolClass.$vuetify.theme.themes.light = light
-        themeStore.settingLightColor(light)
+        themeTool.settingLightColor(light)
       }
 
       this.emit('changeThemeColors')
@@ -119,19 +128,14 @@ export class ZuiToolClass extends UIEvent {
    * @param color
    */
   changePrimaryColor (color: string) {
-    const { darkStatus } = themeStore.theme
-    if (darkStatus) {
-      themeStore.settingDarkColor({ primary: color })
-      if (ZuiToolClass.$vuetify) {
+    themeTool.settingPrimaryColor(color)
+    if (ZuiToolClass.$vuetify) {
+      if (this.darkStatus) {
         ZuiToolClass.$vuetify.theme.themes.dark.primary = color
-        this.emit('changePrimaryColor', color)
-      }
-    } else {
-      themeStore.settingLightColor({ primary: color })
-      if (ZuiToolClass.$vuetify) {
+      } else {
         ZuiToolClass.$vuetify.theme.themes.light.primary = color
-        this.emit('changePrimaryColor', color)
       }
+      this.emit('changePrimaryColor', color)
     }
   }
 
@@ -140,32 +144,22 @@ export class ZuiToolClass extends UIEvent {
    * @param options
    */
   changeTheme (options: ThemeCustomOptions) {
-    themeStore.settingTheme(options)
+    themeTool.settingTheme(options)
     this.emit('changeTheme', options)
   }
 
   /**
-   * 获取主题选项
+   * 获取皮肤可响应对象
    */
-  getThemeOptions (): ThemeCustomOptions {
-    return themeStore.theme
+  getThemeStore (): ThemeCustomOptions {
+    return themeStore
   }
 
   /**
    * 获取主颜色
    */
   getPrimaryColor (): string {
-    const { darkStatus, darkColors, lightColors } = themeStore.theme
-    if (darkStatus) {
-      if (darkColors && darkColors.primary) {
-        return darkColors.primary
-      }
-      return DarkDefaultColors.primary || ''
-    }
-    if (lightColors && lightColors.primary) {
-      return lightColors.primary
-    }
-    return LightDefaultColors.primary || ''
+    return themeStore.primaryColor || ''
   }
 
   /**
@@ -220,7 +214,20 @@ export class ZuiToolClass extends UIEvent {
    */
   static setting (options: ZuiOptions) {
     ZuiToolClass.$options = options
-    themeStore.settingThemeData(options.appId || 'app')
+    themeTool.loadLocalData(options.appId)
+    themeTool.settingHtmlClass()
+  }
+
+  static getDefaultPreset (): ZuiGlobalPreset {
+    return {
+      theme: {
+        dark: themeStore.darkStatus,
+        themes: {
+          dark: themeStore.darkColors as VuetifyThemeVariant,
+          light: themeStore.lightColors as VuetifyThemeVariant,
+        },
+      },
+    }
   }
 
   /**

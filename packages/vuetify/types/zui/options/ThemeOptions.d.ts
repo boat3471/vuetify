@@ -1,70 +1,78 @@
 export interface ColorsOptions {
-    primary?: string
-    secondary?: string
-    accent?: string
-    error?: string
-    info?: string
-    success?: string
-    warning?: string
+  primary?: string
+  secondary?: string
+  accent?: string
+  error?: string
+  info?: string
+  success?: string
+  warning?: string
 }
 
 export interface ThemeColorsOptions {
-    darkColors?: ColorsOptions
-    lightColors?: ColorsOptions
+  darkColors?: ColorsOptions
+  lightColors?: ColorsOptions
 }
 
 /**
  * 自定义主题选项
  */
 export interface ThemeCustomOptions {
-    darkColors?: ColorsOptions
-    lightColors?: ColorsOptions
+  darkColors?: ColorsOptions
+  lightColors?: ColorsOptions
 
-    /**
-     * 开启暗色调
-     */
-    darkStatus?: boolean
+  primaryColor?: string
+  secondaryColor?: string
+  accentColor?: string
+  errorColor?: string
+  infoColor?: string
+  successColor?: string
+  warningColor?: string
 
-    /**
-     * 主菜单宽度
-     */
-    menuWidth?: number
+  /**
+   * 开启暗色调
+   */
+  darkStatus?: boolean
 
-    /**
-     * 菜单mini模式:
-     * 1. true: 只能将菜单收缩起来, 将出现浮动菜单
-     * 2. false: 在顶部栏左侧出现一个按钮控制菜单的显示和隐藏
-     */
-    miniMenuMode?: boolean
+  /**
+   * 紧凑模式, 将会影响所有组件的紧凑模式
+   * 1. true: 开启紧凑模式
+   * 2. false: 关闭紧凑模式
+   */
+  denseMode?: boolean
 
-    /**
-     * 主菜单显示位置
-     * 1. 在顶部栏下方
-     * 2. 在顶部栏左侧
-     */
-    menuDisplayMode?: boolean
+  /**
+   * 主菜单宽度
+   */
+  mainMenuWidth?: number
 
-    /**
-     * 主菜单展开模式
-     * 1. true: 允许展开多个
-     * 2. false: 只能展开一个
-     */
-    menuExpandMode?: boolean
+  /**
+   * 主菜单展开模式
+   * 1. true: 允许展开多个
+   * 2. false: 只能展开一个
+   */
+  mainMenuExpandMode?: boolean
 
-    /**
-     * 紧凑模式, 将会影响所有组件的紧凑模式
-     * 1. true: 开启紧凑模式
-     * 2. false: 关闭紧凑模式
-     */
-    denseMode?: boolean
+  /**
+   * 主导航(抽屉)模式:
+   * 1. 'flex': 只能将菜单收缩起来, 将出现浮动菜单
+   * 2. 'visible': 在顶部栏左侧出现一个按钮控制菜单的显示和隐藏
+   */
+  mainNavMode?: string
 
-    /**
-     * 菜单是否收起, 只会在mini模式时作用
-     */
-    miniMenuLayout?: boolean
+  /**
+   * 主导航(抽屉)显示位置
+   * 1. 在顶部栏下方
+   * 2. 在顶部栏左侧
+   */
+  mainNavPosition?: boolean
 
-    /**
-     * 菜单是否隐藏, 只会在非mini模式时作用
-     */
-    menuVisible?: boolean
+  /**
+   * 主导航(抽屉)是否收起, 只会在mini模式时作用
+   */
+  mainNavMiniMode?: boolean
+
+  /**
+   * 主导航(抽屉)是否隐藏, 只会在非mini模式时作用
+   */
+  mainNavVisible?: boolean
 }

@@ -23,7 +23,7 @@ const themeColorOptions: ThemeColor[] = [
   { label: '警告色', name: 'warning' },
 ]
 
-export interface ThemeColor {
+interface ThemeColor {
   label: string
   name: string
   color?: string
@@ -170,3 +170,5 @@ export const ZColorSelectorMixin = Vue.extend({
 const tempColorInfo: ColorInfo = { name: '', color: '' }
 
 ZColorSelectorMixin.prototype.tempColorInfo = tempColorInfo
+
+export default ZColorSelectorMixin

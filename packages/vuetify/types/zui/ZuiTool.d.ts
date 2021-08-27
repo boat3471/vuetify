@@ -17,8 +17,9 @@ export class ZuiToolDescription {
   changeThemeColors(options: ThemeColorsOptions): void
   changePrimaryColor (color: string): void
   changeTheme (options: ThemeCustomOptions): void
-  getThemeOptions (): ThemeCustomOptions
+  getThemeStore (): ThemeCustomOptions
   getPrimaryColor (): string
+
   openHome (): void
   openLogin (): void
 

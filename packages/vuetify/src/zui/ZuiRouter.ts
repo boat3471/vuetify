@@ -1,6 +1,6 @@
 import Router, { RouteConfig } from 'vue-router'
 import ZViewRoot from './components/ZAdmin/ZViewRoot'
-import ZViewLogin from './components/ZAdmin/ZViewLogin'
+import ZDefaultLogin from './components/ZAdmin/ZDefaultLogin'
 import ZView404 from './components/ZAdmin/ZView404'
 import ZView403 from './components/ZAdmin/ZView403'
 import ZView500 from './components/ZAdmin/ZView500'
@@ -103,7 +103,7 @@ function genRoutesByMenus (menus: ZMainMenuOption[], rootList: RouteConfig[], pa
  */
 function genRoutes (router: ZRouterOptions): RouteConfig[] { // eslint-disable-line max-statements
   const routeRoot: RouteConfig = { path: '/', component: ZViewRoot }
-  const routeLogin: RouteConfig = { path: '/login', component: ZViewLogin }
+  const routeLogin: RouteConfig = { path: '/login', component: ZDefaultLogin }
   const route500: RouteConfig = { path: '/500', component: ZView500 }
   const route403: RouteConfig = { path: '/403', component: ZView403 }
   const route404: RouteConfig = { path: '/404', component: ZView404 }

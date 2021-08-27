@@ -34,8 +34,9 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  */
 export function createApp (options: CreateAppOptions): Vue {
   ZuiToolClass.setting(options || {})
+  const presetOptions = options.presetOptions || ZuiToolClass.getDefaultPreset()
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
-  const ui = createZui(options.presetOptions, options.useOptions)
+  const ui = createZui(presetOptions, options.useOptions)
   ZuiToolClass.$vuetify = ui.framework
   ZuiToolClass.$vuetifyInstalled = true
   ZuiToolClass.$app = new Vue({
