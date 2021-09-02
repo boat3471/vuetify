@@ -1,45 +1,36 @@
-import { NavigationGuard, RedirectOption, RouteConfig, RouterOptions } from 'vue-router/types/router'
+import {
+  NavigationGuard,
+  PathToRegexpOptions,
+  RedirectOption,
+  RoutePropsFunction,
+} from 'vue-router/types/router'
 
 /**
  * 菜单选项
  */
 export interface ZMenuOption {
-    path?: string
-    redirect?: RedirectOption
+  path?: string
+  name?: string
+  children?: ZMenuOption[]
+  redirect?: RedirectOption
+  alias?: string | string[]
+  meta?: any
+  beforeEnter?: NavigationGuard
+  caseSensitive?: boolean
+  pathToRegexpOptions?: PathToRegexpOptions
+  component?: any
+  props?: boolean | Object | RoutePropsFunction
 
-    name?: string
-    meta?: any
-    alias?: string | string[]
-
-    component?: any
-    beforeEnter?: NavigationGuard
-    children?: ZMenuOption[]
-
-    title?: string
-    role?: string[]
-    href?: string
-    target?: string
-
-    visible?: boolean
-    query?: any
-}
-
-/**
- * 主菜单选项
- */
-export interface ZMainMenuOption extends ZMenuOption {
-    icon?: string
-}
-
-/**
- * 路由选项
- */
-export interface ZRouterOptions {
-  options?: RouterOptions
-  menus?: ZMainMenuOption[]
-  adminHome?: RouteConfig
-  adminLogin?: RouteConfig
-  admin403?: RouteConfig
-  admin404?: RouteConfig
-  admin500?: RouteConfig
+  title?: string
+  icon?: string
+  roles?: string[]
+  href?: string
+  target?: string
+  visible?: boolean
+  query?: any
+  active?: boolean
+  level?: number
+  parent?: ZMenuOption | null
+  parents?: ZMenuOption[]
+  parentPaths?: string[]
 }

@@ -1,4 +1,4 @@
-export interface ColorsOptions {
+export interface ZColorsOptions {
   primary?: string
   secondary?: string
   accent?: string
@@ -8,17 +8,17 @@ export interface ColorsOptions {
   warning?: string
 }
 
-export interface ThemeColorsOptions {
-  darkColors?: ColorsOptions
-  lightColors?: ColorsOptions
+export interface ZThemeColorsOptions {
+  darkColors?: ZColorsOptions
+  lightColors?: ZColorsOptions
 }
 
 /**
  * 自定义主题选项
  */
-export interface ThemeCustomOptions {
-  darkColors?: ColorsOptions
-  lightColors?: ColorsOptions
+export interface ZThemeCustomOptions {
+  darkColors?: ZColorsOptions
+  lightColors?: ZColorsOptions
 
   primaryColor?: string
   secondaryColor?: string

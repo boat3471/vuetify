@@ -1,5 +1,5 @@
 import { PluginFunction } from 'vue'
-import { ZModalOptions, ZModalResult, ZModalShowOptions, ZModalUseOptions } from './options'
+import { ZModalOptions, ZModalResultOptions, ZModalShowOptions, ZModalUseOptions } from './options'
 
 export class ZModalDescription {
   static install: PluginFunction<ZModalUseOptions>
@@ -8,56 +8,56 @@ export class ZModalDescription {
    * 自定义提示
    * @param options
    */
-  show (options: ZModalShowOptions | string): ZModalResult
+  show (options: ZModalShowOptions | string): ZModalResultOptions
 
   /**
    * 常规提示
    * @param message
    * @param options
    */
-  info (message: string, options?: ZModalOptions): ZModalResult
+  info (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 成功提示
    * @param message
    * @param options
    */
-  success (message: string, options?: ZModalOptions): ZModalResult
+  success (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 告警提示
    * @param message
    * @param options
    */
-  warn (message: string, options?: ZModalOptions): ZModalResult
+  warn (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 告警提示
    * @param message
    * @param options
    */
-  warning (message: string, options?: ZModalOptions): ZModalResult
+  warning (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 错误提示
    * @param message
    * @param options
    */
-  error (message: string, options?: ZModalOptions): ZModalResult
+  error (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 系统提示
    * @param message
    * @param options
    */
-  system (message: string, options?: ZModalOptions): ZModalResult
+  system (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 确认提示
    * @param message
    * @param options
    */
-  confirm (message: string, options?: ZModalOptions): ZModalResult
+  confirm (message: string, options?: ZModalOptions): ZModalResultOptions
 
   /**
    * 关闭所有提示

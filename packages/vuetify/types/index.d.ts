@@ -19,17 +19,23 @@ import {
 import { GoToOptions, VuetifyGoToTarget } from './services/goto'
 
 // z-ui
-import { ZuiToolDescription } from './zui/ZuiTool';
+import { ZuiCoreDescription } from './zui/ZuiCore';
 import { ZMessageDescription } from './zui/ZMessage';
 import { ZModalDescription } from './zui/ZModal';
+import { ZMenuDescription } from "./zui/ZMenu";
+import { ZRouterDescription } from "./zui/ZRouter";
+import { ZThemeDescription } from "./zui/ZTheme";
 
 export * from './zui'
 
-export type ZuiTool = ZuiToolDescription
+export type ZuiCore = ZuiCoreDescription
 export type ZMessage = ZMessageDescription
 export type ZModal = ZModalDescription
+export type ZMenu = ZMenuDescription
+export type ZRouter = ZRouterDescription
+export type ZTheme = ZThemeDescription
 
-export { ZuiToolDescription, ZMessageDescription, ZModalDescription }
+export { ZuiCoreDescription, ZMessageDescription, ZModalDescription }
 
 export class Zui {
   constructor (preset?: Partial<UserVuetifyPreset>)
@@ -73,9 +79,11 @@ export interface Framework {
 declare module 'vue/types/vue' {
   export interface Vue {
     $vuetify: Framework
-    $ui: ZuiTool
+    $ui: ZuiCoreDescription
     $message: ZMessage
     $modal: ZModal
+    $menu: ZMenu
+    $theme: ZTheme
     $p(key: string): boolean
     $l(key: string): string
   }

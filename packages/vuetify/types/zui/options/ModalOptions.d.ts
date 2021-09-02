@@ -73,10 +73,10 @@ export interface ZModalShowOptions extends ZModalOptions {
   icon?: string
 }
 
-export interface ZModalResult {
-  close: () => ZModalResult
-  then: (handle: Function) => ZModalResult
-  catch: (handle: Function) => ZModalResult
+export interface ZModalResultOptions {
+  close: () => ZModalResultOptions
+  then: (handle: Function) => ZModalResultOptions
+  catch: (handle: Function) => ZModalResultOptions
 }
 
 export interface ZModalUseOptions {

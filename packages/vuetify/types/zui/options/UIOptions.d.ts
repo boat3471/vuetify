@@ -1,6 +1,9 @@
 import { Component, ComponentOptions } from 'vue'
 import { GlobalVuetifyPreset } from '../../services/presets'
 import { VuetifyUseOptions } from '../../index'
+import { ZAuthOptions } from './AuthOptions'
+import { ZMenuOption } from './MenuOptions'
+import { ZRouterOptions } from './RouterOptions'
 
 export type ZuiEventType =
   'changeDark'
@@ -9,6 +12,7 @@ export type ZuiEventType =
   | 'changeThemeColors'
   | 'initMenus'
   | 'menuViewComplete'
+  | 'update-menus'
   | string;
 
 export type DefaultSize = 'xs' | 's' | 'm' | 'l' | 'xl' | '';
@@ -19,7 +23,7 @@ export interface ZuiGlobalPreset extends GlobalVuetifyPreset {
 export interface ZuiUseOptions extends VuetifyUseOptions {
 }
 
-export interface ZuiToolUseOptions {
+export interface ZuiCoreUseOptions {
 }
 
 export interface ZuiOptions {
@@ -75,8 +79,43 @@ export interface ZuiOptions {
 }
 
 /**
- * 创建APP选项
+ * 创建 App 选项
  */
 export interface CreateAppOptions extends ZuiOptions {
   componentOptions: ComponentOptions<any>
+}
+
+/**
+ * 创建 Admin 选项
+ */
+export interface CreateAdminOptions extends ZuiOptions {
+  /**
+   * 配置主菜单选项
+   */
+  menus?: ZMenuOption[]
+
+  /**
+   * 配置Vue选项
+   */
+  componentOptions: ComponentOptions<any>
+
+  /**
+   * 配置VueRouter选项
+   */
+  routerOptions?: ZRouterOptions
+
+  /**
+   * 认证
+   */
+  auth?: ZAuthOptions
+
+  /**
+   * 打开首页
+   */
+  openHome: () => void
+
+  /**
+   * 打开登录页面
+   */
+  openLogin: () => void
 }
