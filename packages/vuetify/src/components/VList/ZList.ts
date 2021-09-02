@@ -1,3 +1,4 @@
+import { VNode, VNodeData } from 'vue'
 import mixins from '../../util/mixins'
 
 import {
@@ -13,6 +14,7 @@ import {
   VListItemSubtitle,
   VListItemTitle,
 } from './index'
+import ZIcon from '../VIcon/ZIcon'
 
 export const ZList = mixins(VList).extend({
   name: 'z-list',
@@ -20,6 +22,23 @@ export const ZList = mixins(VList).extend({
 
 export const ZListGroup = mixins(VListGroup).extend({
   name: 'z-list-group',
+  props: {
+    expandIconSize: {
+      type: Number,
+      default: 14,
+    },
+  },
+  methods: {
+    genIcon (icon: string | false): VNode {
+      const options: VNodeData = {}
+      if (icon === '$expand') {
+        options.props = {
+          size: this.expandIconSize,
+        }
+      }
+      return this.$createElement(ZIcon, options, icon)
+    },
+  },
 })
 
 export const ZListItem = mixins(VListItem).extend({
