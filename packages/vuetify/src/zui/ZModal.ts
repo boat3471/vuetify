@@ -1,5 +1,4 @@
-import { VueConstructor } from 'vue'
-import { ZModalOptions, ZModalResult, ZModalShowOptions } from '../../types'
+import { ZModalOptions, ZModalResultOptions, ZModalShowOptions } from '../../types'
 
 import { ZModalSingle } from './components/ZModal'
 
@@ -27,7 +26,7 @@ export class ZModalClass {
    * 显示消息
    * @param options
    */
-  show (options: ZModalShowOptions | string): ZModalResult {
+  show (options: ZModalShowOptions | string): ZModalResultOptions {
     let propsData: ZModalOptions = {
       message: '',
     }
@@ -65,7 +64,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  info (message: string, options?: ZModalOptions): ZModalResult {
+  info (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       message: message || '',
@@ -81,7 +80,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  success (message: string, options?: ZModalOptions): ZModalResult {
+  success (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       message: message || '',
@@ -97,7 +96,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  warn (message: string, options?: ZModalOptions): ZModalResult {
+  warn (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.warning(message, options)
   }
 
@@ -106,7 +105,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  warning (message: string, options?: ZModalOptions): ZModalResult {
+  warning (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       message: message || '',
@@ -122,7 +121,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  error (message: string, options?: ZModalOptions): ZModalResult {
+  error (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       message: message || '',
@@ -138,7 +137,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  system (message: string, options?: ZModalOptions): ZModalResult {
+  system (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       title: options ? options.title : '提示',
@@ -154,7 +153,7 @@ export class ZModalClass {
    * @param message
    * @param options
    */
-  confirm (message: string, options?: ZModalOptions): ZModalResult {
+  confirm (message: string, options?: ZModalOptions): ZModalResultOptions {
     return this.show({
       ...options,
       message: message || '',
@@ -177,22 +176,6 @@ export class ZModalClass {
       ZModalClass.MODAL_LIST = list
     }
     return list
-  }
-
-  static install (Vue: VueConstructor, options: any) {
-    if ((ZModalClass.install as any).__installed) return
-    (ZModalClass.install as any).__installed = true
-
-    Vue.mixin({
-      beforeCreate () {
-        const $options = this.$options
-        if (!this.$modal) {
-          this.$modal = ZModalClass.genInstance()
-        } else {
-          $options.parent && (this.$modal = $options.parent.$modal)
-        }
-      },
-    })
   }
 }
 

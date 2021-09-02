@@ -1,4 +1,4 @@
-import Vue, { VueConstructor } from 'vue'
+import Vue from 'vue'
 import { ZMessageSingle, ZMessageContainer } from './components/ZMessage'
 import { ZMessageOptions, ZMessageShowOptions, ZMessageItem } from '../../types'
 
@@ -159,22 +159,6 @@ export class ZMessageClass {
       ZMessageClass.MESSAGE_LIST = list
     }
     return list
-  }
-
-  static install (Vue: VueConstructor, options: any) {
-    if ((ZMessageClass.install as any).__installed) return
-    (ZMessageClass.install as any).__installed = true
-
-    Vue.mixin({
-      beforeCreate () {
-        const $options = this.$options
-        if (!this.$message) {
-          this.$message = ZMessageClass.genInstance()
-        } else {
-          $options.parent && (this.$message = $options.parent.$message)
-        }
-      },
-    })
   }
 }
 

@@ -1,8 +1,7 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
 import { CreateAppOptions, Zui } from '../../types'
 import { ZApp } from '../components'
-import { ZuiToolClass } from './ZuiTool'
-import './directives/install'
+import { ZuiCoreClass } from './ZuiCore'
 import { createZui } from './createZui'
 
 /**
@@ -33,13 +32,13 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  * @param options
  */
 export function createApp (options: CreateAppOptions): Vue {
-  ZuiToolClass.setting(options || {})
-  const presetOptions = options.presetOptions || ZuiToolClass.getDefaultPreset()
+  ZuiCoreClass.setting(options || {})
+  const presetOptions = options.presetOptions || ZuiCoreClass.getDefaultPreset()
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(presetOptions, options.useOptions)
-  ZuiToolClass.$vuetify = ui.framework
-  ZuiToolClass.$vuetifyInstalled = true
-  ZuiToolClass.$app = new Vue({
+  ZuiCoreClass.$vuetify = ui.framework
+  ZuiCoreClass.$vuetifyInstalled = true
+  ZuiCoreClass.$app = new Vue({
     el: '#app',
     vuetify: ui as unknown as Zui,
     render (createElement) {
@@ -47,5 +46,5 @@ export function createApp (options: CreateAppOptions): Vue {
     },
     ...componentOptions,
   })
-  return ZuiToolClass.$app
+  return ZuiCoreClass.$app
 }

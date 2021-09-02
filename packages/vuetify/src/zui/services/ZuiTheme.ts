@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import { ColorsOptions, ThemeCustomOptions } from '../../../types'
+import { ZColorsOptions, ZThemeCustomOptions } from '../../../types'
 import { MainNavMode } from './MainNavMode'
 
-const DefaultLightColors: ColorsOptions = {
+const DefaultLightColors: ZColorsOptions = {
   primary: '#1976D2',
   secondary: '#424242',
   accent: '#82B1FF',
@@ -12,7 +12,7 @@ const DefaultLightColors: ColorsOptions = {
   warning: '#FB8C00',
 }
 
-const DefaultDarkColors: ColorsOptions = {
+const DefaultDarkColors: ZColorsOptions = {
   primary: '#2196F3',
   secondary: '#424242',
   accent: '#FF4081',
@@ -27,7 +27,7 @@ const localTool = {
   getKey (): string {
     return `${this.key}-${'Theme-Options'.toLocaleUpperCase()}`
   },
-  getLocalOptions (): ThemeCustomOptions {
+  getLocalOptions (): ZThemeCustomOptions {
     const themeJson = localStorage.getItem(this.getKey())
     try {
       return JSON.parse(themeJson || '{}')
@@ -37,12 +37,12 @@ const localTool = {
     return {}
   },
 
-  setLocalOptions (options: ThemeCustomOptions) {
+  setLocalOptions (options: ZThemeCustomOptions) {
     localStorage.setItem(this.getKey(), JSON.stringify(options))
   },
 }
 
-export const themeStore: ThemeCustomOptions = Vue.observable({
+export const themeStore: ZThemeCustomOptions = Vue.observable({
   /**
    * 暗色调颜色
    */
@@ -116,7 +116,7 @@ class ZuiThemeTool {
    * 设置暗色调颜色配置
    * @param options
    */
-  settingDarkColor (options: ColorsOptions) {
+  settingDarkColor (options: ZColorsOptions) {
     if (options) {
       themeStore.darkColors = {
         ...themeStore.darkColors,
@@ -131,7 +131,7 @@ class ZuiThemeTool {
    * 设置亮色调颜色配置
    * @param options
    */
-  settingLightColor (options: ColorsOptions) {
+  settingLightColor (options: ZColorsOptions) {
     if (options) {
       themeStore.lightColors = {
         ...themeStore.lightColors,
@@ -172,7 +172,7 @@ class ZuiThemeTool {
    * 设置皮肤，可以只更新皮肤局部选项
    * @param options
    */
-  settingTheme (options: ThemeCustomOptions) {
+  settingTheme (options: ZThemeCustomOptions) {
     if (options) {
       Object.keys(options).forEach(key => {
         (themeStore as any)[key] = (options as any)[key]
@@ -210,7 +210,7 @@ class ZuiThemeTool {
     themeStore.mainNavMiniMode = getBool(localOptions.mainNavMiniMode, false)
     themeStore.mainNavVisible = getBool(localOptions.mainNavVisible, false)
     themeStore.mainMenuWidth = localOptions.mainMenuWidth || 275
-    themeStore.mainMenuExpandMode = getBool(localOptions.mainNavVisible, false)
+    themeStore.mainMenuExpandMode = getBool(localOptions.mainMenuExpandMode, false)
 
     this.updateColorByDark()
 
