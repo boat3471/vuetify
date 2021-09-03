@@ -29,6 +29,7 @@ function filterMenusData (list: ZMenuOption[], level = 0, parent: ZMenuOption | 
         query: item.query,
         level: item.level,
         active: false,
+        key: (item.path || '').replace(/\//g, '-'),
         parent,
         parents,
         parentPaths,
@@ -88,6 +89,7 @@ function resetSelectedStatus (menus: ZMenuOption[]) {
 }
 
 const __events = new Vue()
+let instance: ZMenuClass
 
 export class ZMenuClass implements ZMenuDescription {
   selectedMenu: ZMenuOption | null = null
@@ -125,7 +127,6 @@ export class ZMenuClass implements ZMenuDescription {
     resetSelectedStatus(this.menusData || [])
   }
 
-  // activeByRoute (routePath?: string) {
   activeByRoute (route?: string | ZMenuOption): void {
     route = route || this.$router.currentRoutePath
 
@@ -146,6 +147,38 @@ export class ZMenuClass implements ZMenuDescription {
     }
   }
 
+  /**
+   * 根据展开模式，更新菜单激活状态
+   * @param menu
+   */
+  updateMenusActiveByExpandMode (menu: ZMenuOption) {
+    const siblings = menu.parent ? (menu.parent.children || []) : this.menusData
+    siblings.forEach(m => {
+      if (m.path !== menu.path && m.children && m.children.length > 0) {
+        m.active = false
+      }
+    })
+  }
+
+  /**
+   * 子级是否有选中的菜单
+   * @param menu
+   */
+  checkActivatedChildren (menu: ZMenuOption): boolean {
+    if (!menu.children || menu.children.length === 0) {
+      return menu.active || false
+    }
+    let active = false
+    menu.children.forEach(m => {
+      if (!m.children || m.children.length === 0) {
+        active = m.active || false
+      } else {
+        active = this.checkActivatedChildren(m)
+      }
+    })
+    return active
+  }
+
   onUpdateMenus (callback: (menus: ZMenuOption[]) => void) {
     __events.$on('update-menus', callback)
   }
@@ -154,18 +187,21 @@ export class ZMenuClass implements ZMenuDescription {
     __events.$off('update-menus', callback)
   }
 
+  constructor () {
+    if (!instance) {
+      instance = this
+    }
+    return instance
+  }
+
   static __menusData: ZMenuOption[] = [];
-  static __instance: ZMenuClass
 
   static genInstance (): ZMenuClass {
-    if (!ZMenuClass.__instance) {
-      ZMenuClass.__instance = new ZMenuClass()
+    if (!instance) {
+      instance = new ZMenuClass()
     }
-    return ZMenuClass.__instance
+    return instance
   }
 }
 
 export const ZMenu = ZMenuClass.genInstance()
-
-// @ts-ignore
-window.ZMenu = ZMenu

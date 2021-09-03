@@ -1,18 +1,25 @@
 import { ZMenuOption } from './options'
 
 export interface ZMenuDescription {
+  /**
+   * 当前选中的菜单
+   */
   selectedMenu: ZMenuOption | null
+
+  /**
+   * 菜单数据
+   */
   menusData: ZMenuOption[]
 
   /**
    * 设置菜单配置信息
    * @param menus
-   * @param autoGenRoute
+   * @param autoGenRoute 默认会自动添加路由
    */
   settingMenus (menus: ZMenuOption[], autoGenRoute: boolean): void
 
   /**
-   * 重置菜单状态，包含选中和展开状态
+   * 重置菜单所有状态，包含选中和展开状态
    * @param menus 菜单列表
    */
   resetStatus (menus?: ZMenuOption[]): void
@@ -27,6 +34,12 @@ export interface ZMenuDescription {
    * @param route route 路径 默认为当前 route 路径
    */
   activeByRoute (route?: string | ZMenuOption): void
+
+  /**
+   * 检查子菜单是否有选中的
+   * @param item
+   */
+  checkActivatedChildren(item: ZMenuOption): boolean
 
   /**
    * 监听菜单变化事件
