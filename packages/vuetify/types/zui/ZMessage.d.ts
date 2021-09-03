@@ -1,9 +1,6 @@
-import { PluginFunction } from 'vue'
-import { ZMessageShowOptions, ZMessageItem, ZMessageUseOptions, ZMessageOptions } from './options'
+import { ZMessageShowOptions, ZMessageItem, ZMessageOptions } from './options'
 
-export class ZMessageDescription {
-  static install: PluginFunction<ZMessageUseOptions>
-
+export interface ZMessageDescription {
   show (options: ZMessageShowOptions | string): any
 
   info (message: string, options?: ZMessageOptions): any

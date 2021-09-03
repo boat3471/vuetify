@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import { ZMessageSingle, ZMessageContainer } from './components/ZMessage'
-import { ZMessageOptions, ZMessageShowOptions, ZMessageItem } from '../../types'
+import { ZMessageOptions, ZMessageShowOptions, ZMessageItem, ZMessageDescription } from '../../types'
 
+let instance: ZMessageClass
 /**
  * 消息管理器
  */
-export class ZMessageClass {
+export class ZMessageClass implements ZMessageDescription {
   static __wrapper: Vue
-
-  static __instance: ZMessageClass
 
   static MESSAGE_LIST: ZMessageItem[] = []
 
@@ -21,18 +20,6 @@ export class ZMessageClass {
       }).$mount(div)
     }
     return ZMessageClass.__wrapper
-  }
-
-  static genInstance (): ZMessageClass {
-    if (!ZMessageClass.__instance) {
-      ZMessageClass.__instance = new ZMessageClass()
-    }
-    return ZMessageClass.__instance
-  }
-
-  // eslint-disable-next-line no-useless-constructor
-  constructor () {
-    // ignore
   }
 
   /**
@@ -159,6 +146,20 @@ export class ZMessageClass {
       ZMessageClass.MESSAGE_LIST = list
     }
     return list
+  }
+
+  constructor () {
+    if (!instance) {
+      instance = this
+    }
+    return instance
+  }
+
+  static genInstance (): ZMessageClass {
+    if (!instance) {
+      instance = new ZMessageClass()
+    }
+    return instance
   }
 }
 

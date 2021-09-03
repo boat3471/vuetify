@@ -1,26 +1,14 @@
-import { ZModalOptions, ZModalResultOptions, ZModalShowOptions } from '../../types'
+import { ZModalDescription, ZModalOptions, ZModalResultOptions, ZModalShowOptions } from '../../types'
 
 import { ZModalSingle } from './components/ZModal'
+
+let instance: ZModalClass
 
 /**
  * 消息管理器
  */
-export class ZModalClass {
-  static __instance: ZModalClass
-
+export class ZModalClass implements ZModalDescription {
   static MODAL_LIST: any[] = []
-
-  static genInstance (): ZModalClass {
-    if (!ZModalClass.__instance) {
-      ZModalClass.__instance = new ZModalClass()
-    }
-    return ZModalClass.__instance
-  }
-
-  // eslint-disable-next-line no-useless-constructor
-  constructor () {
-    // ignore
-  }
 
   /**
    * 显示消息
@@ -176,6 +164,20 @@ export class ZModalClass {
       ZModalClass.MODAL_LIST = list
     }
     return list
+  }
+
+  constructor () {
+    if (!instance) {
+      instance = this
+    }
+    return instance
+  }
+
+  static genInstance (): ZModalClass {
+    if (!instance) {
+      instance = new ZModalClass()
+    }
+    return instance
   }
 }
 
