@@ -37,9 +37,15 @@ export interface ZMenuDescription {
 
   /**
    * 检查子菜单是否有选中的
-   * @param item
+   * @param menu
    */
-  checkActivatedChildren(item: ZMenuOption): boolean
+  checkActivatedChildren(menu: ZMenuOption): boolean
+
+  /**
+   * 关闭兄弟菜单
+   * @param menu
+   */
+  closeSiblingMenus(menu: ZMenuOption): void
 
   /**
    * 监听菜单变化事件

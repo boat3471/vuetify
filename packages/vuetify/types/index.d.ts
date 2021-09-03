@@ -26,6 +26,7 @@ import { ZMenuDescription } from "./zui/ZMenu";
 import { ZRouterDescription } from "./zui/ZRouter";
 import { ZThemeDescription } from "./zui/ZTheme";
 import { ZAuthDescription } from "./zui/ZAuth";
+import { ZThemeCustomOptions } from "./zui";
 
 export * from './zui'
 
@@ -86,6 +87,8 @@ declare module 'vue/types/vue' {
     $modal: ZModal
     $menu: ZMenu
     $theme: ZTheme
+    $themeStore: ZThemeCustomOptions
+    $auth: ZAuth
     $p(key: string): boolean
     $l(key: string): string
   }

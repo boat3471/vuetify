@@ -17,6 +17,12 @@ export interface ZThemeColorsOptions {
  * 自定义主题选项
  */
 export interface ZThemeCustomOptions {
+  /** 照相模式，隐藏 AppBar 和 AppFooter，将主导航固定为mini模式 */
+  cameraModel?: boolean
+  /** 控制 AppFooter 显示隐藏 */
+  footerVisible?: boolean
+  /** 控制 AppBar 显示隐藏 */
+  appBarVisible?: boolean
   darkColors?: ZColorsOptions
   lightColors?: ZColorsOptions
 
