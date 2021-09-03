@@ -25,6 +25,7 @@ import { ZModalDescription } from './zui/ZModal';
 import { ZMenuDescription } from "./zui/ZMenu";
 import { ZRouterDescription } from "./zui/ZRouter";
 import { ZThemeDescription } from "./zui/ZTheme";
+import { ZAuthDescription } from "./zui/ZAuth";
 
 export * from './zui'
 
@@ -34,6 +35,7 @@ export type ZModal = ZModalDescription
 export type ZMenu = ZMenuDescription
 export type ZRouter = ZRouterDescription
 export type ZTheme = ZThemeDescription
+export type ZAuth = ZAuthDescription
 
 export { ZuiCoreDescription, ZMessageDescription, ZModalDescription }
 
