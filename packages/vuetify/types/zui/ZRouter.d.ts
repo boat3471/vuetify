@@ -7,6 +7,4 @@ export interface ZRouterDescription {
   currentRoutePath: string
 
   getRouter (): VueRouter
-
-  addRoute (route: RouteConfig): void
 }
