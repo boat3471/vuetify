@@ -65,7 +65,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
 
   // 生成 vue 选项
   const vueOptions: ComponentOptions<any> = {
-    el: '#app',
+    el: options.appId || '#app',
     vuetify: ui as unknown as Zui,
     mounted () {
     },

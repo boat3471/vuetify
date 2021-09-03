@@ -22,6 +22,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
       instance = this
       ZuiCoreClass.$options = options
       ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '')
+      ZMessageClass.appId = options.appId || 'app'
     }
     return instance
   }

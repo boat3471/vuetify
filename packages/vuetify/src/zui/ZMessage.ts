@@ -13,7 +13,7 @@ export class ZMessageClass implements ZMessageDescription {
 
   static genWrapper () {
     if (!ZMessageClass.__wrapper) {
-      const app = document.getElementById('app')
+      const app = document.getElementById(ZMessageClass.appId)
       const div = document.createElement('div')
       app && app.appendChild(div)
       ZMessageClass.__wrapper = new ZMessageContainer({
@@ -154,6 +154,8 @@ export class ZMessageClass implements ZMessageDescription {
     }
     return instance
   }
+
+  static appId = 'app'
 
   static genInstance (): ZMessageClass {
     if (!instance) {

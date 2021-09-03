@@ -46,7 +46,7 @@ export function createApp (options: CreateAppOptions): Vue {
 
   ZuiCoreClass.settingVuetify(ui.framework)
   ZuiCoreClass.$app = new Vue({
-    el: '#app',
+    el: options.appId || '#app',
     vuetify: ui as unknown as Zui,
     render (createElement) {
       return createMain(createElement, options)
