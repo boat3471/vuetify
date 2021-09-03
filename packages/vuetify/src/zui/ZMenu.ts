@@ -147,11 +147,7 @@ export class ZMenuClass implements ZMenuDescription {
     }
   }
 
-  /**
-   * 根据展开模式，更新菜单激活状态
-   * @param menu
-   */
-  updateMenusActiveByExpandMode (menu: ZMenuOption) {
+  closeSiblingMenus (menu: ZMenuOption): void {
     const siblings = menu.parent ? (menu.parent.children || []) : this.menusData
     siblings.forEach(m => {
       if (m.path !== menu.path && m.children && m.children.length > 0) {

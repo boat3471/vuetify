@@ -35,10 +35,15 @@ export function createApp (options: CreateAppOptions): Vue {
   if (!options) {
     options = options || {}
   }
-  const { $theme } = new ZuiCoreClass(options)
-  const presetOptions = options.presetOptions || $theme.getDefaultPreset()
+
+  // 安装 zui-core
+  Vue.use(ZuiCoreClass, options)
+
+  const { $theme } = ZuiCoreClass.genInstance()
+  const presetOptions = $theme.getDefaultPreset(options.presetOptions)
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(presetOptions, options.useOptions)
+
   ZuiCoreClass.settingVuetify(ui.framework)
   ZuiCoreClass.$app = new Vue({
     el: '#app',

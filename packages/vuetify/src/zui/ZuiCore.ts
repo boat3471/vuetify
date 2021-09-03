@@ -156,7 +156,9 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
 
   static genInstance (): ZuiCoreClass {
     if (!instance) {
-      throw new Error('Zui Uninitialized, Please use the createApp/createAdmin, Initialize your app！')
+      const message = 'Zui Uninitialized, Please use the createApp/createAdmin, Initialize your app！'
+      window.console.error(message)
+      throw new Error(message)
     }
     return instance
   }
@@ -208,6 +210,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
         // 安装 ZTheme
         if (!this.$theme) {
           this.$theme = core.$theme
+          this.$themeStore = core.$theme.themeStore
         } else {
           $options.parent && (this.$theme = $options.parent.$theme)
         }
@@ -215,10 +218,3 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     })
   }
 }
-
-/**
- * 全局通知实例:
- * 1. 可在vue组件内部使用 `this.$ui` <br>
- * 2. 可引入使用 `import {ZuiCore} = '@zwd/z-ui';`
- */
-export const ZuiCore = ZuiCoreClass.genInstance()

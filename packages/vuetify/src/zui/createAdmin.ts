@@ -1,7 +1,7 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
 import VueRouter from 'vue-router'
 import ZViewAdmin from './components/ZAdmin/ZViewAdmin'
-import { CreateAdminOptions, Zui, ZuiGlobalPreset } from '../../types'
+import { CreateAdminOptions, Zui } from '../../types'
 
 import { ZuiCoreClass } from './ZuiCore'
 import { createZui } from './createZui'
@@ -51,14 +51,8 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   // 设置菜单
   $menu.settingMenus(options.menus || [], false)
 
-  const presetOptions: ZuiGlobalPreset = {
-    theme: {
-      dark: $theme.darkStatus,
-    },
-    ...options.presetOptions,
-  }
-
   // 设置 vuetify and zui
+  const presetOptions = $theme.getDefaultPreset(options.presetOptions)
   const ui = createZui(presetOptions, options.useOptions)
   ZuiCoreClass.settingVuetify(ui.framework)
 
