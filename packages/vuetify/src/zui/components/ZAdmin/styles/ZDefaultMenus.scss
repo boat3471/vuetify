@@ -1,0 +1,24 @@
+.z-default-main-menu {
+  padding-bottom: 0;
+  &.z-default-main-menu--flex {
+
+  }
+
+  &.z-default-main-menu--visible {
+
+  }
+
+  .v-list--dense .v-list-item .v-list-item__icon > .v-icon {
+    font-size: 14px !important;
+  }
+}
+
+.z-default-menu-tooltip {
+  left: 60px !important;
+  font-size: 14px !important;
+  line-height: 26px !important;
+}
+
+.z-default-main-float-menu {
+  box-shadow: none
+}

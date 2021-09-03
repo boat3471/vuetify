@@ -13,7 +13,7 @@ export const ZView403 = Vue.extend({
   watch: {},
   methods: {
     goHome () {
-      this.$ui.openHome && this.$ui.openHome()
+      this.$ui.openHome()
     },
     goBack () {
       this.$router && this.$router.back()

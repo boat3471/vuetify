@@ -1,0 +1,40 @@
+.z-admin-application {
+  .z-admin-navigation-drawer {
+    .v-navigation-drawer__append {
+      .v-list {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .z-admin-main-wrap {
+    min-height: 100%;
+
+    .z-admin-main {
+      min-height: 100%;
+    }
+  }
+
+  .z-admin-footer {
+    padding: 3px 12px;
+  }
+
+  &.v-application--is-ltr {
+    .v-list-item__action:first-child,
+    .v-list-item__icon:first-child {
+      // ignore
+    }
+
+    .v-list--dense .v-list-group--sub-group .v-list-group__header {
+      padding-left: 32px;
+    }
+
+    .v-list--dense .v-list-item .v-list-item__icon {
+      justify-content: center;
+
+      > .v-icon {
+        font-size: 20px;
+      }
+    }
+  }
+}
