@@ -33,6 +33,11 @@ export interface ZuiOptions {
   appId?: string
 
   /**
+   * 配置App唯一标示，默认值：com.zpmc.app
+   */
+  appKey?: string
+
+  /**
    * App名称
    */
   appName?: string

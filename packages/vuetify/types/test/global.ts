@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import Vuetify from '@zwd/z-ui'
+import { Zui } from '../'
 
-Vuetify.config.silent = true
+Zui.config.silent = true
 
 Vue.component('breakpoint', {
   created () {

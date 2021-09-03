@@ -32,12 +32,14 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  * @param options
  */
 export function createApp (options: CreateAppOptions): Vue {
-  ZuiCoreClass.setting(options || {})
-  const presetOptions = options.presetOptions || ZuiCoreClass.getDefaultPreset()
+  if (!options) {
+    options = options || {}
+  }
+  const { $theme } = new ZuiCoreClass(options)
+  const presetOptions = options.presetOptions || $theme.getDefaultPreset()
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(presetOptions, options.useOptions)
-  ZuiCoreClass.$vuetify = ui.framework
-  ZuiCoreClass.$vuetifyInstalled = true
+  ZuiCoreClass.settingVuetify(ui.framework)
   ZuiCoreClass.$app = new Vue({
     el: '#app',
     vuetify: ui as unknown as Zui,

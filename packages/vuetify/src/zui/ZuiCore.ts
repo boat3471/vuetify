@@ -1,21 +1,31 @@
-import Vue from 'vue'
+import Vue, { VueConstructor } from 'vue'
+import * as directives from './directives'
 import {
   ZuiOptions,
   ZuiCoreDescription,
-  ZThemeColorsOptions,
-  ZThemeCustomOptions,
-  ZAuthOptions,
   ZMenuOption,
-  ZuiGlobalPreset,
 } from '../../types'
-import { themeTool, themeStore } from './services/ZuiTheme'
 import { UIEvent } from './events/UIEvent'
-import { VuetifyThemeVariant } from '../../types/services/theme'
 import { ZMenuClass } from './ZMenu'
 import { ZRouterClass } from './ZRouter'
 import { ZThemeClass } from './ZTheme'
+import { ZModalClass } from './ZModal'
+import { ZMessageClass } from './ZMessage'
+import { ZAuthClass } from './ZAuth'
+
+let instance: ZuiCoreClass
 
 export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
+  constructor (options: ZuiOptions) {
+    super()
+    if (!instance) {
+      instance = this
+      ZuiCoreClass.$options = options
+      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '')
+    }
+    return instance
+  }
+
   get $menu (): ZMenuClass {
     return ZMenuClass.genInstance()
   }
@@ -25,7 +35,19 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   }
 
   get $theme (): ZThemeClass {
-    return ZThemeClass.genInstance()
+    return ZuiCoreClass.$theme
+  }
+
+  get $modal (): ZModalClass {
+    return ZModalClass.genInstance()
+  }
+
+  get $message (): ZMessageClass {
+    return ZMessageClass.genInstance()
+  }
+
+  get $auth (): ZAuthClass {
+    return ZAuthClass.genInstance()
   }
 
   /**
@@ -33,6 +55,13 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
    */
   get appName () {
     return ZuiCoreClass.$options.appName || ''
+  }
+
+  /**
+   * App唯一标示
+   */
+  get appKey () {
+    return ZuiCoreClass.$options.appKey || ''
   }
 
   /**
@@ -50,17 +79,10 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   }
 
   /**
-   * 获取主菜单列表
-   */
-  get auth (): ZAuthOptions {
-    return ZuiCoreClass.$auth
-  }
-
-  /**
    * 获取默认主题状态
    */
   get darkStatus (): boolean {
-    return themeStore.darkStatus || false
+    return this.$theme.darkStatus || false
   }
 
   /**
@@ -82,146 +104,6 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
    */
   get defaultTooltipSize (): string {
     return ZuiCoreClass.$options.defaultTooltipSize || 's'
-  }
-
-  /**
-   * 改变主题暗色
-   */
-  changeDark (status = false) {
-    if (ZuiCoreClass.$vuetifyInstalled) {
-      // 更新vuetify
-      ZuiCoreClass.$vuetify.theme.dark = status
-
-      // 更新store
-      themeTool.settingTheme({
-        darkStatus: status,
-      })
-
-      // 更新视图
-      themeTool.settingHtmlClass()
-
-      // 更新颜色
-      themeTool.updateColorByDark()
-
-      // 通知视图
-      this.emit('changeDark', status)
-    }
-  }
-
-  /**
-   * 改变主题颜色
-   * @param options
-   */
-  changeThemeColors (options: ZThemeColorsOptions) {
-    if (ZuiCoreClass.$vuetify && options) {
-      if (options.darkColors) {
-        const darkDefault = ZuiCoreClass.$vuetify.theme.themes.dark || {}
-        const dark = {
-          ...options.darkColors,
-          ...darkDefault,
-        }
-        ZuiCoreClass.$vuetify.theme.themes.dark = dark
-        themeTool.settingDarkColor(dark)
-      }
-
-      if (options.lightColors) {
-        const lightDefault = ZuiCoreClass.$vuetify.theme.themes.light || {}
-        const light = {
-          ...options.lightColors,
-          ...lightDefault,
-        }
-        ZuiCoreClass.$vuetify.theme.themes.light = light
-        themeTool.settingLightColor(light)
-      }
-
-      this.emit('changeThemeColors')
-    }
-  }
-
-  /**
-   * 改变关键主题色
-   * @param color
-   */
-  changePrimaryColor (color: string) {
-    themeTool.settingPrimaryColor(color)
-    if (ZuiCoreClass.$vuetify) {
-      if (this.darkStatus) {
-        ZuiCoreClass.$vuetify.theme.themes.dark.primary = color
-      } else {
-        ZuiCoreClass.$vuetify.theme.themes.light.primary = color
-      }
-      this.emit('changePrimaryColor', color)
-    }
-  }
-
-  /**
-   * 改变主题
-   * @param options
-   */
-  changeTheme (options: ZThemeCustomOptions) {
-    themeTool.settingTheme(options)
-    this.emit('changeTheme', options)
-  }
-
-  /**
-   * 获取皮肤可响应对象
-   */
-  getThemeStore (): ZThemeCustomOptions {
-    return themeStore
-  }
-
-  /**
-   * 获取主颜色
-   */
-  getPrimaryColor (): string {
-    return themeStore.primaryColor || ''
-  }
-
-  /**
-   * 重置所有菜单激活状态
-   */
-  resetMenusActive (menus?: ZMenuOption[]) {
-    (menus || this.menus).forEach(item => {
-      item.active = false
-      if (item.children && item.children.length > 0) {
-        this.resetMenusActive(item.children)
-      }
-    })
-  }
-
-  /**
-   * 根据展开模式，更新菜单激活状态
-   * @param menu
-   */
-  updateMenusActiveByExpandMode (menu: ZMenuOption) {
-    if (themeStore.mainMenuExpandMode) {
-      return
-    }
-    const siblings = menu.parent ? (menu.parent.children || []) : this.menus
-    siblings.forEach(m => {
-      if (m.path !== menu.path && m.children && m.children.length > 0) {
-        m.active = false
-      }
-    })
-  }
-
-  /**
-   * 子级是否有选中的菜单
-   * @param menu
-   */
-  isActiveChildren (menu: ZMenuOption): boolean {
-    if (!menu.children || menu.children.length === 0) {
-      return menu.active || false
-    }
-    let active = false
-    menu.children.forEach(m => {
-      if (!m.children || m.children.length === 0) {
-        active = m.active || false
-      } else {
-        active = this.isActiveChildren(m)
-      }
-    })
-    return active
   }
 
   /**
@@ -264,47 +146,73 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   static $options: ZuiOptions = {};
 
   /** @internal */
-  static $auth: ZAuthOptions = {};
+  static $theme: ZThemeClass
 
-  /**
-   * 设置UI配置
-   * @internal
-   * @param options
-   */
-  static setting (options: ZuiOptions) {
-    ZuiCoreClass.$options = options
-    themeTool.loadLocalData(options.appId)
-    themeTool.settingHtmlClass()
+  static settingVuetify (vuetify: any) {
+    ZuiCoreClass.$vuetify = vuetify
+    ZuiCoreClass.$vuetifyInstalled = true
+    ZThemeClass.settingVuetify(vuetify)
   }
-
-  /**
-   * 设置认证配置信息
-   * @internal
-   * @param options
-   */
-  static settingAuth (options: ZAuthOptions) {
-    ZuiCoreClass.$auth = options
-  }
-
-  static getDefaultPreset (): ZuiGlobalPreset {
-    return {
-      theme: {
-        dark: themeStore.darkStatus,
-        themes: {
-          dark: themeStore.darkColors as VuetifyThemeVariant,
-          light: themeStore.lightColors as VuetifyThemeVariant,
-        },
-      },
-    }
-  }
-
-  static __instance: ZuiCoreClass
 
   static genInstance (): ZuiCoreClass {
-    if (!ZuiCoreClass.__instance) {
-      ZuiCoreClass.__instance = new ZuiCoreClass()
+    if (!instance) {
+      throw new Error('Zui Uninitialized, Please use the createApp/createAdmin, Initialize your app！')
     }
-    return ZuiCoreClass.__instance
+    return instance
+  }
+
+  static install (Vue: VueConstructor, options: ZuiOptions) {
+    const core = new ZuiCoreClass(options)
+
+    if (!(ZuiCoreClass.install as any).initialized) {
+      (ZuiCoreClass.install as any).initialized = true
+    }
+
+    // 安装Zui指令
+    Object.keys(directives).forEach(name => {
+      Vue.directive(name, (directives as any)[name])
+    })
+
+    Vue.mixin({
+      beforeCreate () {
+        const $options = this.$options
+
+        // 安装 ZuiCore
+        if (!this.$ui) {
+          this.$ui = core
+        } else {
+          $options.parent && (this.$ui = $options.parent.$ui)
+        }
+
+        // 安装 ZModal
+        if (!this.$modal) {
+          this.$modal = core.$modal
+        } else {
+          $options.parent && (this.$modal = $options.parent.$modal)
+        }
+
+        // 安装 ZMessage
+        if (!this.$message) {
+          this.$message = core.$message
+        } else {
+          $options.parent && (this.$message = $options.parent.$message)
+        }
+
+        // 安装 ZMenu
+        if (!this.$menu) {
+          this.$menu = core.$menu
+        } else {
+          $options.parent && (this.$menu = $options.parent.$menu)
+        }
+
+        // 安装 ZTheme
+        if (!this.$theme) {
+          this.$theme = core.$theme
+        } else {
+          $options.parent && (this.$theme = $options.parent.$theme)
+        }
+      },
+    })
   }
 }
 

@@ -1,9 +1,9 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
 import VueRouter from 'vue-router'
 import ZViewAdmin from './components/ZAdmin/ZViewAdmin'
-import { CreateAdminOptions, Zui } from '../../types'
+import { CreateAdminOptions, Zui, ZuiGlobalPreset } from '../../types'
 
-import { ZuiCoreClass, ZuiCore } from './ZuiCore'
+import { ZuiCoreClass } from './ZuiCore'
 import { createZui } from './createZui'
 
 /**
@@ -40,36 +40,40 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   // 安装 vue-router
   Vue.use(VueRouter)
 
-  const { $menu, $router } = ZuiCore
+  // 安装 zui-core
+  Vue.use(ZuiCoreClass, options)
 
-  // 设置UI配置
-  ZuiCoreClass.setting(options || {})
+  const { $menu, $router, $theme, $auth } = ZuiCoreClass.genInstance()
+
   // 设置认证
-  ZuiCoreClass.settingAuth(options.auth || {})
+  $auth.setting(options.auth || {})
+
   // 设置菜单
   $menu.settingMenus(options.menus || [], false)
 
-  // 生成 vuetify and zui
-  const ui = createZui(options.presetOptions, options.useOptions)
-  ZuiCoreClass.$vuetify = ui.framework
-  ZuiCoreClass.$vuetifyInstalled = true
+  const presetOptions: ZuiGlobalPreset = {
+    theme: {
+      dark: $theme.darkStatus,
+    },
+    ...options.presetOptions,
+  }
 
+  // 设置 vuetify and zui
+  const ui = createZui(presetOptions, options.useOptions)
+  ZuiCoreClass.settingVuetify(ui.framework)
+
+  // 设置路由管理器（Router）
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   let router = componentOptions.router
   if (!router) {
-    router = $router.createRouter(options.routerOptions || {}, options.menus || [])
+    router = $router.setting(options.routerOptions || {}, options.menus || [])
   }
-
-  $router.settingRouter(router)
-
-  // 生成路由管理器（Router）
 
   // 生成 vue 选项
   const vueOptions: ComponentOptions<any> = {
     el: '#app',
     vuetify: ui as unknown as Zui,
     mounted () {
-      console.info('app mounted')
     },
     render (h) {
       return createMain(h, options)

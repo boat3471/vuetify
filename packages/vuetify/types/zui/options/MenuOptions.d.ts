@@ -33,4 +33,5 @@ export interface ZMenuOption {
   parent?: ZMenuOption | null
   parents?: ZMenuOption[]
   parentPaths?: string[]
+  key?: string
 }

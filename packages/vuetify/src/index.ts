@@ -1,9 +1,6 @@
 import { Zui } from './framework'
 import { ZMessage } from './zui/ZMessage'
 import { ZModal } from './zui/ZModal'
-import { ZMenu } from './zui/ZMenu'
-import { ZTheme } from './zui/ZTheme'
-import { ZRouter } from './zui/ZRouter'
 import { ZuiCore } from './zui/ZuiCore'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
@@ -18,9 +15,15 @@ export default {
   ZuiCore,
   ZMessage,
   ZModal,
-  ZMenu,
-  ZTheme,
-  ZRouter,
+  get ZMenu () {
+    return ZuiCore.$menu
+  },
+  get ZTheme () {
+    return ZuiCore.$theme
+  },
+  get ZRouter () {
+    return ZuiCore.$router
+  },
   createApp,
   createAdmin,
   createMenus,
