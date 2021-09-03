@@ -87,7 +87,9 @@ export class ZThemeClass extends UIEvent implements ZThemeDescription {
       Object.keys(options).forEach(key => {
         (themeStore as any)[key] = (options as any)[key]
       })
-      this.resetColor(themeStore.darkStatus || false)
+
+      this.settingDarkStatus(themeStore.darkStatus)
+      this.settingPrimaryColor(themeStore.primaryColor || '')
       ZThemeClass.setLocalOptions(themeStore)
 
       this.emit('changeTheme', themeStore)
@@ -181,9 +183,7 @@ export class ZThemeClass extends UIEvent implements ZThemeDescription {
       ZThemeClass.vuetify.theme.dark = status
 
       // 更新store
-      this.settingTheme({
-        darkStatus: status,
-      })
+      this.themeStore.darkStatus = status
 
       // 更新视图
       this.settingHtmlClass(status)

@@ -1,5 +1,4 @@
 import Vue, { VNode, VNodeData } from 'vue'
-// import mixins from '../../../util/mixins'
 import { ZIcon, ZBtn } from '../../../components'
 import { ZMessageSingleBase } from './ZMessageSingleBase'
 
@@ -74,7 +73,6 @@ export const ZMessageSingle = Vue.extend({
     genActionSlot ({ attrs }: VNodeData): VNode | null {
       if (this.showClose) {
         return this.$createElement(ZBtn, {
-          slot: 'action',
           attrs: {
             ...attrs,
           },
@@ -86,7 +84,9 @@ export const ZMessageSingle = Vue.extend({
               this.visible = false
             },
           },
-        }, [this.message])
+        }, [
+          this.$createElement(ZIcon, { staticClass: 'mr-1', props: { size: 16 } }, ['mdi-close']),
+        ])
       }
       return null
     },
@@ -98,6 +98,9 @@ export const ZMessageSingle = Vue.extend({
             value: this.visible,
             timeout: this.timeout,
             color: this.type,
+          },
+          scopedSlots: {
+            action: this.genActionSlot,
           },
         }, [
           this.icon ? this.genIcon() : null,
