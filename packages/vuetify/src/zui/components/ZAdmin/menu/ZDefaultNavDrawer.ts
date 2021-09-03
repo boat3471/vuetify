@@ -132,7 +132,7 @@ export const ZDefaultNavDrawer = Vue.extend({
     const prependSlot = getSlot(this, 'prepend')
     const appendSlot = getSlot(this, 'append')
     return h(ZNavigationDrawer, {
-      staticClass: 'z-admin-navigation-drawer',
+      staticClass: 'z-default-navigation-drawer',
       props: {
         app: true,
         value: this.visible,
