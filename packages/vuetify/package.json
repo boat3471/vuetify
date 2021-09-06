@@ -94,8 +94,7 @@
     "vue": "^2.6.11"
   },
   "publishConfig": {
-    "access": "public",
-    "tag": "beta"
+    "access": "public"
   },
   "vetur": {
     "tags": "dist/json/tags.json",
