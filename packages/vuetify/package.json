@@ -1,7 +1,7 @@
 {
   "name": "@zwd/z-ui",
   "description": "Vue Material Component Framework",
-  "version": "2.5.8-rc.1",
+  "version": "2.5.801",
   "vuetifyVersion": "2.5.8",
   "author": {
     "name": "xinwenchao",
@@ -28,16 +28,18 @@
     "dist/",
     "lib/",
     "es5/",
+    "styles/",
     "types/"
   ],
   "scripts": {
     "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch",
     "dev": "node build/refactor.vuetify.loader.js && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --hot",
-    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module",
+    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module && yarn build:mdi",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:version": "node build/build-version.js",
     "build:json": "node build/build-json.js",
     "build:module": "node build/build-module.js",
+    "build:mdi": "node build/build-mdi-icon.js",
     "tsc": "tsc",
     "build:lib": "node build/build-lib.js",
     "debug:test": "cross-env NODE_ENV=test node --inspect --inspect-brk ../../node_modules/jest/bin/jest.js --no-cache -i --verbose",

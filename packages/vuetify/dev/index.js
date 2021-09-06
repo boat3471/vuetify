@@ -24,18 +24,18 @@ import App from './App'
 //   vm.isLoaded = true
 // })
 
-import { ZMenu, createAdminRouter, createAdmin } from '@zwd/z-ui'
+import { ZMenu, createAdmin } from '@zwd/z-ui'
 import { menus } from './menus'
-import Test from './Test'
+// import Test from './Test'
 
-const router = createAdminRouter({
-  options: {
-    routes: [
-      // { name: 'root', path: '/', component: Test },
-      { name: 'aaa', path: 'aaa', component: Test },
-    ],
-  },
-})
+// const router = createAdminRouter({
+//   options: {
+//     routes: [
+//       // { name: 'root', path: '/', component: Test },
+//       { name: 'aaa', path: 'aaa', component: Test },
+//     ],
+//   },
+// })
 
 // 假设菜单是异步获取的
 // eslint-disable-next-line no-new
@@ -59,7 +59,6 @@ createAdmin({
   appHome: App,
   menus,
   componentOptions: {
-    router,
     mounted () {
     },
   },
