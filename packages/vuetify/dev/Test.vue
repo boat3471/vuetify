@@ -10,12 +10,12 @@
     },
     data () {
       return {
-        name: this.$route.meta.name,
+        name: this.$route.meta.name || 'test',
       }
     },
     watch: { // 通过watch来监听路由变化，每次路由变化都会执行function()
-      $route () {
-        this.name = this.$route.meta.name
+      '$route.path' () {
+        this.name = this.$route.meta.name || 'test'
       },
     },
   }
