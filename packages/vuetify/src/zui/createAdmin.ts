@@ -4,6 +4,7 @@ import ZViewAdmin from './components/ZAdmin/ZViewAdmin'
 import { CreateAdminOptions, Zui } from '../../types'
 
 import { ZuiCoreClass } from './ZuiCore'
+import { ZRouterClass } from './ZRouter'
 import { createZui } from './createZui'
 
 /**
@@ -62,6 +63,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   if (!router) {
     router = $router.setting(options.routerOptions || {}, options.menus || [])
   }
+  ZRouterClass.router = router
 
   // 生成 vue 选项
   const vueOptions: ComponentOptions<any> = {

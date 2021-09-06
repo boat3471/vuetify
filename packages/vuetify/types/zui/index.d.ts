@@ -7,4 +7,5 @@ export * from './options'
 export function createApp (options: CreateAppOptions): Vue
 export function createAdmin (options: CreateAdminOptions): Vue
 export function createMenus (menus: ZMenuOption[]): ZMenuOption[]
-export function createRouter (options: ZRouterOptions): VueRouter
+export function createRouter (options: ZRouterOptions, menus?: ZMenuOption[]): VueRouter
+export function createAdminRouter (options: ZRouterOptions, menus?: ZMenuOption[]): VueRouter

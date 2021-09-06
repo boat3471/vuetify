@@ -1,4 +1,4 @@
-import { RouteConfig } from 'vue-router'
+import { Location, RawLocation, Route, RouteConfig } from 'vue-router'
 import { RedirectOption, RouterOptions } from 'vue-router/types/router'
 import ZView403 from '../components/ZAdmin/ZView403'
 import ZView500 from '../components/ZAdmin/ZView500'
@@ -49,16 +49,14 @@ export function addNotFoundRoute (route: RouteConfig, notFound: any): void {
 /**
  * 根据选项生成路由列表
  */
-export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[]): RouteConfig[] {
+export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[], routeRoot?: RouteConfig): RouteConfig[] {
   const routerOptions: RouterOptions = options.options || {}
   const routeLogin: RouteConfig = { name: 'r__login', path: '/login', component: ZDefaultLogin }
   const route500: RouteConfig = { name: 'r__500', path: '/500', component: ZView500 }
   const route403: RouteConfig = { name: 'r__403', path: '/403', component: ZView403 }
   const route404: RouteConfig = { name: 'r__404', path: '/404', component: ZView404 }
   const routeNotFound: RouteConfig = { name: 'r__not__found', path: '*', component: ZView404 }
-  const routeRoot: RouteConfig = { name: 'r__root', path: '/*', component: ZViewRoot, children: [routeNotFound] }
-  /** 用户自定义路由集 */
-  const userRoutes: RouteConfig[] = []
+  routeRoot = routeRoot || { name: 'r__root', path: '/*', component: ZViewRoot, children: [routeNotFound] }
 
   /** 路由集 */
   const routes: RouteConfig[] = [
@@ -66,15 +64,18 @@ export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[
     route500,
     route403,
     route404,
-    ...userRoutes,
     routeRoot,
-    // routeNotFound,
   ]
 
   // 初始化用户自定义路由
+  let tempRedirect: string | Location | ((to: Route) => RawLocation) | undefined
   const tempRoutes: RouteConfig[] = routerOptions.routes || []
   tempRoutes.forEach(route => {
     if (route && route.path) {
+      if (route.path === '/') {
+        tempRedirect = route.redirect || ''
+      }
+      route.path = genFullPath(route.path)
       // 检查是否和默认路由冲突，冲突则将用户路由覆盖默认路由
       const tempRoute = routes.find(i => i.path === route.path)
       if (tempRoute) {
@@ -82,14 +83,14 @@ export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[
       } else {
         // 给路由增加 404
         addNotFoundRoute(route, route404.component)
-        userRoutes.push(route)
+        routes.splice(4, 0, route)
       }
     }
   })
 
   addNotFoundRoute(routeRoot, route404.component)
 
-  const redirect = options.routeHome ? options.routeHome.redirect : '/home'
+  const redirect = options.routeHome ? options.routeHome.redirect : (tempRedirect || '/home')
   routeRoot.children = createRoutesByMenus(menus, redirect)
 
   options.routeHome && Object.assign(routeRoot, options.routeHome)
@@ -100,6 +101,11 @@ export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[
   options.route404 && Object.assign(routeNotFound, options.route404)
 
   return routes
+}
+
+export function genAppRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[]): RouteConfig[] {
+  const routeNotFound: RouteConfig = { name: 'r__not__found', path: '/*', component: ZView404 }
+  return genRoutesByOptions(options, menus, routeNotFound)
 }
 
 /**
@@ -169,4 +175,16 @@ export function createRoutesByMenus (menus: ZMenuOption[] = [], redirect: Redire
     return children
   }
   return []
+}
+
+/**
+ * 生成完整路径
+ * @param path
+ * @param parentPath
+ */
+export function genFullPath (path: string, parentPath?: string): string {
+  if (path.indexOf('/') !== 0) {
+    return `/${parentPath || ''}/${path}`.replace(/\/+/g, '/')
+  }
+  return path
 }

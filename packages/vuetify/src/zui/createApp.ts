@@ -1,7 +1,8 @@
-import Vue, { ComponentOptions, CreateElement } from 'vue'
+import Vue, { ComponentOptions, CreateElement, VNode } from 'vue'
 import { CreateAppOptions, Zui } from '../../types'
 import { ZApp } from '../components'
 import { ZuiCoreClass } from './ZuiCore'
+import { ZRouterClass } from './ZRouter'
 import { createZui } from './createZui'
 
 /**
@@ -10,6 +11,16 @@ import { createZui } from './createZui'
  * @param options
  */
 function createMain (createElement: CreateElement, options: CreateAppOptions) {
+  options = options || {}
+  const children: VNode[] = []
+  const appHome = options.appHome ? createElement(options.appHome) : null
+  if (!appHome) {
+    if (options.componentOptions && options.componentOptions.router) {
+      children.push(createElement(Vue.component('RouterView')))
+    }
+  } else {
+    children.push(appHome)
+  }
   return createElement(
     // 主视图
     options.appMain || ZApp,
@@ -21,9 +32,7 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
       },
     },
     // 子元素列表
-    [
-      options.appHome ? createElement(options.appHome) : null,
-    ]
+    children,
   )
 }
 
@@ -43,7 +52,7 @@ export function createApp (options: CreateAppOptions): Vue {
   const presetOptions = $theme.getDefaultPreset(options.presetOptions)
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(presetOptions, options.useOptions)
-
+  componentOptions.router && (ZRouterClass.router = componentOptions.router)
   ZuiCoreClass.settingVuetify(ui.framework)
   ZuiCoreClass.$app = new Vue({
     el: options.appId || '#app',

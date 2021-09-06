@@ -1,10 +1,11 @@
 import { Zui } from './framework'
-import { ZMessageClass } from './zui/ZMessage'
-import { ZModalClass } from './zui/ZModal'
-import { ZuiCoreClass } from './zui/ZuiCore'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
 import { createMenus } from './zui/createMenus'
+import { createRouter, createAdminRouter } from './zui/createRouter'
+import { ZMessageClass } from './zui/ZMessage'
+import { ZModalClass } from './zui/ZModal'
+import { ZuiCoreClass } from './zui/ZuiCore'
 import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
 import { ZRouterClass } from './zui/ZRouter'
@@ -18,6 +19,8 @@ export default {
   createApp,
   createAdmin,
   createMenus,
+  createRouter,
+  createAdminRouter,
   get ZuiCore (): ZuiCoreClass {
     return ZuiCoreClass.genInstance()
   },
