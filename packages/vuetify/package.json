@@ -1,7 +1,11 @@
 {
   "name": "@zwd/z-ui",
   "description": "Vue Material Component Framework",
-  "version": "2.5.801",
+  "publishConfig": {
+    "access": "public",
+    "tag": ""
+  },
+  "version": "2.5.802",
   "vuetifyVersion": "2.5.8",
   "author": {
     "name": "xinwenchao",
@@ -13,10 +17,10 @@
     "url": "git+https://github.com/vuetifyjs/vuetify.git",
     "directory": "packages/vuetify"
   },
-  "main": "dist/vuetify.js",
-  "module": "dist/vuetify.js",
-  "jsdelivr": "dist/vuetify.js",
-  "unpkg": "dist/vuetify.js",
+  "main": "dist/zui.js",
+  "module": "dist/zui.js",
+  "jsdelivr": "dist/zui.js",
+  "unpkg": "dist/zui.js",
   "types": "types/index.d.ts",
   "sideEffects": [
     "*.sass",
@@ -92,9 +96,6 @@
   },
   "peerDependencies": {
     "vue": "^2.6.11"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "vetur": {
     "tags": "dist/json/tags.json",

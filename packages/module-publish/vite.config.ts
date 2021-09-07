@@ -13,6 +13,7 @@ export default defineConfig({
         extend: true,
         globals: {
           vue: 'Vue',
+          '@zwd/z-ui': 'Zui',
         },
       },
     },

@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import Vuetify from '@zwd/z-ui'
+import { Zui } from '@zwd/z-ui'
 
-Vue.use(Vuetify)
+Vue.use(Zui)
 
-const vuetify = new Vuetify({})
+const vuetify = new Zui({})
 
 // eslint-disable-next-line no-new
 new Vue({

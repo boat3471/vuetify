@@ -13,12 +13,12 @@ const builds = {
       devtool: 'source-map',
       mode: 'development',
       output: {
-        filename: 'vuetify.js',
+        filename: 'zui.js',
         libraryTarget: 'umd',
       },
       plugins: [
         new MiniCssExtractPlugin({
-          filename: 'vuetify.css',
+          filename: 'zui.css',
         }),
       ],
     },
@@ -27,12 +27,12 @@ const builds = {
     config: {
       mode: 'production',
       output: {
-        filename: 'vuetify.min.js',
+        filename: 'zui.min.js',
         libraryTarget: 'umd',
       },
       plugins: [
         new MiniCssExtractPlugin({
-          filename: 'vuetify.min.css',
+          filename: 'zui.min.css',
         }),
       ],
       performance: {

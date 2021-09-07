@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Zui from '@zwd/z-ui'
+import { Zui } from '@zwd/z-ui'
 
 Vue.use(Zui)
 

@@ -12,7 +12,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: resolve('../dist'),
     publicPath: '/dist/',
-    library: 'Vuetify',
+    library: 'Zui',
     libraryTarget: 'umd',
     libraryExport: 'default',
     // See https://github.com/webpack/webpack/issues/6522

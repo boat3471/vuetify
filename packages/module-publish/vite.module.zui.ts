@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import { createVuePlugin } from 'vite-plugin-vue2'
 import { resolve } from 'path'
 import { transformImportModule } from './src/plugins'
+const pkg = require('../vuetify/package.json')
+const vue = require('vue/package.json')
 
 export default defineConfig({
   base: './',
@@ -16,15 +18,18 @@ export default defineConfig({
         index: resolve(__dirname, 'index-zui.html'),
       },
       plugins: [
-        transformImportModule(),
+        transformImportModule({
+          vue: vue.version,
+          zui: pkg.version,
+        }),
       ],
       output: {
         extend: true,
         globals: {
           vue: 'Vue',
+          '@zwd/z-ui': 'Zui',
         },
         chunkFileNames () {
-          const pkg = require('../vuetify/package.json')
           return `zui.${pkg.version}.module.js`
         },
         minifyInternalExports: false,

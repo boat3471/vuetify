@@ -1,7 +1,7 @@
 import { Plugin } from 'vite'
 import { RenderedChunk } from 'rollup'
 
-export function transformImportModule (): Plugin {
+export function transformImportModule (options: {vue: '', zui: ''}): Plugin {
   return {
     name: 'z-transform-import-module',
     renderChunk (a: string, b: RenderedChunk) {
@@ -12,16 +12,12 @@ export function transformImportModule (): Plugin {
         let exportName = ''
         switch (mod) {
           case 'vue':
-            modUrl = '//10.128.230.53/webv-public/ui/vue.2.6.14.module.js'
+            modUrl = `//10.128.230.53/webv-public/ui/vue.${options.vue}.module.js`
             exportName = 'Vue'
             exportBody += `export {require$$${index} as ${exportName}};`
             break
-          case 'vuetify':
-            modUrl = '//10.128.230.53/webv-public/ui/vuetify.2.5.6.module.js'
-            exportName = 'Vuetify'
-            break
           case '@zwd/z-ui':
-            modUrl = '//10.128.230.53/webv-public/ui/zui.2.5.6.module.js'
+            modUrl = `//10.128.230.53/webv-public/ui/zui.${options.zui}.module.js`
             exportName = 'Zui'
             break
           default:

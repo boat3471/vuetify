@@ -68,8 +68,8 @@ function uploadCss (distPath, name, version) {
   const cssFiles = fs.readdirSync(distPath)
   cssFiles.forEach(file => {
     const cssPath = path.resolve(distPath, file)
-    if (/vuetify(\.min)?\.css$/.test(file)) {
-      const fileName = file.replace('vuetify', `${name}.${version}`)
+    if (/zui(\.min)?\.css$/.test(file)) {
+      const fileName = file.replace('zui', `${name}.${version}`)
       const objectName = 'ui/' + fileName
       list.push(new Promise((resolve, reject) => {
         // eslint-disable-next-line sonarjs/no-identical-functions
@@ -88,7 +88,7 @@ function uploadCss (distPath, name, version) {
 }
 
 (async () => {
-  let distPath
+  let distPath = ''
   let err
 
   // 处理 vue js
@@ -105,32 +105,15 @@ function uploadCss (distPath, name, version) {
   console.info(err.join('\n'))
   console.info()
 
-  // 处理 vuetify js
-  err = await uploadJs('vuetify', 'vuetify',
-    [
-      path.resolve(__dirname, '../node_modules/vuetify/dist/vuetify.js'),
-      path.resolve(__dirname, '../node_modules/vuetify/dist/vuetify.min.js'),
-    ],
-    path.resolve(__dirname, '../node_modules/vuetify/package.json'),
-  )
-  console.info(err.join('\n'))
-
-  // 处理 vuetify module js
-  err = await uploadModuleJs(path.resolve(__dirname, '../dist/vuetify/'))
-  console.info(err.join('\n'))
-
-  // 处理 vuetify css
-  distPath = path.resolve(__dirname, '../node_modules/vuetify/dist')
-  const vuetifyPkg = require('vuetify')
-  err = await uploadCss(distPath, 'vuetify', vuetifyPkg.version)
-  console.info(err.join('\n'))
-  console.info()
-
   // 处理 zui js
-  err = await uploadJs('zui', 'vuetify',
+  const zuiPkg = require('../../vuetify/package.json')
+  if (zuiPkg.version.includes('-beta') || zuiPkg.version.includes('-alpha')) {
+    return
+  }
+  err = await uploadJs('zui', 'zui',
     [
-      path.resolve(__dirname, '../../vuetify/dist/vuetify.js'),
-      path.resolve(__dirname, '../../vuetify/dist/vuetify.min.js'),
+      path.resolve(__dirname, '../../vuetify/dist/zui.js'),
+      path.resolve(__dirname, '../../vuetify/dist/zui.min.js'),
     ],
     path.resolve(__dirname, '../../vuetify/package.json'),
   )
@@ -142,7 +125,6 @@ function uploadCss (distPath, name, version) {
 
   // 处理 zui css
   distPath = path.resolve(__dirname, '../../vuetify/dist')
-  const zuiPkg = require('../../vuetify/package.json')
   err = await uploadCss(distPath, 'zui', zuiPkg.version)
   console.info(err.join('\n'))
   console.info()
