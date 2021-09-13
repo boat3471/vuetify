@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const cssPath = path.resolve(__dirname, '../src/zui/icons/mdi/index.min.css')
+const cssPath = path.resolve(__dirname, '../styles/icons/mdi/index.min.css')
 const cssContent = fs.readFileSync(cssPath).toString()
 const classList = cssContent.match(/(\.mdi-)([0-9a-z-]+)(::before)/g).map(i => i.replace('::before', '').replace('.mdi-', 'mdi-'))
 
