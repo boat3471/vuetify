@@ -5,7 +5,7 @@
     "access": "public",
     "tag": ""
   },
-  "version": "2.5.802",
+  "version": "2.5.803",
   "vuetifyVersion": "2.5.8",
   "author": {
     "name": "xinwenchao",
@@ -27,11 +27,16 @@
     "*.scss",
     "*.css"
   ],
-  "files": [
+  "vuetifyFiles": [
     "src/",
     "dist/",
     "lib/",
     "es5/",
+    "styles/",
+    "types/"
+  ],
+  "files": [
+    "dist/",
     "styles/",
     "types/"
   ],
