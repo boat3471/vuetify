@@ -9,7 +9,7 @@ import {
   VVirtualTable,
 } from './index'
 
-import '../../zui/styles/ZTable/index.scss'
+import './ZDataTable.scss'
 
 export const ZDataTable = mixins(VDataTable).extend({
   name: 'z-data-table',

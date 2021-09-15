@@ -3,7 +3,7 @@ import mixins from '../../util/mixins'
 import { VNode } from 'vue'
 import VTooltip from './VTooltip'
 
-import '../../zui/styles/ZTooltip/index.scss'
+import './ZTooltip.scss'
 
 export const ZTooltip = mixins(VTooltip).extend({
   name: 'z-tooltip',

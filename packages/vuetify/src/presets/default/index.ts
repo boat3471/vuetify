@@ -1,7 +1,5 @@
 // Styles
 import '../../styles/main.sass'
-// ZUI Styles
-import '../../zui/styles/main.scss'
 
 // Locale
 import { en } from '../../locale'

@@ -1,18 +1,7 @@
-@import "./base";
 @import "./scrollbar";
-@import "./ZMessage";
 
 .v-btn {
     text-transform: initial;
-}
-
-.v-data-table--dense {
-    &.v-data-table {
-        td {
-            font-family: system-ui, Consolas, serif;
-            font-size: 0.675rem;
-        }
-    }
 }
 
 .v-label {

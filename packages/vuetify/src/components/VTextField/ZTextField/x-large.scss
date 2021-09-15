@@ -1,10 +1,10 @@
-@import "../input-icon";
+@import "../../../zui/styles/input-icon.scss";
 
-$currentHeight: 38px;
-$inputFontSize: 14px;
-$closeTop: 8px;
+$currentHeight: 46px;
+$inputFontSize: 15px;
+$closeTop: 12px;
 
-.v-text-field-size--large {
+.v-text-field-size--x-large {
     &.v-input {
         font-size: $inputFontSize;
     }
@@ -30,7 +30,7 @@ $closeTop: 8px;
 
         &.v-text-field--solo {
             /* solo 输入框 icon 定制 */
-            @include input-icon($inputFontSize + 5, null, $closeTop);
+            @include input-icon($inputFontSize + 8, null, $closeTop);
         }
     }
 
@@ -42,7 +42,7 @@ $closeTop: 8px;
         &.v-text-field--filled,
         &.v-text-field--outlined {
             /* filled, outlined 输入框 icon 定制 */
-            @include input-icon($inputFontSize + 5, $closeTop, $closeTop);
+            @include input-icon($inputFontSize + 8, $closeTop, $closeTop);
         }
     }
 }

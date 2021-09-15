@@ -1,10 +1,10 @@
-@import "../input-icon";
+@import "../../../zui/styles/input-icon.scss";
 
-$currentHeight: 32px;
-$inputFontSize: 13px;
-$closeTop: 5px;
+$currentHeight: 38px;
+$inputFontSize: 14px;
+$closeTop: 8px;
 
-.v-text-field-size--default {
+.v-text-field-size--large {
     &.v-input {
         font-size: $inputFontSize;
     }

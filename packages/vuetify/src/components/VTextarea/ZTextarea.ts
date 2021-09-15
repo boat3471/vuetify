@@ -3,7 +3,7 @@ import mixins from '../../util/mixins'
 import VTextarea from './VTextarea'
 import generateZSizeable from '../../zui/util/generateZSizeable'
 
-import '../../zui/styles/ZTextarea/index.scss'
+import './ZTextarea/index.scss'
 
 const ZTextareaSizeable = generateZSizeable([
   'z-textarea-size--x-small',

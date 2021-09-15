@@ -8,7 +8,7 @@ import {
 } from './index'
 import generateZSizeable from '../../zui/util/generateZSizeable'
 
-import '../../zui/styles/ZTabs/index.scss'
+import './ZTabs.scss'
 
 const Sizeable = generateZSizeable([
   'v-tabs-size--x-small',

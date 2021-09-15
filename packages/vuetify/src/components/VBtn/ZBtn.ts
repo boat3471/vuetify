@@ -1,7 +1,7 @@
 import mixins from '../../util/mixins'
 import VBtn from './VBtn'
 import generateZSizeable from '../../zui/util/generateZSizeable'
-import '../../zui/styles/ZBtn/index.scss'
+import './ZBtn.scss'
 
 const Sizeable = generateZSizeable([
   'z-btn-size--x-small',

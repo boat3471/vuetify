@@ -4,7 +4,7 @@ import VSelect from './VSelect'
 import VSelectList from './VSelectList'
 
 import generateZSizeable from '../../zui/util/generateZSizeable'
-import '../../zui/styles/ZSelect/index.scss'
+import './ZSelect/index.scss'
 
 const Sizeable = generateZSizeable([
   'v-select-size--x-small',

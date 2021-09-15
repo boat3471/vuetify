@@ -2,7 +2,7 @@ import mixins from '../../util/mixins'
 import VTextField from './VTextField'
 import generateZSizeable from '../../zui/util/generateZSizeable'
 
-import '../../zui/styles/ZTextField/index.scss'
+import './ZTextField/index.scss'
 
 const Sizeable = generateZSizeable([
   'v-text-field-size--x-small',

@@ -1,15 +1,15 @@
-@import "../input-icon.scss";
+@import "../../../zui/styles/input-icon.scss";
 
-$currentHeight: 32px;
-$inputFontSize: 13px;
+$currentHeight: 46px;
+$inputFontSize: 15px;
 
-.v-select-size--default {
+.v-select-size--x-large {
     .v-label {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     &.v-input {
-        font-size: 13px;
+        font-size: 15px;
     }
 
     /* 定制下拉框列表样式 */
@@ -30,7 +30,7 @@ $inputFontSize: 13px;
         padding: 4px 0;
 
         .v-list-item__title {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
         }
     }
@@ -38,21 +38,7 @@ $inputFontSize: 13px;
     .v-input__append-inner {
         > .v-input__icon--clear {
             .v-icon {
-                font-size: 16px;
-            }
-        }
-    }
-
-    &.v-select {
-        .v-select__selection--comma {
-            margin: 0;
-        }
-
-        &.v-text-field--outlined:not(.v-text-field--single-line) {
-            &.v-input--dense {
-                .v-select__selections {
-                    padding: 0;
-                }
+                font-size: 18px;
             }
         }
     }
@@ -69,7 +55,7 @@ $inputFontSize: 13px;
 
             &.v-input--dense {
                 /* 定制输入框 icon */
-                @include input-icon($inputFontSize + 5, null, 5px);
+                @include input-icon($inputFontSize + 8, null, 12px);
 
                 > .v-input__control {
                     min-height: $currentHeight;
@@ -86,12 +72,12 @@ $inputFontSize: 13px;
 
                     > .v-select__slot {
                         > .v-input__append-inner {
-                            margin-top: 5px;
+                            margin-top: 12px;
                         }
 
                         .v-select__selections {
                             input {
-                                max-height: 24px;
+                                max-height: 38px;
                             }
                         }
                     }
@@ -116,7 +102,7 @@ $inputFontSize: 13px;
                 &.v-text-field--outlined,
                 &.v-text-field--single-line {
                     /* 定制输入框 icon */
-                    @include input-icon($inputFontSize + 5, 5px, 5px);
+                    @include input-icon($inputFontSize + 8, 12px, 12px);
                 }
             }
         }
