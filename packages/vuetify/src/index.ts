@@ -24,20 +24,38 @@ export default {
   createMenus,
   createRouter,
   createAdminRouter,
+  get $zui (): ZuiCoreClass {
+    return ZuiCoreClass.genInstance()
+  },
   get ZuiCore (): ZuiCoreClass {
     return ZuiCoreClass.genInstance()
+  },
+  get $message (): ZMessageClass {
+    return ZuiCoreClass.genInstance().$message
   },
   get ZMessage (): ZMessageClass {
     return ZuiCoreClass.genInstance().$message
   },
+  get $modal (): ZModalClass {
+    return ZuiCoreClass.genInstance().$modal
+  },
   get ZModal (): ZModalClass {
     return ZuiCoreClass.genInstance().$modal
+  },
+  get $menu (): ZMenuClass {
+    return ZuiCoreClass.genInstance().$menu
   },
   get ZMenu (): ZMenuClass {
     return ZuiCoreClass.genInstance().$menu
   },
+  get $theme (): ZThemeClass {
+    return ZuiCoreClass.genInstance().$theme
+  },
   get ZTheme (): ZThemeClass {
     return ZuiCoreClass.genInstance().$theme
+  },
+  get $router (): ZRouterClass {
+    return ZuiCoreClass.genInstance().$router
   },
   get ZRouter (): ZRouterClass {
     return ZuiCoreClass.genInstance().$router

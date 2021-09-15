@@ -26,6 +26,8 @@ export interface ZuiCoreDescription {
   openHome (): void
   openLogin (): void
 
+  ready (callback: () => void): void
+
   emit (event: ZuiEventType, ...args: any[]): void
   on (event: ZuiEventType | ZuiEventType[], callback: Function): void
   once (event: ZuiEventType | ZuiEventType[], callback: Function): void

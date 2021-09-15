@@ -37,6 +37,13 @@ export type ZMenu = ZMenuDescription
 export type ZRouter = ZRouterDescription
 export type ZTheme = ZThemeDescription
 export type ZAuth = ZAuthDescription
+export type $zui = ZuiCoreDescription
+export type $message = ZMessageDescription
+export type $modal = ZModalDescription
+export type $menu = ZMenuDescription
+export type $router = ZRouterDescription
+export type $theme = ZThemeDescription
+export type $auth = ZAuthDescription
 
 export { ZuiCoreDescription, ZMessageDescription, ZModalDescription }
 

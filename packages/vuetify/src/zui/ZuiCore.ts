@@ -16,15 +16,34 @@ import { ZAuthClass } from './ZAuth'
 let instance: ZuiCoreClass
 
 export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
-  constructor (options: ZuiOptions) {
+  static initialized = false;
+  static callbackList: Function[] = [];
+  static readyCheck (): void {
+    if (!ZuiCoreClass.initialized) {
+      window.console.warn('Zui is not initialized! Please use $zui.ready(callback) and call when ready')
+    }
+  }
+
+  constructor (options?: ZuiOptions) {
     super()
     if (!instance) {
       instance = this
-      ZuiCoreClass.$options = options
-      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '')
-      ZMessageClass.appId = options.appId || 'app'
+      ZuiCoreClass.setting(options)
+      this.on('ready', () => {
+        ZuiCoreClass.initialized = true
+        if (ZuiCoreClass.callbackList) {
+          ZuiCoreClass.callbackList.forEach(fn => {
+            fn()
+          })
+          ZuiCoreClass.callbackList = []
+        }
+      })
     }
     return instance
+  }
+
+  ready (callback: () => void): void {
+    ZuiCoreClass.callbackList.push(callback)
   }
 
   get $menu (): ZMenuClass {
@@ -147,7 +166,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   static $options: ZuiOptions = {};
 
   /** @internal */
-  static $theme: ZThemeClass
+  static $theme: ZThemeClass;
 
   static settingVuetify (vuetify: any) {
     ZuiCoreClass.$vuetify = vuetify
@@ -155,17 +174,24 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     ZThemeClass.settingVuetify(vuetify)
   }
 
+  static setting (options?: ZuiOptions) {
+    if (options) {
+      ZuiCoreClass.$options = options
+      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '')
+      ZMessageClass.appId = options.appId || 'app'
+    }
+  }
+
   static genInstance (): ZuiCoreClass {
     if (!instance) {
-      const message = 'Zui Uninitialized, Please use the createApp/createAdmin, Initialize your app！'
-      window.console.error(message)
-      throw new Error(message)
+      instance = new ZuiCoreClass()
     }
     return instance
   }
 
   static install (Vue: VueConstructor, options: ZuiOptions) {
-    const core = new ZuiCoreClass(options)
+    ZuiCoreClass.setting(options)
+    const core = ZuiCoreClass.genInstance()
 
     if (!(ZuiCoreClass.install as any).initialized) {
       (ZuiCoreClass.install as any).initialized = true

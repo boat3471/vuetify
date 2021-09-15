@@ -10,6 +10,9 @@ const ZApp = mixins(VApp).extend({
       default: false,
     },
   },
+  mounted () {
+    this.$ui.emit('ready')
+  },
   render (h) {
     let wrapper: VNode[] = []
     if (this.noWrap) {
