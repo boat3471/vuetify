@@ -3470,6 +3470,27 @@
     ],
     "description": ""
   },
+  "z-admin": {
+    "attributes": [
+      "project-name",
+      "toolbar-color",
+      "toolbar-dark",
+      "toolbar-elevation"
+    ],
+    "description": ""
+  },
+  "z-view403": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-view404": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-view500": {
+    "attributes": [],
+    "description": ""
+  },
   "z-color-selector": {
     "attributes": [
       "default-value",
@@ -3505,27 +3526,6 @@
       "start",
       "value"
     ],
-    "description": ""
-  },
-  "z-admin": {
-    "attributes": [
-      "project-name",
-      "toolbar-color",
-      "toolbar-dark",
-      "toolbar-elevation"
-    ],
-    "description": ""
-  },
-  "z-view403": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-view404": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-view500": {
-    "attributes": [],
     "description": ""
   }
 }
