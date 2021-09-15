@@ -4,7 +4,7 @@ import ZView403 from '../components/ZAdmin/ZView403'
 import ZView500 from '../components/ZAdmin/ZView500'
 import ZView404 from '../components/ZAdmin/ZView404'
 import ZDefaultLogin from '../components/ZAdmin/ZDefaultLogin'
-import ZViewRoot from '../components/ZAdmin/ZViewRoot'
+import ZAdmin from '../components/ZAdmin'
 import { ZMenuOption, ZRouterOptions } from '../../../types'
 
 /**
@@ -56,7 +56,7 @@ export function genRoutesByOptions (options: ZRouterOptions, menus: ZMenuOption[
   const route403: RouteConfig = { name: 'r__403', path: '/403', component: ZView403 }
   const route404: RouteConfig = { name: 'r__404', path: '/404', component: ZView404 }
   const routeNotFound: RouteConfig = { name: 'r__not__found', path: '*', component: ZView404 }
-  routeRoot = routeRoot || { name: 'r__root', path: '/*', component: ZViewRoot, children: [routeNotFound] }
+  routeRoot = routeRoot || { name: 'r__root', path: '/*', component: ZAdmin, children: [routeNotFound] }
 
   /** 路由集 */
   const routes: RouteConfig[] = [

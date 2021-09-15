@@ -4,24 +4,25 @@ import './styles/ZAdmin.scss'
 
 export const ZViewAdmin = Vue.extend({
   name: 'z-admin-application',
-  props: {
-  },
+  props: {},
   data () {
     return {}
   },
-  watch: {
-  },
+  watch: {},
   created () {
   },
   mounted () {
   },
-  methods: {
-  },
+  methods: {},
   render (h): VNode {
     const RouterView = Vue.component('RouterView')
-    return h(ZApp, { staticClass: 'z-admin-application' }, [
-      h(RouterView),
-    ])
+    return h(ZApp,
+      {
+        staticClass: 'z-admin-application',
+        props: { noWrap: true },
+      },
+      [h(RouterView)]
+    )
   },
 })
 

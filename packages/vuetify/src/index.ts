@@ -10,6 +10,9 @@ import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
 import { ZRouterClass } from './zui/ZRouter'
 
+// ZUI Styles
+import './zui/styles/main.scss'
+
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(Zui)
 }

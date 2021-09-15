@@ -60,6 +60,9 @@ export const ZViewRoot = Vue.extend({
     showNavIcon (): boolean {
       return this.$themeStore.mainNavMode === MainNavMode.Visible
     },
+    appWrapClass (): string {
+      return ''
+    },
   },
   watch: {
     projectName (val) {
@@ -109,7 +112,10 @@ export const ZViewRoot = Vue.extend({
         return ''
       }
       /* 导航按钮 */
-      const appBarNavIcon = this.showNavIcon ? h(ZAppBarNavIcon, { style: { marginRight: '16px' }, on: { click: this.onShowNavDrawer } }) : ''
+      const appBarNavIcon = this.showNavIcon ? h(ZAppBarNavIcon, {
+        style: { marginRight: '16px' },
+        on: { click: this.onShowNavDrawer },
+      }) : ''
 
       /* logo插槽 */
       const logoSlot = getSlot(this, 'logo') || h(ZDefaultLogo, { staticClass: 'mr-3' })
@@ -215,7 +221,15 @@ export const ZViewRoot = Vue.extend({
         return mainAreaSlot
       }
       return [
-        h(ZMain, { staticClass: 'z-admin-main' }, [mainSlot]),
+        h(ZMain, {
+          staticClass: 'z-admin-main',
+          props: {
+            noWrap: false,
+            noOverflow: true,
+          },
+        },
+        [mainSlot]
+        ),
       ]
     },
     genAppFooter (h: CreateElement): VNode[] {
@@ -240,7 +254,11 @@ export const ZViewRoot = Vue.extend({
           dark: this.toolbarDark,
         },
       }, [
-        this.showNavIcon ? h(ZIcon, { staticClass: 'mr-3', props: { size: 14 }, on: { click: this.onShowNavDrawer } }, ['mdi-menu']) : '',
+        this.showNavIcon ? h(ZIcon, {
+          staticClass: 'mr-3',
+          props: { size: 14 },
+          on: { click: this.onShowNavDrawer },
+        }, ['mdi-menu']) : '',
         footerSlot,
       ])
       return getSlot(this, 'footer-area') || [defaultFooter]
@@ -284,7 +302,7 @@ export const ZViewRoot = Vue.extend({
 
   render (h): VNode {
     return h('div', {
-      staticClass: 'z-admin-main-wrap',
+      staticClass: `${this.appWrapClass} z-admin-main-wrap`,
       style: {},
     }, [
       this.genAppBar(h),

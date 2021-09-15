@@ -9,11 +9,21 @@ const ZMain = mixins(VMain).extend({
       type: Boolean,
       default: false,
     },
+    noOverflow: {
+      type: Boolean,
+      default: false,
+    },
   },
   render (h): VNode {
+    const styles = this.styles as any
+    const styleWrap: any = {}
+    if (this.noOverflow) {
+      styles.height = '100vh'
+      styleWrap.overflowY = 'auto'
+    }
     const data = {
       staticClass: 'v-main',
-      style: this.styles,
+      style: styles,
       ref: 'main',
     }
 
@@ -21,7 +31,7 @@ const ZMain = mixins(VMain).extend({
     if (this.noWrap) {
       wrapper = this.$slots.default || []
     } else {
-      wrapper = [h('div', { staticClass: 'v-main__wrap' }, this.$slots.default)]
+      wrapper = [h('div', { staticClass: 'v-main__wrap', style: styleWrap }, this.$slots.default)]
     }
 
     return h(this.tag, data, [...wrapper])

@@ -2,3 +2,14 @@
 @import "./small.scss";
 @import "./large.scss";
 @import "./x-large.scss";
+
+.v-input--dense {
+  .v-label {
+    font-size: 12px;
+  }
+}
+
+.v-input--selection-controls {
+  margin-top: 0;
+  padding-top: 0;
+}
