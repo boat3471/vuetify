@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/zui/createMenus.ts"],"names":[],"mappings":";;;;;;;AAEM,SAAU,WAAV,CAAuB,KAAvB,EAA2C;AAC/C,SAAO,KAAP;AACD","sourcesContent":["import { ZMenuOption } from '../../types'\n\nexport function createMenus (menus: ZMenuOption[]): ZMenuOption[] {\n  return menus\n}\n"],"sourceRoot":"","file":"createMenus.js"}
