@@ -7,13 +7,13 @@ exports.createApp = createApp;
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _components = require("../components");
-
 var _ZuiCore = require("./ZuiCore");
 
 var _ZRouter = require("./ZRouter");
 
 var _createZui = require("./createZui");
+
+var _ZApp = require("../components/VApp/ZApp");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,31 +25,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /**
  * 创建主程序
- * @param createElement
- * @param options
  */
-function createMain(createElement, options) {
+function createMain(h, options, appMain, appHome) {
+  var isRenderRouterView = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   options = options || {};
-  var children = [];
-  var appHome = options.appHome ? createElement(options.appHome) : null;
-
-  if (!appHome) {
-    if (options.componentOptions && options.componentOptions.router) {
-      children.push(createElement(_vue.default.component('RouterView')));
-    }
-  } else {
-    children.push(appHome);
-  }
-
-  return createElement( // 主视图
-  options.appMain || _components.ZApp, // 主视图配置选项
-  {
+  var children = isRenderRouterView ? h('RouterView') : appHome ? h(appHome) : h('');
+  return h(appMain || _ZApp.ZApp, {
     staticClass: "z-app ".concat(options.appClass || ''),
     props: {
       id: options.appId || 'app'
     }
-  }, // 子元素列表
-  children);
+  }, [children]);
 }
 /**
  * 创建APP, 基于@zwd/z-ui
@@ -58,10 +44,7 @@ function createMain(createElement, options) {
 
 
 function createApp(options) {
-  if (!options) {
-    options = options || {};
-  } // 安装 zui-core
-
+  options = options || {}; // 安装 zui-core
 
   _vue.default.use(_ZuiCore.ZuiCoreClass, options);
 
@@ -69,17 +52,36 @@ function createApp(options) {
       $theme = _ZuiCoreClass$genInst.$theme;
 
   var presetOptions = $theme.getDefaultPreset(options.presetOptions);
-  var componentOptions = options.componentOptions || {};
   var ui = (0, _createZui.createZui)(presetOptions, options.useOptions);
-  componentOptions.router && (_ZRouter.ZRouterClass.router = componentOptions.router);
 
   _ZuiCore.ZuiCoreClass.settingVuetify(ui.framework);
+
+  var componentOptions = options.componentOptions || {};
+  var appRouter = _ZRouter.ZRouterClass.appRouter;
+  var appMain;
+  var appHome;
+  var isRenderRouterView = false;
+
+  if (appRouter) {
+    appMain = appRouter.appMain;
+    appHome = appRouter.appHome;
+    isRenderRouterView = appRouter.isRenderRouterView;
+  } // 如果用户传了自定义的 router
+
+
+  if (componentOptions.router) {
+    _ZRouter.ZRouterClass.router = componentOptions.router;
+  } else {
+    appMain = options.appMain;
+    appHome = options.appHome;
+    isRenderRouterView = false;
+  }
 
   _ZuiCore.ZuiCoreClass.$app = new _vue.default(_objectSpread({
     el: options.appId || '#app',
     vuetify: ui,
     render: function render(createElement) {
-      return createMain(createElement, options);
+      return createMain(createElement, options, appMain, appHome, isRenderRouterView);
     }
   }, componentOptions));
   return _ZuiCore.ZuiCoreClass.$app;

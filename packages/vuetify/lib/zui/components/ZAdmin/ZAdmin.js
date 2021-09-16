@@ -8,8 +8,8 @@ import { ZDefaultMenus } from './ZDefaultMenus';
 import { ZDefaultThemeOptionPanel } from './ZDefaultThemeOptionPanel';
 import { ZDefaultNavDrawer } from './menu/ZDefaultNavDrawer';
 import "../../../../src/zui/components/ZAdmin/styles/ZViewRoot.scss";
-export const ZViewRoot = Vue.extend({
-  name: 'z-view-root',
+export const ZAdmin = Vue.extend({
+  name: 'z-admin',
   props: {
     toolbarDark: {
       type: Boolean,
@@ -50,10 +50,6 @@ export const ZViewRoot = Vue.extend({
 
     showNavIcon() {
       return this.$themeStore.mainNavMode === MainNavMode.Visible;
-    },
-
-    appWrapClass() {
-      return '';
     }
 
   },
@@ -243,7 +239,11 @@ export const ZViewRoot = Vue.extend({
       }
 
       const footerSlot = getSlot(this, 'footer-area') || [h('span', {
-        staticClass: 'text-truncate subtitle-2'
+        staticClass: 'text-truncate subtitle-2',
+        style: {
+          transform: 'scale(0.85)',
+          transformOrigin: 'left'
+        }
       }, [`Copyright © 2019-2020 ${this.projectDisplayName} | Powered By ZPMC`])];
       const defaultFooter = h(ZFooter, {
         staticClass: 'z-admin-footer',
@@ -312,11 +312,11 @@ export const ZViewRoot = Vue.extend({
 
   render(h) {
     return h('div', {
-      staticClass: `${this.appWrapClass} z-admin-main-wrap`,
+      staticClass: `z-admin-main-wrap`,
       style: {}
     }, [this.genAppBar(h), this.genAppMenus(h), this.genAppMain(h), this.genAppFooter(h), this.genAppDefaultThemeOptionPanel(h), this.genAppFloatMenus(h), this.genExitButton(h)]);
   }
 
 });
-export default ZViewRoot;
-//# sourceMappingURL=ZViewRoot.js.map
+export default ZAdmin;
+//# sourceMappingURL=ZAdmin.js.map

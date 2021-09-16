@@ -1,6 +1,6 @@
 {
   "name": "@zwd/z-ui",
-  "version": "2.5.806",
+  "version": "2.5.807-beta.2",
   "vuetifyVersion": "2.5.8",
   "description": "Vue Material Component Framework",
   "publishConfig": {
@@ -41,7 +41,6 @@
     "types/"
   ],
   "scripts": {
-    "prepublishOnly": "yarn build",
     "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch",
     "dev": "node build/refactor.vuetify.loader.js && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --hot",
     "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module && yarn build:mdi",

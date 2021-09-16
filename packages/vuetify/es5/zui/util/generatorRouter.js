@@ -4,30 +4,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.genExceptionRoute = genExceptionRoute;
-exports.addNotFoundRoute = addNotFoundRoute;
 exports.genRoutesByOptions = genRoutesByOptions;
-exports.genAppRoutesByOptions = genAppRoutesByOptions;
 exports.genRoutesByMenus = genRoutesByMenus;
 exports.createRoutesByMenus = createRoutesByMenus;
 exports.genFullPath = genFullPath;
 
-var _ZView = _interopRequireDefault(require("../components/ZAdmin/ZView403"));
+var _vue = _interopRequireDefault(require("vue"));
 
-var _ZView2 = _interopRequireDefault(require("../components/ZAdmin/ZView500"));
+var _ZAdmin = require("../components/ZAdmin");
 
-var _ZView3 = _interopRequireDefault(require("../components/ZAdmin/ZView404"));
-
-var _ZDefaultLogin = _interopRequireDefault(require("../components/ZAdmin/ZDefaultLogin"));
-
-var _ZAdmin = _interopRequireDefault(require("../components/ZAdmin"));
+var _debug = _interopRequireDefault(require("./debug"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
@@ -37,11 +29,25 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * 生成异常路由
- * @param name
- * @param path
- */
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var defaultHome = _vue.default.extend({
+  name: 'z-admin-default-home',
+  render: function render(h) {
+    return h('div', {
+      staticClass: 'z-admin-default-home'
+    });
+  }
+});
+/** 生成异常路由 */
+
+
 function genExceptionRoute() {
   var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var path = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -49,125 +55,147 @@ function genExceptionRoute() {
   list.push({
     name: "".concat(name, "-403"),
     path: "".concat(path, "/403").replace(/\/\//g, '/'),
-    component: _ZView.default
+    component: _ZAdmin.ZView403
   });
   list.push({
     name: "".concat(name, "-500"),
     path: "".concat(path, "/500").replace(/\/\//g, '/'),
-    component: _ZView2.default
+    component: _ZAdmin.ZView500
   });
   list.push({
     name: "".concat(name, "-404"),
     path: "".concat(path, "/*").replace(/\/\//g, '/'),
-    component: _ZView3.default
+    component: _ZAdmin.ZView404
   });
   return list;
 }
-/**
- * 添加404
- * @param route
- * @param notFound
- */
+/** 添加404 */
 
 
-function addNotFoundRoute(route, notFound) {
+function addNotFoundRoute(route, notFoundComponent) {
   if (route.children && route.children.length > 0) {
-    if (route.path !== '/') {
+    // 如果已经存在，则不添加
+    var needed = !(route.children.some(function (i) {
+      return i.path === '*';
+    }) || route.path === '/' || route.path === '*');
+
+    if (needed) {
       route.children.push({
         path: '*',
-        component: notFound
+        component: notFoundComponent
       });
     }
 
     route.children.forEach(function (child) {
-      return addNotFoundRoute(child, notFound);
+      return addNotFoundRoute(child, notFoundComponent);
     });
   }
+}
+
+_debug.default.ignore(addNotFoundRoute);
+
+function parseUsrRoutes(routes, parentPath) {
+  var list = [];
+  routes.forEach(function (route) {
+    if (route) {
+      route.path = genFullPath(route.path);
+      route.name = route.name || "usr-".concat(route.path.replace(/\//g, '-'));
+      list.push(route);
+    }
+  });
+  return list;
+}
+
+function genComp(usr, def) {
+  if (typeof usr === 'boolean') {
+    return usr ? def : undefined;
+  }
+
+  return usr || def;
 }
 /**
  * 根据选项生成路由列表
  */
 
 
-function genRoutesByOptions(options, menus, routeRoot) {
-  var routerOptions = options.options || {};
+function genRoutesByOptions(options) {
+  var NotFoundElement = genComp(options.appNotFound, _ZAdmin.ZView404);
+  var NotFoundRoute = {
+    path: '*',
+    component: NotFoundElement
+  };
   var routeLogin = {
     name: 'r__login',
     path: '/login',
-    component: _ZDefaultLogin.default
+    component: genComp(options.appLogin, _ZAdmin.ZDefaultLogin)
   };
   var route500 = {
     name: 'r__500',
     path: '/500',
-    component: _ZView2.default
+    component: genComp(options.appServerError, _ZAdmin.ZView500)
   };
   var route403 = {
     name: 'r__403',
     path: '/403',
-    component: _ZView.default
+    component: genComp(options.appNotAccess, _ZAdmin.ZView403)
   };
   var route404 = {
     name: 'r__404',
     path: '/404',
-    component: _ZView3.default
+    component: NotFoundElement
   };
-  var routeNotFound = {
-    name: 'r__not__found',
+  var routeRoot404 = {
+    name: 'r__root_404',
     path: '*',
-    component: _ZView3.default
+    component: NotFoundElement
   };
-  routeRoot = routeRoot || {
+  var routeRoot = {
     name: 'r__root',
-    path: '/*',
-    component: _ZAdmin.default,
-    children: [routeNotFound]
+    path: '/',
+    component: options.appMain
   };
-  /** 路由集 */
+  var routeHome = {
+    name: 'r__home',
+    path: '/',
+    component: options.appHome || defaultHome
+  };
+  var beforeChildren = [routeHome];
+  var middleChildren = [];
+  var afterChildren = [NotFoundRoute]; // 初始化用户自定义重定向路径
 
-  var routes = [routeLogin, route500, route403, route404, routeRoot]; // 初始化用户自定义路由
+  var routerOptions = options.routerOptions || {};
+  var usrRoutes = routerOptions.routes || [];
 
-  var tempRedirect;
-  var tempRoutes = routerOptions.routes || [];
-  tempRoutes.forEach(function (route) {
-    if (route && route.path) {
-      if (route.path === '/') {
-        tempRedirect = route.redirect || '';
-      }
+  var _usrRoutes$filter = usrRoutes.filter(function (i) {
+    return /^\/?$/.test(i.path);
+  }),
+      _usrRoutes$filter2 = _toArray(_usrRoutes$filter),
+      usrHome = _usrRoutes$filter2[0],
+      otherHomes = _usrRoutes$filter2.slice(1);
 
-      route.path = genFullPath(route.path); // 检查是否和默认路由冲突，冲突则将用户路由覆盖默认路由
+  if (usrHome) {
+    var homeElement = options.appHome || defaultHome;
 
-      var tempRoute = routes.find(function (i) {
-        return i.path === route.path;
-      });
-
-      if (tempRoute) {
-        Object.assign(tempRoute, route);
-      } else {
-        // 给路由增加 404
-        addNotFoundRoute(route, route404.component);
-        routes.splice(4, 0, route);
-      }
+    if ('component' in usrHome && usrHome.component) {
+      homeElement = usrHome.component;
     }
-  });
-  addNotFoundRoute(routeRoot, route404.component);
-  var redirect = options.routeHome ? options.routeHome.redirect : tempRedirect || '/home';
-  routeRoot.children = createRoutesByMenus(menus, redirect);
-  options.routeHome && Object.assign(routeRoot, options.routeHome);
-  options.routeLogin && Object.assign(routeLogin, options.routeLogin);
-  options.route500 && Object.assign(route500, options.route500);
-  options.route403 && Object.assign(route403, options.route403);
-  options.route404 && Object.assign(route404, options.route404);
-  options.route404 && Object.assign(routeNotFound, options.route404);
-  return routes;
-}
 
-function genAppRoutesByOptions(options, menus) {
-  var routeNotFound = {
-    name: 'r__not__found',
-    path: '/*',
-    component: _ZView3.default
-  };
-  return genRoutesByOptions(options, menus, routeNotFound);
+    routeHome = _objectSpread({
+      name: 'r__home'
+    }, usrHome, {
+      path: '/',
+      component: homeElement
+    });
+    beforeChildren = [routeHome].concat(_toConsumableArray(otherHomes));
+  } // console.info('usrRoutes', usrRedirect, usrRoutes)
+  // const redirect = usrRedirect || ''
+  // routeRoot.children = createRoutesByMenus(menus, redirect)
+  // addNotFoundRoute(routeRoot, Comp404)
+
+
+  middleChildren.push.apply(middleChildren, _toConsumableArray(parseUsrRoutes(usrRoutes, '/')));
+  routeRoot.children = [].concat(_toConsumableArray(beforeChildren), middleChildren, afterChildren);
+  return [routeLogin, route500, route403, route404, routeRoot, routeRoot404];
 }
 /**
  * 根据菜单生成路由列表

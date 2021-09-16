@@ -1,30 +1,24 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { genAppRoutesByOptions, genRoutesByOptions } from './util/generatorRouter';
+import { ZRouterClass } from './ZRouter';
 /**
  * 创建路由，可根据菜单生成路由，菜单为可选项
  * @param options
- * @param menus
  */
 
-export function createRouter(options, menus) {
+export function createRouter(options) {
   Vue.use(VueRouter);
-  const routes = genAppRoutesByOptions(options, menus || []);
-  const routerOptions = options.options || Object.create(null);
-  routerOptions.routes = routes;
-  return new VueRouter(routerOptions);
+  const zRouter = ZRouterClass.genAppRouter(options);
+  return zRouter.getRouter();
 }
 /**
  * 创建Admin系统路由，可根据菜单生成路由，菜单为可选项
  * @param options
- * @param menus
  */
 
-export function createAdminRouter(options, menus) {
+export function createAdminRouter(options) {
   Vue.use(VueRouter);
-  const routes = genRoutesByOptions(options, menus || []);
-  const routerOptions = options.options || Object.create(null);
-  routerOptions.routes = routes;
-  return new VueRouter(routerOptions);
+  const zRouter = ZRouterClass.genAdminRouter(options);
+  return zRouter.getRouter();
 }
 //# sourceMappingURL=createRouter.js.map

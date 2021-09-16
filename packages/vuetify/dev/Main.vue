@@ -1,5 +1,6 @@
 <template>
-  <div>app-home-{{ msg }}</div>
+  <z-admin class="my-app">
+  </z-admin>
 </template>
 
 <script>
@@ -19,9 +20,6 @@
       },
     },
     mounted () {
-      if (this.$route) {
-        this.msg = JSON.stringify(this.$route.meta)
-      }
     },
   }
 </script>

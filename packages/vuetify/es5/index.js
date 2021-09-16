@@ -17,9 +17,6 @@ var _createRouter = require("./zui/createRouter");
 
 var _ZuiCore = require("./zui/ZuiCore");
 
-require("../src/zui/styles/main.scss");
-
-// ZUI Styles
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(_framework.Zui);
 }

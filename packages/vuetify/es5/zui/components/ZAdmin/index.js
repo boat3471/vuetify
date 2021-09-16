@@ -3,6 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "ZAdminApp", {
+  enumerable: true,
+  get: function get() {
+    return _ZAdminApp.default;
+  }
+});
+Object.defineProperty(exports, "ZAdmin", {
+  enumerable: true,
+  get: function get() {
+    return _ZAdmin.default;
+  }
+});
 Object.defineProperty(exports, "ZView403", {
   enumerable: true,
   get: function get() {
@@ -21,11 +33,17 @@ Object.defineProperty(exports, "ZView500", {
     return _ZView3.default;
   }
 });
-exports.default = exports.ZAdmin = void 0;
+Object.defineProperty(exports, "ZDefaultLogin", {
+  enumerable: true,
+  get: function get() {
+    return _ZDefaultLogin.default;
+  }
+});
+exports.default = void 0;
 
-var _vue = _interopRequireDefault(require("vue"));
+var _ZAdminApp = _interopRequireDefault(require("./ZAdminApp"));
 
-var _ZViewRoot = _interopRequireDefault(require("./ZViewRoot"));
+var _ZAdmin = _interopRequireDefault(require("./ZAdmin"));
 
 var _ZView = _interopRequireDefault(require("./ZView403"));
 
@@ -33,24 +51,10 @@ var _ZView2 = _interopRequireDefault(require("./ZView404"));
 
 var _ZView3 = _interopRequireDefault(require("./ZView500"));
 
+var _ZDefaultLogin = _interopRequireDefault(require("./ZDefaultLogin"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ZAdmin = _vue.default.extend(_ZViewRoot.default).extend({
-  name: 'z-admin',
-  computed: {
-    appWrapClass: function appWrapClass() {
-      var parent = this.$parent ? this.$parent.$parent : null;
-
-      if (parent && parent.noWrap) {
-        return 'v-application--wrap';
-      }
-
-      return '';
-    }
-  }
-});
-
-exports.ZAdmin = ZAdmin;
-var _default = ZAdmin;
+var _default = _ZAdmin.default;
 exports.default = _default;
 //# sourceMappingURL=index.js.map

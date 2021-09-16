@@ -9,13 +9,13 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _vueRouter = _interopRequireDefault(require("vue-router"));
 
-var _ZViewAdmin = _interopRequireDefault(require("./components/ZAdmin/ZViewAdmin"));
+var _ZAdmin = require("./components/ZAdmin");
 
 var _ZuiCore = require("./ZuiCore");
 
-var _ZRouter = require("./ZRouter");
-
 var _createZui = require("./createZui");
+
+var _ZRouter = require("./ZRouter");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,18 +28,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /**
  * 创建主程序
  * @internal
- * @param h
- * @param options
  */
-function createMain(h, options) {
-  return h( // 主视图, 及其选项
-  _ZViewAdmin.default, {
+function createMain(h, options, appHome) {
+  return h(_ZAdmin.ZAdminApp, {
     staticClass: "z-app ".concat(options.appClass || ''),
     props: {
       id: options.appId || 'app'
     }
   }, // 子元素列表
-  [options.appHome ? h(options.appHome) : null]);
+  [appHome ? h(appHome) : '']);
 }
 /**
  * 创建Admin, 基于 @zwd/z-ui
@@ -48,10 +45,7 @@ function createMain(h, options) {
 
 
 function createAdmin(options) {
-  if (!options) {
-    options = options || {};
-  } // 安装 vue-router
-
+  options = options || {}; // 安装 vue-router
 
   _vue.default.use(_vueRouter.default); // 安装 zui-core
 
@@ -60,7 +54,6 @@ function createAdmin(options) {
 
   var _ZuiCoreClass$genInst = _ZuiCore.ZuiCoreClass.genInstance(),
       $menu = _ZuiCoreClass$genInst.$menu,
-      $router = _ZuiCoreClass$genInst.$router,
       $theme = _ZuiCoreClass$genInst.$theme,
       $auth = _ZuiCoreClass$genInst.$auth; // 设置认证
 
@@ -72,26 +65,36 @@ function createAdmin(options) {
   var presetOptions = $theme.getDefaultPreset(options.presetOptions);
   var ui = (0, _createZui.createZui)(presetOptions, options.useOptions);
 
-  _ZuiCore.ZuiCoreClass.settingVuetify(ui.framework); // 设置路由管理器（Router）
-
+  _ZuiCore.ZuiCoreClass.settingVuetify(ui.framework);
 
   var componentOptions = options.componentOptions || {};
-  var router = componentOptions.router;
 
-  if (!router) {
-    router = $router.setting(options.routerOptions || {}, options.menus || []);
+  var adminRouter = _ZRouter.ZRouterClass.adminRouter || _ZRouter.ZRouterClass.genAdminRouter({
+    appMain: options.appMain,
+    appHome: options.appHome
+  });
+
+  var router = componentOptions.router;
+  var appHome;
+
+  if (adminRouter) {
+    router = adminRouter.getRouter();
+    appHome = adminRouter.appHome;
   }
 
-  _ZRouter.ZRouterClass.router = router; // 生成 vue 选项
+  if (router) {
+    componentOptions.router = router;
+    _ZRouter.ZRouterClass.router = router;
+  } // 生成 vue 选项
+
 
   var vueOptions = _objectSpread({
     el: options.appId || '#app',
     vuetify: ui,
     mounted: function mounted() {},
     render: function render(h) {
-      return createMain(h, options);
-    },
-    router: router
+      return createMain(h, options, appHome || options.appHome);
+    }
   }, componentOptions);
 
   _ZuiCore.ZuiCoreClass.$app = new _vue.default(vueOptions);

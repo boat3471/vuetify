@@ -12810,6 +12810,7 @@
 .v-time-picker-title__time span {
   font-size: 56px;
 }
+
 .z-default-main-menu {
   padding-bottom: 0;
 }
@@ -12833,6 +12834,16 @@
 }
 .z-admin-application.v-application--is-ltr .v-list--dense .v-list-item .v-list-item__icon > .v-icon {
   font-size: 20px;
+}
+.z-default-login {
+  height: 100%;
+}
+.z-default-login .z-default-login-body {
+  height: 100%;
+}
+.z-default-login .z-default-login-input .v-text-field__details {
+  margin-bottom: 0;
+  padding: 0;
 }
 @charset "UTF-8";
 @-webkit-keyframes v-shake {
@@ -30568,15 +30579,38 @@ html.overflow-y-hidden {
     float: left !important;
   }
 }
-.z-default-login {
-  height: 100%;
+/* todo 全局滚动条样式修订 */
+.theme--dark ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-.z-default-login .z-default-login-body {
-  height: 100%;
+.theme--dark ::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  background: #7a7a7a;
 }
-.z-default-login .z-default-login-input .v-text-field__details {
-  margin-bottom: 0;
-  padding: 0;
+.theme--dark ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  background: #363636;
+}
+
+.theme--light ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.theme--light ::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+  background: #c8c8c8;
+}
+.theme--light ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(234, 234, 234, 0.8);
+}
+
+html {
+  overflow-y: auto;
 }
 .z-modal.v-dialog > .v-card > .v-card__title {
   padding: 8px 18px;
@@ -30615,39 +30649,6 @@ html.overflow-y-hidden {
   right: auto;
   pointer-events: none;
   z-index: 1000;
-}
-html {
-  overflow-y: auto;
-}
-@charset "UTF-8";
-/* todo 全局滚动条样式修订 */
-.theme--dark ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.theme--dark ::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  background: #7a7a7a;
-}
-.theme--dark ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  background: #363636;
-}
-
-.theme--light ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.theme--light ::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
-  background: #c8c8c8;
-}
-.theme--light ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  background: rgba(234, 234, 234, 0.8);
 }
 
 /*# sourceMappingURL=zui.css.map*/

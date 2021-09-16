@@ -1,25 +1,22 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import ZViewAdmin from './components/ZAdmin/ZViewAdmin';
+import { ZAdminApp } from './components/ZAdmin';
 import { ZuiCoreClass } from './ZuiCore';
-import { ZRouterClass } from './ZRouter';
 import { createZui } from './createZui';
+import { ZRouterClass } from './ZRouter';
 /**
  * 创建主程序
  * @internal
- * @param h
- * @param options
  */
 
-function createMain(h, options) {
-  return h( // 主视图, 及其选项
-  ZViewAdmin, {
+function createMain(h, options, appHome) {
+  return h(ZAdminApp, {
     staticClass: `z-app ${options.appClass || ''}`,
     props: {
       id: options.appId || 'app'
     }
   }, // 子元素列表
-  [options.appHome ? h(options.appHome) : null]);
+  [appHome ? h(appHome) : '']);
 }
 /**
  * 创建Admin, 基于 @zwd/z-ui
@@ -28,17 +25,13 @@ function createMain(h, options) {
 
 
 export function createAdmin(options) {
-  if (!options) {
-    options = options || {};
-  } // 安装 vue-router
-
+  options = options || {}; // 安装 vue-router
 
   Vue.use(VueRouter); // 安装 zui-core
 
   Vue.use(ZuiCoreClass, options);
   const {
     $menu,
-    $router,
     $theme,
     $auth
   } = ZuiCoreClass.genInstance(); // 设置认证
@@ -49,16 +42,25 @@ export function createAdmin(options) {
 
   const presetOptions = $theme.getDefaultPreset(options.presetOptions);
   const ui = createZui(presetOptions, options.useOptions);
-  ZuiCoreClass.settingVuetify(ui.framework); // 设置路由管理器（Router）
-
+  ZuiCoreClass.settingVuetify(ui.framework);
   const componentOptions = options.componentOptions || {};
+  const adminRouter = ZRouterClass.adminRouter || ZRouterClass.genAdminRouter({
+    appMain: options.appMain,
+    appHome: options.appHome
+  });
   let router = componentOptions.router;
+  let appHome;
 
-  if (!router) {
-    router = $router.setting(options.routerOptions || {}, options.menus || []);
+  if (adminRouter) {
+    router = adminRouter.getRouter();
+    appHome = adminRouter.appHome;
   }
 
-  ZRouterClass.router = router; // 生成 vue 选项
+  if (router) {
+    componentOptions.router = router;
+    ZRouterClass.router = router;
+  } // 生成 vue 选项
+
 
   const vueOptions = {
     el: options.appId || '#app',
@@ -67,10 +69,9 @@ export function createAdmin(options) {
     mounted() {},
 
     render(h) {
-      return createMain(h, options);
+      return createMain(h, options, appHome || options.appHome);
     },
 
-    router,
     ...componentOptions
   };
   ZuiCoreClass.$app = new Vue(vueOptions);

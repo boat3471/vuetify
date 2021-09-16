@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.ZViewRoot = void 0;
+exports.default = exports.ZAdmin = void 0;
 
 var _vue = _interopRequireDefault(require("vue"));
 
@@ -27,8 +27,8 @@ require("../../../../src/zui/components/ZAdmin/styles/ZViewRoot.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ZViewRoot = _vue.default.extend({
-  name: 'z-view-root',
+var ZAdmin = _vue.default.extend({
+  name: 'z-admin',
   props: {
     toolbarDark: {
       type: Boolean,
@@ -65,9 +65,6 @@ var ZViewRoot = _vue.default.extend({
     },
     showNavIcon: function showNavIcon() {
       return this.$themeStore.mainNavMode === _options.MainNavMode.Visible;
-    },
-    appWrapClass: function appWrapClass() {
-      return '';
     }
   },
   watch: {
@@ -259,7 +256,11 @@ var ZViewRoot = _vue.default.extend({
       }
 
       var footerSlot = (0, _helpers.getSlot)(this, 'footer-area') || [h('span', {
-        staticClass: 'text-truncate subtitle-2'
+        staticClass: 'text-truncate subtitle-2',
+        style: {
+          transform: 'scale(0.85)',
+          transformOrigin: 'left'
+        }
       }, ["Copyright \xA9 2019-2020 ".concat(this.projectDisplayName, " | Powered By ZPMC")])];
       var defaultFooter = h(_components.ZFooter, {
         staticClass: 'z-admin-footer',
@@ -327,13 +328,13 @@ var ZViewRoot = _vue.default.extend({
   },
   render: function render(h) {
     return h('div', {
-      staticClass: "".concat(this.appWrapClass, " z-admin-main-wrap"),
+      staticClass: "z-admin-main-wrap",
       style: {}
     }, [this.genAppBar(h), this.genAppMenus(h), this.genAppMain(h), this.genAppFooter(h), this.genAppDefaultThemeOptionPanel(h), this.genAppFloatMenus(h), this.genExitButton(h)]);
   }
 });
 
-exports.ZViewRoot = ZViewRoot;
-var _default = ZViewRoot;
+exports.ZAdmin = ZAdmin;
+var _default = ZAdmin;
 exports.default = _default;
-//# sourceMappingURL=ZViewRoot.js.map
+//# sourceMappingURL=ZAdmin.js.map
