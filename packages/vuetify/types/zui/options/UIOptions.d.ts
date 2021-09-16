@@ -1,9 +1,9 @@
-import { Component, ComponentOptions } from 'vue'
+import { ComponentOptions } from 'vue'
+import { RouterOptions } from 'vue-router/types/router'
 import { GlobalVuetifyPreset } from '../../services/presets'
-import { VuetifyUseOptions } from '../../index'
+import { RouteComponent, VuetifyUseOptions } from '../../index'
 import { ZAuthOptions } from './AuthOptions'
 import { ZMenuOption } from './MenuOptions'
-import { ZRouterOptions } from './RouterOptions'
 
 export type ZuiEventType =
   'changeDark'
@@ -50,12 +50,12 @@ export interface ZuiOptions {
   /**
    * 配置App主视图，默认值为：ZApp;
    */
-  appMain?: Component
+  appMain?: RouteComponent
 
   /**
    * 配置App主页，默认值为：null;
    */
-  appHome?: Component
+  appHome?: RouteComponent
 
   /**
    * 配置UI库全局默认大小;
@@ -83,11 +83,60 @@ export interface ZuiOptions {
   useOptions?: ZuiUseOptions
 }
 
+export interface CreateAppRouterOptions {
+  /**
+   * 配置VueRouter选项
+   */
+  routerOptions?: RouterOptions
+
+  /**
+   * 配置App主页，默认值为：null;
+   */
+  appHome?: RouteComponent
+
+  /**
+   * 配置App主页，默认值为：null;
+   */
+  appMain?: RouteComponent
+
+  /**
+   * 登录（login）页面
+   */
+  appLogin?: RouteComponent | boolean
+
+  /**
+   * 禁止访问（403）页面
+   */
+  appNotAccess?: RouteComponent | boolean
+
+  /**
+   * 找不到（404）页面
+   */
+  appNotFound?: RouteComponent | boolean
+
+  /**
+   * 服务错误（500）页面
+   */
+  appServerError?: RouteComponent | boolean
+}
+
 /**
  * 创建 App 选项
  */
 export interface CreateAppOptions extends ZuiOptions {
   componentOptions: ComponentOptions<any>
+}
+
+export interface CreateAdminRouterOptions extends CreateAppRouterOptions {
+  /**
+   * 配置主菜单选项
+   */
+  menus?: ZMenuOption[]
+
+  /**
+   * 根路径重定向地址
+   */
+  redirect?: string
 }
 
 /**
@@ -100,14 +149,14 @@ export interface CreateAdminOptions extends ZuiOptions {
   menus?: ZMenuOption[]
 
   /**
+   * 根路径重定向地址
+   */
+  redirect?: string
+
+  /**
    * 配置Vue选项
    */
   componentOptions: ComponentOptions<any>
-
-  /**
-   * 配置VueRouter选项
-   */
-  routerOptions?: ZRouterOptions
 
   /**
    * 认证
@@ -117,10 +166,10 @@ export interface CreateAdminOptions extends ZuiOptions {
   /**
    * 打开首页
    */
-  openHome: () => void
+  openHome?: () => void
 
   /**
    * 打开登录页面
    */
-  openLogin: () => void
+  openLogin?: () => void
 }

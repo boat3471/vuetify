@@ -21,8 +21,8 @@ import { ZDefaultNavDrawer } from './menu/ZDefaultNavDrawer'
 
 import './styles/ZViewRoot.scss'
 
-export const ZViewRoot = Vue.extend({
-  name: 'z-view-root',
+export const ZAdmin = Vue.extend({
+  name: 'z-admin',
   props: {
     toolbarDark: {
       type: Boolean,
@@ -59,9 +59,6 @@ export const ZViewRoot = Vue.extend({
     },
     showNavIcon (): boolean {
       return this.$themeStore.mainNavMode === MainNavMode.Visible
-    },
-    appWrapClass (): string {
-      return ''
     },
   },
   watch: {
@@ -240,6 +237,10 @@ export const ZViewRoot = Vue.extend({
         h('span',
           {
             staticClass: 'text-truncate subtitle-2',
+            style: {
+              transform: 'scale(0.85)',
+              transformOrigin: 'left',
+            },
           },
           [
             `Copyright © 2019-2020 ${this.projectDisplayName} | Powered By ZPMC`,
@@ -302,7 +303,7 @@ export const ZViewRoot = Vue.extend({
 
   render (h): VNode {
     return h('div', {
-      staticClass: `${this.appWrapClass} z-admin-main-wrap`,
+      staticClass: `z-admin-main-wrap`,
       style: {},
     }, [
       this.genAppBar(h),
@@ -316,4 +317,4 @@ export const ZViewRoot = Vue.extend({
   },
 })
 
-export default ZViewRoot
+export default ZAdmin

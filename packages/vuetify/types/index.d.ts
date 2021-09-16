@@ -1,4 +1,4 @@
-import Vue, { Component, PluginFunction, VueConstructor, DirectiveOptions } from 'vue'
+import Vue, { Component, PluginFunction, VueConstructor, DirectiveOptions, ComponentOptions, AsyncComponent } from 'vue'
 import './lib'
 import './alacarte'
 import './colors'
@@ -44,6 +44,7 @@ export type $menu = ZMenuDescription
 export type $router = ZRouterDescription
 export type $theme = ZThemeDescription
 export type $auth = ZAuthDescription
+export type RouteComponent = ComponentOptions<Vue> | typeof Vue | AsyncComponent
 
 export { ZuiCoreDescription, ZMessageDescription, ZModalDescription }
 

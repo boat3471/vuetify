@@ -1,39 +1,30 @@
 import Vue, { ComponentOptions, CreateElement, VNode } from 'vue'
-import { CreateAppOptions, Zui } from '../../types'
-import { ZApp } from '../components'
+import { CreateAppOptions, RouteComponent, Zui } from '../../types'
 import { ZuiCoreClass } from './ZuiCore'
 import { ZRouterClass } from './ZRouter'
 import { createZui } from './createZui'
+import { ZApp } from '../components/VApp/ZApp'
 
 /**
  * 创建主程序
- * @param createElement
- * @param options
  */
-function createMain (createElement: CreateElement, options: CreateAppOptions) {
+function createMain (
+  h: CreateElement,
+  options: CreateAppOptions,
+  appMain?: RouteComponent,
+  appHome?: RouteComponent,
+  isRenderRouterView = false
+) {
   options = options || {}
-  const children: VNode[] = []
-  const appHome = options.appHome ? createElement(options.appHome) : null
-  if (!appHome) {
-    if (options.componentOptions && options.componentOptions.router) {
-      children.push(createElement(Vue.component('RouterView')))
-    }
-  } else {
-    children.push(appHome)
-  }
-  return createElement(
-    // 主视图
-    options.appMain || ZApp,
-    // 主视图配置选项
-    {
-      staticClass: `z-app ${options.appClass || ''}`,
-      props: {
-        id: options.appId || 'app',
-      },
+  const children: VNode = isRenderRouterView
+    ? h('RouterView')
+    : appHome ? h(appHome) : h('')
+  return h(appMain || ZApp, {
+    staticClass: `z-app ${options.appClass || ''}`,
+    props: {
+      id: options.appId || 'app',
     },
-    // 子元素列表
-    children,
-  )
+  }, [children])
 }
 
 /**
@@ -41,24 +32,44 @@ function createMain (createElement: CreateElement, options: CreateAppOptions) {
  * @param options
  */
 export function createApp (options: CreateAppOptions): Vue {
-  if (!options) {
-    options = options || {}
-  }
+  options = options || {}
 
   // 安装 zui-core
   Vue.use(ZuiCoreClass, options)
 
   const { $theme } = ZuiCoreClass.genInstance()
   const presetOptions = $theme.getDefaultPreset(options.presetOptions)
-  const componentOptions: ComponentOptions<any> = options.componentOptions || {}
   const ui = createZui(presetOptions, options.useOptions)
-  componentOptions.router && (ZRouterClass.router = componentOptions.router)
   ZuiCoreClass.settingVuetify(ui.framework)
+
+  const componentOptions: ComponentOptions<any> = options.componentOptions || {}
+
+  const appRouter = ZRouterClass.appRouter
+
+  let appMain: RouteComponent | undefined
+  let appHome: RouteComponent | undefined
+  let isRenderRouterView = false
+
+  if (appRouter) {
+    appMain = appRouter.appMain
+    appHome = appRouter.appHome
+    isRenderRouterView = appRouter.isRenderRouterView
+  }
+
+  // 如果用户传了自定义的 router
+  if (componentOptions.router) {
+    ZRouterClass.router = componentOptions.router
+  } else {
+    appMain = options.appMain
+    appHome = options.appHome
+    isRenderRouterView = false
+  }
+
   ZuiCoreClass.$app = new Vue({
     el: options.appId || '#app',
     vuetify: ui as unknown as Zui,
     render (createElement) {
-      return createMain(createElement, options)
+      return createMain(createElement, options, appMain, appHome, isRenderRouterView)
     },
     ...componentOptions,
   })

@@ -35,6 +35,7 @@ module.exports = {
     'jest/prefer-to-have-length': 'warn',
     'jest/no-standalone-expect': 'off',
     'jest/no-conditional-expect': 'off',
+    'max-statements': 'off',
   },
   overrides: [
     {
