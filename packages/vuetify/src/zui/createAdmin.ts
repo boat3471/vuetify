@@ -54,6 +54,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   const adminRouter = ZRouterClass.adminRouter || ZRouterClass.genAdminRouter({
     appMain: options.appMain,
     appHome: options.appHome,
+    redirect: options.redirect,
   })
 
   let router = componentOptions.router
