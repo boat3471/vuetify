@@ -45,7 +45,8 @@ function createMain(h, options, appHome) {
 
 
 function createAdmin(options) {
-  options = options || {}; // 安装 vue-router
+  options = options || {};
+  _ZuiCore.ZuiCoreClass.type = 'admin'; // 安装 vue-router
 
   _vue.default.use(_vueRouter.default); // 安装 zui-core
 

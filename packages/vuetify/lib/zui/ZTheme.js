@@ -21,7 +21,7 @@ const DefaultDarkColors = {
 };
 let instance;
 export class ZThemeClass extends UIEvent {
-  constructor(appKey) {
+  constructor(appKey, options) {
     super();
     this.themeStore = {};
 
@@ -43,7 +43,7 @@ export class ZThemeClass extends UIEvent {
         successColor: ZThemeClass.getColor('success', darkStatus),
         warningColor: ZThemeClass.getColor('warning', darkStatus),
         denseMode: ZThemeClass.getLocalOption('denseMode', true),
-        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', 275),
+        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', options.mainMenuWidth || 275),
         mainMenuExpandMode: ZThemeClass.getLocalOption('mainMenuExpandMode', false),
         mainNavMode: ZThemeClass.getLocalOption('mainNavMode', MainNavMode.Visible),
         mainNavPosition: ZThemeClass.getLocalOption('mainNavPosition', true),

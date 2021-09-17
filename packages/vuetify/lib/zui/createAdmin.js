@@ -25,7 +25,8 @@ function createMain(h, options, appHome) {
 
 
 export function createAdmin(options) {
-  options = options || {}; // 安装 vue-router
+  options = options || {};
+  ZuiCoreClass.type = 'admin'; // 安装 vue-router
 
   Vue.use(VueRouter); // 安装 zui-core
 

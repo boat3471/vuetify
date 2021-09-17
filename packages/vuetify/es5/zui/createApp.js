@@ -44,7 +44,8 @@ function createMain(h, options, appMain, appHome) {
 
 
 function createApp(options) {
-  options = options || {}; // 安装 zui-core
+  options = options || {};
+  _ZuiCore.ZuiCoreClass.type = 'app'; // 安装 zui-core
 
   _vue.default.use(_ZuiCore.ZuiCoreClass, options);
 

@@ -64,7 +64,19 @@ var ZDefaultMenus = _vue.default.extend({
   destroyed: function destroyed() {
     this.$menu.offUpdateMenus(this.renderMenus);
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$router.beforeEach(function (to, from, next) {
+      next();
+
+      if (to.redirectedFrom && _this.$themeStore.mainNavMode === _options.MainNavMode.Visible) {
+        _this.$menu.resetStatus();
+
+        _this.$menu.activeByRoute();
+      }
+    });
+  },
   methods: {
     renderMenus: function renderMenus(menus) {
       if (this.$themeStore.mainNavMode === _options.MainNavMode.Flex) {
@@ -166,7 +178,7 @@ var ZDefaultMenus = _vue.default.extend({
      * 生成带路由的菜单
      */
     genPathMenu: function genPathMenu(h, item, children) {
-      var _this = this;
+      var _this2 = this;
 
       return [h(_components.ZListItem, {
         attrs: {
@@ -183,7 +195,7 @@ var ZDefaultMenus = _vue.default.extend({
           click: function click() {
             if (!item.active) {
               // 取消已选中的菜单激活状态
-              var lastSelectedMenu = _this.$menu.selectedMenu;
+              var lastSelectedMenu = _this2.$menu.selectedMenu;
 
               if (lastSelectedMenu) {
                 lastSelectedMenu.active = false;
@@ -191,7 +203,7 @@ var ZDefaultMenus = _vue.default.extend({
 
               item.active = true; // 设置新的激活菜单
 
-              _this.$menu.selectedMenu = item;
+              _this2.$menu.selectedMenu = item;
             }
           }
         }
@@ -217,7 +229,7 @@ var ZDefaultMenus = _vue.default.extend({
      * 生成菜单组
      */
     genGroupMenu: function genGroupMenu(h, item, children) {
-      var _this2 = this;
+      var _this3 = this;
 
       var activatorSlot = h('template', {
         slot: 'activator'
@@ -228,7 +240,7 @@ var ZDefaultMenus = _vue.default.extend({
 
       if (!mainNavMiniMode) {
         item.children && item.children.forEach(function (child) {
-          childrenNodeList.push.apply(childrenNodeList, _toConsumableArray(_this2.genMenu(h, child)));
+          childrenNodeList.push.apply(childrenNodeList, _toConsumableArray(_this3.genMenu(h, child)));
         });
       }
 
@@ -243,12 +255,20 @@ var ZDefaultMenus = _vue.default.extend({
         },
         on: {
           click: function click() {
-            _this2.$nextTick(function () {
-              if (!item.active) {
-                _this2.$menu.closeSiblingMenus(item);
-              }
+            _this3.$nextTick(function () {
+              var active = item.active; // 展开或关闭当前节点
 
               item.active = !item.active;
+
+              if (!active) {
+                // 如果可展开多个时，不执行关闭兄弟
+                if (_this3.$themeStore.mainMenuExpandMode) {
+                  return;
+                } // 关闭兄弟接节点
+
+
+                _this3.$menu.closeSiblingMenus(item);
+              }
             });
           }
         }
@@ -314,12 +334,12 @@ var ZDefaultMenus = _vue.default.extend({
     }
   },
   render: function render(h) {
-    var _this3 = this;
+    var _this4 = this;
 
     var list = [];
     var staticClass = ['z-default-main-menu'];
     this.menuData.forEach(function (item) {
-      list.push.apply(list, _toConsumableArray(_this3.genMenu(h, item)));
+      list.push.apply(list, _toConsumableArray(_this4.genMenu(h, item)));
     });
     return h(_components.ZList, {
       staticClass: staticClass.join(' '),

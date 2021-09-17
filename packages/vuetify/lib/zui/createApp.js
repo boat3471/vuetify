@@ -24,7 +24,8 @@ function createMain(h, options, appMain, appHome, isRenderRouterView = false) {
 
 
 export function createApp(options) {
-  options = options || {}; // 安装 zui-core
+  options = options || {};
+  ZuiCoreClass.type = 'app'; // 安装 zui-core
 
   Vue.use(ZuiCoreClass, options);
   const {

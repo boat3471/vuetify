@@ -69,8 +69,12 @@ const app = createAdmin({
   appMain: Main,
   appHome: App,
   menus,
+  defaultMenuWidth: 300,
   componentOptions: {
     router,
+  },
+  openHome () {
+    console.info(1111)
   },
 })
 

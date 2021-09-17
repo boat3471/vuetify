@@ -6,6 +6,7 @@ import { ZThemeClass } from './ZTheme';
 import { ZModalClass } from './ZModal';
 import { ZMessageClass } from './ZMessage';
 import { ZAuthClass } from './ZAuth';
+import debug from './util/debug';
 let instance;
 export class ZuiCoreClass extends UIEvent {
   constructor(options) {
@@ -147,6 +148,20 @@ export class ZuiCoreClass extends UIEvent {
     if (openHome) {
       openHome();
       return true;
+    } else {
+      let type = '';
+
+      switch (ZuiCoreClass.type) {
+        case 'app':
+          type = 'createApp';
+          break;
+
+        case 'admin':
+          type = 'createAdmin';
+          break;
+      }
+
+      debug.warn(`请在 ${type} 中配置 openHome，实现重定向跳转！`);
     }
 
     return false;
@@ -175,7 +190,9 @@ export class ZuiCoreClass extends UIEvent {
   static setting(options) {
     if (options) {
       ZuiCoreClass.$options = options;
-      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '');
+      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '', {
+        mainMenuWidth: options.defaultMenuWidth
+      });
       ZMessageClass.appId = options.appId || 'app';
     }
   }
@@ -244,6 +261,7 @@ export class ZuiCoreClass extends UIEvent {
   }
 
 }
+ZuiCoreClass.type = '';
 ZuiCoreClass.initialized = false;
 ZuiCoreClass.callbackList = [];
 /** @internal */

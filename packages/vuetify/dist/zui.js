@@ -39900,7 +39900,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.807-beta.4";
+  Zui.version = "2.5.807-beta.5";
   Zui.config = {
     silent: false
   };
@@ -52588,7 +52588,7 @@ var ZThemeClass =
 function (_super) {
   __extends(ZThemeClass, _super);
 
-  function ZThemeClass(appKey) {
+  function ZThemeClass(appKey, options) {
     var _this = _super.call(this) || this;
 
     _this.themeStore = {};
@@ -52611,7 +52611,7 @@ function (_super) {
         successColor: ZThemeClass.getColor('success', darkStatus),
         warningColor: ZThemeClass.getColor('warning', darkStatus),
         denseMode: ZThemeClass.getLocalOption('denseMode', true),
-        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', 275),
+        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', options.mainMenuWidth || 275),
         mainMenuExpandMode: ZThemeClass.getLocalOption('mainMenuExpandMode', false),
         mainNavMode: ZThemeClass.getLocalOption('mainNavMode', _options__WEBPACK_IMPORTED_MODULE_2__["MainNavMode"].Visible),
         mainNavPosition: ZThemeClass.getLocalOption('mainNavPosition', true),
@@ -52879,6 +52879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ZModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ZModal */ "./src/zui/ZModal.ts");
 /* harmony import */ var _ZMessage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ZMessage */ "./src/zui/ZMessage.ts");
 /* harmony import */ var _ZAuth__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ZAuth */ "./src/zui/ZAuth.ts");
+/* harmony import */ var _util_debug__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util/debug */ "./src/zui/util/debug.ts");
 var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -52904,6 +52905,7 @@ var __extends = undefined && undefined.__extends || function () {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
   };
 }();
+
 
 
 
@@ -53094,6 +53096,20 @@ function (_super) {
     if (openHome) {
       openHome();
       return true;
+    } else {
+      var type = '';
+
+      switch (ZuiCoreClass.type) {
+        case 'app':
+          type = 'createApp';
+          break;
+
+        case 'admin':
+          type = 'createAdmin';
+          break;
+      }
+
+      _util_debug__WEBPACK_IMPORTED_MODULE_8__["default"].warn("\u8BF7\u5728 " + type + " \u4E2D\u914D\u7F6E openHome\uFF0C\u5B9E\u73B0\u91CD\u5B9A\u5411\u8DF3\u8F6C\uFF01");
     }
 
     return false;
@@ -53120,7 +53136,9 @@ function (_super) {
   ZuiCoreClass.setting = function (options) {
     if (options) {
       ZuiCoreClass.$options = options;
-      ZuiCoreClass.$theme = new _ZTheme__WEBPACK_IMPORTED_MODULE_4__["ZThemeClass"](options.appKey || '');
+      ZuiCoreClass.$theme = new _ZTheme__WEBPACK_IMPORTED_MODULE_4__["ZThemeClass"](options.appKey || '', {
+        mainMenuWidth: options.defaultMenuWidth
+      });
       _ZMessage__WEBPACK_IMPORTED_MODULE_6__["ZMessageClass"].appId = options.appId || 'app';
     }
   };
@@ -53187,6 +53205,7 @@ function (_super) {
     });
   };
 
+  ZuiCoreClass.type = '';
   ZuiCoreClass.initialized = false;
   ZuiCoreClass.callbackList = [];
   /** @internal */
@@ -54011,7 +54030,19 @@ var ZDefaultMenus = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
   destroyed: function destroyed() {
     this.$menu.offUpdateMenus(this.renderMenus);
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$router.beforeEach(function (to, from, next) {
+      next();
+
+      if (to.redirectedFrom && _this.$themeStore.mainNavMode === _options__WEBPACK_IMPORTED_MODULE_3__["MainNavMode"].Visible) {
+        _this.$menu.resetStatus();
+
+        _this.$menu.activeByRoute();
+      }
+    });
+  },
   methods: {
     renderMenus: function renderMenus(menus) {
       if (this.$themeStore.mainNavMode === _options__WEBPACK_IMPORTED_MODULE_3__["MainNavMode"].Flex) {
@@ -54191,11 +54222,19 @@ var ZDefaultMenus = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
         on: {
           click: function click() {
             _this.$nextTick(function () {
-              if (!item.active) {
-                _this.$menu.closeSiblingMenus(item);
-              }
+              var active = item.active; // 展开或关闭当前节点
 
               item.active = !item.active;
+
+              if (!active) {
+                // 如果可展开多个时，不执行关闭兄弟
+                if (_this.$themeStore.mainMenuExpandMode) {
+                  return;
+                } // 关闭兄弟接节点
+
+
+                _this.$menu.closeSiblingMenus(item);
+              }
             });
           }
         }
@@ -57195,7 +57234,8 @@ function createMain(h, options, appHome) {
 
 
 function createAdmin(options) {
-  options = options || {}; // 安装 vue-router
+  options = options || {};
+  _ZuiCore__WEBPACK_IMPORTED_MODULE_3__["ZuiCoreClass"].type = 'admin'; // 安装 vue-router
 
   vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // 安装 zui-core
 
@@ -57311,7 +57351,8 @@ function createMain(h, options, appMain, appHome, isRenderRouterView) {
 
 
 function createApp(options) {
-  options = options || {}; // 安装 zui-core
+  options = options || {};
+  _ZuiCore__WEBPACK_IMPORTED_MODULE_1__["ZuiCoreClass"].type = 'app'; // 安装 zui-core
 
   vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_ZuiCore__WEBPACK_IMPORTED_MODULE_1__["ZuiCoreClass"], options);
   var $theme = _ZuiCore__WEBPACK_IMPORTED_MODULE_1__["ZuiCoreClass"].genInstance().$theme;
@@ -57930,6 +57971,117 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MainNavMode", function() { return _MainNavMode__WEBPACK_IMPORTED_MODULE_0__["MainNavMode"]; });
 
 
+
+/***/ }),
+
+/***/ "./src/zui/util/debug.ts":
+/*!*******************************!*\
+  !*** ./src/zui/util/debug.ts ***!
+  \*******************************/
+/*! exports provided: log, info, warn, error, ignore, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log", function() { return log; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "info", function() { return info; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "warn", function() { return warn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error", function() { return error; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ignore", function() { return ignore; });
+var __read = undefined && undefined.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
+var __spread = undefined && undefined.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
+};
+
+function log() {
+  var _a;
+
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  return (_a = window.console).log.apply(_a, __spread(['[ZUI]'], args));
+}
+function info() {
+  var _a;
+
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  return (_a = window.console).info.apply(_a, __spread(['[ZUI]'], args));
+}
+function warn() {
+  var _a;
+
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  return (_a = window.console).warn.apply(_a, __spread(['[ZUI]'], args));
+}
+function error() {
+  var _a;
+
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+
+  return (_a = window.console).error.apply(_a, __spread(['[ZUI]'], args));
+}
+function ignore() {
+  var args = [];
+
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  } // ignore
+
+}
+/* harmony default export */ __webpack_exports__["default"] = ({
+  info: info,
+  log: log,
+  warn: warn,
+  error: error,
+  ignore: ignore
+});
 
 /***/ }),
 

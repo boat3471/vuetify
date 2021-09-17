@@ -62,7 +62,7 @@ var ZThemeClass =
 function (_UIEvent) {
   _inherits(ZThemeClass, _UIEvent);
 
-  function ZThemeClass(appKey) {
+  function ZThemeClass(appKey, options) {
     var _this;
 
     _classCallCheck(this, ZThemeClass);
@@ -88,7 +88,7 @@ function (_UIEvent) {
         successColor: ZThemeClass.getColor('success', darkStatus),
         warningColor: ZThemeClass.getColor('warning', darkStatus),
         denseMode: ZThemeClass.getLocalOption('denseMode', true),
-        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', 275),
+        mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', options.mainMenuWidth || 275),
         mainMenuExpandMode: ZThemeClass.getLocalOption('mainMenuExpandMode', false),
         mainNavMode: ZThemeClass.getLocalOption('mainNavMode', _options.MainNavMode.Visible),
         mainNavPosition: ZThemeClass.getLocalOption('mainNavPosition', true),

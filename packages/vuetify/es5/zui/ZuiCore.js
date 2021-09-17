@@ -21,6 +21,10 @@ var _ZMessage = require("./ZMessage");
 
 var _ZAuth = require("./ZAuth");
 
+var _debug = _interopRequireDefault(require("./util/debug"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -91,6 +95,20 @@ function (_UIEvent) {
       if (openHome) {
         openHome();
         return true;
+      } else {
+        var type = '';
+
+        switch (ZuiCoreClass.type) {
+          case 'app':
+            type = 'createApp';
+            break;
+
+          case 'admin':
+            type = 'createAdmin';
+            break;
+        }
+
+        _debug.default.warn("\u8BF7\u5728 ".concat(type, " \u4E2D\u914D\u7F6E openHome\uFF0C\u5B9E\u73B0\u91CD\u5B9A\u5411\u8DF3\u8F6C\uFF01"));
       }
 
       return false;
@@ -239,7 +257,9 @@ function (_UIEvent) {
     value: function setting(options) {
       if (options) {
         ZuiCoreClass.$options = options;
-        ZuiCoreClass.$theme = new _ZTheme.ZThemeClass(options.appKey || '');
+        ZuiCoreClass.$theme = new _ZTheme.ZThemeClass(options.appKey || '', {
+          mainMenuWidth: options.defaultMenuWidth
+        });
         _ZMessage.ZMessageClass.appId = options.appId || 'app';
       }
     }
@@ -313,6 +333,7 @@ function (_UIEvent) {
 }(_UIEvent2.UIEvent);
 
 exports.ZuiCoreClass = ZuiCoreClass;
+ZuiCoreClass.type = '';
 ZuiCoreClass.initialized = false;
 ZuiCoreClass.callbackList = [];
 /** @internal */
