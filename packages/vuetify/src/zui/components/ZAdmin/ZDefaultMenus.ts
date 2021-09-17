@@ -56,6 +56,13 @@ export const ZDefaultMenus = Vue.extend({
     this.$menu.offUpdateMenus(this.renderMenus)
   },
   mounted () {
+    this.$router.beforeEach((to, from, next) => {
+      next()
+      if (to.redirectedFrom && this.$themeStore.mainNavMode === MainNavMode.Visible) {
+        this.$menu.resetStatus()
+        this.$menu.activeByRoute()
+      }
+    })
   },
   methods: {
     renderMenus (menus: ZMenuOption[]) {
@@ -223,10 +230,17 @@ export const ZDefaultMenus = Vue.extend({
           on: {
             click: () => {
               this.$nextTick(() => {
-                if (!item.active) {
+                const active = item.active
+                // 展开或关闭当前节点
+                item.active = !item.active
+                if (!active) {
+                  // 如果可展开多个时，不执行关闭兄弟
+                  if (this.$themeStore.mainMenuExpandMode) {
+                    return
+                  }
+                  // 关闭兄弟接节点
                   this.$menu.closeSiblingMenus(item)
                 }
-                item.active = !item.active
               })
             },
           },
