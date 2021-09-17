@@ -149,6 +149,11 @@ export interface CreateAdminOptions extends ZuiOptions {
   menus?: ZMenuOption[]
 
   /**
+   * 默认菜单宽度
+   */
+  defaultMenuWidth?: number
+
+  /**
    * 根路径重定向地址
    */
   redirect?: string

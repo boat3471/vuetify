@@ -12,10 +12,12 @@ import { ZThemeClass } from './ZTheme'
 import { ZModalClass } from './ZModal'
 import { ZMessageClass } from './ZMessage'
 import { ZAuthClass } from './ZAuth'
+import debug from './util/debug'
 
 let instance: ZuiCoreClass
 
 export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
+  static type: 'app' | 'admin' | '' = '';
   static initialized = false;
   static callbackList: Function[] = [];
   static readyCheck (): void {
@@ -142,6 +144,17 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     if (openHome) {
       openHome()
       return true
+    } else {
+      let type = ''
+      switch (ZuiCoreClass.type) {
+        case 'app':
+          type = 'createApp'
+          break
+        case 'admin':
+          type = 'createAdmin'
+          break
+      }
+      debug.warn(`请在 ${type} 中配置 openHome，实现重定向跳转！`)
     }
     return false
   }
@@ -184,7 +197,9 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   static setting (options?: ZuiOptions) {
     if (options) {
       ZuiCoreClass.$options = options
-      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '')
+      ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '', {
+        mainMenuWidth: (options as CreateAdminOptions).defaultMenuWidth,
+      })
       ZMessageClass.appId = options.appId || 'app'
     }
   }

@@ -34,6 +34,8 @@ function createMain (
 export function createApp (options: CreateAppOptions): Vue {
   options = options || {}
 
+  ZuiCoreClass.type = 'app'
+
   // 安装 zui-core
   Vue.use(ZuiCoreClass, options)
 
