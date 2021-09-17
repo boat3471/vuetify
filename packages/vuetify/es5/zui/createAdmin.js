@@ -71,7 +71,8 @@ function createAdmin(options) {
 
   var adminRouter = _ZRouter.ZRouterClass.adminRouter || _ZRouter.ZRouterClass.genAdminRouter({
     appMain: options.appMain,
-    appHome: options.appHome
+    appHome: options.appHome,
+    redirect: options.redirect
   });
 
   var router = componentOptions.router;

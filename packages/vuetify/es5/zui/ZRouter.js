@@ -7,8 +7,6 @@ exports.ZRouter = exports.ZRouterClass = exports.ZAdminRouter = exports.ZAppRout
 
 var _vueRouter = _interopRequireDefault(require("vue-router"));
 
-var _generatorRouter = require("./util/generatorRouter");
-
 var _components = require("../components");
 
 var _ZAdmin = require("./components/ZAdmin");
@@ -19,17 +17,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -97,6 +95,29 @@ function () {
       return this._router;
     }
   }, {
+    key: "addNotFoundRoute",
+    value: function addNotFoundRoute(route, notFoundComponent) {
+      var _this = this;
+
+      if (route.children && route.children.length > 0) {
+        // 如果已经存在，则不添加
+        var needed = !(route.children.some(function (i) {
+          return i.path === '*';
+        }) || route.path === '/' || route.path === '*');
+
+        if (needed) {
+          route.children.push({
+            path: '*',
+            component: notFoundComponent
+          });
+        }
+
+        route.children.forEach(function (child) {
+          return _this.addNotFoundRoute(child, notFoundComponent);
+        });
+      }
+    }
+  }, {
     key: "setting",
     value: function setting(options) {
       if (options) {
@@ -141,17 +162,141 @@ function (_ZAppRouter) {
       return usr || def;
     }
   }, {
+    key: "genFullPathByMenu",
+
+    /**
+     * 生成完整路径
+     * @param path
+     * @param parentPath
+     */
+    value: function genFullPathByMenu(path, parentPath) {
+      if (path.indexOf('/') !== 0) {
+        return "/".concat(parentPath || '', "/").concat(path).replace(/\/+/g, '/');
+      }
+
+      return path;
+    }
+  }, {
     key: "parseUsrRoutes",
     value: function parseUsrRoutes(routes, parentPath) {
+      var _this2 = this;
+
       var list = [];
       routes.forEach(function (route) {
         if (route) {
-          route.path = (0, _generatorRouter.genFullPath)(route.path);
+          route.path = _this2.genFullPathByMenu(route.path);
           route.name = route.name || "usr-".concat(route.path.replace(/\//g, '-'));
           list.push(route);
         }
       });
       return list;
+    }
+    /**
+     * 根据菜单生成路由列表
+     * @param menus
+     * @param rootList
+     * @param parentPath
+     */
+
+  }, {
+    key: "genRoutesByMenus",
+    value: function genRoutesByMenus(menus, rootList) {
+      var _this3 = this;
+
+      var parentPath = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '/';
+      var list = [];
+
+      if (menus) {
+        menus.forEach(function (menu) {
+          if (!menu.path && !menu.href && (!menu.children || menu.children.length < 1)) {
+            window.console.warn("\u83DC\u5355\u914D\u7F6E\u65E0\u6CD5\u751F\u6210\u8DEF\u7531: \n ".concat(JSON.stringify(menu, null, 4)));
+            return;
+          }
+
+          menu.path = menu.path || '';
+          var path = (menu.path || '').indexOf('/') === 0 ? menu.path : "".concat(parentPath, "/").concat(menu.path);
+          path = path.replace(/\/{2,}/g, '/');
+
+          if (menu.path) {
+            var route = {
+              name: menu.name,
+              path: path || '',
+              component: menu.component,
+              meta: _objectSpread({
+                name: menu.name || menu.title
+              }, menu.meta)
+            };
+
+            if (menu.redirect) {
+              route.redirect = menu.redirect;
+            }
+
+            if (menu.alias) {
+              route.alias = menu.alias;
+            }
+
+            if (menu.beforeEnter) {
+              route.beforeEnter = menu.beforeEnter;
+            }
+
+            route.name = (route.path || '').replace(/\//g, '-');
+            rootList.push(route);
+          }
+
+          if (menu.children && menu.children.length > 0) {
+            _this3.genRoutesByMenus(menu.children, rootList, path);
+          }
+        });
+      }
+
+      return list;
+    }
+    /** 生成异常路由 */
+
+  }, {
+    key: "genExceptionRoute",
+    value: function genExceptionRoute() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var path = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var list = [];
+      list.push({
+        name: "".concat(name, "-403"),
+        path: "".concat(path, "/403").replace(/\/\//g, '/'),
+        component: _ZAdmin.ZView403
+      });
+      list.push({
+        name: "".concat(name, "-500"),
+        path: "".concat(path, "/500").replace(/\/\//g, '/'),
+        component: _ZAdmin.ZView500
+      });
+      list.push({
+        name: "".concat(name, "-404"),
+        path: "".concat(path, "/*").replace(/\/\//g, '/'),
+        component: _ZAdmin.ZView404
+      });
+      return list;
+    }
+    /**
+     * 根据菜单创建路由列表
+     * @param menus
+     * @param redirect
+     */
+
+  }, {
+    key: "createRoutesByMenus",
+    value: function createRoutesByMenus() {
+      var menus = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var redirect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '/home';
+
+      if (menus && menus.length > 0) {
+        var children = [];
+        children.push.apply(children, _toConsumableArray(this.genRoutesByMenus(menus, children, '/')));
+        children.push.apply(children, _toConsumableArray(this.genExceptionRoute())); // children.push({ name: '--empty', path: '', redirect })
+
+        return children;
+      }
+
+      return [];
     }
   }, {
     key: "setting",
@@ -187,7 +332,6 @@ function (_ZAppRouter) {
         component: NotFoundElement
       };
       var routeRoot = {
-        name: 'r__root',
         path: '/',
         component: options.appMain || _components.ZAdmin
       };
@@ -226,7 +370,7 @@ function (_ZAppRouter) {
         beforeChildren = [routeHome].concat(_toConsumableArray(otherHomes));
       }
 
-      var menuRoutes = (0, _generatorRouter.createRoutesByMenus)(options.menus, '');
+      var menuRoutes = this.createRoutesByMenus(options.menus, '');
       middleChildren.push.apply(middleChildren, _toConsumableArray(this.parseUsrRoutes(usrRoutes, '/')));
 
       if (options.redirect) {
@@ -282,8 +426,10 @@ function () {
 
       if (router) {
         var options = ZRouterClass.adminRouter || {};
-        ZRouterClass.menus = menus = menus || [];
-        var routes = (0, _generatorRouter.genRoutesByOptions)(options);
+        ZRouterClass.menus = menus = menus || []; // todo 待完成，动态添加菜单
+
+        var routes = []; // genRoutesByOptions(options)
+
         var routerOptions = options.routerOptions || Object.create(null);
         routerOptions.routes = routes;
         var newRouter = new _vueRouter.default(routerOptions);
@@ -303,9 +449,19 @@ function () {
       }
     }
   }, {
+    key: "self",
+    get: function get() {
+      return ZRouterClass.router;
+    }
+  }, {
     key: "currentRouter",
     get: function get() {
       return ZRouterClass.router;
+    }
+  }, {
+    key: "currentRoute",
+    get: function get() {
+      return ZRouterClass.router.currentRoute;
     }
   }, {
     key: "currentRoutePath",

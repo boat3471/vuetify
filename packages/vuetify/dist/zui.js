@@ -37909,7 +37909,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38359,6 +38359,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38370,14 +38378,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -39900,7 +39900,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.807-beta.2";
+  Zui.version = "2.5.807-beta.3";
   Zui.config = {
     silent: false
   };
@@ -51968,11 +51968,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZRouterClass", function() { return ZRouterClass; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZRouter", function() { return ZRouter; });
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "../../node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _util_generatorRouter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util/generatorRouter */ "./src/zui/util/generatorRouter.ts");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components */ "./src/components/index.ts");
-/* harmony import */ var _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ZAdmin */ "./src/zui/components/ZAdmin/index.ts");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components */ "./src/components/index.ts");
+/* harmony import */ var _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/ZAdmin */ "./src/zui/components/ZAdmin/index.ts");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -52054,7 +52053,6 @@ var __spread = undefined && undefined.__spread || function () {
 
 
 
-
 var instance;
 
 var ZAppRouter =
@@ -52092,17 +52090,39 @@ function () {
     return this._router;
   };
 
+  ZAppRouter.prototype.addNotFoundRoute = function (route, notFoundComponent) {
+    var _this = this;
+
+    if (route.children && route.children.length > 0) {
+      // 如果已经存在，则不添加
+      var needed = !(route.children.some(function (i) {
+        return i.path === '*';
+      }) || route.path === '/' || route.path === '*');
+
+      if (needed) {
+        route.children.push({
+          path: '*',
+          component: notFoundComponent
+        });
+      }
+
+      route.children.forEach(function (child) {
+        return _this.addNotFoundRoute(child, notFoundComponent);
+      });
+    }
+  };
+
   ZAppRouter.prototype.setting = function (options) {
     if (options) {
       this.isRenderRouterView = !options.appMain && !options.appHome;
       this.appHome = options.appHome;
-      this.appMain = options.appMain || _components__WEBPACK_IMPORTED_MODULE_2__["ZApp"];
+      this.appMain = options.appMain || _components__WEBPACK_IMPORTED_MODULE_1__["ZApp"];
       var routerOptions = options.routerOptions || Object.create(null);
       var routes = routerOptions.routes || [];
-      routes.push.apply(routes, __spread(this.genRoute('/login', options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZDefaultLogin"])));
-      routes.push.apply(routes, __spread(this.genRoute('/500', options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView500"])));
-      routes.push.apply(routes, __spread(this.genRoute('/403', options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView403"])));
-      routes.push.apply(routes, __spread(this.genRoute('*', options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView404"])));
+      routes.push.apply(routes, __spread(this.genRoute('/login', options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZDefaultLogin"])));
+      routes.push.apply(routes, __spread(this.genRoute('/500', options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"])));
+      routes.push.apply(routes, __spread(this.genRoute('/403', options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"])));
+      routes.push.apply(routes, __spread(this.genRoute('*', options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"])));
       routerOptions.routes = routes;
       this.routerOptions = routerOptions;
     }
@@ -52132,7 +52152,7 @@ function (_super) {
 
   Object.defineProperty(ZAdminRouter.prototype, "defaultHome", {
     get: function get() {
-      return vue__WEBPACK_IMPORTED_MODULE_4___default.a.extend({
+      return vue__WEBPACK_IMPORTED_MODULE_3___default.a.extend({
         name: 'z-admin-default-home',
         render: function render(h) {
           return h('div', {
@@ -52144,21 +52164,154 @@ function (_super) {
     enumerable: false,
     configurable: true
   });
+  /**
+   * 生成完整路径
+   * @param path
+   * @param parentPath
+   */
+
+  ZAdminRouter.prototype.genFullPathByMenu = function (path, parentPath) {
+    if (path.indexOf('/') !== 0) {
+      return ("/" + (parentPath || '') + "/" + path).replace(/\/+/g, '/');
+    }
+
+    return path;
+  };
 
   ZAdminRouter.prototype.parseUsrRoutes = function (routes, parentPath) {
+    var _this = this;
+
     var list = [];
     routes.forEach(function (route) {
       if (route) {
-        route.path = Object(_util_generatorRouter__WEBPACK_IMPORTED_MODULE_1__["genFullPath"])(route.path);
+        route.path = _this.genFullPathByMenu(route.path);
         route.name = route.name || "usr-" + route.path.replace(/\//g, '-');
         list.push(route);
       }
     });
     return list;
   };
+  /**
+   * 根据菜单生成路由列表
+   * @param menus
+   * @param rootList
+   * @param parentPath
+   */
+
+
+  ZAdminRouter.prototype.genRoutesByMenus = function (menus, rootList, parentPath) {
+    var _this = this;
+
+    if (parentPath === void 0) {
+      parentPath = '/';
+    }
+
+    var list = [];
+
+    if (menus) {
+      menus.forEach(function (menu) {
+        if (!menu.path && !menu.href && (!menu.children || menu.children.length < 1)) {
+          window.console.warn("\u83DC\u5355\u914D\u7F6E\u65E0\u6CD5\u751F\u6210\u8DEF\u7531: \n " + JSON.stringify(menu, null, 4));
+          return;
+        }
+
+        menu.path = menu.path || '';
+        var path = (menu.path || '').indexOf('/') === 0 ? menu.path : parentPath + "/" + menu.path;
+        path = path.replace(/\/{2,}/g, '/');
+
+        if (menu.path) {
+          var route = {
+            name: menu.name,
+            path: path || '',
+            component: menu.component,
+            meta: __assign({
+              name: menu.name || menu.title
+            }, menu.meta)
+          };
+
+          if (menu.redirect) {
+            route.redirect = menu.redirect;
+          }
+
+          if (menu.alias) {
+            route.alias = menu.alias;
+          }
+
+          if (menu.beforeEnter) {
+            route.beforeEnter = menu.beforeEnter;
+          }
+
+          route.name = (route.path || '').replace(/\//g, '-');
+          rootList.push(route);
+        }
+
+        if (menu.children && menu.children.length > 0) {
+          _this.genRoutesByMenus(menu.children, rootList, path);
+        }
+      });
+    }
+
+    return list;
+  };
+  /** 生成异常路由 */
+
+
+  ZAdminRouter.prototype.genExceptionRoute = function (name, path) {
+    if (name === void 0) {
+      name = '';
+    }
+
+    if (path === void 0) {
+      path = '';
+    }
+
+    var list = [];
+    list.push({
+      name: name + "-403",
+      path: (path + "/403").replace(/\/\//g, '/'),
+      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"]
+    });
+    list.push({
+      name: name + "-500",
+      path: (path + "/500").replace(/\/\//g, '/'),
+      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"]
+    });
+    list.push({
+      name: name + "-404",
+      path: (path + "/*").replace(/\/\//g, '/'),
+      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"]
+    });
+    return list;
+  };
+  /**
+   * 根据菜单创建路由列表
+   * @param menus
+   * @param redirect
+   */
+
+
+  ZAdminRouter.prototype.createRoutesByMenus = function (menus, redirect) {
+    if (menus === void 0) {
+      menus = [];
+    }
+
+    if (redirect === void 0) {
+      redirect = '/home';
+    }
+
+    if (menus && menus.length > 0) {
+      var children = [];
+      children.push.apply(children, __spread(this.genRoutesByMenus(menus, children, '/')));
+      children.push.apply(children, __spread(this.genExceptionRoute())); // children.push({ name: '--empty', path: '', redirect })
+
+      return children;
+    }
+
+    return [];
+  };
 
   ZAdminRouter.prototype.setting = function (options) {
-    var NotFoundElement = this.genComp(options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView404"]);
+    var NotFoundElement = this.genComp(options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"]);
     var NotFoundRoute = {
       path: '*',
       component: NotFoundElement
@@ -52166,17 +52319,17 @@ function (_super) {
     var routeLogin = {
       name: 'r__login',
       path: '/login',
-      component: this.genComp(options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZDefaultLogin"])
+      component: this.genComp(options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZDefaultLogin"])
     };
     var route500 = {
       name: 'r__500',
       path: '/500',
-      component: this.genComp(options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView500"])
+      component: this.genComp(options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"])
     };
     var route403 = {
       name: 'r__403',
       path: '/403',
-      component: this.genComp(options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_3__["ZView403"])
+      component: this.genComp(options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"])
     };
     var route404 = {
       name: 'r__404',
@@ -52189,9 +52342,8 @@ function (_super) {
       component: NotFoundElement
     };
     var routeRoot = {
-      name: 'r__root',
       path: '/',
-      component: options.appMain || _components__WEBPACK_IMPORTED_MODULE_2__["ZAdmin"]
+      component: options.appMain || _components__WEBPACK_IMPORTED_MODULE_1__["ZAdmin"]
     };
     var routeHome = {
       name: 'r__home',
@@ -52227,7 +52379,7 @@ function (_super) {
       beforeChildren = __spread([routeHome], otherHomes);
     }
 
-    var menuRoutes = Object(_util_generatorRouter__WEBPACK_IMPORTED_MODULE_1__["createRoutesByMenus"])(options.menus, '');
+    var menuRoutes = this.createRoutesByMenus(options.menus, '');
     middleChildren.push.apply(middleChildren, __spread(this.parseUsrRoutes(usrRoutes, '/')));
 
     if (options.redirect) {
@@ -52255,9 +52407,23 @@ function () {
     return instance;
   }
 
+  Object.defineProperty(ZRouterClass.prototype, "self", {
+    get: function get() {
+      return ZRouterClass.router;
+    },
+    enumerable: false,
+    configurable: true
+  });
   Object.defineProperty(ZRouterClass.prototype, "currentRouter", {
     get: function get() {
       return ZRouterClass.router;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(ZRouterClass.prototype, "currentRoute", {
+    get: function get() {
+      return ZRouterClass.router.currentRoute;
     },
     enumerable: false,
     configurable: true
@@ -52283,8 +52449,10 @@ function () {
 
     if (router) {
       var options = ZRouterClass.adminRouter || {};
-      ZRouterClass.menus = menus = menus || [];
-      var routes = Object(_util_generatorRouter__WEBPACK_IMPORTED_MODULE_1__["genRoutesByOptions"])(options);
+      ZRouterClass.menus = menus = menus || []; // todo 待完成，动态添加菜单
+
+      var routes = []; // genRoutesByOptions(options)
+
       var routerOptions = options.routerOptions || Object.create(null);
       routerOptions.routes = routes;
       var newRouter = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"](routerOptions);
@@ -56919,7 +57087,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57039,7 +57207,8 @@ function createAdmin(options) {
   var componentOptions = options.componentOptions || {};
   var adminRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_5__["ZRouterClass"].adminRouter || _ZRouter__WEBPACK_IMPORTED_MODULE_5__["ZRouterClass"].genAdminRouter({
     appMain: options.appMain,
-    appHome: options.appHome
+    appHome: options.appHome,
+    redirect: options.redirect
   });
   var router = componentOptions.router;
   var appHome;
@@ -57754,117 +57923,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/zui/util/debug.ts":
-/*!*******************************!*\
-  !*** ./src/zui/util/debug.ts ***!
-  \*******************************/
-/*! exports provided: log, info, warn, error, ignore, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "log", function() { return log; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "info", function() { return info; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "warn", function() { return warn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "error", function() { return error; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ignore", function() { return ignore; });
-var __read = undefined && undefined.__read || function (o, n) {
-  var m = typeof Symbol === "function" && o[Symbol.iterator];
-  if (!m) return o;
-  var i = m.call(o),
-      r,
-      ar = [],
-      e;
-
-  try {
-    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
-      ar.push(r.value);
-    }
-  } catch (error) {
-    e = {
-      error: error
-    };
-  } finally {
-    try {
-      if (r && !r.done && (m = i["return"])) m.call(i);
-    } finally {
-      if (e) throw e.error;
-    }
-  }
-
-  return ar;
-};
-
-var __spread = undefined && undefined.__spread || function () {
-  for (var ar = [], i = 0; i < arguments.length; i++) {
-    ar = ar.concat(__read(arguments[i]));
-  }
-
-  return ar;
-};
-
-function log() {
-  var _a;
-
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return (_a = window.console).log.apply(_a, __spread(['[ZUI]'], args));
-}
-function info() {
-  var _a;
-
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return (_a = window.console).info.apply(_a, __spread(['[ZUI]'], args));
-}
-function warn() {
-  var _a;
-
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return (_a = window.console).warn.apply(_a, __spread(['[ZUI]'], args));
-}
-function error() {
-  var _a;
-
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return (_a = window.console).error.apply(_a, __spread(['[ZUI]'], args));
-}
-function ignore() {
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  } // ignore
-
-}
-/* harmony default export */ __webpack_exports__["default"] = ({
-  info: info,
-  log: log,
-  warn: warn,
-  error: error,
-  ignore: ignore
-});
-
-/***/ }),
-
 /***/ "./src/zui/util/generateZSizeable.ts":
 /*!*******************************************!*\
   !*** ./src/zui/util/generateZSizeable.ts ***!
@@ -57925,341 +57983,6 @@ function generateZSizeable(classs) {
       }
     }
   });
-}
-
-/***/ }),
-
-/***/ "./src/zui/util/generatorRouter.ts":
-/*!*****************************************!*\
-  !*** ./src/zui/util/generatorRouter.ts ***!
-  \*****************************************/
-/*! exports provided: genExceptionRoute, genRoutesByOptions, genRoutesByMenus, createRoutesByMenus, genFullPath */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genExceptionRoute", function() { return genExceptionRoute; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genRoutesByOptions", function() { return genRoutesByOptions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genRoutesByMenus", function() { return genRoutesByMenus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createRoutesByMenus", function() { return createRoutesByMenus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genFullPath", function() { return genFullPath; });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ZAdmin */ "./src/zui/components/ZAdmin/index.ts");
-/* harmony import */ var _debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./debug */ "./src/zui/util/debug.ts");
-var __assign = undefined && undefined.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-
-      for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-    }
-
-    return t;
-  };
-
-  return __assign.apply(this, arguments);
-};
-
-var __read = undefined && undefined.__read || function (o, n) {
-  var m = typeof Symbol === "function" && o[Symbol.iterator];
-  if (!m) return o;
-  var i = m.call(o),
-      r,
-      ar = [],
-      e;
-
-  try {
-    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
-      ar.push(r.value);
-    }
-  } catch (error) {
-    e = {
-      error: error
-    };
-  } finally {
-    try {
-      if (r && !r.done && (m = i["return"])) m.call(i);
-    } finally {
-      if (e) throw e.error;
-    }
-  }
-
-  return ar;
-};
-
-var __spread = undefined && undefined.__spread || function () {
-  for (var ar = [], i = 0; i < arguments.length; i++) {
-    ar = ar.concat(__read(arguments[i]));
-  }
-
-  return ar;
-};
-
-
-
-
-var defaultHome = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
-  name: 'z-admin-default-home',
-  render: function render(h) {
-    return h('div', {
-      staticClass: 'z-admin-default-home'
-    });
-  }
-});
-/** 生成异常路由 */
-
-function genExceptionRoute(name, path) {
-  if (name === void 0) {
-    name = '';
-  }
-
-  if (path === void 0) {
-    path = '';
-  }
-
-  var list = [];
-  list.push({
-    name: name + "-403",
-    path: (path + "/403").replace(/\/\//g, '/'),
-    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView403"]
-  });
-  list.push({
-    name: name + "-500",
-    path: (path + "/500").replace(/\/\//g, '/'),
-    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView500"]
-  });
-  list.push({
-    name: name + "-404",
-    path: (path + "/*").replace(/\/\//g, '/'),
-    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView404"]
-  });
-  return list;
-}
-/** 添加404 */
-
-function addNotFoundRoute(route, notFoundComponent) {
-  if (route.children && route.children.length > 0) {
-    // 如果已经存在，则不添加
-    var needed = !(route.children.some(function (i) {
-      return i.path === '*';
-    }) || route.path === '/' || route.path === '*');
-
-    if (needed) {
-      route.children.push({
-        path: '*',
-        component: notFoundComponent
-      });
-    }
-
-    route.children.forEach(function (child) {
-      return addNotFoundRoute(child, notFoundComponent);
-    });
-  }
-}
-
-_debug__WEBPACK_IMPORTED_MODULE_2__["default"].ignore(addNotFoundRoute);
-
-function parseUsrRoutes(routes, parentPath) {
-  var list = [];
-  routes.forEach(function (route) {
-    if (route) {
-      route.path = genFullPath(route.path);
-      route.name = route.name || "usr-" + route.path.replace(/\//g, '-');
-      list.push(route);
-    }
-  });
-  return list;
-}
-
-function genComp(usr, def) {
-  if (typeof usr === 'boolean') {
-    return usr ? def : undefined;
-  }
-
-  return usr || def;
-}
-/**
- * 根据选项生成路由列表
- */
-
-
-function genRoutesByOptions(options) {
-  var NotFoundElement = genComp(options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView404"]);
-  var NotFoundRoute = {
-    path: '*',
-    component: NotFoundElement
-  };
-  var routeLogin = {
-    name: 'r__login',
-    path: '/login',
-    component: genComp(options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZDefaultLogin"])
-  };
-  var route500 = {
-    name: 'r__500',
-    path: '/500',
-    component: genComp(options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView500"])
-  };
-  var route403 = {
-    name: 'r__403',
-    path: '/403',
-    component: genComp(options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView403"])
-  };
-  var route404 = {
-    name: 'r__404',
-    path: '/404',
-    component: NotFoundElement
-  };
-  var routeRoot404 = {
-    name: 'r__root_404',
-    path: '*',
-    component: NotFoundElement
-  };
-  var routeRoot = {
-    name: 'r__root',
-    path: '/',
-    component: options.appMain
-  };
-  var routeHome = {
-    name: 'r__home',
-    path: '/',
-    component: options.appHome || defaultHome
-  };
-  var beforeChildren = [routeHome];
-  var middleChildren = [];
-  var afterChildren = [NotFoundRoute]; // 初始化用户自定义重定向路径
-
-  var routerOptions = options.routerOptions || {};
-  var usrRoutes = routerOptions.routes || [];
-
-  var _a = __read(usrRoutes.filter(function (i) {
-    return /^\/?$/.test(i.path);
-  })),
-      usrHome = _a[0],
-      otherHomes = _a.slice(1);
-
-  if (usrHome) {
-    var homeElement = options.appHome || defaultHome;
-
-    if ('component' in usrHome && usrHome.component) {
-      homeElement = usrHome.component;
-    }
-
-    routeHome = __assign(__assign({
-      name: 'r__home'
-    }, usrHome), {
-      path: '/',
-      component: homeElement
-    });
-    beforeChildren = __spread([routeHome], otherHomes);
-  } // console.info('usrRoutes', usrRedirect, usrRoutes)
-  // const redirect = usrRedirect || ''
-  // routeRoot.children = createRoutesByMenus(menus, redirect)
-  // addNotFoundRoute(routeRoot, Comp404)
-
-
-  middleChildren.push.apply(middleChildren, __spread(parseUsrRoutes(usrRoutes, '/')));
-  routeRoot.children = __spread(beforeChildren, middleChildren, afterChildren);
-  return [routeLogin, route500, route403, route404, routeRoot, routeRoot404];
-}
-/**
- * 根据菜单生成路由列表
- * @param menus
- * @param rootList
- * @param parentPath
- */
-
-function genRoutesByMenus(menus, rootList, parentPath) {
-  if (parentPath === void 0) {
-    parentPath = '/';
-  }
-
-  var list = [];
-
-  if (menus) {
-    menus.forEach(function (menu) {
-      if (!menu.path && !menu.href && (!menu.children || menu.children.length < 1)) {
-        window.console.warn("\u83DC\u5355\u914D\u7F6E\u65E0\u6CD5\u751F\u6210\u8DEF\u7531: \n " + JSON.stringify(menu, null, 4));
-        return;
-      }
-
-      menu.path = menu.path || '';
-      var path = (menu.path || '').indexOf('/') === 0 ? menu.path : parentPath + "/" + menu.path;
-      path = path.replace(/\/{2,}/g, '/');
-
-      if (menu.path) {
-        var route = {
-          name: menu.name,
-          path: path || '',
-          component: menu.component,
-          meta: __assign({
-            name: menu.name || menu.title
-          }, menu.meta)
-        };
-
-        if (menu.redirect) {
-          route.redirect = menu.redirect;
-        }
-
-        if (menu.alias) {
-          route.alias = menu.alias;
-        }
-
-        if (menu.beforeEnter) {
-          route.beforeEnter = menu.beforeEnter;
-        }
-
-        route.name = (route.path || '').replace(/\//g, '-');
-        rootList.push(route);
-      }
-
-      if (menu.children && menu.children.length > 0) {
-        genRoutesByMenus(menu.children, rootList, path);
-      }
-    });
-  }
-
-  return list;
-}
-/**
- * 根据菜单创建路由列表
- * @param menus
- * @param redirect
- */
-
-function createRoutesByMenus(menus, redirect) {
-  if (menus === void 0) {
-    menus = [];
-  }
-
-  if (redirect === void 0) {
-    redirect = '/home';
-  }
-
-  if (menus && menus.length > 0) {
-    var children = [];
-    children.push.apply(children, __spread(genRoutesByMenus(menus, children, '/')));
-    children.push.apply(children, __spread(genExceptionRoute())); // children.push({ name: '--empty', path: '', redirect })
-
-    return children;
-  }
-
-  return [];
-}
-/**
- * 生成完整路径
- * @param path
- * @param parentPath
- */
-
-function genFullPath(path, parentPath) {
-  if (path.indexOf('/') !== 0) {
-    return ("/" + (parentPath || '') + "/" + path).replace(/\/+/g, '/');
-  }
-
-  return path;
 }
 
 /***/ }),

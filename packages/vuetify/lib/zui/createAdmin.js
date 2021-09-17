@@ -46,7 +46,8 @@ export function createAdmin(options) {
   const componentOptions = options.componentOptions || {};
   const adminRouter = ZRouterClass.adminRouter || ZRouterClass.genAdminRouter({
     appMain: options.appMain,
-    appHome: options.appHome
+    appHome: options.appHome,
+    redirect: options.redirect
   });
   let router = componentOptions.router;
   let appHome;
