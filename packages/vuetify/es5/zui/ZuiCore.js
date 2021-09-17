@@ -166,6 +166,15 @@ function (_UIEvent) {
       return ZuiCoreClass.$options.appId || '';
     }
     /**
+     * App 重定向路径
+     */
+
+  }, {
+    key: "appRedirect",
+    get: function get() {
+      return ZuiCoreClass.$options.redirect || '';
+    }
+    /**
      * 获取主菜单列表
      */
 

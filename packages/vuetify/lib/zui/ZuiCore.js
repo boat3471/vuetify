@@ -87,6 +87,14 @@ export class ZuiCoreClass extends UIEvent {
     return ZuiCoreClass.$options.appId || '';
   }
   /**
+   * App 重定向路径
+   */
+
+
+  get appRedirect() {
+    return ZuiCoreClass.$options.redirect || '';
+  }
+  /**
    * 获取主菜单列表
    */
 

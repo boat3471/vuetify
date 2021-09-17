@@ -3,7 +3,7 @@ import * as directives from './directives'
 import {
   ZuiOptions,
   ZuiCoreDescription,
-  ZMenuOption,
+  ZMenuOption, CreateAdminOptions,
 } from '../../types'
 import { UIEvent } from './events/UIEvent'
 import { ZMenuClass } from './ZMenu'
@@ -89,6 +89,13 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
    */
   get appId () {
     return ZuiCoreClass.$options.appId || ''
+  }
+
+  /**
+   * App 重定向路径
+   */
+  get appRedirect (): string {
+    return (ZuiCoreClass.$options as CreateAdminOptions).redirect || ''
   }
 
   /**
