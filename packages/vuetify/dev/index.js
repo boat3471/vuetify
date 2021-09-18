@@ -2,7 +2,8 @@
 import '@mdi/font/css/materialdesignicons.css'
 import '../dist/zui.css'
 import Main from './Main'
-import App from './App'
+import Home from './Home'
+import Components from './Components'
 import { createApp, createAdmin, createRouter, createAdminRouter } from '@zwd/z-ui'
 import { menus } from './menus'
 import Test from './Test'
@@ -26,40 +27,72 @@ import Test from './Test'
 //   },
 // })
 
+// const router = createAdminRouter({
+//   menus,
+//   redirect: '/eee/eee-1/eee-1-1/eee-1-1-1',
+//   routerOptions: {
+//     routes: [
+//       {
+//         path: '',
+//         component: App,
+//         meta: {
+//           a: 'home',
+//         },
+//       },
+//       {
+//         path: 'aaaa',
+//         component: App,
+//         meta: {
+//           a: 'aaaa',
+//         },
+//         children: [
+//           {
+//             path: 'aaaa',
+//             component: App,
+//             meta: {
+//               a: 'aaaa-aaaa',
+//             },
+//           },
+//           {
+//             path: '/aaaa1',
+//             component: App,
+//             meta: {
+//               a: 'aaaa-aaaa',
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// })
+
 const router = createAdminRouter({
+  appMain: Main,
+  redirect: 'home',
   menus,
-  redirect: '/eee/eee-1/eee-1-1/eee-1-1-1',
   routerOptions: {
     routes: [
       {
-        path: '',
-        component: App,
-        meta: {
-          a: 'home',
-        },
-      },
-      {
-        path: 'aaaa',
-        component: App,
-        meta: {
-          a: 'aaaa',
-        },
+        path: '/',
         children: [
           {
-            path: 'aaaa',
-            component: App,
-            meta: {
-              a: 'aaaa-aaaa',
-            },
+            name: '首页',
+            path: 'home',
+            component: Home,
           },
           {
-            path: '/aaaa1',
-            component: App,
-            meta: {
-              a: 'aaaa-aaaa',
-            },
+            name: '系统组件',
+            path: 'components',
+            component: Components,
           },
         ],
+      },
+      {
+        path: 'bbbb',
+        meta: {
+          name: 'bbbb',
+        },
+        component: Test,
       },
     ],
   },
@@ -67,9 +100,9 @@ const router = createAdminRouter({
 
 const app = createAdmin({
   appMain: Main,
-  appHome: App,
-  menus,
+  appHome: Home,
   defaultMenuWidth: 300,
+  menus,
   componentOptions: {
     router,
   },

@@ -249,42 +249,40 @@ export class ZAdminRouter extends ZAppRouter {
       path: '/',
       component: options.appMain || ZAdmin
     };
-    let routeHome = {
-      name: 'r__home',
-      path: '/',
+    const routeHome = {
+      path: '',
       component: options.appHome || this.defaultHome
-    };
-    let beforeChildren = [routeHome];
-    const middleChildren = [];
-    const afterChildren = [NotFoundRoute]; // 初始化用户自定义重定向路径
+    }; // 跟节点所有前置子节点
 
+    const beforeChildren = [routeHome]; // 跟节点所有中置子节点
+
+    const middleChildren = []; // 跟节点所有后置子节点
+
+    const afterChildren = [NotFoundRoute]; // 给Home设置重定向
+
+    options.redirect && (routeHome.redirect = options.redirect);
     const routerOptions = options.routerOptions || {};
     const usrRoutes = routerOptions.routes || [];
-    const [usrHome, ...otherHomes] = usrRoutes.filter(i => /^\/?$/.test(i.path));
+    let usrRedirect = '';
+    usrRoutes.forEach(route => {
+      if (route.path === '/' || route.path === '') {
+        const children = route.children;
+        delete route.children;
 
-    if (usrHome) {
-      let homeElement = options.appHome || this.defaultHome;
+        if ('component' in route && route.component) {
+          routeHome.component = route.component;
+        } // 设置用户自定义的重定向，会忽略options中定义的重定向
 
-      if ('component' in usrHome && usrHome.component) {
-        homeElement = usrHome.component;
+
+        !usrRedirect && (usrRedirect = route.redirect); // 添加所有子组件到跟路由
+
+        middleChildren.push(...children);
+      } else {
+        middleChildren.push(route);
       }
-
-      routeHome = {
-        name: 'r__home',
-        ...usrHome,
-        path: '/',
-        component: homeElement
-      };
-      beforeChildren = [routeHome, ...otherHomes];
-    }
-
+    });
+    usrRedirect && (routeHome.redirect = usrRedirect);
     const menuRoutes = this.createRoutesByMenus(options.menus, '');
-    middleChildren.push(...this.parseUsrRoutes(usrRoutes, '/'));
-
-    if (options.redirect) {
-      routeHome.redirect = options.redirect;
-    }
-
     routeRoot.children = [...beforeChildren, ...middleChildren, ...menuRoutes, ...afterChildren];
     routerOptions.routes = [routeLogin, route500, route403, route404, routeRoot, routeRoot404];
     this.routerOptions = routerOptions;

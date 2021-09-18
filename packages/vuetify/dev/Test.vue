@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ name }}
+    test-{{ name }}
   </div>
 </template>
 

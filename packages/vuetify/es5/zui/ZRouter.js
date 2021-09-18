@@ -17,12 +17,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -336,48 +330,40 @@ function (_ZAppRouter) {
         component: options.appMain || _components.ZAdmin
       };
       var routeHome = {
-        name: 'r__home',
-        path: '/',
+        path: '',
         component: options.appHome || this.defaultHome
-      };
-      var beforeChildren = [routeHome];
-      var middleChildren = [];
-      var afterChildren = [NotFoundRoute]; // 初始化用户自定义重定向路径
+      }; // 跟节点所有前置子节点
 
+      var beforeChildren = [routeHome]; // 跟节点所有中置子节点
+
+      var middleChildren = []; // 跟节点所有后置子节点
+
+      var afterChildren = [NotFoundRoute]; // 给Home设置重定向
+
+      options.redirect && (routeHome.redirect = options.redirect);
       var routerOptions = options.routerOptions || {};
       var usrRoutes = routerOptions.routes || [];
+      var usrRedirect = '';
+      usrRoutes.forEach(function (route) {
+        if (route.path === '/' || route.path === '') {
+          var children = route.children;
+          delete route.children;
 
-      var _usrRoutes$filter = usrRoutes.filter(function (i) {
-        return /^\/?$/.test(i.path);
-      }),
-          _usrRoutes$filter2 = _toArray(_usrRoutes$filter),
-          usrHome = _usrRoutes$filter2[0],
-          otherHomes = _usrRoutes$filter2.slice(1);
+          if ('component' in route && route.component) {
+            routeHome.component = route.component;
+          } // 设置用户自定义的重定向，会忽略options中定义的重定向
 
-      if (usrHome) {
-        var homeElement = options.appHome || this.defaultHome;
 
-        if ('component' in usrHome && usrHome.component) {
-          homeElement = usrHome.component;
+          !usrRedirect && (usrRedirect = route.redirect); // 添加所有子组件到跟路由
+
+          middleChildren.push.apply(middleChildren, _toConsumableArray(children));
+        } else {
+          middleChildren.push(route);
         }
-
-        routeHome = _objectSpread({
-          name: 'r__home'
-        }, usrHome, {
-          path: '/',
-          component: homeElement
-        });
-        beforeChildren = [routeHome].concat(_toConsumableArray(otherHomes));
-      }
-
+      });
+      usrRedirect && (routeHome.redirect = usrRedirect);
       var menuRoutes = this.createRoutesByMenus(options.menus, '');
-      middleChildren.push.apply(middleChildren, _toConsumableArray(this.parseUsrRoutes(usrRoutes, '/')));
-
-      if (options.redirect) {
-        routeHome.redirect = options.redirect;
-      }
-
-      routeRoot.children = [].concat(_toConsumableArray(beforeChildren), middleChildren, _toConsumableArray(menuRoutes), afterChildren);
+      routeRoot.children = [].concat(beforeChildren, middleChildren, _toConsumableArray(menuRoutes), afterChildren);
       routerOptions.routes = [routeLogin, route500, route403, route404, routeRoot, routeRoot404];
       this.routerOptions = routerOptions;
     }

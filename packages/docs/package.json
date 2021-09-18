@@ -1,7 +1,0 @@
-{
-  "name": "docs",
-  "version": "1.0.0",
-  "dependencies": {
-    "@zwd/z-showdoc": "^0.0.8"
-  }
-}

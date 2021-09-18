@@ -39900,7 +39900,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.807-beta.5";
+  Zui.version = "2.5.807-beta.6";
   Zui.config = {
     silent: false
   };
@@ -52346,46 +52346,39 @@ function (_super) {
       component: options.appMain || _components__WEBPACK_IMPORTED_MODULE_1__["ZAdmin"]
     };
     var routeHome = {
-      name: 'r__home',
-      path: '/',
+      path: '',
       component: options.appHome || this.defaultHome
-    };
-    var beforeChildren = [routeHome];
-    var middleChildren = [];
-    var afterChildren = [NotFoundRoute]; // 初始化用户自定义重定向路径
+    }; // 跟节点所有前置子节点
 
+    var beforeChildren = [routeHome]; // 跟节点所有中置子节点
+
+    var middleChildren = []; // 跟节点所有后置子节点
+
+    var afterChildren = [NotFoundRoute]; // 给Home设置重定向
+
+    options.redirect && (routeHome.redirect = options.redirect);
     var routerOptions = options.routerOptions || {};
     var usrRoutes = routerOptions.routes || [];
+    var usrRedirect = '';
+    usrRoutes.forEach(function (route) {
+      if (route.path === '/' || route.path === '') {
+        var children = route.children;
+        delete route.children;
 
-    var _a = __read(usrRoutes.filter(function (i) {
-      return /^\/?$/.test(i.path);
-    })),
-        usrHome = _a[0],
-        otherHomes = _a.slice(1);
+        if ('component' in route && route.component) {
+          routeHome.component = route.component;
+        } // 设置用户自定义的重定向，会忽略options中定义的重定向
 
-    if (usrHome) {
-      var homeElement = options.appHome || this.defaultHome;
 
-      if ('component' in usrHome && usrHome.component) {
-        homeElement = usrHome.component;
+        !usrRedirect && (usrRedirect = route.redirect); // 添加所有子组件到跟路由
+
+        middleChildren.push.apply(middleChildren, __spread(children));
+      } else {
+        middleChildren.push(route);
       }
-
-      routeHome = __assign(__assign({
-        name: 'r__home'
-      }, usrHome), {
-        path: '/',
-        component: homeElement
-      });
-      beforeChildren = __spread([routeHome], otherHomes);
-    }
-
+    });
+    usrRedirect && (routeHome.redirect = usrRedirect);
     var menuRoutes = this.createRoutesByMenus(options.menus, '');
-    middleChildren.push.apply(middleChildren, __spread(this.parseUsrRoutes(usrRoutes, '/')));
-
-    if (options.redirect) {
-      routeHome.redirect = options.redirect;
-    }
-
     routeRoot.children = __spread(beforeChildren, middleChildren, menuRoutes, afterChildren);
     routerOptions.routes = [routeLogin, route500, route403, route404, routeRoot, routeRoot404];
     this.routerOptions = routerOptions;

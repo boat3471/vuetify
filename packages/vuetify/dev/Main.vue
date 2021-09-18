@@ -1,5 +1,8 @@
 <template>
   <z-admin class="my-app">
+    <template #main>
+      <router-view></router-view>
+    </template>
   </z-admin>
 </template>
 

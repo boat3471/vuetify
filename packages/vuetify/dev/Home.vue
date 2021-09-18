@@ -1,5 +1,5 @@
 <template>
-  <div>app-home-{{ msg }}</div>
+  <div>home-{{ msg }}</div>
 </template>
 
 <script>
