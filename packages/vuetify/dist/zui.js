@@ -37909,7 +37909,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38359,14 +38359,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38378,6 +38370,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -39900,7 +39900,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.807";
+  Zui.version = "2.5.808";
   Zui.config = {
     silent: false
   };
@@ -55893,10 +55893,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./src/components/index.ts");
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helper */ "./src/zui/components/ZDateTimePicker/helper.ts");
+/* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../../util/mixins */ "./src/util/mixins.ts");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components */ "./src/components/index.ts");
 /* harmony import */ var _ZDateTimePickerInner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ZDateTimePickerInner */ "./src/zui/components/ZDateTimePicker/ZDateTimePickerInner.ts");
 /* harmony import */ var _ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ZDataTimePicker.scss */ "./src/zui/components/ZDateTimePicker/ZDataTimePicker.scss");
 /* harmony import */ var _ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4__);
@@ -55916,116 +55915,92 @@ var __assign = undefined && undefined.__assign || function () {
   return __assign.apply(this, arguments);
 };
 
- // import mixins from '../../../util/mixins'
 
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
+/* harmony default export */ __webpack_exports__["default"] = (Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: [String, Number, Date],
+      type: String,
       default: null
     },
-    start: {
-      type: [String, Number, Date],
+    min: {
+      type: String,
       default: null
     },
-    end: {
-      type: [String, Number, Date],
+    max: {
+      type: String,
       default: null
     },
     showCurrent: {
       type: Boolean,
       default: true
+    },
+    inputWidth: {
+      type: [String, Number],
+      default: '155px'
+    },
+    color: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: 'setting datetime'
     }
   },
   data: function data() {
     return {
-      dateTimeString: null,
-      dateTimePicker: null,
-      pickerVisible: false,
-      min: null,
-      max: null
+      pickerDate: '',
+      inputDate: '',
+      visible: false
     };
   },
-  computed: {},
+  computed: {
+    inputWidthValue: function inputWidthValue() {
+      var w = this.inputWidth;
+
+      if (typeof w === 'number' || !isNaN(w)) {
+        return w + 'px';
+      }
+
+      return w;
+    }
+  },
   watch: {
     value: {
       immediate: true,
       handler: function handler(val) {
-        if (val) {
-          this.dateTimeString = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val);
-          this.setDateTimePicker(val);
-        } else {
-          this.dateTimeString = null;
-          this.dateTimePicker = null;
-        }
-      }
-    },
-    start: {
-      immediate: true,
-      handler: function handler(val) {
-        if (val) {
-          this.min = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormatDate"])(val);
-        }
-      }
-    },
-    end: {
-      immediate: true,
-      handler: function handler(val) {
-        if (val) {
-          this.max = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormatDate"])(val);
-        }
-      }
-    },
-    pickerVisible: function pickerVisible(visible) {
-      if (visible) {
-        var _a = this.$props,
-            value = _a.value,
-            start = _a.start;
-
-        if (value) {
-          this.setDateTimePicker(value);
-          return;
-        }
-
-        if (start) {
-          this.setDateTimePicker(start);
-          return;
-        }
-
-        if (this.$props.showCurrent) {
-          if (this.dateTimeString) {
-            this.setDateTimePicker(new Date(this.dateTimeString));
-          } else {
-            this.setDateTimePicker(new Date());
-          }
-        }
+        this.pickerDate = val || new Date().toISOString();
+        this.inputDate = val || '';
       }
     }
   },
   methods: {
-    setDateTimePicker: function setDateTimePicker(val) {
-      this.dateTimePicker = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormatDate"])(val);
-    },
-    onPickerOk: function onPickerOk(value) {
-      this.pickerVisible = false;
-      this.dateTimeString = value;
-      this.$emit('input', value);
-    },
+    setDateTimePicker: function setDateTimePicker(val) {},
     genActivatorSlot: function genActivatorSlot(props) {
-      return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZTextField"], __assign(__assign({}, props), {
-        attrs: __assign(__assign({}, this.$attrs), props.attrs),
+      var slotData = Object.assign(props, {
+        formatDate: this.pickerDate
+      });
+      var activatorSlots = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["getSlot"])(this, 'activator', slotData);
+
+      if (activatorSlots && activatorSlots.length > 0) {
+        return activatorSlots[activatorSlots.length - 1];
+      }
+
+      return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_2__["ZTextField"], __assign(__assign({}, props), {
         props: __assign({
-          value: this.dateTimeString,
+          value: this.inputDate,
           readonly: true,
-          outlined: true
+          outlined: true,
+          color: this.color,
+          placeholder: this.placeholder || '选择时间'
         }, props.props),
         style: {
-          width: '145px'
+          width: this.inputWidthValue
         }
       }));
     }
@@ -56033,35 +56008,43 @@ var __assign = undefined && undefined.__assign || function () {
   render: function render(h) {
     var _this = this;
 
-    return h(_components__WEBPACK_IMPORTED_MODULE_1__["ZMenu"], {
+    return h(_components__WEBPACK_IMPORTED_MODULE_2__["ZMenu"], {
       staticClass: 'z-date-time-picker--inner',
-      attrs: __assign({}, this.$attrs),
       props: {
-        value: this.pickerVisible,
+        value: this.visible,
         offsetY: true,
         contentClass: 'z-date-time-picker',
         transition: 'scale-transition',
-        closeOnContentClick: false
+        closeOnContentClick: false,
+        maxWidth: 600
       },
       on: {
         input: function input(val) {
-          return _this.pickerVisible = val;
+          return _this.visible = val;
         }
       },
       scopedSlots: {
         activator: this.genActivatorSlot
       }
     }, [h(_ZDateTimePickerInner__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      attrs: __assign({}, this.$attrs),
+      attrs: {
+        color: this.color
+      },
       props: {
-        value: this.dateTimePicker,
+        value: this.pickerDate,
         start: this.min,
         end: this.max
       },
       on: {
-        ok: this.onPickerOk,
+        ok: function ok(val) {
+          _this.visible = false;
+          _this.pickerDate = val;
+          _this.inputDate = val;
+
+          _this.$emit('input', val);
+        },
         cancel: function cancel() {
-          _this.pickerVisible = false;
+          _this.visible = false;
         }
       }
     })]);
@@ -56134,15 +56117,15 @@ var __read = undefined && undefined.__read || function (o, n) {
   name: 'z-date-time-picker-inner',
   props: {
     value: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     start: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     end: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     }
   },
@@ -56150,9 +56133,15 @@ var __read = undefined && undefined.__read || function (o, n) {
     return {
       date: '',
       time: '',
-      min: '',
-      max: '',
-      okDisabled: false,
+      dateMin: '',
+      dateMax: '',
+      timeMinOriginal: '',
+      timeMin: '',
+      timeMaxOriginal: '',
+      timeMax: '',
+      hour: '',
+      minute: '',
+      second: '',
       showMin: false,
       showMax: false
     };
@@ -56166,8 +56155,8 @@ var __read = undefined && undefined.__read || function (o, n) {
               date = _a[0],
               time = _a[1];
 
-          this.date = date;
-          this.time = time;
+          this.date = date || '';
+          this.time = time || '';
         } else {
           this.date = '';
           this.time = '';
@@ -56177,56 +56166,85 @@ var __read = undefined && undefined.__read || function (o, n) {
     start: {
       immediate: true,
       handler: function handler(val) {
-        this.min = val ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val) : val;
-
         if (val) {
+          this.dateMin = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val, 'date');
+          this.timeMinOriginal = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val, 'time');
+          this.timeMin = '';
           this.showMin = true;
         }
+
+        this.updateDate();
       }
     },
     end: {
       immediate: true,
       handler: function handler(val) {
-        this.max = val ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val) : val;
-
         if (val) {
+          this.dateMax = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val, 'date');
+          this.timeMaxOriginal = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val, 'time');
+          this.timeMax = '';
           this.showMax = true;
         }
+
+        this.updateDate();
       }
     },
-    date: function date(val) {
-      this.check(new Date(val + " " + this.time));
+    date: {
+      immediate: true,
+      handler: function handler() {
+        this.updateDate();
+      }
     },
-    time: function time(val) {
-      this.check(new Date(this.date + " " + val));
+    time: {
+      immediate: true,
+      handler: function handler() {
+        this.updateDate();
+      }
     }
   },
-  mounted: function mounted() {
-    var value = this.$props.value;
-    this.check(value);
-  },
+  mounted: function mounted() {},
   methods: {
-    check: function check(date) {
-      if (date) {
-        var _a = this.$props,
-            start = _a.start,
-            end = _a.end;
-
-        if (start) {
-          this.okDisabled = date.getTime() < start.getTime();
-          return;
-        }
-
-        if (end) {
-          this.okDisabled = date.getTime() > end.getTime();
-          return;
-        }
+    updateDate: function updateDate() {
+      if (this.time) {
+        var splits = this.time.split(':');
+        this.hour = splits[0];
+        this.minute = splits[1];
+        this.second = splits[2];
       }
 
-      this.okDisabled = false;
+      this.timeMin = '';
+      this.timeMax = '';
+
+      if (this.date) {
+        if (this.dateMin && this.date === this.dateMin) {
+          this.timeMin = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && this.date === this.dateMax) {
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.dateMin && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["compareDate"])(this.date, this.dateMin) === -1) {
+          this.timeMin = this.timeMinOriginal;
+          this.timeMax = this.timeMinOriginal;
+        }
+
+        if (this.timeMin && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["compareTime"])(this.time, this.timeMin) === -1) {
+          this.time = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["compareDate"])(this.date, this.dateMax) === 1) {
+          this.timeMin = this.timeMaxOriginal;
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.timeMax && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["compareTime"])(this.time, this.timeMax) === 1) {
+          this.time = this.timeMaxOriginal;
+        }
+      }
     },
     onOk: function onOk() {
-      var dateTime = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(this.date + " " + this.time);
+      var dateTime = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(this.date + " " + this.hour + ":" + this.minute + ":" + this.second);
       this.$emit('input', dateTime);
       this.$emit('ok', dateTime);
     },
@@ -56243,7 +56261,6 @@ var __read = undefined && undefined.__read || function (o, n) {
 
       this.date = date;
       this.time = time;
-      this.check(now);
     },
     onMin: function onMin() {
       var start = this.$props.start;
@@ -56255,7 +56272,6 @@ var __read = undefined && undefined.__read || function (o, n) {
 
       this.date = date;
       this.time = time;
-      this.check(start);
     },
     onMax: function onMax() {
       var end = this.$props.end;
@@ -56267,7 +56283,6 @@ var __read = undefined && undefined.__read || function (o, n) {
 
       this.date = date;
       this.time = time;
-      this.check(end);
     },
     genContent: function genContent() {
       return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZRow"], {
@@ -56277,14 +56292,21 @@ var __read = undefined && undefined.__read || function (o, n) {
       }, [this.genDatePicker(), this.genTimePicker()]);
     },
     genDatePicker: function genDatePicker() {
+      var _this = this;
+
       var dataPicker = this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZDatePicker"], {
         staticClass: 'dt-date-picker',
         attrs: __assign({}, this.$attrs),
         props: {
           value: this.date,
-          min: this.min,
-          max: this.max,
+          min: this.dateMin,
+          max: this.dateMax,
           fullWidth: true
+        },
+        on: {
+          change: function change(val) {
+            _this.date = val;
+          }
         }
       });
       return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZCol"], {
@@ -56295,14 +56317,35 @@ var __read = undefined && undefined.__read || function (o, n) {
       }, [dataPicker]);
     },
     genTimePicker: function genTimePicker() {
+      var _this = this;
+
       var timePicker = this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZTimePicker"], {
         staticClass: 'dt-time-picker',
         attrs: __assign({}, this.$attrs),
         props: {
           value: this.time,
           format: '24hr',
+          min: this.timeMin,
+          max: this.timeMax,
           useSeconds: true,
           fullWidth: true
+        },
+        on: {
+          'click:hour': function clickHour(val) {
+            _this.hour = val;
+            _this.time = val + ":" + _this.minute + ":" + _this.second;
+          },
+          'click:minute': function clickMinute(val) {
+            _this.minute = val;
+            _this.time = _this.hour + ":" + val + ":" + _this.second;
+          },
+          'click:second': function clickSecond(val) {
+            _this.second = val;
+            _this.time = _this.hour + ":" + _this.minute + ":" + val;
+          },
+          change: function change(val) {
+            _this.time = val;
+          }
         }
       });
       return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZCol"], {
@@ -56327,10 +56370,7 @@ var __read = undefined && undefined.__read || function (o, n) {
       }, [label]);
     },
     genFooter: function genFooter() {
-      var errorSpan = this.okDisabled ? this.$createElement('span', {
-        staticClass: 'error--text text-caption'
-      }, ['Out of range']) : null;
-      var errorCol = this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZCol"], {}, [errorSpan]);
+      var errorCol = this.$createElement(_components__WEBPACK_IMPORTED_MODULE_1__["ZCol"], {}, []);
       var nowBtn = this.genBtn('now', this.onNow);
       var minBtn = this.genBtn('min', this.onMin);
       var maxBtn = this.genBtn('max', this.onMax);
@@ -56339,8 +56379,7 @@ var __read = undefined && undefined.__read || function (o, n) {
         props: {
           s: true,
           outlined: true,
-          color: this.$attrs.color || 'primary',
-          disabled: this.okDisabled
+          color: 'primary'
         },
         on: {
           click: this.onOk
@@ -56364,7 +56403,7 @@ var __read = undefined && undefined.__read || function (o, n) {
   render: function render(h) {
     return h(_components__WEBPACK_IMPORTED_MODULE_1__["ZCard"], {
       staticClass: 'z-date-time-picker--inner',
-      attrs: __assign({}, this.$attrs),
+      attrs: {},
       props: {},
       style: {},
       on: {}
@@ -56378,22 +56417,33 @@ var __read = undefined && undefined.__read || function (o, n) {
 /*!******************************************************!*\
   !*** ./src/zui/components/ZDateTimePicker/helper.ts ***!
   \******************************************************/
-/*! exports provided: dateTimeFormat, dateTimeFormatDate */
+/*! exports provided: dateTimeFormat, dateTimeFormatDate, compareTime, compareDate */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateTimeFormat", function() { return dateTimeFormat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateTimeFormatDate", function() { return dateTimeFormatDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareTime", function() { return compareTime; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareDate", function() { return compareDate; });
 /**
  * @param {String|Date|Number} dateTime
+ * @param type
  * @return YYYY-MM-DD HH:mm:ss
  */
-function dateTimeFormat(dateTime) {
+function dateTimeFormat(dateTime, type) {
+  if (type === void 0) {
+    type = '';
+  }
+
   var dateObj = dateTime;
 
   if (typeof dateTime === 'number' || typeof dateTime === 'string') {
     dateObj = new Date(dateTime);
+
+    if (dateObj + '' === 'Invalid Date') {
+      dateObj = new Date();
+    }
   }
 
   if (dateObj) {
@@ -56404,6 +56454,15 @@ function dateTimeFormat(dateTime) {
     var hours = (dateObj.getHours() + '').padStart(2, '0');
     var minutes = (dateObj.getMinutes() + '').padStart(2, '0');
     var seconds = (dateObj.getSeconds() + '').padStart(2, '0');
+
+    if (type === 'date') {
+      return year + "-" + month + "-" + date;
+    }
+
+    if (type === 'time') {
+      return hours + ":" + minutes + ":" + seconds;
+    }
+
     return year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
   }
 
@@ -56414,6 +56473,10 @@ function dateTimeFormatDate(dateTime) {
 
   if (typeof dateTime === 'number' || typeof dateTime === 'string') {
     dateObj = new Date(dateTime);
+
+    if (dateObj + '' === 'Invalid Date') {
+      dateObj = new Date();
+    }
   }
 
   if (dateObj) {
@@ -56425,6 +56488,34 @@ function dateTimeFormatDate(dateTime) {
   }
 
   return dateObj || null;
+}
+function compareTime(time1, time2) {
+  var t1 = +new Date("1970-01-01 " + time1);
+  var t2 = +new Date("1970-01-01 " + time2);
+
+  if (t1 > t2) {
+    return 1;
+  }
+
+  if (t1 < t2) {
+    return -1;
+  }
+
+  return 0;
+}
+function compareDate(date1, date2) {
+  var d1 = +new Date(date1);
+  var d2 = +new Date(date2);
+
+  if (d1 > d2) {
+    return 1;
+  }
+
+  if (d1 < d2) {
+    return -1;
+  }
+
+  return 0;
 }
 
 /***/ }),
@@ -56470,6 +56561,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZMessageContainer", function() { return ZMessageContainer; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ZMessage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ZMessage.scss */ "./src/zui/components/ZMessage/ZMessage.scss");
+/* harmony import */ var _ZMessage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ZMessage_scss__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var ZMessageContainer = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
   name: 'z-message-container',
@@ -56793,14 +56887,11 @@ var ZMessageSingleBase = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["defau
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ZMessage_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ZMessage.scss */ "./src/zui/components/ZMessage/ZMessage.scss");
-/* harmony import */ var _ZMessage_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ZMessage_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ZMessageContainer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ZMessageContainer */ "./src/zui/components/ZMessage/ZMessageContainer.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZMessageContainer", function() { return _ZMessageContainer__WEBPACK_IMPORTED_MODULE_1__["ZMessageContainer"]; });
+/* harmony import */ var _ZMessageContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ZMessageContainer */ "./src/zui/components/ZMessage/ZMessageContainer.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZMessageContainer", function() { return _ZMessageContainer__WEBPACK_IMPORTED_MODULE_0__["ZMessageContainer"]; });
 
-/* harmony import */ var _ZMessageSingle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ZMessageSingle */ "./src/zui/components/ZMessage/ZMessageSingle.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZMessageSingle", function() { return _ZMessageSingle__WEBPACK_IMPORTED_MODULE_2__["ZMessageSingle"]; });
-
+/* harmony import */ var _ZMessageSingle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ZMessageSingle */ "./src/zui/components/ZMessage/ZMessageSingle.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZMessageSingle", function() { return _ZMessageSingle__WEBPACK_IMPORTED_MODULE_1__["ZMessageSingle"]; });
 
 
 
@@ -57129,7 +57220,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

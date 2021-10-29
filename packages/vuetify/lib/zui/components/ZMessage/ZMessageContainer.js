@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import "../../../../src/zui/components/ZMessage/ZMessage.scss";
 export const ZMessageContainer = Vue.extend({
   name: 'z-message-container',
 

@@ -1,20 +1,20 @@
 import Vue from 'vue'; // import mixins from '../../../util/mixins'
 
 import { ZCard, ZRow, ZCol, ZBtn, ZDatePicker, ZTimePicker } from '../../../components';
-import { dateTimeFormat } from './helper';
+import { compareDate, compareTime, dateTimeFormat } from './helper';
 export default Vue.extend({
   name: 'z-date-time-picker-inner',
   props: {
     value: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     start: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     end: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     }
   },
@@ -23,9 +23,15 @@ export default Vue.extend({
     return {
       date: '',
       time: '',
-      min: '',
-      max: '',
-      okDisabled: false,
+      dateMin: '',
+      dateMax: '',
+      timeMinOriginal: '',
+      timeMin: '',
+      timeMaxOriginal: '',
+      timeMax: '',
+      hour: '',
+      minute: '',
+      second: '',
       showMin: false,
       showMax: false
     };
@@ -38,8 +44,8 @@ export default Vue.extend({
       handler(val) {
         if (val) {
           const [date, time] = dateTimeFormat(val).split(' ');
-          this.date = date;
-          this.time = time;
+          this.date = date || '';
+          this.time = time || '';
         } else {
           this.date = '';
           this.time = '';
@@ -51,11 +57,14 @@ export default Vue.extend({
       immediate: true,
 
       handler(val) {
-        this.min = val ? dateTimeFormat(val) : val;
-
         if (val) {
+          this.dateMin = dateTimeFormat(val, 'date');
+          this.timeMinOriginal = dateTimeFormat(val, 'time');
+          this.timeMin = '';
           this.showMin = true;
         }
+
+        this.updateDate();
       }
 
     },
@@ -63,56 +72,80 @@ export default Vue.extend({
       immediate: true,
 
       handler(val) {
-        this.max = val ? dateTimeFormat(val) : val;
-
         if (val) {
+          this.dateMax = dateTimeFormat(val, 'date');
+          this.timeMaxOriginal = dateTimeFormat(val, 'time');
+          this.timeMax = '';
           this.showMax = true;
         }
+
+        this.updateDate();
       }
 
     },
+    date: {
+      immediate: true,
 
-    date(val) {
-      this.check(new Date(`${val} ${this.time}`));
+      handler() {
+        this.updateDate();
+      }
+
     },
+    time: {
+      immediate: true,
 
-    time(val) {
-      this.check(new Date(`${this.date} ${val}`));
+      handler() {
+        this.updateDate();
+      }
+
     }
-
   },
 
-  mounted() {
-    const {
-      value
-    } = this.$props;
-    this.check(value);
-  },
+  mounted() {},
 
   methods: {
-    check(date) {
-      if (date) {
-        const {
-          start,
-          end
-        } = this.$props;
-
-        if (start) {
-          this.okDisabled = date.getTime() < start.getTime();
-          return;
-        }
-
-        if (end) {
-          this.okDisabled = date.getTime() > end.getTime();
-          return;
-        }
+    updateDate() {
+      if (this.time) {
+        const splits = this.time.split(':');
+        this.hour = splits[0];
+        this.minute = splits[1];
+        this.second = splits[2];
       }
 
-      this.okDisabled = false;
+      this.timeMin = '';
+      this.timeMax = '';
+
+      if (this.date) {
+        if (this.dateMin && this.date === this.dateMin) {
+          this.timeMin = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && this.date === this.dateMax) {
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.dateMin && compareDate(this.date, this.dateMin) === -1) {
+          this.timeMin = this.timeMinOriginal;
+          this.timeMax = this.timeMinOriginal;
+        }
+
+        if (this.timeMin && compareTime(this.time, this.timeMin) === -1) {
+          this.time = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && compareDate(this.date, this.dateMax) === 1) {
+          this.timeMin = this.timeMaxOriginal;
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.timeMax && compareTime(this.time, this.timeMax) === 1) {
+          this.time = this.timeMaxOriginal;
+        }
+      }
     },
 
     onOk() {
-      const dateTime = dateTimeFormat(`${this.date} ${this.time}`);
+      const dateTime = dateTimeFormat(`${this.date} ${this.hour}:${this.minute}:${this.second}`);
       this.$emit('input', dateTime);
       this.$emit('ok', dateTime);
     },
@@ -127,7 +160,6 @@ export default Vue.extend({
       const [date, time] = dateTime.split(' ');
       this.date = date;
       this.time = time;
-      this.check(now);
     },
 
     onMin() {
@@ -138,7 +170,6 @@ export default Vue.extend({
       const [date, time] = dateTime.split(' ');
       this.date = date;
       this.time = time;
-      this.check(start);
     },
 
     onMax() {
@@ -149,7 +180,6 @@ export default Vue.extend({
       const [date, time] = dateTime.split(' ');
       this.date = date;
       this.time = time;
-      this.check(end);
     },
 
     genContent() {
@@ -167,9 +197,14 @@ export default Vue.extend({
         },
         props: {
           value: this.date,
-          min: this.min,
-          max: this.max,
+          min: this.dateMin,
+          max: this.dateMax,
           fullWidth: true
+        },
+        on: {
+          change: val => {
+            this.date = val;
+          }
         }
       });
       return this.$createElement(ZCol, {
@@ -188,8 +223,27 @@ export default Vue.extend({
         props: {
           value: this.time,
           format: '24hr',
+          min: this.timeMin,
+          max: this.timeMax,
           useSeconds: true,
           fullWidth: true
+        },
+        on: {
+          'click:hour': val => {
+            this.hour = val;
+            this.time = `${val}:${this.minute}:${this.second}`;
+          },
+          'click:minute': val => {
+            this.minute = val;
+            this.time = `${this.hour}:${val}:${this.second}`;
+          },
+          'click:second': val => {
+            this.second = val;
+            this.time = `${this.hour}:${this.minute}:${val}`;
+          },
+          change: val => {
+            this.time = val;
+          }
         }
       });
       return this.$createElement(ZCol, {
@@ -216,10 +270,7 @@ export default Vue.extend({
     },
 
     genFooter() {
-      const errorSpan = this.okDisabled ? this.$createElement('span', {
-        staticClass: 'error--text text-caption'
-      }, ['Out of range']) : null;
-      const errorCol = this.$createElement(ZCol, {}, [errorSpan]);
+      const errorCol = this.$createElement(ZCol, {}, []);
       const nowBtn = this.genBtn('now', this.onNow);
       const minBtn = this.genBtn('min', this.onMin);
       const maxBtn = this.genBtn('max', this.onMax);
@@ -228,8 +279,7 @@ export default Vue.extend({
         props: {
           s: true,
           outlined: true,
-          color: this.$attrs.color || 'primary',
-          disabled: this.okDisabled
+          color: 'primary'
         },
         on: {
           click: this.onOk
@@ -255,8 +305,7 @@ export default Vue.extend({
   render(h) {
     return h(ZCard, {
       staticClass: 'z-date-time-picker--inner',
-      attrs: { ...this.$attrs
-      },
+      attrs: {},
       props: {},
       style: {},
       on: {}

@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-require("../../../../src/zui/components/ZMessage/ZMessage.scss");
-
 var _ZMessageContainer = require("./ZMessageContainer");
 
 Object.keys(_ZMessageContainer).forEach(function (key) {

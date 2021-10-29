@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _vue = _interopRequireDefault(require("vue"));
+var _mixins = _interopRequireDefault(require("./../../../util/mixins"));
+
+var _helpers = require("./../../../util/helpers");
 
 var _components = require("../../../components");
-
-var _helper = require("./helper");
 
 var _ZDateTimePickerInner = _interopRequireDefault(require("./ZDateTimePickerInner"));
 
@@ -23,110 +23,87 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _default = _vue.default.extend({
+var _default = (0, _mixins.default)().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: [String, Number, Date],
+      type: String,
       default: null
     },
-    start: {
-      type: [String, Number, Date],
+    min: {
+      type: String,
       default: null
     },
-    end: {
-      type: [String, Number, Date],
+    max: {
+      type: String,
       default: null
     },
     showCurrent: {
       type: Boolean,
       default: true
+    },
+    inputWidth: {
+      type: [String, Number],
+      default: '155px'
+    },
+    color: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: 'setting datetime'
     }
   },
   data: function data() {
     return {
-      dateTimeString: null,
-      dateTimePicker: null,
-      pickerVisible: false,
-      min: null,
-      max: null
+      pickerDate: '',
+      inputDate: '',
+      visible: false
     };
   },
-  computed: {},
+  computed: {
+    inputWidthValue: function inputWidthValue() {
+      var w = this.inputWidth;
+
+      if (typeof w === 'number' || !isNaN(w)) {
+        return w + 'px';
+      }
+
+      return w;
+    }
+  },
   watch: {
     value: {
       immediate: true,
       handler: function handler(val) {
-        if (val) {
-          this.dateTimeString = (0, _helper.dateTimeFormat)(val);
-          this.setDateTimePicker(val);
-        } else {
-          this.dateTimeString = null;
-          this.dateTimePicker = null;
-        }
-      }
-    },
-    start: {
-      immediate: true,
-      handler: function handler(val) {
-        if (val) {
-          this.min = (0, _helper.dateTimeFormatDate)(val);
-        }
-      }
-    },
-    end: {
-      immediate: true,
-      handler: function handler(val) {
-        if (val) {
-          this.max = (0, _helper.dateTimeFormatDate)(val);
-        }
-      }
-    },
-    pickerVisible: function pickerVisible(visible) {
-      if (visible) {
-        var _this$$props = this.$props,
-            value = _this$$props.value,
-            start = _this$$props.start;
-
-        if (value) {
-          this.setDateTimePicker(value);
-          return;
-        }
-
-        if (start) {
-          this.setDateTimePicker(start);
-          return;
-        }
-
-        if (this.$props.showCurrent) {
-          if (this.dateTimeString) {
-            this.setDateTimePicker(new Date(this.dateTimeString));
-          } else {
-            this.setDateTimePicker(new Date());
-          }
-        }
+        this.pickerDate = val || new Date().toISOString();
+        this.inputDate = val || '';
       }
     }
   },
   methods: {
-    setDateTimePicker: function setDateTimePicker(val) {
-      this.dateTimePicker = (0, _helper.dateTimeFormatDate)(val);
-    },
-    onPickerOk: function onPickerOk(value) {
-      this.pickerVisible = false;
-      this.dateTimeString = value;
-      this.$emit('input', value);
-    },
+    setDateTimePicker: function setDateTimePicker(val) {},
     genActivatorSlot: function genActivatorSlot(props) {
+      var slotData = Object.assign(props, {
+        formatDate: this.pickerDate
+      });
+      var activatorSlots = (0, _helpers.getSlot)(this, 'activator', slotData);
+
+      if (activatorSlots && activatorSlots.length > 0) {
+        return activatorSlots[activatorSlots.length - 1];
+      }
+
       return this.$createElement(_components.ZTextField, _objectSpread({}, props, {
-        attrs: _objectSpread({}, this.$attrs, {}, props.attrs),
         props: _objectSpread({
-          value: this.dateTimeString,
+          value: this.inputDate,
           readonly: true,
-          outlined: true
+          outlined: true,
+          color: this.color,
+          placeholder: this.placeholder || '选择时间'
         }, props.props),
         style: {
-          width: '145px'
+          width: this.inputWidthValue
         }
       }));
     }
@@ -136,33 +113,41 @@ var _default = _vue.default.extend({
 
     return h(_components.ZMenu, {
       staticClass: 'z-date-time-picker--inner',
-      attrs: _objectSpread({}, this.$attrs),
       props: {
-        value: this.pickerVisible,
+        value: this.visible,
         offsetY: true,
         contentClass: 'z-date-time-picker',
         transition: 'scale-transition',
-        closeOnContentClick: false
+        closeOnContentClick: false,
+        maxWidth: 600
       },
       on: {
         input: function input(val) {
-          return _this.pickerVisible = val;
+          return _this.visible = val;
         }
       },
       scopedSlots: {
         activator: this.genActivatorSlot
       }
     }, [h(_ZDateTimePickerInner.default, {
-      attrs: _objectSpread({}, this.$attrs),
+      attrs: {
+        color: this.color
+      },
       props: {
-        value: this.dateTimePicker,
+        value: this.pickerDate,
         start: this.min,
         end: this.max
       },
       on: {
-        ok: this.onPickerOk,
+        ok: function ok(val) {
+          _this.visible = false;
+          _this.pickerDate = val;
+          _this.inputDate = val;
+
+          _this.$emit('input', val);
+        },
         cancel: function cancel() {
-          _this.pickerVisible = false;
+          _this.visible = false;
         }
       }
     })]);

@@ -7,6 +7,8 @@ exports.default = exports.ZMessageContainer = void 0;
 
 var _vue = _interopRequireDefault(require("vue"));
 
+require("../../../../src/zui/components/ZMessage/ZMessage.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZMessageContainer = _vue.default.extend({

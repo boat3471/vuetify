@@ -31,15 +31,15 @@ var _default = _vue.default.extend({
   name: 'z-date-time-picker-inner',
   props: {
     value: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     start: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     },
     end: {
-      type: [String, Date, Number],
+      type: String,
       default: null
     }
   },
@@ -47,9 +47,15 @@ var _default = _vue.default.extend({
     return {
       date: '',
       time: '',
-      min: '',
-      max: '',
-      okDisabled: false,
+      dateMin: '',
+      dateMax: '',
+      timeMinOriginal: '',
+      timeMin: '',
+      timeMaxOriginal: '',
+      timeMax: '',
+      hour: '',
+      minute: '',
+      second: '',
       showMin: false,
       showMax: false
     };
@@ -64,8 +70,8 @@ var _default = _vue.default.extend({
               date = _dateTimeFormat$split2[0],
               time = _dateTimeFormat$split2[1];
 
-          this.date = date;
-          this.time = time;
+          this.date = date || '';
+          this.time = time || '';
         } else {
           this.date = '';
           this.time = '';
@@ -75,56 +81,85 @@ var _default = _vue.default.extend({
     start: {
       immediate: true,
       handler: function handler(val) {
-        this.min = val ? (0, _helper.dateTimeFormat)(val) : val;
-
         if (val) {
+          this.dateMin = (0, _helper.dateTimeFormat)(val, 'date');
+          this.timeMinOriginal = (0, _helper.dateTimeFormat)(val, 'time');
+          this.timeMin = '';
           this.showMin = true;
         }
+
+        this.updateDate();
       }
     },
     end: {
       immediate: true,
       handler: function handler(val) {
-        this.max = val ? (0, _helper.dateTimeFormat)(val) : val;
-
         if (val) {
+          this.dateMax = (0, _helper.dateTimeFormat)(val, 'date');
+          this.timeMaxOriginal = (0, _helper.dateTimeFormat)(val, 'time');
+          this.timeMax = '';
           this.showMax = true;
         }
+
+        this.updateDate();
       }
     },
-    date: function date(val) {
-      this.check(new Date("".concat(val, " ").concat(this.time)));
+    date: {
+      immediate: true,
+      handler: function handler() {
+        this.updateDate();
+      }
     },
-    time: function time(val) {
-      this.check(new Date("".concat(this.date, " ").concat(val)));
+    time: {
+      immediate: true,
+      handler: function handler() {
+        this.updateDate();
+      }
     }
   },
-  mounted: function mounted() {
-    var value = this.$props.value;
-    this.check(value);
-  },
+  mounted: function mounted() {},
   methods: {
-    check: function check(date) {
-      if (date) {
-        var _this$$props = this.$props,
-            start = _this$$props.start,
-            end = _this$$props.end;
-
-        if (start) {
-          this.okDisabled = date.getTime() < start.getTime();
-          return;
-        }
-
-        if (end) {
-          this.okDisabled = date.getTime() > end.getTime();
-          return;
-        }
+    updateDate: function updateDate() {
+      if (this.time) {
+        var splits = this.time.split(':');
+        this.hour = splits[0];
+        this.minute = splits[1];
+        this.second = splits[2];
       }
 
-      this.okDisabled = false;
+      this.timeMin = '';
+      this.timeMax = '';
+
+      if (this.date) {
+        if (this.dateMin && this.date === this.dateMin) {
+          this.timeMin = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && this.date === this.dateMax) {
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.dateMin && (0, _helper.compareDate)(this.date, this.dateMin) === -1) {
+          this.timeMin = this.timeMinOriginal;
+          this.timeMax = this.timeMinOriginal;
+        }
+
+        if (this.timeMin && (0, _helper.compareTime)(this.time, this.timeMin) === -1) {
+          this.time = this.timeMinOriginal;
+        }
+
+        if (this.dateMax && (0, _helper.compareDate)(this.date, this.dateMax) === 1) {
+          this.timeMin = this.timeMaxOriginal;
+          this.timeMax = this.timeMaxOriginal;
+        }
+
+        if (this.timeMax && (0, _helper.compareTime)(this.time, this.timeMax) === 1) {
+          this.time = this.timeMaxOriginal;
+        }
+      }
     },
     onOk: function onOk() {
-      var dateTime = (0, _helper.dateTimeFormat)("".concat(this.date, " ").concat(this.time));
+      var dateTime = (0, _helper.dateTimeFormat)("".concat(this.date, " ").concat(this.hour, ":").concat(this.minute, ":").concat(this.second));
       this.$emit('input', dateTime);
       this.$emit('ok', dateTime);
     },
@@ -142,7 +177,6 @@ var _default = _vue.default.extend({
 
       this.date = date;
       this.time = time;
-      this.check(now);
     },
     onMin: function onMin() {
       var start = this.$props.start;
@@ -155,7 +189,6 @@ var _default = _vue.default.extend({
 
       this.date = date;
       this.time = time;
-      this.check(start);
     },
     onMax: function onMax() {
       var end = this.$props.end;
@@ -168,7 +201,6 @@ var _default = _vue.default.extend({
 
       this.date = date;
       this.time = time;
-      this.check(end);
     },
     genContent: function genContent() {
       return this.$createElement(_components.ZRow, {
@@ -178,14 +210,21 @@ var _default = _vue.default.extend({
       }, [this.genDatePicker(), this.genTimePicker()]);
     },
     genDatePicker: function genDatePicker() {
+      var _this = this;
+
       var dataPicker = this.$createElement(_components.ZDatePicker, {
         staticClass: 'dt-date-picker',
         attrs: _objectSpread({}, this.$attrs),
         props: {
           value: this.date,
-          min: this.min,
-          max: this.max,
+          min: this.dateMin,
+          max: this.dateMax,
           fullWidth: true
+        },
+        on: {
+          change: function change(val) {
+            _this.date = val;
+          }
         }
       });
       return this.$createElement(_components.ZCol, {
@@ -196,14 +235,35 @@ var _default = _vue.default.extend({
       }, [dataPicker]);
     },
     genTimePicker: function genTimePicker() {
+      var _this2 = this;
+
       var timePicker = this.$createElement(_components.ZTimePicker, {
         staticClass: 'dt-time-picker',
         attrs: _objectSpread({}, this.$attrs),
         props: {
           value: this.time,
           format: '24hr',
+          min: this.timeMin,
+          max: this.timeMax,
           useSeconds: true,
           fullWidth: true
+        },
+        on: {
+          'click:hour': function clickHour(val) {
+            _this2.hour = val;
+            _this2.time = "".concat(val, ":").concat(_this2.minute, ":").concat(_this2.second);
+          },
+          'click:minute': function clickMinute(val) {
+            _this2.minute = val;
+            _this2.time = "".concat(_this2.hour, ":").concat(val, ":").concat(_this2.second);
+          },
+          'click:second': function clickSecond(val) {
+            _this2.second = val;
+            _this2.time = "".concat(_this2.hour, ":").concat(_this2.minute, ":").concat(val);
+          },
+          change: function change(val) {
+            _this2.time = val;
+          }
         }
       });
       return this.$createElement(_components.ZCol, {
@@ -228,10 +288,7 @@ var _default = _vue.default.extend({
       }, [label]);
     },
     genFooter: function genFooter() {
-      var errorSpan = this.okDisabled ? this.$createElement('span', {
-        staticClass: 'error--text text-caption'
-      }, ['Out of range']) : null;
-      var errorCol = this.$createElement(_components.ZCol, {}, [errorSpan]);
+      var errorCol = this.$createElement(_components.ZCol, {}, []);
       var nowBtn = this.genBtn('now', this.onNow);
       var minBtn = this.genBtn('min', this.onMin);
       var maxBtn = this.genBtn('max', this.onMax);
@@ -240,8 +297,7 @@ var _default = _vue.default.extend({
         props: {
           s: true,
           outlined: true,
-          color: this.$attrs.color || 'primary',
-          disabled: this.okDisabled
+          color: 'primary'
         },
         on: {
           click: this.onOk
@@ -265,7 +321,7 @@ var _default = _vue.default.extend({
   render: function render(h) {
     return h(_components.ZCard, {
       staticClass: 'z-date-time-picker--inner',
-      attrs: _objectSpread({}, this.$attrs),
+      attrs: {},
       props: {},
       style: {},
       on: {}

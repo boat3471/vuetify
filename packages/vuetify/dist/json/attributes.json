@@ -10319,6 +10319,22 @@
     "type": "string",
     "description": "Sets the transition mode (does not apply to transition-group). You can find more information on the Vue documentation [for transition modes](https://vuejs.org/v2/api/#transition)."
   },
+  "z-admin/project-name": {
+    "type": "string",
+    "description": ""
+  },
+  "z-admin/toolbar-color": {
+    "type": "string",
+    "description": ""
+  },
+  "z-admin/toolbar-dark": {
+    "type": "boolean",
+    "description": ""
+  },
+  "z-admin/toolbar-elevation": {
+    "type": "string",
+    "description": ""
+  },
   "z-color-selector/default-value": {
     "type": "string",
     "description": ""
@@ -10371,35 +10387,31 @@
     "type": "string",
     "description": ""
   },
-  "z-date-time-picker/end": {
-    "type": "string|number|date",
+  "z-date-time-picker/color": {
+    "type": "string",
+    "description": ""
+  },
+  "z-date-time-picker/input-width": {
+    "type": "string|number",
+    "description": ""
+  },
+  "z-date-time-picker/max": {
+    "type": "string",
+    "description": ""
+  },
+  "z-date-time-picker/min": {
+    "type": "string",
+    "description": ""
+  },
+  "z-date-time-picker/placeholder": {
+    "type": "string",
     "description": ""
   },
   "z-date-time-picker/show-current": {
     "type": "boolean",
     "description": ""
   },
-  "z-date-time-picker/start": {
-    "type": "string|number|date",
-    "description": ""
-  },
   "z-date-time-picker/value": {
-    "type": "string|number|date",
-    "description": ""
-  },
-  "z-admin/project-name": {
-    "type": "string",
-    "description": ""
-  },
-  "z-admin/toolbar-color": {
-    "type": "string",
-    "description": ""
-  },
-  "z-admin/toolbar-dark": {
-    "type": "boolean",
-    "description": ""
-  },
-  "z-admin/toolbar-elevation": {
     "type": "string",
     "description": ""
   }
