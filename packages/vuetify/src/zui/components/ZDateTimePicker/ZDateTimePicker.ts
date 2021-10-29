@@ -1,135 +1,109 @@
-import Vue, { VNode, VNodeData } from 'vue'
-// import mixins from '../../../util/mixins'
+import { CreateElement, VNode, VNodeData } from 'vue'
+import mixins from './../../../util/mixins'
+import { getSlot } from './../../../util/helpers'
 import { ZMenu, ZTextField } from '../../../components'
-import { dateTimeFormat, dateTimeFormatDate } from './helper'
 import ZDataTimePickerInner from './ZDateTimePickerInner'
 import './ZDataTimePicker.scss'
 
-export default Vue.extend({
+export default mixins().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: [String, Number, Date],
+      type: String,
       default: null,
     },
-    start: {
-      type: [String, Number, Date],
+    min: {
+      type: String,
       default: null,
     },
-    end: {
-      type: [String, Number, Date],
+    max: {
+      type: String,
       default: null,
     },
     showCurrent: {
       type: Boolean,
       default: true,
     },
+    inputWidth: {
+      type: [String, Number],
+      default: '155px',
+    },
+    color: {
+      type: String,
+      default: '',
+    },
+    placeholder: {
+      type: String,
+      default: 'setting datetime',
+    }
   },
 
   data () {
     return {
-      dateTimeString: null,
-      dateTimePicker: null,
-      pickerVisible: false,
-      min: null,
-      max: null,
+      pickerDate: '',
+      inputDate: '',
+      visible: false,
     }
   },
-  computed: {},
+  computed: {
+    inputWidthValue (): string {
+      const w = this.inputWidth
+      if (typeof w === 'number' || !isNaN(w)) {
+        return w + 'px'
+      }
+      return w
+    },
+  },
   watch: {
     value: {
       immediate: true,
-      handler (val) {
-        if (val) {
-          this.dateTimeString = dateTimeFormat(val)
-          this.setDateTimePicker(val)
-        } else {
-          this.dateTimeString = null
-          this.dateTimePicker = null
-        }
+      handler (val: any) {
+        this.pickerDate = val || new Date().toISOString()
+        this.inputDate = val || ''
       },
-    },
-    start: {
-      immediate: true,
-      handler (val) {
-        if (val) {
-          this.min = dateTimeFormatDate(val)
-        }
-      },
-    },
-    end: {
-      immediate: true,
-      handler (val) {
-        if (val) {
-          this.max = dateTimeFormatDate(val)
-        }
-      },
-    },
-    pickerVisible (visible) {
-      if (visible) {
-        const { value, start } = this.$props
-        if (value) {
-          this.setDateTimePicker(value)
-          return
-        }
-        if (start) {
-          this.setDateTimePicker(start)
-          return
-        }
-        if (this.$props.showCurrent) {
-          if (this.dateTimeString) {
-            this.setDateTimePicker(new Date(this.dateTimeString as any))
-          } else {
-            this.setDateTimePicker(new Date())
-          }
-        }
-      }
     },
   },
   methods: {
     setDateTimePicker (val: any) {
-      this.dateTimePicker = dateTimeFormatDate(val)
     },
-    onPickerOk (value: string) {
-      this.pickerVisible = false
-      this.dateTimeString = value as any
-      this.$emit('input', value)
-    },
-    genActivatorSlot (props: VNodeData) {
+    genActivatorSlot (props: VNodeData): VNodeData {
+      const slotData = Object.assign(props, {
+        formatDate: this.pickerDate,
+      })
+      const activatorSlots = getSlot(this, 'activator', slotData)
+      if (activatorSlots && activatorSlots.length > 0) {
+        return activatorSlots[activatorSlots.length - 1]
+      }
       return this.$createElement(ZTextField, {
         ...props,
-        attrs: {
-          ...this.$attrs,
-          ...props.attrs,
-        },
         props: {
-          value: this.dateTimeString,
+          value: this.inputDate,
           readonly: true,
           outlined: true,
+          color: this.color,
+          placeholder: this.placeholder || '选择时间',
           ...props.props,
         },
         style: {
-          width: '145px',
+          width: this.inputWidthValue,
         },
       })
     },
   },
 
-  render (h): VNode {
+  render (h: CreateElement): VNode {
     return h(ZMenu, {
       staticClass: 'z-date-time-picker--inner',
-      attrs: {
-        ...this.$attrs,
-      },
       props: {
-        value: this.pickerVisible,
+        value: this.visible,
         offsetY: true,
         contentClass: 'z-date-time-picker',
         transition: 'scale-transition',
         closeOnContentClick: false,
+        maxWidth: 600,
       },
       on: {
-        input: (val: boolean) => (this.pickerVisible = val),
+        input: (val: boolean) => (this.visible = val),
       },
       scopedSlots: {
         activator: this.genActivatorSlot,
@@ -137,17 +111,22 @@ export default Vue.extend({
     }, [
       h(ZDataTimePickerInner, {
         attrs: {
-          ...this.$attrs,
+          color: this.color,
         },
         props: {
-          value: this.dateTimePicker,
+          value: this.pickerDate,
           start: this.min,
           end: this.max,
         },
         on: {
-          ok: this.onPickerOk,
+          ok: (val: any) => {
+            this.visible = false
+            this.pickerDate = val
+            this.inputDate = val
+            this.$emit('input', val)
+          },
           cancel: () => {
-            this.pickerVisible = false
+            this.visible = false
           },
         },
       }),
