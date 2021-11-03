@@ -40,14 +40,7 @@ export default Vue.extend({
     value: {
       immediate: true,
       handler (val) {
-        if (val) {
-          const [date, time] = dateTimeFormat(val).split(' ')
-          this.date = date || ''
-          this.time = time || ''
-        } else {
-          this.date = ''
-          this.time = ''
-        }
+        this.updateValue(val)
       },
     },
     start: {
@@ -90,6 +83,17 @@ export default Vue.extend({
   mounted () {
   },
   methods: {
+    updateValue (val: any) {
+      if (val) {
+        const [date, time] = dateTimeFormat(val).split(' ')
+        this.date = date || ''
+        this.time = time || ''
+      } else {
+        this.date = ''
+        this.time = ''
+      }
+      this.updateDate()
+    },
     updateDate () {
       if (this.time) {
         const splits = this.time.split(':')
@@ -134,7 +138,9 @@ export default Vue.extend({
       this.$emit('ok', dateTime)
     },
     onCancel () {
-      this.$emit('cancel')
+      this.updateValue(this.value)
+      const dateTime = dateTimeFormat(`${this.date} ${this.hour}:${this.minute}:${this.second}`)
+      this.$emit('cancel', dateTime)
     },
     onNow () {
       const now = new Date()

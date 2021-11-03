@@ -4,20 +4,21 @@ import { getSlot } from './../../../util/helpers'
 import { ZMenu, ZTextField } from '../../../components'
 import ZDataTimePickerInner from './ZDateTimePickerInner'
 import './ZDataTimePicker.scss'
+import { dateTimeFormat } from './helper'
 
 export default mixins().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: null,
     },
     min: {
-      type: String,
+      type: [String, Number],
       default: null,
     },
     max: {
-      type: String,
+      type: [String, Number],
       default: null,
     },
     showCurrent: {
@@ -35,7 +36,7 @@ export default mixins().extend({
     placeholder: {
       type: String,
       default: 'setting datetime',
-    }
+    },
   },
 
   data () {
@@ -43,6 +44,8 @@ export default mixins().extend({
       pickerDate: '',
       inputDate: '',
       visible: false,
+      minDate: '',
+      maxDate: '',
     }
   },
   computed: {
@@ -58,8 +61,32 @@ export default mixins().extend({
     value: {
       immediate: true,
       handler (val: any) {
-        this.pickerDate = val || new Date().toISOString()
-        this.inputDate = val || ''
+        if (val) {
+          this.pickerDate = new Date(val).toISOString()
+        } else {
+          this.pickerDate = new Date().toISOString()
+        }
+        this.inputDate = dateTimeFormat(this.pickerDate)
+      },
+    },
+    min: {
+      immediate: true,
+      handler (val: any) {
+        if (val) {
+          this.minDate = new Date(val).toISOString()
+        } else {
+          this.minDate = ''
+        }
+      },
+    },
+    max: {
+      immediate: true,
+      handler (val: any) {
+        if (val) {
+          this.maxDate = new Date(val).toISOString()
+        } else {
+          this.maxDate = ''
+        }
       },
     },
   },
@@ -68,7 +95,8 @@ export default mixins().extend({
     },
     genActivatorSlot (props: VNodeData): VNodeData {
       const slotData = Object.assign(props, {
-        formatDate: this.pickerDate,
+        dateFormat: this.inputDate,
+        dateValue: +new Date(this.inputDate),
       })
       const activatorSlots = getSlot(this, 'activator', slotData)
       if (activatorSlots && activatorSlots.length > 0) {
@@ -115,8 +143,8 @@ export default mixins().extend({
         },
         props: {
           value: this.pickerDate,
-          start: this.min,
-          end: this.max,
+          start: this.minDate,
+          end: this.maxDate,
         },
         on: {
           ok: (val: any) => {
