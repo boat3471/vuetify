@@ -14,6 +14,10 @@ const ZSlider = mixins(VSlider).extend({
       type: [String, Number],
       default: 0,
     },
+    trackPointerEvents: {
+      type: String,
+      default: 'auto',
+    },
   },
   methods: {
     genThumb () {
@@ -49,6 +53,7 @@ const ZSlider = mixins(VSlider).extend({
           height: h,
           borderRadius: r,
           overflow: 'hidden',
+          pointerEvents: this.trackPointerEvents,
         },
         ref: 'track',
       }, children)
