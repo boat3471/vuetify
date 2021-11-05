@@ -30560,10 +30560,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZSlider", function() { return ZSlider; });
 /* harmony import */ var _VSlider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VSlider */ "./src/components/VSlider/VSlider.ts");
 /* harmony import */ var _util_mixins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/mixins */ "./src/util/mixins.ts");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../util/helpers */ "./src/util/helpers.ts");
+
 
 
 var ZSlider = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VSlider__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-slider'
+  name: 'z-slider',
+  props: {
+    trackHeight: {
+      type: [String, Number],
+      default: '2px'
+    },
+    trackRadius: {
+      type: [String, Number],
+      default: 0
+    },
+    trackPointerEvents: {
+      type: String,
+      default: 'auto'
+    }
+  },
+  methods: {
+    genThumb: function genThumb() {
+      var thumbSlots = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'thumb');
+
+      if (thumbSlots) {
+        return thumbSlots;
+      }
+
+      return this.$createElement('div', this.setBackgroundColor(this.computedThumbColor, {
+        staticClass: 'v-slider__thumb'
+      }));
+    },
+    genTrackContainer: function genTrackContainer() {
+      var children = [this.$createElement('div', this.setBackgroundColor(this.computedTrackColor, {
+        staticClass: 'v-slider__track-background',
+        style: this.trackStyles
+      })), this.$createElement('div', this.setBackgroundColor(this.computedTrackFillColor, {
+        staticClass: 'v-slider__track-fill',
+        style: this.trackFillStyles
+      }))];
+      var h = isNaN(Number(this.trackHeight)) ? this.trackHeight : this.trackHeight + 'px';
+      var r = isNaN(Number(this.trackRadius)) ? this.trackRadius : this.trackRadius + 'px';
+      return this.$createElement('div', {
+        staticClass: 'v-slider__track-container',
+        style: {
+          height: h,
+          borderRadius: r,
+          overflow: 'hidden',
+          pointerEvents: this.trackPointerEvents
+        },
+        ref: 'track'
+      }, children);
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZSlider);
@@ -39900,7 +39950,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.808";
+  Zui.version = "2.5.809";
   Zui.config = {
     silent: false
   };
@@ -55899,6 +55949,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ZDateTimePickerInner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ZDateTimePickerInner */ "./src/zui/components/ZDateTimePicker/ZDateTimePickerInner.ts");
 /* harmony import */ var _ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ZDataTimePicker.scss */ "./src/zui/components/ZDateTimePicker/ZDataTimePicker.scss");
 /* harmony import */ var _ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_ZDataTimePicker_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helper */ "./src/zui/components/ZDateTimePicker/helper.ts");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -55920,19 +55971,20 @@ var __assign = undefined && undefined.__assign || function () {
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     min: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     max: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     showCurrent: {
@@ -55956,7 +56008,9 @@ var __assign = undefined && undefined.__assign || function () {
     return {
       pickerDate: '',
       inputDate: '',
-      visible: false
+      visible: false,
+      minDate: '',
+      maxDate: ''
     };
   },
   computed: {
@@ -55974,8 +56028,33 @@ var __assign = undefined && undefined.__assign || function () {
     value: {
       immediate: true,
       handler: function handler(val) {
-        this.pickerDate = val || new Date().toISOString();
-        this.inputDate = val || '';
+        if (val) {
+          this.pickerDate = new Date(val).toISOString();
+        } else {
+          this.pickerDate = new Date().toISOString();
+        }
+
+        this.inputDate = Object(_helper__WEBPACK_IMPORTED_MODULE_5__["dateTimeFormat"])(this.pickerDate);
+      }
+    },
+    min: {
+      immediate: true,
+      handler: function handler(val) {
+        if (val) {
+          this.minDate = new Date(val).toISOString();
+        } else {
+          this.minDate = '';
+        }
+      }
+    },
+    max: {
+      immediate: true,
+      handler: function handler(val) {
+        if (val) {
+          this.maxDate = new Date(val).toISOString();
+        } else {
+          this.maxDate = '';
+        }
       }
     }
   },
@@ -55983,7 +56062,8 @@ var __assign = undefined && undefined.__assign || function () {
     setDateTimePicker: function setDateTimePicker(val) {},
     genActivatorSlot: function genActivatorSlot(props) {
       var slotData = Object.assign(props, {
-        formatDate: this.pickerDate
+        dateFormat: this.inputDate,
+        dateValue: +new Date(this.inputDate)
       });
       var activatorSlots = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_1__["getSlot"])(this, 'activator', slotData);
 
@@ -56032,8 +56112,8 @@ var __assign = undefined && undefined.__assign || function () {
       },
       props: {
         value: this.pickerDate,
-        start: this.min,
-        end: this.max
+        start: this.minDate,
+        end: this.maxDate
       },
       on: {
         ok: function ok(val) {
@@ -56150,17 +56230,7 @@ var __read = undefined && undefined.__read || function (o, n) {
     value: {
       immediate: true,
       handler: function handler(val) {
-        if (val) {
-          var _a = __read(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val).split(' '), 2),
-              date = _a[0],
-              time = _a[1];
-
-          this.date = date || '';
-          this.time = time || '';
-        } else {
-          this.date = '';
-          this.time = '';
-        }
+        this.updateValue(val);
       }
     },
     start: {
@@ -56204,6 +56274,21 @@ var __read = undefined && undefined.__read || function (o, n) {
   },
   mounted: function mounted() {},
   methods: {
+    updateValue: function updateValue(val) {
+      if (val) {
+        var _a = __read(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(val).split(' '), 2),
+            date = _a[0],
+            time = _a[1];
+
+        this.date = date || '';
+        this.time = time || '';
+      } else {
+        this.date = '';
+        this.time = '';
+      }
+
+      this.updateDate();
+    },
     updateDate: function updateDate() {
       if (this.time) {
         var splits = this.time.split(':');
@@ -56249,7 +56334,9 @@ var __read = undefined && undefined.__read || function (o, n) {
       this.$emit('ok', dateTime);
     },
     onCancel: function onCancel() {
-      this.$emit('cancel');
+      this.updateValue(this.value);
+      var dateTime = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["dateTimeFormat"])(this.date + " " + this.hour + ":" + this.minute + ":" + this.second);
+      this.$emit('cancel', dateTime);
     },
     onNow: function onNow() {
       var now = new Date();
@@ -57673,8 +57760,8 @@ var DragMove = {
       }
 
       var boundingClientRect = dialogEl.getBoundingClientRect();
-      dialogHeight = dialogEl.clientHeight;
-      dialogWidth = dialogEl.clientWidth;
+      dialogHeight = dialogEl.offsetHeight;
+      dialogWidth = dialogEl.offsetWidth;
       dialogTop = boundingClientRect.top;
       dialogLeft = boundingClientRect.left;
       movedDialogTop = dialogTop;

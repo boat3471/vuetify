@@ -64,18 +64,7 @@ var _default = _vue.default.extend({
     value: {
       immediate: true,
       handler: function handler(val) {
-        if (val) {
-          var _dateTimeFormat$split = (0, _helper.dateTimeFormat)(val).split(' '),
-              _dateTimeFormat$split2 = _slicedToArray(_dateTimeFormat$split, 2),
-              date = _dateTimeFormat$split2[0],
-              time = _dateTimeFormat$split2[1];
-
-          this.date = date || '';
-          this.time = time || '';
-        } else {
-          this.date = '';
-          this.time = '';
-        }
+        this.updateValue(val);
       }
     },
     start: {
@@ -119,6 +108,22 @@ var _default = _vue.default.extend({
   },
   mounted: function mounted() {},
   methods: {
+    updateValue: function updateValue(val) {
+      if (val) {
+        var _dateTimeFormat$split = (0, _helper.dateTimeFormat)(val).split(' '),
+            _dateTimeFormat$split2 = _slicedToArray(_dateTimeFormat$split, 2),
+            date = _dateTimeFormat$split2[0],
+            time = _dateTimeFormat$split2[1];
+
+        this.date = date || '';
+        this.time = time || '';
+      } else {
+        this.date = '';
+        this.time = '';
+      }
+
+      this.updateDate();
+    },
     updateDate: function updateDate() {
       if (this.time) {
         var splits = this.time.split(':');
@@ -164,7 +169,9 @@ var _default = _vue.default.extend({
       this.$emit('ok', dateTime);
     },
     onCancel: function onCancel() {
-      this.$emit('cancel');
+      this.updateValue(this.value);
+      var dateTime = (0, _helper.dateTimeFormat)("".concat(this.date, " ").concat(this.hour, ":").concat(this.minute, ":").concat(this.second));
+      this.$emit('cancel', dateTime);
     },
     onNow: function onNow() {
       var now = new Date();

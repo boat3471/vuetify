@@ -15,6 +15,8 @@ var _ZDateTimePickerInner = _interopRequireDefault(require("./ZDateTimePickerInn
 
 require("../../../../src/zui/components/ZDateTimePicker/ZDataTimePicker.scss");
 
+var _helper = require("./helper");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -27,15 +29,15 @@ var _default = (0, _mixins.default)().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     min: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     max: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     showCurrent: {
@@ -59,7 +61,9 @@ var _default = (0, _mixins.default)().extend({
     return {
       pickerDate: '',
       inputDate: '',
-      visible: false
+      visible: false,
+      minDate: '',
+      maxDate: ''
     };
   },
   computed: {
@@ -77,8 +81,33 @@ var _default = (0, _mixins.default)().extend({
     value: {
       immediate: true,
       handler: function handler(val) {
-        this.pickerDate = val || new Date().toISOString();
-        this.inputDate = val || '';
+        if (val) {
+          this.pickerDate = new Date(val).toISOString();
+        } else {
+          this.pickerDate = new Date().toISOString();
+        }
+
+        this.inputDate = (0, _helper.dateTimeFormat)(this.pickerDate);
+      }
+    },
+    min: {
+      immediate: true,
+      handler: function handler(val) {
+        if (val) {
+          this.minDate = new Date(val).toISOString();
+        } else {
+          this.minDate = '';
+        }
+      }
+    },
+    max: {
+      immediate: true,
+      handler: function handler(val) {
+        if (val) {
+          this.maxDate = new Date(val).toISOString();
+        } else {
+          this.maxDate = '';
+        }
       }
     }
   },
@@ -86,7 +115,8 @@ var _default = (0, _mixins.default)().extend({
     setDateTimePicker: function setDateTimePicker(val) {},
     genActivatorSlot: function genActivatorSlot(props) {
       var slotData = Object.assign(props, {
-        formatDate: this.pickerDate
+        dateFormat: this.inputDate,
+        dateValue: +new Date(this.inputDate)
       });
       var activatorSlots = (0, _helpers.getSlot)(this, 'activator', slotData);
 
@@ -135,8 +165,8 @@ var _default = (0, _mixins.default)().extend({
       },
       props: {
         value: this.pickerDate,
-        start: this.min,
-        end: this.max
+        start: this.minDate,
+        end: this.maxDate
       },
       on: {
         ok: function ok(val) {

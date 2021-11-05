@@ -64,8 +64,8 @@ var DragMove = {
       }
 
       var boundingClientRect = dialogEl.getBoundingClientRect();
-      dialogHeight = dialogEl.clientHeight;
-      dialogWidth = dialogEl.clientWidth;
+      dialogHeight = dialogEl.offsetHeight;
+      dialogWidth = dialogEl.offsetWidth;
       dialogTop = boundingClientRect.top;
       dialogLeft = boundingClientRect.left;
       movedDialogTop = dialogTop;

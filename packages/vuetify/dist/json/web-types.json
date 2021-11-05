@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.808",
+  "version": "2.5.809",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -4647,7 +4647,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2021-10-29",
+              "default": "2021-11-05",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5024,7 +5024,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2021-10-29",
+              "default": "2021-11-05",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5306,7 +5306,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2021-10-29",
+              "default": "2021-11-05",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5524,7 +5524,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2021-10-29",
+              "default": "2021-11-05",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5742,7 +5742,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2021-10-29",
+              "default": "2021-11-05",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -22327,6 +22327,42 @@
               }
             },
             {
+              "name": "track-height",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-slider#props",
+              "default": "2px",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            },
+            {
+              "name": "track-pointer-events",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-slider#props",
+              "default": "'auto'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "track-radius",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-slider#props",
+              "default": "0",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            },
+            {
               "name": "validate-on-blur",
               "description": "Delays validation until blur event",
               "doc-url": "https://www.vuetifyjs.com/api/z-slider#props",
@@ -32120,7 +32156,10 @@
               "default": "undefined",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": [
+                  "string",
+                  "number"
+                ]
               }
             },
             {
@@ -32130,7 +32169,10 @@
               "default": "undefined",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": [
+                  "string",
+                  "number"
+                ]
               }
             },
             {
@@ -32161,7 +32203,10 @@
               "default": "undefined",
               "value": {
                 "kind": "expression",
-                "type": "string"
+                "type": [
+                  "string",
+                  "number"
+                ]
               }
             }
           ],

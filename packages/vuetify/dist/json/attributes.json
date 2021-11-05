@@ -7355,6 +7355,18 @@
     "type": "string",
     "description": "Sets the track's fill color"
   },
+  "z-slider/track-height": {
+    "type": "string|number",
+    "description": ""
+  },
+  "z-slider/track-pointer-events": {
+    "type": "string",
+    "description": ""
+  },
+  "z-slider/track-radius": {
+    "type": "string|number",
+    "description": ""
+  },
   "z-slider/validate-on-blur": {
     "type": "boolean",
     "description": "Delays validation until blur event"
@@ -10396,11 +10408,11 @@
     "description": ""
   },
   "z-date-time-picker/max": {
-    "type": "string",
+    "type": "string|number",
     "description": ""
   },
   "z-date-time-picker/min": {
-    "type": "string",
+    "type": "string|number",
     "description": ""
   },
   "z-date-time-picker/placeholder": {
@@ -10412,7 +10424,7 @@
     "description": ""
   },
   "z-date-time-picker/value": {
-    "type": "string",
+    "type": "string|number",
     "description": ""
   }
 }

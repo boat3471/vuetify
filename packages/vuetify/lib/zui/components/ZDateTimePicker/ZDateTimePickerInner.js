@@ -42,14 +42,7 @@ export default Vue.extend({
       immediate: true,
 
       handler(val) {
-        if (val) {
-          const [date, time] = dateTimeFormat(val).split(' ');
-          this.date = date || '';
-          this.time = time || '';
-        } else {
-          this.date = '';
-          this.time = '';
-        }
+        this.updateValue(val);
       }
 
     },
@@ -104,6 +97,19 @@ export default Vue.extend({
   mounted() {},
 
   methods: {
+    updateValue(val) {
+      if (val) {
+        const [date, time] = dateTimeFormat(val).split(' ');
+        this.date = date || '';
+        this.time = time || '';
+      } else {
+        this.date = '';
+        this.time = '';
+      }
+
+      this.updateDate();
+    },
+
     updateDate() {
       if (this.time) {
         const splits = this.time.split(':');
@@ -151,7 +157,9 @@ export default Vue.extend({
     },
 
     onCancel() {
-      this.$emit('cancel');
+      this.updateValue(this.value);
+      const dateTime = dateTimeFormat(`${this.date} ${this.hour}:${this.minute}:${this.second}`);
+      this.$emit('cancel', dateTime);
     },
 
     onNow() {

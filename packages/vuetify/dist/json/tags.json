@@ -2345,6 +2345,9 @@
       "ticks",
       "track-color",
       "track-fill-color",
+      "track-height",
+      "track-pointer-events",
+      "track-radius",
       "validate-on-blur",
       "value",
       "vertical"

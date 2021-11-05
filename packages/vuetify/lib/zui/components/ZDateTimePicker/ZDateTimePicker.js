@@ -3,19 +3,20 @@ import { getSlot } from './../../../util/helpers';
 import { ZMenu, ZTextField } from '../../../components';
 import ZDataTimePickerInner from './ZDateTimePickerInner';
 import "../../../../src/zui/components/ZDateTimePicker/ZDataTimePicker.scss";
+import { dateTimeFormat } from './helper';
 export default mixins().extend({
   name: 'z-date-time-picker',
   props: {
     value: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     min: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     max: {
-      type: String,
+      type: [String, Number],
       default: null
     },
     showCurrent: {
@@ -40,7 +41,9 @@ export default mixins().extend({
     return {
       pickerDate: '',
       inputDate: '',
-      visible: false
+      visible: false,
+      minDate: '',
+      maxDate: ''
     };
   },
 
@@ -61,8 +64,37 @@ export default mixins().extend({
       immediate: true,
 
       handler(val) {
-        this.pickerDate = val || new Date().toISOString();
-        this.inputDate = val || '';
+        if (val) {
+          this.pickerDate = new Date(val).toISOString();
+        } else {
+          this.pickerDate = new Date().toISOString();
+        }
+
+        this.inputDate = dateTimeFormat(this.pickerDate);
+      }
+
+    },
+    min: {
+      immediate: true,
+
+      handler(val) {
+        if (val) {
+          this.minDate = new Date(val).toISOString();
+        } else {
+          this.minDate = '';
+        }
+      }
+
+    },
+    max: {
+      immediate: true,
+
+      handler(val) {
+        if (val) {
+          this.maxDate = new Date(val).toISOString();
+        } else {
+          this.maxDate = '';
+        }
       }
 
     }
@@ -72,7 +104,8 @@ export default mixins().extend({
 
     genActivatorSlot(props) {
       const slotData = Object.assign(props, {
-        formatDate: this.pickerDate
+        dateFormat: this.inputDate,
+        dateValue: +new Date(this.inputDate)
       });
       const activatorSlots = getSlot(this, 'activator', slotData);
 
@@ -120,8 +153,8 @@ export default mixins().extend({
       },
       props: {
         value: this.pickerDate,
-        start: this.min,
-        end: this.max
+        start: this.minDate,
+        end: this.maxDate
       },
       on: {
         ok: val => {
