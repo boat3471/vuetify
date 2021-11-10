@@ -1,11 +1,10 @@
 {
   "name": "@zwd/z-ui",
-  "version": "2.5.809",
+  "version": "2.5.810",
   "vuetifyVersion": "2.5.8",
   "description": "Vue Material Component Framework",
   "publishConfig": {
-    "access": "public",
-    "tag": ""
+    "access": "public"
   },
   "author": {
     "name": "xinwenchao",
