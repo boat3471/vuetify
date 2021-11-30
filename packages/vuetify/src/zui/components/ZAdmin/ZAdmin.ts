@@ -233,7 +233,7 @@ export const ZAdmin = Vue.extend({
       if (this.footerVisible) {
         return []
       }
-      const footerSlot = getSlot(this, 'footer-area') || [
+      const footerSlot = getSlot(this, 'footer') || [
         h('span',
           {
             staticClass: 'text-truncate subtitle-2',

@@ -255,7 +255,7 @@ var ZAdmin = _vue.default.extend({
         return [];
       }
 
-      var footerSlot = (0, _helpers.getSlot)(this, 'footer-area') || [h('span', {
+      var footerSlot = (0, _helpers.getSlot)(this, 'footer') || [h('span', {
         staticClass: 'text-truncate subtitle-2',
         style: {
           transform: 'scale(0.85)',

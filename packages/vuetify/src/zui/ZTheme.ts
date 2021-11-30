@@ -195,6 +195,9 @@ export class ZThemeClass extends UIEvent implements ZThemeDescription {
       // 更新颜色
       this.resetColor(status)
 
+      // 更新本地记录
+      ZThemeClass.setLocalOptions(this.themeStore)
+
       // 通知视图
       this.emit('changeDark', status)
     }
