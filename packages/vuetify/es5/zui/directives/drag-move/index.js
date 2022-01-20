@@ -38,17 +38,20 @@ function getActivitorEls(el, binding) {
 }
 
 var DragMove = {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   inserted: function inserted(el, binding) {
     var dialogEl = el;
     if (!dialogEl) return;
     var isInited = false;
+    var mouseStartX = 0;
+    var mouseStartY = 0;
     var activitorEls = getActivitorEls(el, binding);
     var dialogHeight = 0;
     var dialogWidth = 0;
-    var dialogTop = 0;
-    var dialogLeft = 0;
-    var movedDialogTop = 0;
-    var movedDialogLeft = 0;
+    var dialogY = 0;
+    var dialogX = 0;
+    var newDialogX = 0;
+    var newDialogY = 0;
     activitorEls.forEach(function (activitorEl) {
       // 第一次被拖动时初始化数据
       activitorEl.addEventListener('mousedown', init);
@@ -66,47 +69,68 @@ var DragMove = {
       var boundingClientRect = dialogEl.getBoundingClientRect();
       dialogHeight = dialogEl.offsetHeight;
       dialogWidth = dialogEl.offsetWidth;
-      dialogTop = boundingClientRect.top;
-      dialogLeft = boundingClientRect.left;
-      movedDialogTop = dialogTop;
-      movedDialogLeft = dialogLeft;
-      dialogEl.style.cssText += "position:fixed; top: ".concat(dialogTop, "px; left: ").concat(dialogLeft, "px; width:").concat(dialogWidth, "px; height:").concat(dialogHeight, "px;");
+      dialogY = boundingClientRect.top;
+      dialogX = boundingClientRect.left;
+      dialogEl.style.cssText += "position:fixed; top: ".concat(dialogY, "px; left: ").concat(dialogX, "px; width:").concat(dialogWidth, "px; height:").concat(dialogHeight, "px;");
       isInited = true;
     } // 添加鼠标事件
 
 
     function addMousemoveEvent(e) {
       e.preventDefault();
+      document.body.addEventListener('mousedown', setMouseStartPos);
       document.body.addEventListener('mousemove', handleMouseMove);
+      document.body.addEventListener('mouseup', setMouseDownElPos);
       document.body.addEventListener('mouseup', removeMousemoveEvent);
+      document.body.addEventListener('mouseleave', setMouseDownElPos);
       document.body.addEventListener('mouseleave', removeMousemoveEvent);
     } // 移除鼠标事件
 
 
     function removeMousemoveEvent() {
+      document.body.removeEventListener('mousedown', setMouseStartPos);
       document.body.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseleave', removeMousemoveEvent);
+      document.body.removeEventListener('mouseup', setMouseDownElPos);
       document.body.removeEventListener('mouseup', removeMousemoveEvent);
-    } // 操作鼠标移动
+      document.body.removeEventListener('mouseleave', removeMousemoveEvent);
+      document.body.removeEventListener('mouseleave', setMouseDownElPos);
+    }
 
+    function setMouseStartPos(e) {
+      mouseStartX = e.x;
+      mouseStartY = e.y;
+    }
+
+    function setMouseDownElPos() {
+      dialogX = newDialogX;
+      dialogY = newDialogY;
+    }
 
     function handleMouseMove(e) {
-      var movementX = e.movementX,
-          movementY = e.movementY;
-      var outerWindowX = 200;
-      var outerWindowY = 200;
-      movedDialogTop = movedDialogTop + movementY;
-      movedDialogLeft = movedDialogLeft + movementX;
-      movedDialogTop = movedDialogTop <= -outerWindowY ? -outerWindowY : movedDialogTop;
-      movedDialogTop = movedDialogTop >= window.innerHeight - dialogHeight + outerWindowY ? window.innerHeight - dialogHeight + outerWindowY : movedDialogTop;
-      movedDialogLeft = movedDialogLeft <= -outerWindowX ? -outerWindowX : movedDialogLeft;
-      movedDialogLeft = movedDialogLeft >= window.innerWidth - dialogWidth + outerWindowX ? window.innerWidth - dialogWidth + outerWindowX : movedDialogLeft;
-      dialogEl.style.top = movedDialogTop + 'px';
-      dialogEl.style.left = movedDialogLeft + 'px';
+      var mouseDeltaX = e.x - mouseStartX;
+      var mouseDeltaY = e.y - mouseStartY;
+      newDialogX = dialogX + mouseDeltaX;
+      newDialogY = dialogY + mouseDeltaY; //处理四周边界情况
+
+      if (newDialogY > window.innerHeight - dialogHeight) {
+        newDialogY = window.innerHeight - dialogHeight;
+      } else if (newDialogY < 0) {
+        newDialogY = 0;
+      }
+
+      if (newDialogX > window.innerWidth - dialogWidth) {
+        newDialogX = window.innerWidth - dialogWidth;
+      } else if (newDialogX < 0) {
+        newDialogX = 0;
+      }
+
+      dialogEl.style.left = newDialogX + 'px';
+      dialogEl.style.top = newDialogY + 'px';
     }
   }
 };
 exports.DragMove = DragMove;
-var _default = DragMove;
+var _default = DragMove; //# sourceMappingURL=index.js.map
+
 exports.default = _default;
 //# sourceMappingURL=index.js.map

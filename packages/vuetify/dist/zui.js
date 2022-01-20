@@ -37959,7 +37959,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38409,14 +38409,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38428,6 +38420,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -39950,7 +39950,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.811";
+  Zui.version = "2.5.812";
   Zui.config = {
     silent: false
   };
@@ -57309,7 +57309,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57736,17 +57736,20 @@ function getActivitorEls(el, binding) {
 }
 
 var DragMove = {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   inserted: function inserted(el, binding) {
     var dialogEl = el;
     if (!dialogEl) return;
     var isInited = false;
+    var mouseStartX = 0;
+    var mouseStartY = 0;
     var activitorEls = getActivitorEls(el, binding);
     var dialogHeight = 0;
     var dialogWidth = 0;
-    var dialogTop = 0;
-    var dialogLeft = 0;
-    var movedDialogTop = 0;
-    var movedDialogLeft = 0;
+    var dialogY = 0;
+    var dialogX = 0;
+    var newDialogX = 0;
+    var newDialogY = 0;
     activitorEls.forEach(function (activitorEl) {
       // 第一次被拖动时初始化数据
       activitorEl.addEventListener('mousedown', init);
@@ -57764,43 +57767,63 @@ var DragMove = {
       var boundingClientRect = dialogEl.getBoundingClientRect();
       dialogHeight = dialogEl.offsetHeight;
       dialogWidth = dialogEl.offsetWidth;
-      dialogTop = boundingClientRect.top;
-      dialogLeft = boundingClientRect.left;
-      movedDialogTop = dialogTop;
-      movedDialogLeft = dialogLeft;
-      dialogEl.style.cssText += "position:fixed; top: " + dialogTop + "px; left: " + dialogLeft + "px; width:" + dialogWidth + "px; height:" + dialogHeight + "px;";
+      dialogY = boundingClientRect.top;
+      dialogX = boundingClientRect.left;
+      dialogEl.style.cssText += "position:fixed; top: " + dialogY + "px; left: " + dialogX + "px; width:" + dialogWidth + "px; height:" + dialogHeight + "px;";
       isInited = true;
     } // 添加鼠标事件
 
 
     function addMousemoveEvent(e) {
       e.preventDefault();
+      document.body.addEventListener('mousedown', setMouseStartPos);
       document.body.addEventListener('mousemove', handleMouseMove);
+      document.body.addEventListener('mouseup', setMouseDownElPos);
       document.body.addEventListener('mouseup', removeMousemoveEvent);
+      document.body.addEventListener('mouseleave', setMouseDownElPos);
       document.body.addEventListener('mouseleave', removeMousemoveEvent);
     } // 移除鼠标事件
 
 
     function removeMousemoveEvent() {
+      document.body.removeEventListener('mousedown', setMouseStartPos);
       document.body.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseleave', removeMousemoveEvent);
+      document.body.removeEventListener('mouseup', setMouseDownElPos);
       document.body.removeEventListener('mouseup', removeMousemoveEvent);
-    } // 操作鼠标移动
+      document.body.removeEventListener('mouseleave', removeMousemoveEvent);
+      document.body.removeEventListener('mouseleave', setMouseDownElPos);
+    }
 
+    function setMouseStartPos(e) {
+      mouseStartX = e.x;
+      mouseStartY = e.y;
+    }
+
+    function setMouseDownElPos() {
+      dialogX = newDialogX;
+      dialogY = newDialogY;
+    }
 
     function handleMouseMove(e) {
-      var movementX = e.movementX,
-          movementY = e.movementY;
-      var outerWindowX = 200;
-      var outerWindowY = 200;
-      movedDialogTop = movedDialogTop + movementY;
-      movedDialogLeft = movedDialogLeft + movementX;
-      movedDialogTop = movedDialogTop <= -outerWindowY ? -outerWindowY : movedDialogTop;
-      movedDialogTop = movedDialogTop >= window.innerHeight - dialogHeight + outerWindowY ? window.innerHeight - dialogHeight + outerWindowY : movedDialogTop;
-      movedDialogLeft = movedDialogLeft <= -outerWindowX ? -outerWindowX : movedDialogLeft;
-      movedDialogLeft = movedDialogLeft >= window.innerWidth - dialogWidth + outerWindowX ? window.innerWidth - dialogWidth + outerWindowX : movedDialogLeft;
-      dialogEl.style.top = movedDialogTop + 'px';
-      dialogEl.style.left = movedDialogLeft + 'px';
+      var mouseDeltaX = e.x - mouseStartX;
+      var mouseDeltaY = e.y - mouseStartY;
+      newDialogX = dialogX + mouseDeltaX;
+      newDialogY = dialogY + mouseDeltaY; //处理四周边界情况
+
+      if (newDialogY > window.innerHeight - dialogHeight) {
+        newDialogY = window.innerHeight - dialogHeight;
+      } else if (newDialogY < 0) {
+        newDialogY = 0;
+      }
+
+      if (newDialogX > window.innerWidth - dialogWidth) {
+        newDialogX = window.innerWidth - dialogWidth;
+      } else if (newDialogX < 0) {
+        newDialogX = 0;
+      }
+
+      dialogEl.style.left = newDialogX + 'px';
+      dialogEl.style.top = newDialogY + 'px';
     }
   }
 };
