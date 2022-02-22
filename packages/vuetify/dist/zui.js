@@ -39950,7 +39950,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.812";
+  Zui.version = "2.5.813";
   Zui.config = {
     silent: false
   };
@@ -55364,6 +55364,10 @@ __webpack_require__.r(__webpack_exports__);
     value: {
       type: String,
       default: ''
+    },
+    transparent: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -55493,8 +55497,14 @@ __webpack_require__.r(__webpack_exports__);
         style.backgroundColor = colorName;
       }
 
+      var itemClass = 'color--item';
+
+      if (colorName === 'transparent') {
+        itemClass = 'color--item-transparent';
+      }
+
       var data = {
-        staticClass: "color--item mr-1 " + (type === 'theme' ? colorName : ''),
+        staticClass: itemClass + " mr-1 " + (type === 'theme' ? colorName : ''),
         props: {
           flat: true,
           outlined: true,
@@ -55528,7 +55538,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         staticClass: 'theme-colors pb-2 px-3'
       };
-      return this.$createElement('div', data, [this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
+      return this.$createElement('div', data, [this.transparent ? this.genColorCard('transparent', '透明', 'history') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
         return _this.genColorCard(i.name, i.label, 'theme', i.color);
       })]);
     },
@@ -55622,7 +55632,9 @@ var __assign = undefined && undefined.__assign || function () {
     contentClass: {
       type: String,
       default: ''
-    }
+    },
+    transparent: Boolean,
+    closeOnContentClick: Boolean
   },
   data: function data() {
     return {
@@ -55661,7 +55673,8 @@ var __assign = undefined && undefined.__assign || function () {
       var data = {
         props: {
           value: this.colorHex,
-          defaultValue: this.colorHex
+          defaultValue: this.colorHex,
+          transparent: this.transparent
         },
         on: {
           ready: this.onColorReady,
@@ -55687,7 +55700,7 @@ var __assign = undefined && undefined.__assign || function () {
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.colorHex
+          backgroundColor: this.value === 'transparent' ? 'transparent' : this.colorHex
         }
       }, props);
 
@@ -55699,7 +55712,7 @@ var __assign = undefined && undefined.__assign || function () {
       staticClass: 'z-color-selector-rect--card',
       class: {},
       props: {
-        closeOnContentClick: false,
+        closeOnContentClick: this.closeOnContentClick === true,
         eager: true,
         offsetY: true
       },
@@ -55779,7 +55792,9 @@ var __assign = undefined && undefined.__assign || function () {
     inputWidth: {
       type: String || Number,
       default: '120px'
-    }
+    },
+    transparent: Boolean,
+    closeOnContentClick: Boolean
   },
   data: function data() {
     return {
@@ -55857,7 +55872,7 @@ var __assign = undefined && undefined.__assign || function () {
           var info = this.getColorInfo(val);
 
           if (info && info.valid) {
-            this.rectColor = info.hex || '';
+            this.rectColor = info.value === 'transparent' ? 'transparent' : info.hex || '';
             this.$emit('change', {
               name: val,
               color: info.hex
@@ -55873,7 +55888,9 @@ var __assign = undefined && undefined.__assign || function () {
           width: '22',
           height: '22',
           value: this.rectColor,
-          defaultValue: this.defaultValue
+          defaultValue: this.defaultValue,
+          transparent: this.transparent,
+          closeOnContentClick: this.closeOnContentClick
         },
         on: {
           change: this.onColorChange

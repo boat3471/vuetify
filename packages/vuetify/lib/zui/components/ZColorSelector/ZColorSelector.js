@@ -16,6 +16,10 @@ export default mixins(ZColorSelectorMixin).extend({
     value: {
       type: String,
       default: ''
+    },
+    transparent: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -153,8 +157,14 @@ export default mixins(ZColorSelectorMixin).extend({
         style.backgroundColor = colorName;
       }
 
+      let itemClass = 'color--item';
+
+      if (colorName === 'transparent') {
+        itemClass = 'color--item-transparent';
+      }
+
       const data = {
-        staticClass: `color--item mr-1 ${type === 'theme' ? colorName : ''}`,
+        staticClass: `${itemClass} mr-1 ${type === 'theme' ? colorName : ''}`,
         props: {
           flat: true,
           outlined: true,
@@ -185,7 +195,7 @@ export default mixins(ZColorSelectorMixin).extend({
       const data = {
         staticClass: 'theme-colors pb-2 px-3'
       };
-      return this.$createElement('div', data, [this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(i => this.genColorCard(i.name, i.label, 'theme', i.color))]);
+      return this.$createElement('div', data, [this.transparent ? this.genColorCard('transparent', '透明', 'history') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(i => this.genColorCard(i.name, i.label, 'theme', i.color))]);
     },
 
     genHistoryColorContent() {

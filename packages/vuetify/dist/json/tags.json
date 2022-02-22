@@ -3506,6 +3506,7 @@
     "attributes": [
       "default-value",
       "height",
+      "transparent",
       "value",
       "width"
     ],
@@ -3513,9 +3514,11 @@
   },
   "z-color-selector-rect": {
     "attributes": [
+      "close-on-content-click",
       "content-class",
       "default-value",
       "height",
+      "transparent",
       "value",
       "width"
     ],
@@ -3523,9 +3526,11 @@
   },
   "z-color-selector-text-field": {
     "attributes": [
+      "close-on-content-click",
       "default-value",
       "input-width",
       "position",
+      "transparent",
       "value"
     ],
     "description": ""

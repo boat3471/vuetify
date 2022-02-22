@@ -37,7 +37,9 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     contentClass: {
       type: String,
       default: ''
-    }
+    },
+    transparent: Boolean,
+    closeOnContentClick: Boolean
   },
   data: function data() {
     return {
@@ -76,7 +78,8 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var data = {
         props: {
           value: this.colorHex,
-          defaultValue: this.colorHex
+          defaultValue: this.colorHex,
+          transparent: this.transparent
         },
         on: {
           ready: this.onColorReady,
@@ -102,7 +105,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.colorHex
+          backgroundColor: this.value === 'transparent' ? 'transparent' : this.colorHex
         }
       }, props);
 
@@ -114,7 +117,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       staticClass: 'z-color-selector-rect--card',
       class: {},
       props: {
-        closeOnContentClick: false,
+        closeOnContentClick: this.closeOnContentClick === true,
         eager: true,
         offsetY: true
       },

@@ -22,6 +22,8 @@ export default mixins(ZColorSelectorMixin).extend({
       type: String || Number,
       default: '120px',
     },
+    transparent: Boolean,
+    closeOnContentClick: Boolean,
   },
 
   data () {
@@ -91,7 +93,7 @@ export default mixins(ZColorSelectorMixin).extend({
         } else {
           const info = this.getColorInfo(val)
           if (info && info.valid) {
-            this.rectColor = info.hex || ''
+            this.rectColor = info.value === 'transparent' ? 'transparent' : (info.hex || '')
             this.$emit('change', {
               name: val,
               color: info.hex,
@@ -108,6 +110,8 @@ export default mixins(ZColorSelectorMixin).extend({
           height: '22',
           value: this.rectColor,
           defaultValue: this.defaultValue,
+          transparent: this.transparent,
+          closeOnContentClick: this.closeOnContentClick,
         },
         on: {
           change: this.onColorChange,

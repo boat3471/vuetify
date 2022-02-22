@@ -29,6 +29,10 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     value: {
       type: String,
       default: ''
+    },
+    transparent: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -157,8 +161,14 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
         style.backgroundColor = colorName;
       }
 
+      var itemClass = 'color--item';
+
+      if (colorName === 'transparent') {
+        itemClass = 'color--item-transparent';
+      }
+
       var data = {
-        staticClass: "color--item mr-1 ".concat(type === 'theme' ? colorName : ''),
+        staticClass: "".concat(itemClass, " mr-1 ").concat(type === 'theme' ? colorName : ''),
         props: {
           flat: true,
           outlined: true,
@@ -192,7 +202,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var data = {
         staticClass: 'theme-colors pb-2 px-3'
       };
-      return this.$createElement('div', data, [this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
+      return this.$createElement('div', data, [this.transparent ? this.genColorCard('transparent', '透明', 'history') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
         return _this2.genColorCard(i.name, i.label, 'theme', i.color);
       })]);
     },

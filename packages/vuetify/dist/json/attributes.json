@@ -10355,6 +10355,10 @@
     "type": "number|string",
     "description": "Sets the height for the component"
   },
+  "z-color-selector/transparent": {
+    "type": "boolean",
+    "description": ""
+  },
   "z-color-selector/value": {
     "type": "string",
     "description": ""
@@ -10362,6 +10366,10 @@
   "z-color-selector/width": {
     "type": "number|string",
     "description": "Sets the width for the component."
+  },
+  "z-color-selector-rect/close-on-content-click": {
+    "type": "boolean",
+    "description": ""
   },
   "z-color-selector-rect/content-class": {
     "type": "string",
@@ -10375,6 +10383,10 @@
     "type": "number|string",
     "description": "Sets the height for the component"
   },
+  "z-color-selector-rect/transparent": {
+    "type": "boolean",
+    "description": ""
+  },
   "z-color-selector-rect/value": {
     "type": "string",
     "description": ""
@@ -10382,6 +10394,10 @@
   "z-color-selector-rect/width": {
     "type": "number|string",
     "description": "Sets the width for the component."
+  },
+  "z-color-selector-text-field/close-on-content-click": {
+    "type": "boolean",
+    "description": ""
   },
   "z-color-selector-text-field/default-value": {
     "type": "string",
@@ -10393,6 +10409,10 @@
   },
   "z-color-selector-text-field/position": {
     "type": "string",
+    "description": ""
+  },
+  "z-color-selector-text-field/transparent": {
+    "type": "boolean",
     "description": ""
   },
   "z-color-selector-text-field/value": {

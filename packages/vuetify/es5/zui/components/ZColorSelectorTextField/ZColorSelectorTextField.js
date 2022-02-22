@@ -37,7 +37,9 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     inputWidth: {
       type: String || Number,
       default: '120px'
-    }
+    },
+    transparent: Boolean,
+    closeOnContentClick: Boolean
   },
   data: function data() {
     return {
@@ -115,7 +117,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           var info = this.getColorInfo(val);
 
           if (info && info.valid) {
-            this.rectColor = info.hex || '';
+            this.rectColor = info.value === 'transparent' ? 'transparent' : info.hex || '';
             this.$emit('change', {
               name: val,
               color: info.hex
@@ -131,7 +133,9 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           width: '22',
           height: '22',
           value: this.rectColor,
-          defaultValue: this.defaultValue
+          defaultValue: this.defaultValue,
+          transparent: this.transparent,
+          closeOnContentClick: this.closeOnContentClick
         },
         on: {
           change: this.onColorChange

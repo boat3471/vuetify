@@ -22,6 +22,8 @@ export default mixins(ZColorSelectorMixin).extend({
       type: String,
       default: '',
     },
+    transparent: Boolean,
+    closeOnContentClick: Boolean,
   },
 
   data () {
@@ -62,6 +64,7 @@ export default mixins(ZColorSelectorMixin).extend({
         props: {
           value: this.colorHex,
           defaultValue: this.colorHex,
+          transparent: this.transparent,
         },
         on: {
           ready: this.onColorReady,
@@ -87,7 +90,7 @@ export default mixins(ZColorSelectorMixin).extend({
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.colorHex,
+          backgroundColor: this.value === 'transparent' ? 'transparent' : this.colorHex,
         },
         ...props,
       }
@@ -100,7 +103,7 @@ export default mixins(ZColorSelectorMixin).extend({
       staticClass: 'z-color-selector-rect--card',
       class: {},
       props: {
-        closeOnContentClick: false,
+        closeOnContentClick: this.closeOnContentClick === true,
         eager: true,
         offsetY: true,
       },
