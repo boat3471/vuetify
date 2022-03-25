@@ -53,6 +53,12 @@ const VIcon = mixins(
     },
   },
 
+  data () {
+    return {
+      loadIcon: '',
+    }
+  },
+
   computed: {
     medium () {
       return false
@@ -67,7 +73,14 @@ const VIcon = mixins(
   methods: {
     getIcon (): VuetifyIcon {
       let iconName = ''
-      if (this.$slots.default) iconName = this.$slots.default[0].text!.trim()
+      if (this.$slots.default) iconName = this.loadIcon || this.$slots.default[0].text!.trim()
+
+      const icons = this.$vuetify.icons.values
+
+      // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
+      if (/^[^$]/.test(iconName) && icons[iconName]) {
+        return remapInternalIcon(this, '$' + iconName)
+      }
 
       return remapInternalIcon(this, iconName)
     },
@@ -124,7 +137,7 @@ const VIcon = mixins(
       data.class = { ...data.class, ...this.themeClasses }
       this.setTextColor(this.color, data)
     },
-    renderFontIcon (icon: string, h: CreateElement): VNode {
+    renderFontIcon (icon: string, h: CreateElement, style?: any): VNode {
       const newChildren: VNodeChildren = []
       const data = this.getDefaultData()
 
@@ -147,6 +160,8 @@ const VIcon = mixins(
 
       const fontSize = this.getSize()
       if (fontSize) data.style = { fontSize }
+
+      data.style = { ...(data.style as any), ...style }
 
       this.applyColors(data)
 
@@ -211,6 +226,18 @@ const VIcon = mixins(
         h(component, data),
       ])
     },
+    renderDefaultIcon (h: CreateElement): VNode | null {
+      const $iconLoader = (this as any).$iconLoader
+      const size = this.getSize()
+      if ($iconLoader && $iconLoader.defaultIcon) {
+        return this.renderFontIcon($iconLoader.defaultIcon, h, {
+          opacity: $iconLoader.defaultOpacity || 0.03,
+          width: size,
+          height: size,
+        })
+      }
+      return null
+    },
   },
 
   render (h: CreateElement): VNode {
@@ -219,6 +246,36 @@ const VIcon = mixins(
     if (typeof icon === 'string') {
       if (isSvgPath(icon)) {
         return this.renderSvgIcon(icon, h)
+      }
+
+      // 如果存在iconLoader加载器，则使用加载器加载图标
+      const $iconLoader = (this as any).$iconLoader
+      if ($iconLoader && $iconLoader.isLoad && typeof $iconLoader.isLoad === 'function' &&
+        $iconLoader.load && typeof $iconLoader.load === 'function') {
+        const regName = /^\$/.test(icon) ? icon.substring(1) : icon
+        if ($iconLoader.isLoad(regName) === true) {
+          // 如果已经被注册过，则直接渲染
+          const icons = this.$vuetify.icons.values
+          if (icons[regName]) {
+            return this.renderFontIcon('$' + regName, h)
+            // return this.renderFontIcon(`mdi-home`, h)
+          }
+
+          // 否则加载后渲染
+          this.loadIcon = ''
+          $iconLoader.load(this, regName).then((res: any) => {
+            this.loadIcon = '$' + res
+          }).catch((): void => {
+            // 加载错误时显示默认图标
+          })
+
+          const defaultIcon = this.renderDefaultIcon(h)
+          if (defaultIcon) {
+            return defaultIcon
+          }
+
+          return this.renderFontIcon('i', h)
+        }
       }
       return this.renderFontIcon(icon, h)
     }

@@ -7,6 +7,7 @@ import Components from './Components'
 import { createApp, createAdmin, createRouter, createAdminRouter } from '@zwd/z-ui'
 import { menus } from './menus'
 import Test from './Test'
+import './icon.loader'
 
 // const router = createRouter({
 //   appMain: Main,

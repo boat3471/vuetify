@@ -44,6 +44,13 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
       default: 'i'
     }
   },
+
+  data() {
+    return {
+      loadIcon: ''
+    };
+  },
+
   computed: {
     medium() {
       return false;
@@ -57,7 +64,13 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
   methods: {
     getIcon() {
       let iconName = '';
-      if (this.$slots.default) iconName = this.$slots.default[0].text.trim();
+      if (this.$slots.default) iconName = this.loadIcon || this.$slots.default[0].text.trim();
+      const icons = this.$vuetify.icons.values; // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
+
+      if (/^[^$]/.test(iconName) && icons[iconName]) {
+        return remapInternalIcon(this, '$' + iconName);
+      }
+
       return remapInternalIcon(this, iconName);
     },
 
@@ -114,7 +127,7 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
       this.setTextColor(this.color, data);
     },
 
-    renderFontIcon(icon, h) {
+    renderFontIcon(icon, h, style) {
       const newChildren = [];
       const data = this.getDefaultData();
       let iconType = 'material-icons'; // Material Icon delimiter is _
@@ -136,6 +149,9 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
       const fontSize = this.getSize();
       if (fontSize) data.style = {
         fontSize
+      };
+      data.style = { ...data.style,
+        ...style
       };
       this.applyColors(data);
       return h(this.hasClickListener ? 'button' : this.tag, data, newChildren);
@@ -189,6 +205,21 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
       data.props = icon.props;
       data.nativeOn = data.on;
       return h(this.hasClickListener ? 'button' : 'span', this.getSvgWrapperData(), [h(component, data)]);
+    },
+
+    renderDefaultIcon(h) {
+      const $iconLoader = this.$iconLoader;
+      const size = this.getSize();
+
+      if ($iconLoader && $iconLoader.defaultIcon) {
+        return this.renderFontIcon($iconLoader.defaultIcon, h, {
+          opacity: $iconLoader.defaultOpacity || 0.03,
+          width: size,
+          height: size
+        });
+      }
+
+      return null;
     }
 
   },
@@ -199,6 +230,36 @@ const VIcon = mixins(BindsAttrs, Colorable, Sizeable, Themeable
     if (typeof icon === 'string') {
       if (isSvgPath(icon)) {
         return this.renderSvgIcon(icon, h);
+      } // 如果存在iconLoader加载器，则使用加载器加载图标
+
+
+      const $iconLoader = this.$iconLoader;
+
+      if ($iconLoader && $iconLoader.isLoad && typeof $iconLoader.isLoad === 'function' && $iconLoader.load && typeof $iconLoader.load === 'function') {
+        const regName = /^\$/.test(icon) ? icon.substring(1) : icon;
+
+        if ($iconLoader.isLoad(regName) === true) {
+          // 如果已经被注册过，则直接渲染
+          const icons = this.$vuetify.icons.values;
+
+          if (icons[regName]) {
+            return this.renderFontIcon('$' + regName, h); // return this.renderFontIcon(`mdi-home`, h)
+          } // 否则加载后渲染
+
+
+          this.loadIcon = '';
+          $iconLoader.load(this, regName).then(res => {
+            this.loadIcon = '$' + res;
+          }).catch(() => {// 加载错误时显示默认图标
+          });
+          const defaultIcon = this.renderDefaultIcon(h);
+
+          if (defaultIcon) {
+            return defaultIcon;
+          }
+
+          return this.renderFontIcon('i', h);
+        }
       }
 
       return this.renderFontIcon(icon, h);

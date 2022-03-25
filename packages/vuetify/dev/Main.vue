@@ -1,15 +1,16 @@
 <template>
-  <z-admin class="my-app">
+  <z-admin
+    v-if="false"
+    class="my-app"
+  >
     <template #main>
       <router-view></router-view>
-      <z-btn @click="click">弹窗</z-btn>
-      <z-date-time-picker
-        :value="Date.now()"
-        :min="Date.now() - 2* 60*60*1000"
-        :max="Date.now() + 2* 60*60*1000"
-      ></z-date-time-picker>
     </template>
   </z-admin>
+  <div v-else>
+    <z-icon size="100">add111</z-icon>
+    <z-alert type="success" icon="add111">asdasd</z-alert>
+  </div>
 </template>
 
 <script>
