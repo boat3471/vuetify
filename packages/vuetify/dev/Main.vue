@@ -8,8 +8,13 @@
     </template>
   </z-admin>
   <div v-else>
-    <z-icon size="100">add111</z-icon>
-    <z-alert type="success" icon="add111">asdasd</z-alert>
+    <z-icon size="100">{{ iconName }}</z-icon>
+    <z-text-field v-model="iconName"></z-text-field>
+    <z-btn @click="iconName = '$error'">$error</z-btn>
+    <z-btn @click="iconName = 'success'">success</z-btn>
+    <z-btn @click="iconName = 'mdi-home'">mdi-home</z-btn>
+    <z-btn @click="iconName = '$ko'">$ko</z-btn>
+    <z-btn @click="iconName = 'ko'">ko</z-btn>
   </div>
 </template>
 
@@ -20,6 +25,7 @@
     components: {},
     data () {
       return {
+        iconName: 'mdi-close',
         msg: '',
         time: Date.now(),
       }

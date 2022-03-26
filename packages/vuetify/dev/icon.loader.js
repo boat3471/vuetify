@@ -2,7 +2,7 @@ import Vue from 'vue'
 import IconRender from './IconRender'
 
 const iconLoader = {
-  defaultIcon: 'mdi-information',
+  defaultIcon: 'mdi-cached',
   defaultOpacity: 0.03,
   isLoad (iconName) {
     if (/^mdi-/.test(iconName)) {

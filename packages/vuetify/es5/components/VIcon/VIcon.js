@@ -66,11 +66,6 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
       default: 'i'
     }
   },
-  data: function data() {
-    return {
-      loadIcon: ''
-    };
-  },
   computed: {
     medium: function medium() {
       return false;
@@ -82,7 +77,7 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
   methods: {
     getIcon: function getIcon() {
       var iconName = '';
-      if (this.$slots.default) iconName = this.loadIcon || this.$slots.default[0].text.trim();
+      if (this.$slots.default) iconName = this.$slots.default[0].text.trim();
       var icons = this.$vuetify.icons.values; // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
 
       if (/^[^$]/.test(iconName) && icons[iconName]) {
@@ -223,6 +218,7 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
       if ($iconLoader && $iconLoader.defaultIcon) {
         return this.renderFontIcon($iconLoader.defaultIcon, h, {
           opacity: $iconLoader.defaultOpacity || 0.03,
+          transition: 'none',
           width: size,
           height: size
         });
@@ -248,26 +244,16 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
         var regName = /^\$/.test(icon) ? icon.substring(1) : icon;
 
         if ($iconLoader.isLoad(regName) === true) {
-          // 如果已经被注册过，则直接渲染
-          var icons = this.$vuetify.icons.values;
-
-          if (icons[regName]) {
-            return this.renderFontIcon('$' + regName, h); // return this.renderFontIcon(`mdi-home`, h)
-          } // 否则加载后渲染
-
-
-          this.loadIcon = '';
           $iconLoader.load(this, regName).then(function (res) {
-            _this.loadIcon = '$' + res;
+            _this.$forceUpdate();
           }).catch(function () {// 加载错误时显示默认图标
-          });
+          }); // 如果正在加载，则使用默认图标占位
+
           var defaultIcon = this.renderDefaultIcon(h);
 
           if (defaultIcon) {
             return defaultIcon;
           }
-
-          return this.renderFontIcon('i', h);
         }
       }
 

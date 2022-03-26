@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.814-beta.1",
+  "version": "2.5.814-beta.2",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -31787,144 +31787,6 @@
           }
         },
         {
-          "name": "ZAdmin",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZAdmin"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-admin",
-          "attributes": [
-            {
-              "name": "project-name",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "toolbar-color",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
-              "default": "'primary'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "toolbar-dark",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
-              "default": "true",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "toolbar-elevation",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
-              "default": "'2'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            }
-          ],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZAdminApp",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZAdminApp"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-admin-app",
-          "attributes": [],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZView403",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZView403"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-view403",
-          "attributes": [],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZView404",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZView404"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-view404",
-          "attributes": [],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZView500",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZView500"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-view500",
-          "attributes": [],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZDefaultLogin",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZDefaultLogin"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-default-login",
-          "attributes": [],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
           "name": "ZColorSelector",
           "source": {
             "module": "./src/components/index.ts",
@@ -32265,6 +32127,144 @@
               }
             }
           ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZAdmin",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZAdmin"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-admin",
+          "attributes": [
+            {
+              "name": "project-name",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "toolbar-color",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
+              "default": "'primary'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "toolbar-dark",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "toolbar-elevation",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-admin#props",
+              "default": "'2'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZAdminApp",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZAdminApp"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-admin-app",
+          "attributes": [],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZView403",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZView403"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-view403",
+          "attributes": [],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZView404",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZView404"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-view404",
+          "attributes": [],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZView500",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZView500"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-view500",
+          "attributes": [],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZDefaultLogin",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZDefaultLogin"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-default-login",
+          "attributes": [],
           "events": [],
           "slots": [],
           "vue-model": {

@@ -53,12 +53,6 @@ const VIcon = mixins(
     },
   },
 
-  data () {
-    return {
-      loadIcon: '',
-    }
-  },
-
   computed: {
     medium () {
       return false
@@ -73,7 +67,7 @@ const VIcon = mixins(
   methods: {
     getIcon (): VuetifyIcon {
       let iconName = ''
-      if (this.$slots.default) iconName = this.loadIcon || this.$slots.default[0].text!.trim()
+      if (this.$slots.default) iconName = this.$slots.default[0].text!.trim()
 
       const icons = this.$vuetify.icons.values
 
@@ -232,6 +226,7 @@ const VIcon = mixins(
       if ($iconLoader && $iconLoader.defaultIcon) {
         return this.renderFontIcon($iconLoader.defaultIcon, h, {
           opacity: $iconLoader.defaultOpacity || 0.03,
+          transition: 'none',
           width: size,
           height: size,
         })
@@ -254,27 +249,17 @@ const VIcon = mixins(
         $iconLoader.load && typeof $iconLoader.load === 'function') {
         const regName = /^\$/.test(icon) ? icon.substring(1) : icon
         if ($iconLoader.isLoad(regName) === true) {
-          // 如果已经被注册过，则直接渲染
-          const icons = this.$vuetify.icons.values
-          if (icons[regName]) {
-            return this.renderFontIcon('$' + regName, h)
-            // return this.renderFontIcon(`mdi-home`, h)
-          }
-
-          // 否则加载后渲染
-          this.loadIcon = ''
           $iconLoader.load(this, regName).then((res: any) => {
-            this.loadIcon = '$' + res
+            this.$forceUpdate()
           }).catch((): void => {
             // 加载错误时显示默认图标
           })
 
+          // 如果正在加载，则使用默认图标占位
           const defaultIcon = this.renderDefaultIcon(h)
           if (defaultIcon) {
             return defaultIcon
           }
-
-          return this.renderFontIcon('i', h)
         }
       }
       return this.renderFontIcon(icon, h)

@@ -1,5 +1,5 @@
 <template>
-  <div
+  <i
     v-if="svg"
     class="webv-icon"
     v-html="content"
