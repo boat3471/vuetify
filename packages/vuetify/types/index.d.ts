@@ -46,6 +46,7 @@ export type $theme = ZThemeDescription
 export type $auth = ZAuthDescription
 export type RouteComponent = ComponentOptions<Vue> | typeof Vue | AsyncComponent
 
+export * from './zui/ZIconLoader';
 export { ZuiCoreDescription, ZMessageDescription, ZModalDescription }
 
 export class Zui {

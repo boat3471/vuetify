@@ -39994,7 +39994,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.814-beta.2";
+  Zui.version = "2.5.814-beta.3";
   Zui.config = {
     silent: false
   };
@@ -40029,6 +40029,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zui_createMenus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./zui/createMenus */ "./src/zui/createMenus.ts");
 /* harmony import */ var _zui_createRouter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./zui/createRouter */ "./src/zui/createRouter.ts");
 /* harmony import */ var _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./zui/ZuiCore */ "./src/zui/ZuiCore.ts");
+/* harmony import */ var _zui_ZIconLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./zui/ZIconLoader */ "./src/zui/ZIconLoader.ts");
+
 
 
 
@@ -40047,6 +40049,7 @@ if (typeof window !== 'undefined') {
   createMenus: _zui_createMenus__WEBPACK_IMPORTED_MODULE_3__["createMenus"],
   createRouter: _zui_createRouter__WEBPACK_IMPORTED_MODULE_4__["createRouter"],
   createAdminRouter: _zui_createRouter__WEBPACK_IMPORTED_MODULE_4__["createAdminRouter"],
+  ZIconLoader: _zui_ZIconLoader__WEBPACK_IMPORTED_MODULE_6__["ZIconLoader"],
 
   get $zui() {
     return _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__["ZuiCoreClass"].genInstance();
@@ -51259,6 +51262,39 @@ function (_super) {
 
   return ZAuthClass;
 }(_events_UIEvent__WEBPACK_IMPORTED_MODULE_0__["UIEvent"]);
+
+
+
+/***/ }),
+
+/***/ "./src/zui/ZIconLoader.ts":
+/*!********************************!*\
+  !*** ./src/zui/ZIconLoader.ts ***!
+  \********************************/
+/*! exports provided: ZIconLoader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZIconLoader", function() { return ZIconLoader; });
+var ZIconLoader =
+/** @class */
+function () {
+  function ZIconLoader() {
+    this.defaultIcon = '';
+    this.defaultOpacity = 1;
+  }
+
+  ZIconLoader.prototype.isLoad = function (iconName) {
+    return false;
+  };
+
+  ZIconLoader.prototype.load = function (vm, iconName) {
+    return Promise.resolve();
+  };
+
+  return ZIconLoader;
+}();
 
 
 

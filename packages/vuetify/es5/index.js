@@ -17,6 +17,8 @@ var _createRouter = require("./zui/createRouter");
 
 var _ZuiCore = require("./zui/ZuiCore");
 
+var _ZIconLoader = require("./zui/ZIconLoader");
+
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(_framework.Zui);
 }
@@ -28,6 +30,7 @@ var _default = {
   createMenus: _createMenus.createMenus,
   createRouter: _createRouter.createRouter,
   createAdminRouter: _createRouter.createAdminRouter,
+  ZIconLoader: _ZIconLoader.ZIconLoader,
 
   get $zui() {
     return _ZuiCore.ZuiCoreClass.genInstance();

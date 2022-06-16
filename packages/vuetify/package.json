@@ -1,6 +1,6 @@
 {
   "name": "@zwd/z-ui",
-  "version": "2.5.814-beta.2",
+  "version": "2.5.814-beta.3",
   "vuetifyVersion": "2.5.8",
   "description": "Vue Material Component Framework",
   "publishConfig": {

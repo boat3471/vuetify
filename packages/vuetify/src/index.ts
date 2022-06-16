@@ -9,6 +9,7 @@ import { ZuiCoreClass } from './zui/ZuiCore'
 import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
 import { ZRouterClass } from './zui/ZRouter'
+import { ZIconLoader } from './zui/ZIconLoader'
 
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(Zui)
@@ -21,6 +22,7 @@ export default {
   createMenus,
   createRouter,
   createAdminRouter,
+  ZIconLoader,
   get $zui (): ZuiCoreClass {
     return ZuiCoreClass.genInstance()
   },
