@@ -71,6 +71,13 @@ const VIcon = mixins(
 
       const icons = this.$vuetify.icons.values
 
+      // 如果存在图标加载器，则使用加载器的格式化，进行图标名称的处理
+      const $iconLoader = (this as any).$iconLoader
+      if ($iconLoader && $iconLoader.format && typeof $iconLoader.format === 'function') {
+        (this as any).loadFileName = iconName;
+        iconName = $iconLoader.format(iconName)
+      }
+
       // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
       if (/^[^$]/.test(iconName) && icons[iconName]) {
         return remapInternalIcon(this, '$' + iconName)
@@ -224,12 +231,16 @@ const VIcon = mixins(
       const $iconLoader = (this as any).$iconLoader
       const size = this.getSize()
       if ($iconLoader && $iconLoader.defaultIcon) {
-        return this.renderFontIcon($iconLoader.defaultIcon, h, {
-          opacity: $iconLoader.defaultOpacity || 0.03,
+        const style: any = {
           transition: 'none',
           width: size,
           height: size,
-        })
+        };
+
+        if ($iconLoader.defaultOpacity !== undefined) {
+          style.opacity = $iconLoader.defaultOpacity;
+        }
+        return this.renderFontIcon($iconLoader.defaultIcon, h, style)
       }
       return null
     },
@@ -245,11 +256,14 @@ const VIcon = mixins(
 
       // 如果存在iconLoader加载器，则使用加载器加载图标
       const $iconLoader = (this as any).$iconLoader
-      if ($iconLoader && $iconLoader.isLoad && typeof $iconLoader.isLoad === 'function' &&
-        $iconLoader.load && typeof $iconLoader.load === 'function') {
+      if ($iconLoader && $iconLoader.check && $iconLoader.load &&
+        typeof $iconLoader.check === 'function' &&
+        typeof $iconLoader.load === 'function'
+      ) {
+        const fileName = (this as any).loadFileName || icon;
         const regName = /^\$/.test(icon) ? icon.substring(1) : icon
-        if ($iconLoader.isLoad(regName) === true) {
-          $iconLoader.load(this, regName).then((res: any) => {
+        if ($iconLoader.check(regName) === true) {
+          $iconLoader.load(this, regName, fileName).then((res: any) => {
             this.$forceUpdate()
           }).catch((): void => {
             // 加载错误时显示默认图标

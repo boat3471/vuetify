@@ -1,10 +1,11 @@
 {
   "name": "@zwd/z-ui",
-  "version": "2.5.814-beta.3",
+  "version": "2.5.814",
   "vuetifyVersion": "2.5.8",
   "description": "Vue Material Component Framework",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "latest"
   },
   "author": {
     "name": "xinwenchao",
@@ -40,9 +41,10 @@
     "types/"
   ],
   "scripts": {
+    "prepublishOnly": "node ./build/publish.js",
     "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch",
     "dev": "node build/refactor.vuetify.loader.js && cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --hot",
-    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module && yarn build:mdi",
+    "build": "concurrently \"yarn build:dist --no-progress\" \"yarn build:lib\" -n \"dist,lib\" --kill-others-on-fail -r && yarn build:version && yarn build:json && yarn build:module && yarn build:mdi && node ./build/publish.js",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:version": "node build/build-version.js",
     "build:json": "node build/build-json.js",

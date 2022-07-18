@@ -20,16 +20,38 @@ function () {
     this.defaultIcon = '';
     this.defaultOpacity = 1;
   }
+  /**
+   * 格式化图标名，如果存在不合法的字符，则进行处理后返回
+   * @param iconName
+   */
+
 
   _createClass(ZIconLoader, [{
-    key: "isLoad",
-    value: function isLoad(iconName) {
+    key: "format",
+    value: function format(iconName) {
+      return iconName;
+    }
+    /**
+     * 检查图标是否需要加载
+     * @param iconName
+     */
+
+  }, {
+    key: "check",
+    value: function check(iconName) {
       return false;
     }
+    /**
+     * 加载图标
+     * @param vm
+     * @param iconName
+     * @param fileName
+     */
+
   }, {
     key: "load",
-    value: function load(vm, iconName) {
-      return Promise.resolve();
+    value: function load(vm, iconName, fileName) {
+      return Promise.resolve(iconName);
     }
   }]);
 

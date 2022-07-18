@@ -78,7 +78,15 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
     getIcon: function getIcon() {
       var iconName = '';
       if (this.$slots.default) iconName = this.$slots.default[0].text.trim();
-      var icons = this.$vuetify.icons.values; // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
+      var icons = this.$vuetify.icons.values; // 如果存在图标加载器，则使用加载器的格式化，进行图标名称的处理
+
+      var $iconLoader = this.$iconLoader;
+
+      if ($iconLoader && $iconLoader.format && typeof $iconLoader.format === 'function') {
+        this.loadFileName = iconName;
+        iconName = $iconLoader.format(iconName);
+      } // 如果icon未使用$开头，并且已经存在，则使用$生成新的iconName获取icon渲染内容
+
 
       if (/^[^$]/.test(iconName) && icons[iconName]) {
         return (0, _helpers.remapInternalIcon)(this, '$' + iconName);
@@ -216,12 +224,17 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
       var size = this.getSize();
 
       if ($iconLoader && $iconLoader.defaultIcon) {
-        return this.renderFontIcon($iconLoader.defaultIcon, h, {
-          opacity: $iconLoader.defaultOpacity || 0.03,
+        var style = {
           transition: 'none',
           width: size,
           height: size
-        });
+        };
+
+        if ($iconLoader.defaultOpacity !== undefined) {
+          style.opacity = $iconLoader.defaultOpacity;
+        }
+
+        return this.renderFontIcon($iconLoader.defaultIcon, h, style);
       }
 
       return null;
@@ -240,11 +253,12 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
 
       var $iconLoader = this.$iconLoader;
 
-      if ($iconLoader && $iconLoader.isLoad && typeof $iconLoader.isLoad === 'function' && $iconLoader.load && typeof $iconLoader.load === 'function') {
+      if ($iconLoader && $iconLoader.check && $iconLoader.load && typeof $iconLoader.check === 'function' && typeof $iconLoader.load === 'function') {
+        var fileName = this.loadFileName || icon;
         var regName = /^\$/.test(icon) ? icon.substring(1) : icon;
 
-        if ($iconLoader.isLoad(regName) === true) {
-          $iconLoader.load(this, regName).then(function (res) {
+        if ($iconLoader.check(regName) === true) {
+          $iconLoader.load(this, regName, fileName).then(function (res) {
             _this.$forceUpdate();
           }).catch(function () {// 加载错误时显示默认图标
           }); // 如果正在加载，则使用默认图标占位
