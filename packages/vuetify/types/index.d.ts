@@ -30,20 +30,20 @@ import { ZThemeCustomOptions } from "./zui";
 
 export * from './zui'
 
-export type ZuiCore = ZuiCoreDescription
-export type ZMessage = ZMessageDescription
-export type ZModal = ZModalDescription
-export type ZMenu = ZMenuDescription
-export type ZRouter = ZRouterDescription
-export type ZTheme = ZThemeDescription
-export type ZAuth = ZAuthDescription
-export type $zui = ZuiCoreDescription
-export type $message = ZMessageDescription
-export type $modal = ZModalDescription
-export type $menu = ZMenuDescription
-export type $router = ZRouterDescription
-export type $theme = ZThemeDescription
-export type $auth = ZAuthDescription
+export const ZuiCore: ZuiCoreDescription
+export const ZMessage: ZMessageDescription
+export const ZModal: ZModalDescription
+export const ZMenu: ZMenuDescription
+export const ZRouter: ZRouterDescription
+export const ZTheme: ZThemeDescription
+export const ZAuth: ZAuthDescription
+export const $zui: ZuiCoreDescription
+export const $message: ZMessageDescription
+export const $modal: ZModalDescription
+export const $menu: ZMenuDescription
+export const $router: ZRouterDescription
+export const $theme: ZThemeDescription
+export const $auth: ZAuthDescription
 export type RouteComponent = ComponentOptions<Vue> | typeof Vue | AsyncComponent
 
 export * from './zui/ZIconLoader';
@@ -92,12 +92,12 @@ declare module 'vue/types/vue' {
   export interface Vue {
     $vuetify: Framework
     $ui: ZuiCoreDescription
-    $message: ZMessage
-    $modal: ZModal
-    $menu: ZMenu
-    $theme: ZTheme
+    $message: ZMessageDescription
+    $modal: ZModalDescription
+    $menu: ZMenuDescription
+    $theme: ZThemeDescription
     $themeStore: ZThemeCustomOptions
-    $auth: ZAuth
+    $auth: ZAuthDescription
     $p(key: string): boolean
     $l(key: string): string
   }
