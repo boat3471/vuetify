@@ -1,7 +1,22 @@
-@mixin input-icon($fontSize: 12px, $inner: 0, $outer: 0) {
-    .v-input__prepend-inner,
-    .v-input__append-inner {
-        margin-top: $inner;
+@mixin input-icon-all($fontSize: 12px, $inner: 0, $outer: 0) {
+    > .v-input__control {
+        > .v-input__slot {
+            .v-input__prepend-inner,
+            .v-input__append-inner {
+                margin-top: $inner;
+
+                > .v-input__icon {
+                    > .v-icon {
+                        font-size: $fontSize;
+                    }
+                }
+            }
+        }
+    }
+
+    > .v-input__prepend-outer,
+    > .v-input__append-outer {
+        margin-top: $outer;
 
         > .v-input__icon {
             > .v-icon {
@@ -9,11 +24,24 @@
             }
         }
     }
+}
 
-    .v-input__prepend-outer,
-    .v-input__append-outer {
-        margin-top: $outer;
+@mixin input-icon-font($fontSize: 12px) {
+    > .v-input__control {
+        > .v-input__slot {
+            .v-input__prepend-inner,
+            .v-input__append-inner {
+                > .v-input__icon {
+                    > .v-icon {
+                        font-size: $fontSize;
+                    }
+                }
+            }
+        }
+    }
 
+    > .v-input__prepend-outer,
+    > .v-input__append-outer {
         > .v-input__icon {
             > .v-icon {
                 font-size: $fontSize;

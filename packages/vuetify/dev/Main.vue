@@ -1,6 +1,6 @@
 <template>
   <z-admin
-    v-if="false"
+    v-if="hide"
     class="my-app"
   >
     <template #main>
@@ -8,26 +8,39 @@
     </template>
   </z-admin>
   <div v-else>
-    <z-icon size="100">{{ iconName }}</z-icon>
-    <z-text-field v-model="iconName"></z-text-field>
-    <z-btn @click="iconName = '$error'">$error</z-btn>
-    <z-btn @click="iconName = 'success'">success</z-btn>
-    <z-btn @click="iconName = 'mdi-home'">mdi-home</z-btn>
-    <z-btn @click="iconName = '$ko'">$ko</z-btn>
-    <z-btn @click="iconName = 'ko'">ko</z-btn>
+    <TestForm :option="{ ...options } " class="mt-10" />
+    <z-divider class="mb-10"/>
+    <TestForm :option="{filled: true, clearable: true, ...options }"/>
+    <z-divider class="mb-10"/>
+    <TestForm :option="{outlined: true, clearable: true, ...options }"/>
+    <z-divider class="mb-10"/>
+    <TestForm :option="{solo: true, clearable: true, ...options }"/>
+    <z-divider class="mb-10"/>
+    <z-file-input label="asdasd"></z-file-input>
+    <z-file-input filled label="asdasd"></z-file-input>
   </div>
 </template>
 
 <script>
   import { ZMessage } from '@zwd/z-ui'
+  import TestForm from './TestForm'
 
   export default {
-    components: {},
+    components: {
+      TestForm,
+    },
     data () {
       return {
         iconName: 'mdi-close',
         msg: '',
         time: Date.now(),
+        hide: false,
+        options: {
+          prependIcon: 'mdi-home',
+          prependInnerIcon: 'mdi-home',
+          appendIcon: 'mdi-home',
+          appendOuterIcon: 'mdi-home',
+        },
       }
     },
     watch: {
