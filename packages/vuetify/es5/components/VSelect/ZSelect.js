@@ -27,8 +27,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Sizeable = (0, _generateZSizeable.default)(['v-select-size--x-small', 'v-select-size--small', 'v-select-size--default', 'v-select-size--large', 'v-select-size--x-large']);
 var ZSelectList = (0, _mixins.default)(_VSelectList.default).extend({
+  name: 'z-select-list',
   props: {
-    sizeableClasses: Object
+    sizeableClasses: Object,
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
   },
   computed: {
     themeClasses: function themeClasses() {
@@ -41,10 +48,6 @@ var ZSelectList = (0, _mixins.default)(_VSelectList.default).extend({
 });
 var ZSelect = (0, _mixins.default)(_VSelect.default, Sizeable).extend({
   props: {
-    dense: {
-      type: Boolean,
-      default: true
-    },
     async: {
       type: Function,
       default: null
@@ -126,9 +129,17 @@ var ZSelect = (0, _mixins.default)(_VSelect.default, Sizeable).extend({
     }
   }
 }).extend({
-  name: 'z-select'
+  name: 'z-select',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 exports.ZSelect = ZSelect;
-var _default = ZSelect;
-exports.default = _default;
+var _default2 = ZSelect;
+exports.default = _default2;
 //# sourceMappingURL=ZSelect.js.map

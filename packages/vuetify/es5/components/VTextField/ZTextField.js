@@ -28,6 +28,12 @@ var ZTextField = (0, _mixins.default)(_VTextField.default, Sizeable).extend({
     hideDetails: {
       type: [Boolean, String],
       default: 'auto'
+    },
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
     }
   },
   computed: {
@@ -51,6 +57,6 @@ var ZTextField = (0, _mixins.default)(_VTextField.default, Sizeable).extend({
   }
 });
 exports.ZTextField = ZTextField;
-var _default = ZTextField;
-exports.default = _default;
+var _default2 = ZTextField;
+exports.default = _default2;
 //# sourceMappingURL=ZTextField.js.map

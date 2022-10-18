@@ -6,8 +6,17 @@ import generateZSizeable from '../../zui/util/generateZSizeable';
 import "../../../src/components/VSelect/ZSelect/index.scss";
 const Sizeable = generateZSizeable(['v-select-size--x-small', 'v-select-size--small', 'v-select-size--default', 'v-select-size--large', 'v-select-size--x-large']);
 const ZSelectList = mixins(VSelectList).extend({
+  name: 'z-select-list',
   props: {
-    sizeableClasses: Object
+    sizeableClasses: Object,
+    dense: {
+      type: Boolean,
+
+      default() {
+        return this.$themeStore.denseMode === true;
+      }
+
+    }
   },
   computed: {
     themeClasses() {
@@ -22,10 +31,6 @@ const ZSelectList = mixins(VSelectList).extend({
 });
 export const ZSelect = mixins(VSelect, Sizeable).extend({
   props: {
-    dense: {
-      type: Boolean,
-      default: true
-    },
     async: {
       type: Function,
       default: null
@@ -118,7 +123,17 @@ export const ZSelect = mixins(VSelect, Sizeable).extend({
 
   }
 }).extend({
-  name: 'z-select'
+  name: 'z-select',
+  props: {
+    dense: {
+      type: Boolean,
+
+      default() {
+        return this.$themeStore.denseMode === true;
+      }
+
+    }
+  }
 });
 export default ZSelect;
 //# sourceMappingURL=ZSelect.js.map

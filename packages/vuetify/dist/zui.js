@@ -3519,7 +3519,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAlert = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VAlert__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-alert'
+  name: 'z-alert',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZAlert);
@@ -4139,7 +4147,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAppBar = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_VAppBar__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-app-bar'
+  name: 'z-app-bar',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZAppBarNavIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_VAppBarNavIcon__WEBPACK_IMPORTED_MODULE_1__["default"]).extend({
   name: 'z-app-bar-nav-icon'
@@ -4573,7 +4589,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAutocomplete = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VAutocomplete__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-autocomplete'
+  name: 'z-autocomplete',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZAutocomplete);
@@ -6131,7 +6155,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZBtnToggle = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VBtnToggle__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-btn-toggle'
+  name: 'z-btn-toggle',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZBtnToggle);
@@ -13157,7 +13189,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZCombobox = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VCombobox__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-combobox'
+  name: 'z-combobox',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZCombobox);
@@ -16454,7 +16494,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZDataTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VDataTable"]).extend({
-  name: 'z-data-table'
+  name: 'z-data-table',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZDataTableHeader = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VDataTableHeader"]).extend({
   name: 'z-data-table-header'
@@ -16466,7 +16514,15 @@ var ZTableOverflow = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"]
   name: 'z-table-overflow'
 });
 var ZSimpleTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VSimpleTable"]).extend({
-  name: 'z-simple-table'
+  name: 'z-simple-table',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZVirtualTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VVirtualTable"]).extend({
   name: 'z-virtual-table'
@@ -20020,7 +20076,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZFileInput = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VFileInput__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-file-input'
+  name: 'z-file-input',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZFileInput);
@@ -21529,7 +21593,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VIcon__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-icon'
+  name: 'z-icon',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZIcon);
@@ -22221,7 +22293,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZInput = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VInput__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-input'
+  name: 'z-input',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZInput);
@@ -23710,7 +23790,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZList = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VList"]).extend({
-  name: 'z-list'
+  name: 'z-list',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZListGroup = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListGroup"]).extend({
   name: 'z-list-group',
@@ -23735,7 +23823,15 @@ var ZListGroup = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_i
   }
 });
 var ZListItem = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListItem"]).extend({
-  name: 'z-list-item'
+  name: 'z-list-item',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZListItemAction = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListItemAction"]).extend({
   name: 'z-list-item-action'
@@ -27652,7 +27748,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZRating = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VRating__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-rating'
+  name: 'z-rating',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZRating);
@@ -29000,8 +29104,15 @@ var __assign = undefined && undefined.__assign || function () {
 
 var Sizeable = Object(_zui_util_generateZSizeable__WEBPACK_IMPORTED_MODULE_4__["default"])(['v-select-size--x-small', 'v-select-size--small', 'v-select-size--default', 'v-select-size--large', 'v-select-size--x-large']);
 var ZSelectList = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSelectList__WEBPACK_IMPORTED_MODULE_3__["default"]).extend({
+  name: 'z-select-list',
   props: {
-    sizeableClasses: Object
+    sizeableClasses: Object,
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
   },
   computed: {
     themeClasses: function themeClasses() {
@@ -29013,10 +29124,6 @@ var ZSelectList = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_
 });
 var ZSelect = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSelect__WEBPACK_IMPORTED_MODULE_2__["default"], Sizeable).extend({
   props: {
-    dense: {
-      type: Boolean,
-      default: true
-    },
     async: {
       type: Function,
       default: null
@@ -29096,7 +29203,15 @@ var ZSelect = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSel
     }
   }
 }).extend({
-  name: 'z-select'
+  name: 'z-select',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 /* harmony default export */ __webpack_exports__["default"] = (ZSelect);
 
@@ -34132,6 +34247,12 @@ var ZTextField = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_V
     hideDetails: {
       type: [Boolean, String],
       default: 'auto'
+    },
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
     }
   },
   computed: {
@@ -35566,7 +35687,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZTimeline = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTimeline"]).extend({
-  name: 'z-timeline'
+  name: 'z-timeline',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZTimelineItem = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTimelineItem"]).extend({
   name: 'z-timeline-item'
@@ -35838,7 +35967,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZToolbar = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VToolbar"]).extend({
-  name: 'z-toolbar'
+  name: 'z-toolbar',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZToolbarItems = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VToolbarItems"]).extend({
   name: 'z-toolbar-items'
@@ -37259,7 +37396,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZTreeview = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTreeview"]).extend({
-  name: 'z-treeview'
+  name: 'z-treeview',
+  props: {
+    dense: {
+      type: Boolean,
+      default: function _default() {
+        return this.$themeStore.denseMode === true;
+      }
+    }
+  }
 });
 var ZTreeviewNode = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTreeviewNode"]).extend({
   name: 'z-treeview-node'
@@ -40008,7 +40153,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.815";
+  Zui.version = "2.5.816-beta.2";
   Zui.config = {
     silent: false
   };
@@ -52768,7 +52913,7 @@ function (_super) {
         infoColor: ZThemeClass.getColor('info', darkStatus),
         successColor: ZThemeClass.getColor('success', darkStatus),
         warningColor: ZThemeClass.getColor('warning', darkStatus),
-        denseMode: ZThemeClass.getLocalOption('denseMode', true),
+        denseMode: ZThemeClass.getLocalOption('denseMode', options.denseMode || false),
         mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', options.mainMenuWidth || 275),
         mainMenuExpandMode: ZThemeClass.getLocalOption('mainMenuExpandMode', false),
         mainNavMode: ZThemeClass.getLocalOption('mainNavMode', _options__WEBPACK_IMPORTED_MODULE_2__["MainNavMode"].Visible),
@@ -53226,6 +53371,16 @@ function (_super) {
     enumerable: false,
     configurable: true
   });
+  Object.defineProperty(ZuiCoreClass.prototype, "defaultDense", {
+    /**
+     * 获取默认主题大小
+     */
+    get: function get() {
+      return ZuiCoreClass.$options.defaultDense === true;
+    },
+    enumerable: false,
+    configurable: true
+  });
   Object.defineProperty(ZuiCoreClass.prototype, "defaultTooltipColor", {
     /**
      * 获取默认的提示背景色
@@ -53297,7 +53452,8 @@ function (_super) {
     if (options) {
       ZuiCoreClass.$options = options;
       ZuiCoreClass.$theme = new _ZTheme__WEBPACK_IMPORTED_MODULE_4__["ZThemeClass"](options.appKey || '', {
-        mainMenuWidth: options.defaultMenuWidth
+        mainMenuWidth: options.defaultMenuWidth,
+        denseMode: options.defaultDense
       });
       _ZMessage__WEBPACK_IMPORTED_MODULE_6__["ZMessageClass"].appId = options.appId || 'app';
     }
