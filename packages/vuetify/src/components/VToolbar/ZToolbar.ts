@@ -7,6 +7,14 @@ import {
 
 export const ZToolbar = mixins(VToolbar).extend({
   name: 'z-toolbar',
+  props: {
+    dense: {
+      type: Boolean,
+      default () {
+        return this.$themeStore.denseMode === true
+      },
+    },
+  },
 })
 
 export const ZToolbarItems = mixins(VToolbarItems).extend({

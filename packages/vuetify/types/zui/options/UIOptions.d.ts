@@ -63,6 +63,11 @@ export interface ZuiOptions {
   defaultSize?: DefaultSize
 
   /**
+   * 配置UI库全局默认紧凑模式;
+   */
+  defaultDense?: boolean
+
+  /**
    * 配置Tooltip默认颜色;
    */
   defaultTooltipColor?: string

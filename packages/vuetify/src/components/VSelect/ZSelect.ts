@@ -15,8 +15,15 @@ const Sizeable = generateZSizeable([
 ])
 
 const ZSelectList = mixins(VSelectList).extend({
+  name: 'z-select-list',
   props: {
     sizeableClasses: Object,
+    dense: {
+      type: Boolean,
+      default () {
+        return this.$themeStore.denseMode === true
+      },
+    },
   },
   computed: {
     themeClasses () {
@@ -32,10 +39,6 @@ const ZSelectList = mixins(VSelectList).extend({
 
 export const ZSelect = mixins(VSelect, Sizeable).extend({
   props: {
-    dense: {
-      type: Boolean,
-      default: true,
-    },
     async: {
       type: Function,
       default: null,
@@ -116,6 +119,14 @@ export const ZSelect = mixins(VSelect, Sizeable).extend({
   },
 }).extend({
   name: 'z-select',
+  props: {
+    dense: {
+      type: Boolean,
+      default () {
+        return this.$themeStore.denseMode === true
+      },
+    },
+  },
 })
 
 export default ZSelect

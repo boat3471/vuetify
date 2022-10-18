@@ -18,6 +18,14 @@ export const ZCol = mixins(VCol).extend({
 
 export const ZRow = mixins(VRow).extend({
   name: 'z-row',
+  props: {
+    dense: {
+      type: Boolean,
+      default () {
+        return this.$themeStore.denseMode === true
+      },
+    },
+  },
 })
 
 export const ZSpacer = mixins(VSpacer).extend({

@@ -122,6 +122,13 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   }
 
   /**
+   * 获取默认主题大小
+   */
+  get defaultDense (): boolean {
+    return ZuiCoreClass.$options.defaultDense === true
+  }
+
+  /**
    * 获取默认的提示背景色
    */
   get defaultTooltipColor (): string {
@@ -199,6 +206,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
       ZuiCoreClass.$options = options
       ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '', {
         mainMenuWidth: (options as CreateAdminOptions).defaultMenuWidth,
+        denseMode: (options as CreateAdminOptions).defaultDense,
       })
       ZMessageClass.appId = options.appId || 'app'
     }

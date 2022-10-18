@@ -7,6 +7,14 @@ import {
 
 export const ZTimeline = mixins(VTimeline).extend({
   name: 'z-timeline',
+  props: {
+    dense: {
+      type: Boolean,
+      default () {
+        return this.$themeStore.denseMode === true
+      },
+    },
+  },
 })
 
 export const ZTimelineItem = mixins(VTimelineItem).extend({
