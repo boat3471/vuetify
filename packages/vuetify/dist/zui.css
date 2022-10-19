@@ -4235,7 +4235,7 @@
   max-height: 20px;
 }
 .z-btn.v-btn:not(.v-btn--round).v-size--x-large {
-  height: 46px;
+  height: 44px;
 }
 .z-btn.v-btn:not(.v-btn--round).v-size--x-large .v-btn__loader .v-progress-circular {
   max-width: 20px;
@@ -4259,8 +4259,8 @@
   height: 38px;
 }
 .v-btn--fab.v-size--x-large {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
 }
 
 .v-btn--icon.v-size--x-small {
@@ -4280,8 +4280,8 @@
   height: 38px;
 }
 .v-btn--icon.v-size--x-large {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
 }
 
 .z-btn.v-btn.secondary--text:not(.v-btn--text) {
@@ -10290,6 +10290,10 @@
 .v-select-size--x-small.v-input {
   font-size: 13px;
 }
+.v-select-size--small.v-input input,
+.v-select-size--x-small.v-input input {
+  max-height: 28px;
+}
 .v-select-size--small > .v-list-item--dense,
 .v-select-size--small > .v-list-item,
 .v-select-size--x-small > .v-list-item--dense,
@@ -10499,6 +10503,9 @@
 .v-select-size--default.v-input {
   font-size: 13px;
 }
+.v-select-size--default.v-input input {
+  max-height: 32px;
+}
 .v-select-size--default > .v-list-item--dense,
 .v-select-size--default > .v-list-item {
   min-height: 32px;
@@ -10645,6 +10652,9 @@
 .v-select-size--large.v-input {
   font-size: 14px;
 }
+.v-select-size--large.v-input input {
+  max-height: 38px;
+}
 .v-select-size--large > .v-list-item--dense,
 .v-select-size--large > .v-list-item {
   min-height: 38px;
@@ -10790,6 +10800,9 @@
 }
 .v-select-size--x-large.v-input {
   font-size: 15px;
+}
+.v-select-size--x-large.v-input input {
+  max-height: 44px;
 }
 .v-select-size--x-large > .v-list-item--dense,
 .v-select-size--x-large > .v-list-item {

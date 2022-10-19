@@ -8,16 +8,19 @@
     </template>
   </z-admin>
   <div v-else>
-    <TestForm :option="{ ...options } " class="mt-10" />
-    <z-divider class="mb-10"/>
-    <TestForm :option="{filled: true, clearable: true, ...options }"/>
-    <z-divider class="mb-10"/>
-    <TestForm :option="{outlined: true, clearable: true, ...options }"/>
-    <z-divider class="mb-10"/>
-    <TestForm :option="{solo: true, clearable: true, ...options }"/>
-    <z-divider class="mb-10"/>
-    <z-file-input label="asdasd"></z-file-input>
-    <z-file-input filled label="asdasd"></z-file-input>
+    <div v-if="false">
+      <TestForm :option="{ ...options } " class="mt-10" />
+      <z-divider class="mb-10"/>
+      <TestForm :option="{filled: true, clearable: true, ...options }"/>
+      <z-divider class="mb-10"/>
+      <TestForm :option="{outlined: true, clearable: true, ...options }"/>
+      <z-divider class="mb-10"/>
+      <TestForm :option="{solo: true, clearable: true, ...options }"/>
+      <z-divider class="mb-10"/>
+    </div>
+    <div class="d-flex">
+      1
+    </div>
   </div>
 </template>
 

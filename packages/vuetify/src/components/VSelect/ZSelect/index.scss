@@ -8,6 +8,10 @@
 
     &.v-input {
         font-size: $inputFontSize;
+
+        input {
+            max-height: $currentHeight;
+        }
     }
 
     /* 定制下拉框列表样式 */
