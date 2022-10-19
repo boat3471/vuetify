@@ -62,6 +62,10 @@ export default mixins(VSheet, Toggleable, Transitionable).extend({
     }
   },
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     __cachedBorder() {
       if (!this.border) return null;
       let data = {
@@ -115,7 +119,7 @@ export default mixins(VSheet, Toggleable, Transitionable).extend({
     classes() {
       const classes = { ...VSheet.options.computed.classes.call(this),
         'v-alert--border': Boolean(this.border),
-        'v-alert--dense': this.dense,
+        'v-alert--dense': this.computedDense,
         'v-alert--outlined': this.outlined,
         'v-alert--prominent': this.prominent,
         'v-alert--text': this.text

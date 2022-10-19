@@ -226,6 +226,7 @@ export class ZuiCoreClass extends UIEvent {
     Object.keys(directives).forEach(name => {
       Vue.directive(name, directives[name]);
     });
+    Vue.prototype.$themeStore = core.$theme.themeStore;
     Vue.mixin({
       beforeCreate() {
         const $options = this.$options; // 安装 ZuiCore

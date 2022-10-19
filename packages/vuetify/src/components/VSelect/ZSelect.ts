@@ -18,12 +18,6 @@ const ZSelectList = mixins(VSelectList).extend({
   name: 'z-select-list',
   props: {
     sizeableClasses: Object,
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
   },
   computed: {
     themeClasses () {
@@ -119,14 +113,6 @@ export const ZSelect = mixins(VSelect, Sizeable).extend({
   },
 }).extend({
   name: 'z-select',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export default ZSelect

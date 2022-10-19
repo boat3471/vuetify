@@ -91,11 +91,14 @@ export default baseMixins.extend<options>().extend({
   }),
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     classes (): object {
       return {
         'v-list-item': true,
         ...Routable.options.computed.classes.call(this),
-        'v-list-item--dense': this.dense,
+        'v-list-item--dense': this.computedDense,
         'v-list-item--disabled': this.disabled,
         'v-list-item--link': this.isClickable && !this.inactive,
         'v-list-item--selectable': this.selectable,

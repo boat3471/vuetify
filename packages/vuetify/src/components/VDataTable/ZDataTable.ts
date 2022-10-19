@@ -13,14 +13,6 @@ import './ZDataTable.scss'
 
 export const ZDataTable = mixins(VDataTable).extend({
   name: 'z-data-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export const ZDataTableHeader = mixins(VDataTableHeader).extend({
@@ -37,14 +29,6 @@ export const ZTableOverflow = mixins(VTableOverflow).extend({
 
 export const ZSimpleTable = mixins(VSimpleTable).extend({
   name: 'z-simple-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export const ZVirtualTable = mixins(VVirtualTable).extend({

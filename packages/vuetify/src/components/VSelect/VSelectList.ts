@@ -70,6 +70,9 @@ export default mixins(Colorable, Themeable).extend({
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     parsedItems (): any[] {
       return this.selectedItems.map(item => this.getValue(item))
     },
@@ -258,7 +261,7 @@ export default mixins(Colorable, Themeable).extend({
         role: 'listbox',
         tabindex: -1,
       },
-      props: { dense: this.dense },
+      props: { dense: this.computedDense },
     }, children)
   },
 })

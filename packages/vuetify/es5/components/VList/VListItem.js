@@ -84,11 +84,14 @@ var _default2 = baseMixins.extend().extend({
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({
         'v-list-item': true
       }, _routable.default.options.computed.classes.call(this), {
-        'v-list-item--dense': this.dense,
+        'v-list-item--dense': this.computedDense,
         'v-list-item--disabled': this.disabled,
         'v-list-item--link': this.isClickable && !this.inactive,
         'v-list-item--selectable': this.selectable,

@@ -29,13 +29,7 @@ var Sizeable = (0, _generateZSizeable.default)(['v-select-size--x-small', 'v-sel
 var ZSelectList = (0, _mixins.default)(_VSelectList.default).extend({
   name: 'z-select-list',
   props: {
-    sizeableClasses: Object,
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
+    sizeableClasses: Object
   },
   computed: {
     themeClasses: function themeClasses() {
@@ -129,17 +123,9 @@ var ZSelect = (0, _mixins.default)(_VSelect.default, Sizeable).extend({
     }
   }
 }).extend({
-  name: 'z-select',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-select'
 });
 exports.ZSelect = ZSelect;
-var _default2 = ZSelect;
-exports.default = _default2;
+var _default = ZSelect;
+exports.default = _default;
 //# sourceMappingURL=ZSelect.js.map

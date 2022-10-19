@@ -58,6 +58,10 @@ export default mixins(RegistrableProvide('treeview'), Themeable
     selectedCache: new Set()
   }),
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     excludedItems() {
       const excluded = new Set();
       if (!this.search) return excluded;
@@ -386,7 +390,7 @@ export default mixins(RegistrableProvide('treeview'), Themeable
       staticClass: 'v-treeview',
       class: {
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense,
+        'v-treeview--dense': this.computedDense,
         ...this.themeClasses
       }
     }, children);

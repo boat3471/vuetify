@@ -296,6 +296,7 @@ function (_UIEvent) {
       Object.keys(directives).forEach(function (name) {
         Vue.directive(name, directives[name]);
       });
+      Vue.prototype.$themeStore = core.$theme.themeStore;
       Vue.mixin({
         beforeCreate: function beforeCreate() {
           var $options = this.$options; // 安装 ZuiCore

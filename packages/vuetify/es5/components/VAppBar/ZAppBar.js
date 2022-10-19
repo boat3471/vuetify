@@ -16,15 +16,7 @@ var _mixins = _interopRequireDefault(require("../../util/mixins"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZAppBar = (0, _mixins.default)(_VAppBar.default).extend({
-  name: 'z-app-bar',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-app-bar'
 });
 exports.ZAppBar = ZAppBar;
 var ZAppBarNavIcon = (0, _mixins.default)(_VAppBarNavIcon.default).extend({
@@ -35,12 +27,12 @@ var ZAppBarTitle = (0, _mixins.default)(_VAppBarTitle.default).extend({
   name: 'z-app-bar-title'
 });
 exports.ZAppBarTitle = ZAppBarTitle;
-var _default2 = {
+var _default = {
   $_vuetify_subcomponents: {
     ZAppBar: ZAppBar,
     ZAppBarNavIcon: ZAppBarNavIcon,
     ZAppBarTitle: ZAppBarTitle
   }
 };
-exports.default = _default2;
+exports.default = _default;
 //# sourceMappingURL=ZAppBar.js.map

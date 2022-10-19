@@ -67,6 +67,9 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
     }
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     medium: function medium() {
       return false;
     },
@@ -116,7 +119,7 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
           'v-icon--left': this.left,
           'v-icon--link': this.hasClickListener,
           'v-icon--right': this.right,
-          'v-icon--dense': this.dense
+          'v-icon--dense': this.computedDense
         },
         attrs: _objectSpread({
           'aria-hidden': !this.hasClickListener,

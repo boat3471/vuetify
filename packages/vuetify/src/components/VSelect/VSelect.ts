@@ -133,6 +133,9 @@ export default baseMixins.extend<options>().extend({
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     /* All items that the select has */
     allItems (): object[] {
       return this.filterDuplicates(this.cachedItems.concat(this.items))
@@ -201,7 +204,7 @@ export default baseMixins.extend<options>().extend({
         props: {
           action: this.multiple,
           color: this.itemColor,
-          dense: this.dense,
+          dense: this.computedDense,
           hideSelected: this.hideSelected,
           items: this.virtualizedItems,
           itemDisabled: this.itemDisabled,

@@ -9,14 +9,6 @@ export const ZTextField = mixins(VTextField, Sizeable).extend({
     hideDetails: {
       type: [Boolean, String],
       default: 'auto'
-    },
-    dense: {
-      type: Boolean,
-
-      default() {
-        return this.$themeStore.denseMode === true;
-      }
-
     }
   },
   computed: {

@@ -2,17 +2,7 @@ import mixins from '../../util/mixins';
 import { VList, VListGroup, VListItem, VListItemAction, VListItemActionText, VListItemAvatar, VListItemContent, VListItemGroup, VListItemIcon, VListItemSubtitle, VListItemTitle } from './index';
 import ZIcon from '../VIcon/ZIcon';
 export const ZList = mixins(VList).extend({
-  name: 'z-list',
-  props: {
-    dense: {
-      type: Boolean,
-
-      default() {
-        return this.$themeStore.denseMode === true;
-      }
-
-    }
-  }
+  name: 'z-list'
 });
 export const ZListGroup = mixins(VListGroup).extend({
   name: 'z-list-group',
@@ -38,17 +28,7 @@ export const ZListGroup = mixins(VListGroup).extend({
   }
 });
 export const ZListItem = mixins(VListItem).extend({
-  name: 'z-list-item',
-  props: {
-    dense: {
-      type: Boolean,
-
-      default() {
-        return this.$themeStore.denseMode === true;
-      }
-
-    }
-  }
+  name: 'z-list-item'
 });
 export const ZListItemAction = mixins(VListItemAction).extend({
   name: 'z-list-item-action'

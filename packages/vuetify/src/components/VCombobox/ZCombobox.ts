@@ -3,14 +3,6 @@ import mixins from '../../util/mixins'
 
 const ZCombobox = mixins(VCombobox).extend({
   name: 'z-combobox',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export { ZCombobox }

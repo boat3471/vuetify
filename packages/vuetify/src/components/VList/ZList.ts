@@ -18,14 +18,6 @@ import ZIcon from '../VIcon/ZIcon'
 
 export const ZList = mixins(VList).extend({
   name: 'z-list',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export const ZListGroup = mixins(VListGroup).extend({
@@ -51,14 +43,6 @@ export const ZListGroup = mixins(VListGroup).extend({
 
 export const ZListItem = mixins(VListItem).extend({
   name: 'z-list-item',
-  props: {
-    dense: {
-      type: Boolean,
-      default () {
-        return this.$themeStore.denseMode === true
-      },
-    },
-  },
 })
 
 export const ZListItemAction = mixins(VListItemAction).extend({

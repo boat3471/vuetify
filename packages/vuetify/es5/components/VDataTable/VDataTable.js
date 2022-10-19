@@ -133,6 +133,9 @@ var _default2 = (0, _mixins.default)(_VDataIterator.VDataIterator, _loadable.def
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     computedHeaders: function computedHeaders() {
       var _this = this;
 
@@ -612,14 +615,14 @@ var _default2 = (0, _mixins.default)(_VDataIterator.VDataIterator, _loadable.def
       var simpleProps = {
         height: this.height,
         fixedHeader: this.fixedHeader,
-        dense: this.dense
+        dense: this.computedDense
       }; // if (this.virtualRows) {
       //   return this.$createElement(VVirtualTable, {
       //     props: Object.assign(simpleProps, {
       //       items: props.items,
       //       height: this.height,
-      //       rowHeight: this.dense ? 24 : 48,
-      //       headerHeight: this.dense ? 32 : 48,
+      //       rowHeight: this.computedDense ? 24 : 48,
+      //       headerHeight: this.computedDense ? 32 : 48,
       //       // TODO: expose rest of props from virtual table?
       //     }),
       //     scopedSlots: {

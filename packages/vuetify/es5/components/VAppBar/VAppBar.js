@@ -65,6 +65,9 @@ var _default = baseMixins.extend({
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     applicationProperty: function applicationProperty() {
       return !this.bottom ? 'top' : 'bottom';
     },
@@ -93,7 +96,7 @@ var _default = baseMixins.extend({
     },
     computedContentHeight: function computedContentHeight() {
       if (!this.shrinkOnScroll) return _VToolbar.default.options.computed.computedContentHeight.call(this);
-      var min = this.dense ? 48 : 56;
+      var min = this.computedDense ? 48 : 56;
       var max = this.computedOriginalHeight;
       return min + (max - min) * this.scrollRatio;
     },
@@ -127,7 +130,7 @@ var _default = baseMixins.extend({
     },
     computedScrollThreshold: function computedScrollThreshold() {
       if (this.scrollThreshold) return Number(this.scrollThreshold);
-      return this.computedOriginalHeight - (this.dense ? 48 : 56);
+      return this.computedOriginalHeight - (this.computedDense ? 48 : 56);
     },
     computedTransform: function computedTransform() {
       if (!this.canScroll || this.elevateOnScroll && this.currentScroll === 0 && this.isActive) return 0;

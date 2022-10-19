@@ -128,6 +128,9 @@ export default mixins(
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     computedHeaders (): DataTableHeader[] {
       if (!this.headers) return []
       const headers = this.headers.filter(h => h.value === undefined || !this.internalGroupBy.find(v => v === h.value))
@@ -572,7 +575,7 @@ export default mixins(
       const simpleProps = {
         height: this.height,
         fixedHeader: this.fixedHeader,
-        dense: this.dense,
+        dense: this.computedDense,
       }
 
       // if (this.virtualRows) {
@@ -580,8 +583,8 @@ export default mixins(
       //     props: Object.assign(simpleProps, {
       //       items: props.items,
       //       height: this.height,
-      //       rowHeight: this.dense ? 24 : 48,
-      //       headerHeight: this.dense ? 32 : 48,
+      //       rowHeight: this.computedDense ? 24 : 48,
+      //       headerHeight: this.computedDense ? 32 : 48,
       //       // TODO: expose rest of props from virtual table?
       //     }),
       //     scopedSlots: {

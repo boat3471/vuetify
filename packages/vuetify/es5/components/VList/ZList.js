@@ -14,15 +14,7 @@ var _ZIcon = _interopRequireDefault(require("../VIcon/ZIcon"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZList = (0, _mixins.default)(_index.VList).extend({
-  name: 'z-list',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-list'
 });
 exports.ZList = ZList;
 var ZListGroup = (0, _mixins.default)(_index.VListGroup).extend({
@@ -49,15 +41,7 @@ var ZListGroup = (0, _mixins.default)(_index.VListGroup).extend({
 });
 exports.ZListGroup = ZListGroup;
 var ZListItem = (0, _mixins.default)(_index.VListItem).extend({
-  name: 'z-list-item',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-list-item'
 });
 exports.ZListItem = ZListItem;
 var ZListItemAction = (0, _mixins.default)(_index.VListItemAction).extend({
@@ -92,7 +76,7 @@ var ZListItemTitle = (0, _mixins.default)(_index.VListItemTitle).extend({
   name: 'z-list-item-title'
 });
 exports.ZListItemTitle = ZListItemTitle;
-var _default2 = {
+var _default = {
   $_vuetify_subcomponents: {
     ZList: ZList,
     ZListGroup: ZListGroup,
@@ -107,5 +91,5 @@ var _default2 = {
     ZListItemTitle: ZListItemTitle
   }
 };
-exports.default = _default2;
+exports.default = _default;
 //# sourceMappingURL=ZList.js.map

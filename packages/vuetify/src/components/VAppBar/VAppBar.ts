@@ -69,6 +69,9 @@ export default baseMixins.extend({
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     applicationProperty (): string {
       return !this.bottom ? 'top' : 'bottom'
     },
@@ -109,7 +112,7 @@ export default baseMixins.extend({
     computedContentHeight (): number {
       if (!this.shrinkOnScroll) return VToolbar.options.computed.computedContentHeight.call(this)
 
-      const min = this.dense ? 48 : 56
+      const min = this.computedDense ? 48 : 56
       const max = this.computedOriginalHeight
 
       return min + (max - min) * this.scrollRatio
@@ -150,7 +153,7 @@ export default baseMixins.extend({
     computedScrollThreshold (): number {
       if (this.scrollThreshold) return Number(this.scrollThreshold)
 
-      return this.computedOriginalHeight - (this.dense ? 48 : 56)
+      return this.computedOriginalHeight - (this.computedDense ? 48 : 56)
     },
     computedTransform (): number {
       if (

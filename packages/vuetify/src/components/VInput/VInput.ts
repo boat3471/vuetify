@@ -65,6 +65,9 @@ export default baseMixins.extend<options>().extend({
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     classes (): object {
       return {
         'v-input--has-state': this.hasState,
@@ -76,7 +79,7 @@ export default baseMixins.extend<options>().extend({
         // <v-switch loading>.loading === '' so we can't just cast to boolean
         'v-input--is-loading': this.loading !== false && this.loading != null,
         'v-input--is-readonly': this.isReadonly,
-        'v-input--dense': this.dense,
+        'v-input--dense': this.computedDense,
         ...this.themeClasses,
       }
     },

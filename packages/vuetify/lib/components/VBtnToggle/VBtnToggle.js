@@ -19,11 +19,15 @@ export default mixins(ButtonGroup, Colorable).extend({
     tile: Boolean
   },
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     classes() {
       return { ...ButtonGroup.options.computed.classes.call(this),
         'v-btn-toggle': true,
         'v-btn-toggle--borderless': this.borderless,
-        'v-btn-toggle--dense': this.dense,
+        'v-btn-toggle--dense': this.computedDense,
         'v-btn-toggle--group': this.group,
         'v-btn-toggle--rounded': this.rounded,
         'v-btn-toggle--shaped': this.shaped,

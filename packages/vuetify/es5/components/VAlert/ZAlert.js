@@ -12,17 +12,9 @@ var _mixins = _interopRequireDefault(require("../../util/mixins"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZAlert = (0, _mixins.default)(_VAlert.default).extend({
-  name: 'z-alert',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-alert'
 });
 exports.ZAlert = ZAlert;
-var _default2 = ZAlert;
-exports.default = _default2;
+var _default = ZAlert;
+exports.default = _default;
 //# sourceMappingURL=ZAlert.js.map

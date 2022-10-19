@@ -33,6 +33,10 @@ export default Selectable.extend({
   },
 
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     classes() {
       return { ...VInput.options.computed.classes.call(this),
         'v-input--selection-controls': true,
@@ -89,7 +93,7 @@ export default Selectable.extend({
         staticClass: 'v-input--selection-controls__input'
       }, [this.$createElement(VIcon, this.setTextColor(this.validationState, {
         props: {
-          dense: this.dense,
+          dense: this.computedDense,
           dark: this.dark,
           light: this.light
         }

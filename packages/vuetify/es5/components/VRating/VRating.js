@@ -80,6 +80,9 @@ var _default = (0, _mixins.default)(_colorable.default, _delayable.default, _rip
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     directives: function directives() {
       if (this.readonly || !this.ripple) return [];
       return [{
@@ -242,7 +245,7 @@ var _default = (0, _mixins.default)(_colorable.default, _delayable.default, _rip
       staticClass: 'v-rating',
       class: {
         'v-rating--readonly': this.readonly,
-        'v-rating--dense': this.dense
+        'v-rating--dense': this.computedDense
       }
     }, children);
   }

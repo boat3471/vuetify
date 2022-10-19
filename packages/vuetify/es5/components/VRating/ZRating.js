@@ -12,17 +12,9 @@ var _mixins = _interopRequireDefault(require("../../util/mixins"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZRating = (0, _mixins.default)(_VRating.default).extend({
-  name: 'z-rating',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-rating'
 });
 exports.ZRating = ZRating;
-var _default2 = ZRating;
-exports.default = _default2;
+var _default = ZRating;
+exports.default = _default;
 //# sourceMappingURL=ZRating.js.map

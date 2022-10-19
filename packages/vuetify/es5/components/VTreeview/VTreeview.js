@@ -102,6 +102,9 @@ var _default2 = (0, _mixins.default)((0, _registrable.provide)('treeview'), _the
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     excludedItems: function excludedItems() {
       var excluded = new Set();
       if (!this.search) return excluded;
@@ -563,7 +566,7 @@ var _default2 = (0, _mixins.default)((0, _registrable.provide)('treeview'), _the
       staticClass: 'v-treeview',
       class: _objectSpread({
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense
+        'v-treeview--dense': this.computedDense
       }, this.themeClasses)
     }, children);
   }

@@ -95,6 +95,10 @@ export default mixins(VDataIterator, Loadable).extend({
   },
 
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     computedHeaders() {
       if (!this.headers) return [];
       const headers = this.headers.filter(h => h.value === undefined || !this.internalGroupBy.find(v => v === h.value));
@@ -549,14 +553,14 @@ export default mixins(VDataIterator, Loadable).extend({
       const simpleProps = {
         height: this.height,
         fixedHeader: this.fixedHeader,
-        dense: this.dense
+        dense: this.computedDense
       }; // if (this.virtualRows) {
       //   return this.$createElement(VVirtualTable, {
       //     props: Object.assign(simpleProps, {
       //       items: props.items,
       //       height: this.height,
-      //       rowHeight: this.dense ? 24 : 48,
-      //       headerHeight: this.dense ? 32 : 48,
+      //       rowHeight: this.computedDense ? 24 : 48,
+      //       headerHeight: this.computedDense ? 32 : 48,
       //       // TODO: expose rest of props from virtual table?
       //     }),
       //     scopedSlots: {

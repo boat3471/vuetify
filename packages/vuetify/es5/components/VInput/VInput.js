@@ -61,6 +61,9 @@ var _default2 = baseMixins.extend().extend({
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({
         'v-input--has-state': this.hasState,
@@ -72,7 +75,7 @@ var _default2 = baseMixins.extend().extend({
         // <v-switch loading>.loading === '' so we can't just cast to boolean
         'v-input--is-loading': this.loading !== false && this.loading != null,
         'v-input--is-readonly': this.isReadonly,
-        'v-input--dense': this.dense
+        'v-input--dense': this.computedDense
       }, this.themeClasses);
     },
     computedId: function computedId() {

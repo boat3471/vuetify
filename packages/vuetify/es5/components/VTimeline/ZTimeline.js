@@ -12,26 +12,18 @@ var _index = require("./index");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZTimeline = (0, _mixins.default)(_index.VTimeline).extend({
-  name: 'z-timeline',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-timeline'
 });
 exports.ZTimeline = ZTimeline;
 var ZTimelineItem = (0, _mixins.default)(_index.VTimelineItem).extend({
   name: 'z-timeline-item'
 });
 exports.ZTimelineItem = ZTimelineItem;
-var _default2 = {
+var _default = {
   $_vuetify_subcomponents: {
     ZTimeline: ZTimeline,
     ZTimelineItem: ZTimelineItem
   }
 };
-exports.default = _default2;
+exports.default = _default;
 //# sourceMappingURL=ZTimeline.js.map

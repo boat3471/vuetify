@@ -51,6 +51,9 @@ var _default = _selectable.default.extend({
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({}, _VInput.default.options.computed.classes.call(this), {
         'v-input--selection-controls': true,
@@ -105,7 +108,7 @@ var _default = _selectable.default.extend({
         staticClass: 'v-input--selection-controls__input'
       }, [this.$createElement(_VIcon.default, this.setTextColor(this.validationState, {
         props: {
-          dense: this.dense,
+          dense: this.computedDense,
           dark: this.dark,
           light: this.light
         }

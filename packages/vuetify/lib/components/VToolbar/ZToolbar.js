@@ -1,17 +1,7 @@
 import mixins from '../../util/mixins';
 import { VToolbar, VToolbarItems, VToolbarTitle } from './index';
 export const ZToolbar = mixins(VToolbar).extend({
-  name: 'z-toolbar',
-  props: {
-    dense: {
-      type: Boolean,
-
-      default() {
-        return this.$themeStore.denseMode === true;
-      }
-
-    }
-  }
+  name: 'z-toolbar'
 });
 export const ZToolbarItems = mixins(VToolbarItems).extend({
   name: 'z-toolbar-items'

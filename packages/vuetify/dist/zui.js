@@ -3351,6 +3351,9 @@ var __assign = undefined && undefined.__assign || function () {
     }
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     __cachedBorder: function __cachedBorder() {
       var _a;
 
@@ -3405,7 +3408,7 @@ var __assign = undefined && undefined.__assign || function () {
     classes: function classes() {
       var classes = __assign(__assign({}, _VSheet__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.classes.call(this)), {
         'v-alert--border': Boolean(this.border),
-        'v-alert--dense': this.dense,
+        'v-alert--dense': this.computedDense,
         'v-alert--outlined': this.outlined,
         'v-alert--prominent': this.prominent,
         'v-alert--text': this.text
@@ -3519,15 +3522,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAlert = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VAlert__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-alert',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-alert'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZAlert);
@@ -3831,6 +3826,9 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_V
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     applicationProperty: function applicationProperty() {
       return !this.bottom ? 'top' : 'bottom';
     },
@@ -3859,7 +3857,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_V
     },
     computedContentHeight: function computedContentHeight() {
       if (!this.shrinkOnScroll) return _VToolbar_VToolbar__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.computedContentHeight.call(this);
-      var min = this.dense ? 48 : 56;
+      var min = this.computedDense ? 48 : 56;
       var max = this.computedOriginalHeight;
       return min + (max - min) * this.scrollRatio;
     },
@@ -3892,7 +3890,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_V
     },
     computedScrollThreshold: function computedScrollThreshold() {
       if (this.scrollThreshold) return Number(this.scrollThreshold);
-      return this.computedOriginalHeight - (this.dense ? 48 : 56);
+      return this.computedOriginalHeight - (this.computedDense ? 48 : 56);
     },
     computedTransform: function computedTransform() {
       if (!this.canScroll || this.elevateOnScroll && this.currentScroll === 0 && this.isActive) return 0;
@@ -4147,15 +4145,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAppBar = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_VAppBar__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-app-bar',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-app-bar'
 });
 var ZAppBarNavIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_VAppBarNavIcon__WEBPACK_IMPORTED_MODULE_1__["default"]).extend({
   name: 'z-app-bar-nav-icon'
@@ -4589,15 +4579,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZAutocomplete = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VAutocomplete__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-autocomplete',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-autocomplete'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZAutocomplete);
@@ -6117,11 +6099,14 @@ var __assign = undefined && undefined.__assign || function () {
     tile: Boolean
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign(__assign(__assign({}, _mixins_button_group__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.classes.call(this)), {
         'v-btn-toggle': true,
         'v-btn-toggle--borderless': this.borderless,
-        'v-btn-toggle--dense': this.dense,
+        'v-btn-toggle--dense': this.computedDense,
         'v-btn-toggle--group': this.group,
         'v-btn-toggle--rounded': this.rounded,
         'v-btn-toggle--shaped': this.shaped,
@@ -6155,15 +6140,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZBtnToggle = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VBtnToggle__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-btn-toggle',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-btn-toggle'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZBtnToggle);
@@ -10899,6 +10876,9 @@ var __rest = undefined && undefined.__rest || function (s, e) {
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign(__assign({}, _VInput__WEBPACK_IMPORTED_MODULE_3__["default"].options.computed.classes.call(this)), {
         'v-input--selection-controls': true,
@@ -10953,7 +10933,7 @@ var __rest = undefined && undefined.__rest || function (s, e) {
         staticClass: 'v-input--selection-controls__input'
       }, [this.$createElement(_VIcon__WEBPACK_IMPORTED_MODULE_2__["default"], this.setTextColor(this.validationState, {
         props: {
-          dense: this.dense,
+          dense: this.computedDense,
           dark: this.dark,
           light: this.light
         }
@@ -13189,15 +13169,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZCombobox = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VCombobox__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-combobox',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-combobox'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZCombobox);
@@ -15063,6 +15035,9 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     computedHeaders: function computedHeaders() {
       var _this = this;
 
@@ -15545,14 +15520,14 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
       var simpleProps = {
         height: this.height,
         fixedHeader: this.fixedHeader,
-        dense: this.dense
+        dense: this.computedDense
       }; // if (this.virtualRows) {
       //   return this.$createElement(VVirtualTable, {
       //     props: Object.assign(simpleProps, {
       //       items: props.items,
       //       height: this.height,
-      //       rowHeight: this.dense ? 24 : 48,
-      //       headerHeight: this.dense ? 32 : 48,
+      //       rowHeight: this.computedDense ? 24 : 48,
+      //       headerHeight: this.computedDense ? 32 : 48,
       //       // TODO: expose rest of props from virtual table?
       //     }),
       //     scopedSlots: {
@@ -16268,9 +16243,12 @@ var __assign = undefined && undefined.__assign || function () {
     height: [Number, String]
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign({
-        'v-data-table--dense': this.dense,
+        'v-data-table--dense': this.computedDense,
         'v-data-table--fixed-height': !!this.height && !this.fixedHeader,
         'v-data-table--fixed-header': this.fixedHeader,
         'v-data-table--has-top': !!this.$slots.top,
@@ -16494,15 +16472,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZDataTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VDataTable"]).extend({
-  name: 'z-data-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-data-table'
 });
 var ZDataTableHeader = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VDataTableHeader"]).extend({
   name: 'z-data-table-header'
@@ -16514,15 +16484,7 @@ var ZTableOverflow = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"]
   name: 'z-table-overflow'
 });
 var ZSimpleTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VSimpleTable"]).extend({
-  name: 'z-simple-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-simple-table'
 });
 var ZVirtualTable = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VVirtualTable"]).extend({
   name: 'z-virtual-table'
@@ -20076,15 +20038,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZFileInput = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VFileInput__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-file-input',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-file-input'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZFileInput);
@@ -21345,6 +21299,9 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
     }
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     medium: function medium() {
       return false;
     },
@@ -21394,7 +21351,7 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
           'v-icon--left': this.left,
           'v-icon--link': this.hasClickListener,
           'v-icon--right': this.right,
-          'v-icon--dense': this.dense
+          'v-icon--dense': this.computedDense
         },
         attrs: __assign({
           'aria-hidden': !this.hasClickListener,
@@ -21593,15 +21550,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VIcon__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-icon',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-icon'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZIcon);
@@ -22048,6 +21997,9 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_m
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign({
         'v-input--has-state': this.hasState,
@@ -22059,7 +22011,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_m
         // <v-switch loading>.loading === '' so we can't just cast to boolean
         'v-input--is-loading': this.loading !== false && this.loading != null,
         'v-input--is-readonly': this.isReadonly,
-        'v-input--dense': this.dense
+        'v-input--dense': this.computedDense
       }, this.themeClasses);
     },
     computedId: function computedId() {
@@ -22293,15 +22245,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZInput = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VInput__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-input',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-input'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZInput);
@@ -23086,9 +23030,12 @@ var __values = undefined && undefined.__values || function (o) {
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign(__assign({}, _VSheet_VSheet__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.classes.call(this)), {
-        'v-list--dense': this.dense,
+        'v-list--dense': this.computedDense,
         'v-list--disabled': this.disabled,
         'v-list--flat': this.flat,
         'v-list--nav': this.nav,
@@ -23485,11 +23432,14 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign(__assign(__assign({
         'v-list-item': true
       }, _mixins_routable__WEBPACK_IMPORTED_MODULE_2__["default"].options.computed.classes.call(this)), {
-        'v-list-item--dense': this.dense,
+        'v-list-item--dense': this.computedDense,
         'v-list-item--disabled': this.disabled,
         'v-list-item--link': this.isClickable && !this.inactive,
         'v-list-item--selectable': this.selectable,
@@ -23790,15 +23740,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZList = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VList"]).extend({
-  name: 'z-list',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-list'
 });
 var ZListGroup = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListGroup"]).extend({
   name: 'z-list-group',
@@ -23823,15 +23765,7 @@ var ZListGroup = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_i
   }
 });
 var ZListItem = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListItem"]).extend({
-  name: 'z-list-item',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-list-item'
 });
 var ZListItemAction = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VListItemAction"]).extend({
   name: 'z-list-item-action'
@@ -27563,6 +27497,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     directives: function directives() {
       if (this.readonly || !this.ripple) return [];
       return [{
@@ -27725,7 +27662,7 @@ __webpack_require__.r(__webpack_exports__);
       staticClass: 'v-rating',
       class: {
         'v-rating--readonly': this.readonly,
-        'v-rating--dense': this.dense
+        'v-rating--dense': this.computedDense
       }
     }, children);
   }
@@ -27748,15 +27685,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZRating = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_1__["default"])(_VRating__WEBPACK_IMPORTED_MODULE_0__["default"]).extend({
-  name: 'z-rating',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-rating'
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (ZRating);
@@ -28051,6 +27980,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_14__["default"])(_
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     /* All items that the select has */
     allItems: function allItems() {
       return this.filterDuplicates(this.cachedItems.concat(this.items));
@@ -28119,7 +28052,7 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_14__["default"])(_
         props: {
           action: this.multiple,
           color: this.itemColor,
-          dense: this.dense,
+          dense: this.computedDense,
           hideSelected: this.hideSelected,
           items: this.virtualizedItems,
           itemDisabled: this.itemDisabled,
@@ -28865,6 +28798,9 @@ var __assign = undefined && undefined.__assign || function () {
     }
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     parsedItems: function parsedItems() {
       var _this = this;
 
@@ -29055,7 +28991,7 @@ var __assign = undefined && undefined.__assign || function () {
         tabindex: -1
       },
       props: {
-        dense: this.dense
+        dense: this.computedDense
       }
     }, children);
   }
@@ -29106,13 +29042,7 @@ var Sizeable = Object(_zui_util_generateZSizeable__WEBPACK_IMPORTED_MODULE_4__["
 var ZSelectList = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSelectList__WEBPACK_IMPORTED_MODULE_3__["default"]).extend({
   name: 'z-select-list',
   props: {
-    sizeableClasses: Object,
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
+    sizeableClasses: Object
   },
   computed: {
     themeClasses: function themeClasses() {
@@ -29203,15 +29133,7 @@ var ZSelect = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSel
     }
   }
 }).extend({
-  name: 'z-select',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-select'
 });
 /* harmony default export */ __webpack_exports__["default"] = (ZSelect);
 
@@ -34247,12 +34169,6 @@ var ZTextField = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_V
     hideDetails: {
       type: [Boolean, String],
       default: 'auto'
-    },
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
     }
   },
   computed: {
@@ -35530,10 +35446,13 @@ var __assign = undefined && undefined.__assign || function () {
     reverse: Boolean
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return __assign({
         'v-timeline--align-top': this.alignTop,
-        'v-timeline--dense': this.dense,
+        'v-timeline--dense': this.computedDense,
         'v-timeline--reverse': this.reverse
       }, this.themeClasses);
     }
@@ -35687,15 +35606,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZTimeline = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTimeline"]).extend({
-  name: 'z-timeline',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-timeline'
 });
 var ZTimelineItem = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTimelineItem"]).extend({
   name: 'z-timeline-item'
@@ -35847,6 +35758,9 @@ var __read = undefined && undefined.__read || function (o, n) {
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     computedHeight: function computedHeight() {
       var height = this.computedContentHeight;
       if (!this.isExtended) return height;
@@ -35855,10 +35769,10 @@ var __read = undefined && undefined.__read || function (o, n) {
     },
     computedContentHeight: function computedContentHeight() {
       if (this.height) return parseInt(this.height);
-      if (this.isProminent && this.dense) return 96;
+      if (this.isProminent && this.computedDense) return 96;
       if (this.isProminent && this.short) return 112;
       if (this.isProminent) return 128;
-      if (this.dense) return 48;
+      if (this.computedDense) return 48;
       if (this.short || this.$vuetify.breakpoint.smAndDown) return 56;
       return 64;
     },
@@ -35869,7 +35783,7 @@ var __read = undefined && undefined.__read || function (o, n) {
         'v-toolbar--bottom': this.bottom,
         'v-toolbar--collapse': this.collapse,
         'v-toolbar--collapsed': this.isCollapsed,
-        'v-toolbar--dense': this.dense,
+        'v-toolbar--dense': this.computedDense,
         'v-toolbar--extended': this.isExtended,
         'v-toolbar--flat': this.flat,
         'v-toolbar--floating': this.floating,
@@ -35967,15 +35881,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZToolbar = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VToolbar"]).extend({
-  name: 'z-toolbar',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-toolbar'
 });
 var ZToolbarItems = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VToolbarItems"]).extend({
   name: 'z-toolbar-items'
@@ -36517,6 +36423,9 @@ var __values = undefined && undefined.__values || function (o) {
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     excludedItems: function excludedItems() {
       var excluded = new Set();
       if (!this.search) return excluded;
@@ -36953,7 +36862,7 @@ var __values = undefined && undefined.__values || function (o) {
       staticClass: 'v-treeview',
       class: __assign({
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense
+        'v-treeview--dense': this.computedDense
       }, this.themeClasses)
     }, children);
   }
@@ -37396,15 +37305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ZTreeview = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTreeview"]).extend({
-  name: 'z-treeview',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-treeview'
 });
 var ZTreeviewNode = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_index__WEBPACK_IMPORTED_MODULE_1__["VTreeviewNode"]).extend({
   name: 'z-treeview-node'
@@ -38162,7 +38063,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38612,6 +38513,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38623,14 +38532,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -40153,7 +40054,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.816-beta.2";
+  Zui.version = "2.5.816";
   Zui.config = {
     silent: false
   };
@@ -53479,6 +53380,7 @@ function (_super) {
     Object.keys(_directives__WEBPACK_IMPORTED_MODULE_0__).forEach(function (name) {
       Vue.directive(name, _directives__WEBPACK_IMPORTED_MODULE_0__[name]);
     });
+    Vue.prototype.$themeStore = core.$theme.themeStore;
     Vue.mixin({
       beforeCreate: function beforeCreate() {
         var $options = this.$options; // 安装 ZuiCore
@@ -57597,7 +57499,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -25,10 +25,13 @@ export default mixins(
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     classes (): {} {
       return {
         'v-timeline--align-top': this.alignTop,
-        'v-timeline--dense': this.dense,
+        'v-timeline--dense': this.computedDense,
         'v-timeline--reverse': this.reverse,
         ...this.themeClasses,
       }

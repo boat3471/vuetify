@@ -38,6 +38,10 @@ export default VSheet.extend({
     isExtended: false
   }),
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     computedHeight() {
       const height = this.computedContentHeight;
       if (!this.isExtended) return height;
@@ -47,10 +51,10 @@ export default VSheet.extend({
 
     computedContentHeight() {
       if (this.height) return parseInt(this.height);
-      if (this.isProminent && this.dense) return 96;
+      if (this.isProminent && this.computedDense) return 96;
       if (this.isProminent && this.short) return 112;
       if (this.isProminent) return 128;
-      if (this.dense) return 48;
+      if (this.computedDense) return 48;
       if (this.short || this.$vuetify.breakpoint.smAndDown) return 56;
       return 64;
     },
@@ -62,7 +66,7 @@ export default VSheet.extend({
         'v-toolbar--bottom': this.bottom,
         'v-toolbar--collapse': this.collapse,
         'v-toolbar--collapsed': this.isCollapsed,
-        'v-toolbar--dense': this.dense,
+        'v-toolbar--dense': this.computedDense,
         'v-toolbar--extended': this.isExtended,
         'v-toolbar--flat': this.flat,
         'v-toolbar--floating': this.floating,

@@ -74,6 +74,9 @@ var _default = (0, _mixins.default)(_VSheet.default, _toggleable.default, _trans
     }
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     __cachedBorder: function __cachedBorder() {
       if (!this.border) return null;
       var data = {
@@ -126,7 +129,7 @@ var _default = (0, _mixins.default)(_VSheet.default, _toggleable.default, _trans
     classes: function classes() {
       var classes = _objectSpread({}, _VSheet.default.options.computed.classes.call(this), {
         'v-alert--border': Boolean(this.border),
-        'v-alert--dense': this.dense,
+        'v-alert--dense': this.computedDense,
         'v-alert--outlined': this.outlined,
         'v-alert--prominent': this.prominent,
         'v-alert--text': this.text

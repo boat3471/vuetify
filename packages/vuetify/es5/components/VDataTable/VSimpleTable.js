@@ -29,9 +29,12 @@ var _default = (0, _mixins.default)(_themeable.default).extend({
     height: [Number, String]
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({
-        'v-data-table--dense': this.dense,
+        'v-data-table--dense': this.computedDense,
         'v-data-table--fixed-height': !!this.height && !this.fixedHeader,
         'v-data-table--fixed-header': this.fixedHeader,
         'v-data-table--has-top': !!this.$slots.top,

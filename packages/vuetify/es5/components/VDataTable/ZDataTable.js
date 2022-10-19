@@ -14,15 +14,7 @@ require("../../../src/components/VDataTable/ZDataTable.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZDataTable = (0, _mixins.default)(_index.VDataTable).extend({
-  name: 'z-data-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-data-table'
 });
 exports.ZDataTable = ZDataTable;
 var ZDataTableHeader = (0, _mixins.default)(_index.VDataTableHeader).extend({
@@ -38,22 +30,14 @@ var ZTableOverflow = (0, _mixins.default)(_index.VTableOverflow).extend({
 });
 exports.ZTableOverflow = ZTableOverflow;
 var ZSimpleTable = (0, _mixins.default)(_index.VSimpleTable).extend({
-  name: 'z-simple-table',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-simple-table'
 });
 exports.ZSimpleTable = ZSimpleTable;
 var ZVirtualTable = (0, _mixins.default)(_index.VVirtualTable).extend({
   name: 'z-virtual-table'
 });
 exports.ZVirtualTable = ZVirtualTable;
-var _default2 = {
+var _default = {
   $_vuetify_subcomponents: {
     ZDataTable: ZDataTable,
     ZDataTableHeader: ZDataTableHeader,
@@ -63,5 +47,5 @@ var _default2 = {
     ZVirtualTable: ZVirtualTable
   }
 };
-exports.default = _default2;
+exports.default = _default;
 //# sourceMappingURL=ZDataTable.js.map

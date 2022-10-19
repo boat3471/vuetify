@@ -12,17 +12,9 @@ var _mixins = _interopRequireDefault(require("../../util/mixins"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZCombobox = (0, _mixins.default)(_VCombobox.default).extend({
-  name: 'z-combobox',
-  props: {
-    dense: {
-      type: Boolean,
-      default: function _default() {
-        return this.$themeStore.denseMode === true;
-      }
-    }
-  }
+  name: 'z-combobox'
 });
 exports.ZCombobox = ZCombobox;
-var _default2 = ZCombobox;
-exports.default = _default2;
+var _default = ZCombobox;
+exports.default = _default;
 //# sourceMappingURL=ZCombobox.js.map

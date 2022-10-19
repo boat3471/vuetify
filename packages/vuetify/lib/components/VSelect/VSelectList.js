@@ -49,6 +49,10 @@ export default mixins(Colorable, Themeable).extend({
     }
   },
   computed: {
+    computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     parsedItems() {
       return this.selectedItems.map(item => this.getValue(item));
     },
@@ -238,7 +242,7 @@ export default mixins(Colorable, Themeable).extend({
         tabindex: -1
       },
       props: {
-        dense: this.dense
+        dense: this.computedDense
       }
     }, children);
   }

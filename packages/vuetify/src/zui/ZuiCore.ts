@@ -232,6 +232,8 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
       Vue.directive(name, (directives as any)[name])
     })
 
+    Vue.prototype.$themeStore = core.$theme.themeStore
+
     Vue.mixin({
       beforeCreate () {
         const $options = this.$options

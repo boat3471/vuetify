@@ -87,6 +87,9 @@ export default mixins(
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     directives (): VNodeDirective[] {
       if (this.readonly || !this.ripple) return []
 
@@ -240,7 +243,7 @@ export default mixins(
       staticClass: 'v-rating',
       class: {
         'v-rating--readonly': this.readonly,
-        'v-rating--dense': this.dense,
+        'v-rating--dense': this.computedDense,
       },
     }, children)
   },

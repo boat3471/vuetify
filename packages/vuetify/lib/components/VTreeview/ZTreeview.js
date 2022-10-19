@@ -1,17 +1,7 @@
 import mixins from '../../util/mixins';
 import { VTreeview, VTreeviewNode } from './index';
 export const ZTreeview = mixins(VTreeview).extend({
-  name: 'z-treeview',
-  props: {
-    dense: {
-      type: Boolean,
-
-      default() {
-        return this.$themeStore.denseMode === true;
-      }
-
-    }
-  }
+  name: 'z-treeview'
 });
 export const ZTreeviewNode = mixins(VTreeviewNode).extend({
   name: 'z-treeview-node'

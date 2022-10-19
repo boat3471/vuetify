@@ -92,6 +92,9 @@ export default mixins(
   }),
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     excludedItems (): Set<string | number> {
       const excluded = new Set<string|number>()
 
@@ -424,7 +427,7 @@ export default mixins(
       staticClass: 'v-treeview',
       class: {
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense,
+        'v-treeview--dense': this.computedDense,
         ...this.themeClasses,
       },
     }, children)

@@ -52,10 +52,13 @@ export default VSheet.extend<options>().extend({
   }),
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     classes (): object {
       return {
         ...VSheet.options.computed.classes.call(this),
-        'v-list--dense': this.dense,
+        'v-list--dense': this.computedDense,
         'v-list--disabled': this.disabled,
         'v-list--flat': this.flat,
         'v-list--nav': this.nav,

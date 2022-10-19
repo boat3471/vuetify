@@ -15,9 +15,12 @@ export default mixins(Themeable).extend({
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     classes (): Record<string, boolean> {
       return {
-        'v-data-table--dense': this.dense,
+        'v-data-table--dense': this.computedDense,
         'v-data-table--fixed-height': !!this.height && !this.fixedHeader,
         'v-data-table--fixed-header': this.fixedHeader,
         'v-data-table--has-top': !!this.$slots.top,

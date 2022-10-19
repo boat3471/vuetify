@@ -54,6 +54,9 @@ const VIcon = mixins(
   },
 
   computed: {
+    computedDense (): boolean {
+      return this.dense || this.$themeStore.denseMode || false
+    },
     medium () {
       return false
     },
@@ -109,7 +112,7 @@ const VIcon = mixins(
           'v-icon--left': this.left,
           'v-icon--link': this.hasClickListener,
           'v-icon--right': this.right,
-          'v-icon--dense': this.dense,
+          'v-icon--dense': this.computedDense,
         },
         attrs: {
           'aria-hidden': !this.hasClickListener,
