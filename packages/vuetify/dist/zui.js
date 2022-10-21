@@ -40054,7 +40054,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.817";
+  Zui.version = "2.5.818";
   Zui.config = {
     silent: false
   };
@@ -53468,6 +53468,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_ZDefaultNavDrawer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./menu/ZDefaultNavDrawer */ "./src/zui/components/ZAdmin/menu/ZDefaultNavDrawer.ts");
 /* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./styles/ZViewRoot.scss */ "./src/zui/components/ZAdmin/styles/ZViewRoot.scss");
 /* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9__);
+var __read = undefined && undefined.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
+var __spread = undefined && undefined.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
+};
+
 
 
 
@@ -53594,12 +53629,16 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
       var toolbarTitle = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZToolbarTitle"], {
         staticClass: 'mr-2'
       }, [titleSlot]);
+      /* 工具栏 */
+
+      var toolbarSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'toolbar');
       /* 工具栏左侧插槽 */
 
       var toolbarPrependSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'toolbar-prepend');
       /* 工具栏右侧侧插槽 */
 
       var toolbarAppendSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'toolbar-append');
+      var toolbarChildren = toolbarSlot ? [toolbarSlot] : [toolbarPrependSlot, h(_components__WEBPACK_IMPORTED_MODULE_1__["ZSpacer"]), toolbarAppendSlot];
       /* 个人中心主体插槽 */
 
       var profileSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'profile');
@@ -53634,7 +53673,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           dense: this.$themeStore.denseMode,
           dark: this.toolbarDark
         }
-      }, [appBarNavIcon, logoSlot, toolbarTitle, toolbarPrependSlot, h(_components__WEBPACK_IMPORTED_MODULE_1__["ZSpacer"]), toolbarAppendSlot, profileAreaSlot]);
+      }, __spread([appBarNavIcon, logoSlot, toolbarTitle], toolbarChildren, [profileAreaSlot]));
     },
     genAppMenus: function genAppMenus(h) {
       var _this = this;

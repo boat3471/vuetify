@@ -143,12 +143,16 @@ var ZAdmin = _vue.default.extend({
       var toolbarTitle = h(_components.ZToolbarTitle, {
         staticClass: 'mr-2'
       }, [titleSlot]);
+      /* 工具栏 */
+
+      var toolbarSlot = (0, _helpers.getSlot)(this, 'toolbar');
       /* 工具栏左侧插槽 */
 
       var toolbarPrependSlot = (0, _helpers.getSlot)(this, 'toolbar-prepend');
       /* 工具栏右侧侧插槽 */
 
       var toolbarAppendSlot = (0, _helpers.getSlot)(this, 'toolbar-append');
+      var toolbarChildren = toolbarSlot ? [toolbarSlot] : [toolbarPrependSlot, h(_components.ZSpacer), toolbarAppendSlot];
       /* 个人中心主体插槽 */
 
       var profileSlot = (0, _helpers.getSlot)(this, 'profile');
@@ -183,7 +187,7 @@ var ZAdmin = _vue.default.extend({
           dense: this.$themeStore.denseMode,
           dark: this.toolbarDark
         }
-      }, [appBarNavIcon, logoSlot, toolbarTitle, toolbarPrependSlot, h(_components.ZSpacer), toolbarAppendSlot, profileAreaSlot]);
+      }, [appBarNavIcon, logoSlot, toolbarTitle].concat(toolbarChildren, [profileAreaSlot]));
     },
     genAppMenus: function genAppMenus(h) {
       var _this2 = this;

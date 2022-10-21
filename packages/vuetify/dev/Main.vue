@@ -1,27 +1,24 @@
 <template>
-  <z-admin
-    v-if="hide"
-    class="my-app"
-  >
+  <z-admin class="my-app">
     <template #main>
       <router-view></router-view>
+      <div>
+        <div v-if="false">
+          <TestForm :option="{ ...options } " class="mt-10" />
+          <z-divider class="mb-10"/>
+          <TestForm :option="{filled: true, clearable: true, ...options }"/>
+          <z-divider class="mb-10"/>
+          <TestForm :option="{outlined: true, clearable: true, ...options }"/>
+          <z-divider class="mb-10"/>
+          <TestForm :option="{solo: true, clearable: true, ...options }"/>
+          <z-divider class="mb-10"/>
+        </div>
+        <div class="d-flex">
+          1
+        </div>
+      </div>
     </template>
   </z-admin>
-  <div v-else>
-    <div v-if="false">
-      <TestForm :option="{ ...options } " class="mt-10" />
-      <z-divider class="mb-10"/>
-      <TestForm :option="{filled: true, clearable: true, ...options }"/>
-      <z-divider class="mb-10"/>
-      <TestForm :option="{outlined: true, clearable: true, ...options }"/>
-      <z-divider class="mb-10"/>
-      <TestForm :option="{solo: true, clearable: true, ...options }"/>
-      <z-divider class="mb-10"/>
-    </div>
-    <div class="d-flex">
-      1
-    </div>
-  </div>
 </template>
 
 <script>

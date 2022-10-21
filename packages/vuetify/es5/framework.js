@@ -86,7 +86,7 @@ function () {
 
 exports.Zui = Zui;
 Zui.installed = false;
-Zui.version = "2.5.817";
+Zui.version = "2.5.818";
 Zui.config = {
   silent: false
 };

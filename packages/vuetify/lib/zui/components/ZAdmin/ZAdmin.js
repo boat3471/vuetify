@@ -134,12 +134,16 @@ export const ZAdmin = Vue.extend({
       const toolbarTitle = h(ZToolbarTitle, {
         staticClass: 'mr-2'
       }, [titleSlot]);
+      /* 工具栏 */
+
+      const toolbarSlot = getSlot(this, 'toolbar');
       /* 工具栏左侧插槽 */
 
       const toolbarPrependSlot = getSlot(this, 'toolbar-prepend');
       /* 工具栏右侧侧插槽 */
 
       const toolbarAppendSlot = getSlot(this, 'toolbar-append');
+      const toolbarChildren = toolbarSlot ? [toolbarSlot] : [toolbarPrependSlot, h(ZSpacer), toolbarAppendSlot];
       /* 个人中心主体插槽 */
 
       const profileSlot = getSlot(this, 'profile');
@@ -170,7 +174,7 @@ export const ZAdmin = Vue.extend({
           dense: this.$themeStore.denseMode,
           dark: this.toolbarDark
         }
-      }, [appBarNavIcon, logoSlot, toolbarTitle, toolbarPrependSlot, h(ZSpacer), toolbarAppendSlot, profileAreaSlot]);
+      }, [appBarNavIcon, logoSlot, toolbarTitle, ...toolbarChildren, profileAreaSlot]);
     },
 
     genAppMenus(h) {
