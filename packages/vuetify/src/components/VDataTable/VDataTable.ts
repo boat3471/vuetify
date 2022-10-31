@@ -96,7 +96,7 @@ export default mixins(
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -129,6 +129,9 @@ export default mixins(
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     computedHeaders (): DataTableHeader[] {

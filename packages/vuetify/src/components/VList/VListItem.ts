@@ -71,7 +71,7 @@ export default baseMixins.extend<options>().extend({
         return this.listItemGroup.activeClass
       },
     } as any as PropValidator<string>,
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     inactive: Boolean,
     link: Boolean,
     selectable: {
@@ -92,6 +92,9 @@ export default baseMixins.extend<options>().extend({
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     classes (): object {

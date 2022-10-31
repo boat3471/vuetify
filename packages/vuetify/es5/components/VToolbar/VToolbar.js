@@ -38,7 +38,10 @@ var _default = _VSheet.default.extend({
     absolute: Boolean,
     bottom: Boolean,
     collapse: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     extended: Boolean,
     extensionHeight: {
       default: 48,
@@ -64,6 +67,10 @@ var _default = _VSheet.default.extend({
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     computedHeight: function computedHeight() {

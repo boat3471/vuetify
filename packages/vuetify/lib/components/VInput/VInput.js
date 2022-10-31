@@ -23,7 +23,10 @@ export default baseMixins.extend().extend({
       type: String,
       default: ''
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     height: [Number, String],
     hideDetails: [Boolean, String],
     hint: String,
@@ -44,6 +47,10 @@ export default baseMixins.extend().extend({
 
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

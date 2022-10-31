@@ -40,7 +40,10 @@ var _default2 = (0, _mixins.default)(_colorable.default, _themeable.default).ext
   },
   props: {
     action: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     hideSelected: Boolean,
     items: {
       type: Array,
@@ -72,6 +75,10 @@ var _default2 = (0, _mixins.default)(_colorable.default, _themeable.default).ext
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     parsedItems: function parsedItems() {

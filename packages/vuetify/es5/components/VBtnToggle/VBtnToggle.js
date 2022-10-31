@@ -27,7 +27,10 @@ var _default = (0, _mixins.default)(_buttonGroup.default, _colorable.default).ex
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
@@ -35,6 +38,10 @@ var _default = (0, _mixins.default)(_buttonGroup.default, _colorable.default).ex
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {

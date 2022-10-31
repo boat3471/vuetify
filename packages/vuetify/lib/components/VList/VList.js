@@ -23,7 +23,10 @@ export default VSheet.extend().extend({
     }
   },
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     disabled: Boolean,
     expand: Boolean,
     flat: Boolean,
@@ -38,6 +41,10 @@ export default VSheet.extend().extend({
   }),
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

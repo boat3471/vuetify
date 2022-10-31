@@ -41,7 +41,7 @@ const VIcon = mixins(
   name: 'v-icon',
 
   props: {
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     disabled: Boolean,
     left: Boolean,
     right: Boolean,
@@ -55,6 +55,9 @@ const VIcon = mixins(
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     medium () {

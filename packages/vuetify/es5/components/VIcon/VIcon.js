@@ -55,7 +55,10 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
 ).extend({
   name: 'v-icon',
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     disabled: Boolean,
     left: Boolean,
     right: Boolean,
@@ -68,6 +71,10 @@ var VIcon = (0, _mixins.default)(_bindsAttrs.default, _colorable.default, _sizea
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     medium: function medium() {

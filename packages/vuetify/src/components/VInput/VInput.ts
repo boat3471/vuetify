@@ -45,7 +45,7 @@ export default baseMixins.extend<options>().extend({
       type: String,
       default: '',
     },
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     height: [Number, String],
     hideDetails: [Boolean, String] as PropType<boolean | 'auto'>,
     hint: String,
@@ -66,6 +66,9 @@ export default baseMixins.extend<options>().extend({
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     classes (): object {

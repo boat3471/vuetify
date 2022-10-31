@@ -58,7 +58,7 @@ export default mixins(
       type: Array,
       default: () => ([]),
     } as PropValidator<NodeArray>,
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     filter: Function as PropType<TreeviewItemFunction>,
     hoverable: Boolean,
     items: {
@@ -93,6 +93,9 @@ export default mixins(
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     excludedItems (): Set<string | number> {

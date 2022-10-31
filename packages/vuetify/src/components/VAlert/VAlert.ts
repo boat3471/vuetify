@@ -46,7 +46,7 @@ export default mixins(
       default: '$vuetify.close',
     },
     coloredBorder: Boolean,
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     dismissible: Boolean,
     closeIcon: {
       type: String,
@@ -81,6 +81,9 @@ export default mixins(
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     __cachedBorder (): VNode | null {

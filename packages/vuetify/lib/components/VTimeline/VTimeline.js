@@ -16,11 +16,18 @@ export default mixins(Themeable
 
   props: {
     alignTop: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     reverse: Boolean
   },
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

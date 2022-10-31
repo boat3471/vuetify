@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@zwd/z-ui-module-publish",
-  "version": "2.5.818",
+  "version": "2.5.819",
   "scripts": {
     "dev:all": "vite",
     "build:module": "rimraf dist vue-tsc --noEmit && npm run module:vue && npm run module:zui && npm run module:minio",

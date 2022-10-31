@@ -63,7 +63,10 @@ export default mixins(VDataIterator, Loadable).extend({
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -96,6 +99,10 @@ export default mixins(VDataIterator, Loadable).extend({
 
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

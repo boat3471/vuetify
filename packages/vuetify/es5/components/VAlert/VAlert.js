@@ -46,7 +46,10 @@ var _default = (0, _mixins.default)(_VSheet.default, _toggleable.default, _trans
       default: '$vuetify.close'
     },
     coloredBorder: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     dismissible: Boolean,
     closeIcon: {
       type: String,
@@ -75,6 +78,10 @@ var _default = (0, _mixins.default)(_VSheet.default, _toggleable.default, _trans
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     __cachedBorder: function __cachedBorder() {

@@ -35,7 +35,10 @@ var _default = _VSheet.default.extend().extend({
     }
   },
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     disabled: Boolean,
     expand: Boolean,
     flat: Boolean,
@@ -52,6 +55,10 @@ var _default = _VSheet.default.extend().extend({
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {

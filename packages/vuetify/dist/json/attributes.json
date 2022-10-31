@@ -52,7 +52,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-app-bar/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the height of the toolbar content to 48px (96px when using the **prominent** prop)."
   },
   "z-app-bar/elevate-on-scroll": {
@@ -200,7 +200,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-alert/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Decreases component's height."
   },
   "z-alert/dismissible": {
@@ -356,7 +356,7 @@
     "description": "Adds a remove icon to selected chips"
   },
   "z-autocomplete/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-autocomplete/disable-lookup": {
@@ -1316,7 +1316,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-btn-toggle/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the button size and padding."
   },
   "z-btn-toggle/group": {
@@ -2248,7 +2248,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-checkbox/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-checkbox/disabled": {
@@ -2748,7 +2748,7 @@
     "description": "Accepts an array of strings that will trigger a new tag when typing. Does not replace the normal Tab and Enter keys."
   },
   "z-combobox/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-combobox/disable-lookup": {
@@ -3288,7 +3288,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-data-table/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Decreases the height of rows"
   },
   "z-data-table/disable-filtering": {
@@ -3540,7 +3540,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-simple-table/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Decreases paddings to render a dense table"
   },
   "z-simple-table/fixed-header": {
@@ -3564,7 +3564,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-virtual-table/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Decreases paddings to render a dense table"
   },
   "z-virtual-table/fixed-header": {
@@ -4328,7 +4328,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-file-input/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-file-input/disabled": {
@@ -4788,7 +4788,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-icon/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Makes icon smaller (20px)"
   },
   "z-icon/disabled": {
@@ -4932,7 +4932,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-input/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-input/disabled": {
@@ -5148,7 +5148,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-list/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Lowers max height of list tiles"
   },
   "z-list/disabled": {
@@ -5296,7 +5296,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-list-item/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Lowers max height of list tiles"
   },
   "z-list-item/disabled": {
@@ -5844,7 +5844,7 @@
     "description": "Adds a remove icon to selected chips"
   },
   "z-overflow-btn/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-overflow-btn/disable-lookup": {
@@ -6412,7 +6412,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-radio-group/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-radio-group/disabled": {
@@ -6592,7 +6592,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-range-slider/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-range-slider/disabled": {
@@ -6752,7 +6752,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-rating/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Icons have a smaller size"
   },
   "z-rating/empty-icon": {
@@ -6920,7 +6920,7 @@
     "description": "Adds a remove icon to selected chips"
   },
   "z-select/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-select/disable-lookup": {
@@ -7228,7 +7228,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-slider/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-slider/disabled": {
@@ -7824,7 +7824,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-switch/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-switch/disabled": {
@@ -8296,7 +8296,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-textarea/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-textarea/disabled": {
@@ -8520,7 +8520,7 @@
     "description": "Applies the dark theme variant to the component. This will default the components color to _white_ unless you've configured your [application theme](/customization/theme) to **dark** or if you are using the **color** prop on the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-text-field/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the input height"
   },
   "z-text-field/disabled": {
@@ -8712,7 +8712,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-timeline/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Hide opposite slot content, and position all items to one side of timeline"
   },
   "z-timeline/light": {
@@ -8980,7 +8980,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-toolbar/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Reduces the height of the toolbar content to 48px (96px when using the **prominent** prop)."
   },
   "z-toolbar/elevation": {
@@ -9224,7 +9224,7 @@
     "description": "Applies the dark theme variant to the component. You can find more information on the Material Design documentation for [dark themes](https://material.io/design/color/dark-theme.html)."
   },
   "z-treeview/dense": {
-    "type": "boolean",
+    "type": "boolean|string",
     "description": "Decreases the height of the items"
   },
   "z-treeview/expand-icon": {

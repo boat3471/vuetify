@@ -12,7 +12,10 @@ export default mixins(ButtonGroup, Colorable).extend({
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
@@ -20,6 +23,10 @@ export default mixins(ButtonGroup, Colorable).extend({
   },
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

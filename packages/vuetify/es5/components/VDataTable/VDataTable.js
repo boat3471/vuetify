@@ -101,7 +101,10 @@ var _default2 = (0, _mixins.default)(_VDataIterator.VDataIterator, _loadable.def
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -134,6 +137,10 @@ var _default2 = (0, _mixins.default)(_VDataIterator.VDataIterator, _loadable.def
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     computedHeaders: function computedHeaders() {

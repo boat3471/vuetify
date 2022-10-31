@@ -9,13 +9,16 @@ export default mixins(Themeable).extend({
   name: 'v-simple-table',
 
   props: {
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     fixedHeader: Boolean,
     height: [Number, String],
   },
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     classes (): Record<string, boolean> {

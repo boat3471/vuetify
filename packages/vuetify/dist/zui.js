@@ -3323,7 +3323,10 @@ var __assign = undefined && undefined.__assign || function () {
       default: '$vuetify.close'
     },
     coloredBorder: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     dismissible: Boolean,
     closeIcon: {
       type: String,
@@ -3352,6 +3355,10 @@ var __assign = undefined && undefined.__assign || function () {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     __cachedBorder: function __cachedBorder() {
@@ -6092,7 +6099,10 @@ var __assign = undefined && undefined.__assign || function () {
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
@@ -6100,6 +6110,10 @@ var __assign = undefined && undefined.__assign || function () {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -15003,7 +15017,10 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -15036,6 +15053,10 @@ function searchTableItems(items, search, headersWithCustomFilters, headersWithou
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     computedHeaders: function computedHeaders() {
@@ -16238,12 +16259,19 @@ var __assign = undefined && undefined.__assign || function () {
 /* harmony default export */ __webpack_exports__["default"] = (Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(_mixins_themeable__WEBPACK_IMPORTED_MODULE_2__["default"]).extend({
   name: 'v-simple-table',
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     fixedHeader: Boolean,
     height: [Number, String]
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -21287,7 +21315,10 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
 ).extend({
   name: 'v-icon',
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     disabled: Boolean,
     left: Boolean,
     right: Boolean,
@@ -21300,6 +21331,10 @@ var VIcon = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__["default"])(_mixins
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     medium: function medium() {
@@ -21979,7 +22014,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_m
       type: String,
       default: ''
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     height: [Number, String],
     hideDetails: [Boolean, String],
     hint: String,
@@ -21998,6 +22036,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_8__["default"])(_m
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -23014,7 +23056,10 @@ var __values = undefined && undefined.__values || function (o) {
     }
   },
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     disabled: Boolean,
     expand: Boolean,
     flat: Boolean,
@@ -23031,6 +23076,10 @@ var __values = undefined && undefined.__values || function (o) {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -23412,7 +23461,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
         return this.listItemGroup.activeClass;
       }
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     inactive: Boolean,
     link: Boolean,
     selectable: {
@@ -23433,6 +23485,10 @@ var baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_9__["default"])(_m
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -27460,7 +27516,10 @@ __webpack_require__.r(__webpack_exports__);
       default: 'primary'
     },
     clearable: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     emptyIcon: {
       type: String,
       default: '$ratingEmpty'
@@ -27498,6 +27557,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     directives: function directives() {
@@ -28767,7 +28830,10 @@ var __assign = undefined && undefined.__assign || function () {
   },
   props: {
     action: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     hideSelected: Boolean,
     items: {
       type: Array,
@@ -28799,6 +28865,10 @@ var __assign = undefined && undefined.__assign || function () {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     parsedItems: function parsedItems() {
@@ -35442,11 +35512,18 @@ var __assign = undefined && undefined.__assign || function () {
   },
   props: {
     alignTop: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     reverse: Boolean
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     classes: function classes() {
@@ -35733,7 +35810,10 @@ var __read = undefined && undefined.__read || function (o, n) {
     absolute: Boolean,
     bottom: Boolean,
     collapse: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     extended: Boolean,
     extensionHeight: {
       default: 48,
@@ -35759,6 +35839,10 @@ var __read = undefined && undefined.__read || function (o, n) {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     computedHeight: function computedHeight() {
@@ -36384,7 +36468,10 @@ var __values = undefined && undefined.__values || function (o) {
         return [];
       }
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     filter: Function,
     hoverable: Boolean,
     items: {
@@ -36424,6 +36511,10 @@ var __values = undefined && undefined.__values || function (o) {
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     excludedItems: function excludedItems() {
@@ -40054,7 +40145,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.818";
+  Zui.version = "2.5.819";
   Zui.config = {
     silent: false
   };

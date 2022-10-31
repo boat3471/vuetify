@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.818",
+  "version": "2.5.819",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -182,9 +182,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "elevate-on-scroll",
@@ -654,9 +656,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "dismissible",
@@ -1109,9 +1113,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -3972,9 +3978,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "group",
@@ -4647,7 +4655,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2022-10-21",
+              "default": "2022-10-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5024,7 +5032,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2022-10-21",
+              "default": "2022-10-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5306,7 +5314,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2022-10-21",
+              "default": "2022-10-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5524,7 +5532,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2022-10-21",
+              "default": "2022-10-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5742,7 +5750,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2022-10-21",
+              "default": "2022-10-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -6841,9 +6849,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -8313,9 +8323,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -9875,9 +9887,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-filtering",
@@ -10626,9 +10640,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "fixed-header",
@@ -10710,9 +10726,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "fixed-header",
@@ -13021,9 +13039,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -14492,9 +14512,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -14930,9 +14952,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -15620,9 +15644,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -16070,9 +16096,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -17824,9 +17852,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -19551,9 +19581,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -20075,9 +20107,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -20552,9 +20586,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "empty-icon",
@@ -21058,9 +21094,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -21960,9 +21998,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -23849,9 +23889,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -25273,9 +25315,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -25912,9 +25956,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -26479,9 +26525,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "light",
@@ -27287,9 +27335,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "elevation",
@@ -28051,9 +28101,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "expand-icon",

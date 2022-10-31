@@ -18,7 +18,7 @@ export default mixins(
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: Boolean,
+    dense: { type: [Boolean, String], default: false },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
@@ -27,6 +27,9 @@ export default mixins(
 
   computed: {
     computedDense (): boolean {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1'
+      }
       return this.dense || this.$themeStore.denseMode || false
     },
     classes (): object {

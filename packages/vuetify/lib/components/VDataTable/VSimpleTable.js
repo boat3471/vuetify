@@ -5,12 +5,19 @@ import mixins from '../../util/mixins';
 export default mixins(Themeable).extend({
   name: 'v-simple-table',
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     fixedHeader: Boolean,
     height: [Number, String]
   },
   computed: {
     computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
 

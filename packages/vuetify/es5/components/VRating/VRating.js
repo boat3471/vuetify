@@ -43,7 +43,10 @@ var _default = (0, _mixins.default)(_colorable.default, _delayable.default, _rip
       default: 'primary'
     },
     clearable: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     emptyIcon: {
       type: String,
       default: '$ratingEmpty'
@@ -81,6 +84,10 @@ var _default = (0, _mixins.default)(_colorable.default, _delayable.default, _rip
   },
   computed: {
     computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
       return this.dense || this.$themeStore.denseMode || false;
     },
     directives: function directives() {
