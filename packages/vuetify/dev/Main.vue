@@ -14,7 +14,7 @@
           <z-divider class="mb-10"/>
         </div>
         <div class="d-flex">
-          1
+          <TestColorSelector />
         </div>
       </div>
     </template>
@@ -24,10 +24,12 @@
 <script>
   import { ZMessage } from '@zwd/z-ui'
   import TestForm from './TestForm'
+  import TestColorSelector from './TestColorSelector'
 
   export default {
     components: {
       TestForm,
+      TestColorSelector,
     },
     data () {
       return {
@@ -41,6 +43,7 @@
           appendIcon: 'mdi-home',
           appendOuterIcon: 'mdi-home',
         },
+        color: '',
       }
     },
     watch: {
