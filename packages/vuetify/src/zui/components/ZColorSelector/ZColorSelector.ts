@@ -25,6 +25,10 @@ export default mixins(ZColorSelectorMixin).extend({
       type: Boolean,
       default: false,
     },
+    none: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data () {
@@ -56,10 +60,19 @@ export default mixins(ZColorSelectorMixin).extend({
         this.colorHex = info.color
         this.lastInfo = info
 
+        if (this.none && (value === '' || value === 'none')) {
+          this.colorHex = ''
+          this.colorName = 'none'
+          info.name = 'none'
+          info.color = 'none'
+        }
+
         if (!this.initialColor) {
           this.initialName = info.name
           this.initialColor = info.color
         }
+
+        console.info('111', info, value);
       },
     },
   },
@@ -167,13 +180,16 @@ export default mixins(ZColorSelectorMixin).extend({
           },
         },
       }
-      return this.$createElement(ZCard, data)
+
+      const icon = colorName === 'none' && this.$createElement('z-icon', 'mdi-cancel');
+      return this.$createElement(ZCard, data, [icon])
     },
     genThemeColorContent (): VNode {
       const data: VNodeData = {
         staticClass: 'theme-colors pb-2 px-3',
       }
       return this.$createElement('div', data, [
+        this.none ? this.genColorCard('none', '无', 'history') : null,
         this.transparent ? this.genColorCard('transparent', '透明', 'history') : null,
         this.genColorCard('#FFFFFF', '白色', 'history'),
         this.genColorCard('#000000', '黑色', 'history'),

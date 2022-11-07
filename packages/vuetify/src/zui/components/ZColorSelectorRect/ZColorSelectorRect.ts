@@ -23,6 +23,7 @@ export default mixins(ZColorSelectorMixin).extend({
       default: '',
     },
     transparent: Boolean,
+    none: Boolean,
     closeOnContentClick: Boolean,
   },
 
@@ -30,6 +31,7 @@ export default mixins(ZColorSelectorMixin).extend({
     return {
       colorData: {},
       colorHex: '',
+      colorName: '',
     }
   },
   computed: {
@@ -47,16 +49,34 @@ export default mixins(ZColorSelectorMixin).extend({
       immediate: true,
       handler (value) {
         const info = this.getColorByName(value)
-        this.colorHex = info.color
+
+        switch (value) {
+          case 'transparent':
+            this.colorHex = 'transparent'
+            this.colorName = 'transparent'
+            break
+          case '':
+          case 'none':
+            this.colorHex = ''
+            this.colorName = 'none'
+            break
+          default:
+            this.colorHex = info.color || ''
+            this.colorName = info.name
+        }
+
+        console.info(value, info, this.colorHex, this.colorName);
       },
     },
   },
   methods: {
     onColorReady (info: ColorInfo) {
-      this.colorHex = info.color || ''
+      this.colorHex = info.color === 'none' ? '' : (info.color || '')
+      this.colorName = info.name
     },
     onColorChange (info: ColorInfo) {
-      this.colorHex = info.color
+      this.colorHex = info.color === 'none' ? '' : (info.color || '')
+      this.colorName = info.name
       this.$emit('change', info)
     },
     genColorSelector (): VNode {
@@ -65,6 +85,7 @@ export default mixins(ZColorSelectorMixin).extend({
           value: this.colorHex,
           defaultValue: this.colorHex,
           transparent: this.transparent,
+          none: this.none,
         },
         on: {
           ready: this.onColorReady,
@@ -79,22 +100,27 @@ export default mixins(ZColorSelectorMixin).extend({
       }, [colorSelector])
     },
     genActivatorSlot (props: VNodeData) {
+      const bg = this.colorName === 'transparent' ? 'transparent-bg' : ''
       const data: VNodeData = {
+        staticClass: `d-flex align-center justify-center ${bg}`,
         props: {
           outlined: true,
           flat: true,
           class: this.contentClass,
         },
         style: {
-          display: 'inline-block',
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.value === 'transparent' ? 'transparent' : this.colorHex,
+          backgroundColor: this.colorHex,
         },
         ...props,
       }
-      return this.$createElement(ZCard, data, [])
+      const icons = []
+      if (this.colorName === 'none') {
+        icons.push(this.$createElement('z-icon', { props: { size: '16'} },'mdi-cancel'))
+      }
+      return this.$createElement(ZCard, data, icons)
     },
   },
 
