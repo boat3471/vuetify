@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.819",
+  "version": "2.5.820",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -4655,7 +4655,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2022-10-31",
+              "default": "2022-11-08",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5032,7 +5032,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2022-10-31",
+              "default": "2022-11-08",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5314,7 +5314,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2022-10-31",
+              "default": "2022-11-08",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5532,7 +5532,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2022-10-31",
+              "default": "2022-11-08",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5750,7 +5750,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2022-10-31",
+              "default": "2022-11-08",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -32009,10 +32009,21 @@
               }
             },
             {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "transparent",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "false",
+              "default": "true",
               "value": {
                 "kind": "expression",
                 "type": "boolean"
@@ -32104,10 +32115,21 @@
               }
             },
             {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "transparent",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "false",
+              "default": "true",
               "value": {
                 "kind": "expression",
                 "type": "boolean"
@@ -32179,11 +32201,22 @@
               "name": "input-width",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'120px'",
+              "default": "'140px'",
               "value": {
                 "kind": "expression",
                 "type": "string"
               }
+            },
+            {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "position",
@@ -32199,7 +32232,7 @@
               "name": "transparent",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "false",
+              "default": "true",
               "value": {
                 "kind": "expression",
                 "type": "boolean"

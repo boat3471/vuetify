@@ -3506,6 +3506,7 @@
     "attributes": [
       "default-value",
       "height",
+      "none",
       "transparent",
       "value",
       "width"
@@ -3518,6 +3519,7 @@
       "content-class",
       "default-value",
       "height",
+      "none",
       "transparent",
       "value",
       "width"
@@ -3529,6 +3531,7 @@
       "close-on-content-click",
       "default-value",
       "input-width",
+      "none",
       "position",
       "transparent",
       "value"

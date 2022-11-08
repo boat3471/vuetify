@@ -10355,6 +10355,10 @@
     "type": "number|string",
     "description": "Sets the height for the component"
   },
+  "z-color-selector/none": {
+    "type": "boolean",
+    "description": ""
+  },
   "z-color-selector/transparent": {
     "type": "boolean",
     "description": ""
@@ -10383,6 +10387,10 @@
     "type": "number|string",
     "description": "Sets the height for the component"
   },
+  "z-color-selector-rect/none": {
+    "type": "boolean",
+    "description": ""
+  },
   "z-color-selector-rect/transparent": {
     "type": "boolean",
     "description": ""
@@ -10405,6 +10413,10 @@
   },
   "z-color-selector-text-field/input-width": {
     "type": "string",
+    "description": ""
+  },
+  "z-color-selector-text-field/none": {
+    "type": "boolean",
     "description": ""
   },
   "z-color-selector-text-field/position": {

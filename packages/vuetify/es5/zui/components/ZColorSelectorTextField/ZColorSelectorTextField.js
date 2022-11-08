@@ -36,9 +36,16 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     },
     inputWidth: {
       type: String || Number,
-      default: '120px'
+      default: '140px'
     },
-    transparent: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
+    },
     closeOnContentClick: Boolean
   },
   data: function data() {
@@ -88,9 +95,13 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       return '无效的颜色';
     },
     onColorChange: function onColorChange(info) {
-      this.inputValue = info.name;
+      this.inputValue = info.name === 'none' ? '' : info.name;
       this.rectColor = info.color;
-      this.$emit('change', info);
+      this.$emit('change', {
+        name: info.name,
+        color: info.color,
+        isTheme: info.isTheme || false
+      });
     },
     onInputValue: function onInputValue(val) {
       this.inputValue = val;
@@ -98,11 +109,22 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     },
     onInputChange: function onInputChange(event) {
       if (event.key === 'Enter' || event.type === 'blur') {
-        var val = this.inputValue.trim();
-        this.emitChange(val);
+        this.emitChange(this.inputValue);
       }
     },
     emitChange: function emitChange(val) {
+      val = val.trim();
+
+      if (val === '' || val === 'none') {
+        this.rectColor = '';
+        this.$emit('change', {
+          name: 'none',
+          color: '',
+          isTheme: false
+        });
+        return;
+      }
+
       if (val) {
         var theme = this.findThemeByName(val);
 
@@ -120,7 +142,8 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
             this.rectColor = info.value === 'transparent' ? 'transparent' : info.hex || '';
             this.$emit('change', {
               name: val,
-              color: info.hex
+              color: info.hex,
+              isTheme: false
             });
           }
         }
@@ -135,6 +158,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           value: this.rectColor,
           defaultValue: this.defaultValue,
           transparent: this.transparent,
+          none: this.none,
           closeOnContentClick: this.closeOnContentClick
         },
         on: {
@@ -156,7 +180,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
         rules: [this.checkColor]
       },
       style: {
-        width: this.inputWidth || '120px'
+        width: this.inputWidth || '140px'
       },
       on: {
         blur: this.onInputChange,

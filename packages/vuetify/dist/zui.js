@@ -38154,7 +38154,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38604,14 +38604,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38623,6 +38615,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -40145,7 +40145,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.819";
+  Zui.version = "2.5.820";
   Zui.config = {
     silent: false
   };
@@ -55670,24 +55670,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     transparent: {
       type: Boolean,
-      default: false
+      default: true
     },
     none: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data: function data() {
-    var info = this.getColorByName(this.value);
     return {
       colorData: {},
-      colorName: info.name,
-      colorHex: info.color,
+      colorName: '',
+      colorHex: '',
       initialName: '',
       initialColor: '',
       historyColors: this.getHistoryColors(),
       themeOptions: this.getThemeColorOptions(),
-      lastInfo: {}
+      lastInfo: {},
+      firstUpdateColor: true
     };
   },
   computed: {},
@@ -55702,23 +55702,15 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         var info = this.getColorByName(value);
+        this.colorData = info;
         this.colorName = info.name || '';
         this.colorHex = info.color;
         this.lastInfo = info;
-
-        if (this.none && (value === '' || value === 'none')) {
-          this.colorHex = '';
-          this.colorName = 'none';
-          info.name = 'none';
-          info.color = 'none';
-        }
 
         if (!this.initialColor) {
           this.initialName = info.name;
           this.initialColor = info.color;
         }
-
-        console.info('111', info, value);
       }
     }
   },
@@ -55730,6 +55722,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onUpdateColor: function onUpdateColor(value) {
+      if (this.firstUpdateColor) {
+        this.firstUpdateColor = false;
+
+        if (this.value === 'none' || this.value === '' || this.value === 'transparent') {
+          return;
+        }
+      }
+
       this.colorData = value;
       this.colorHex = value.hex;
       this.colorName = value.hex;
@@ -55752,8 +55752,8 @@ __webpack_require__.r(__webpack_exports__);
       if (colorHex) {
         this.$emit('change', {
           name: colorName || colorHex,
-          color: colorHex,
-          data: this.colorData
+          color: colorName === 'none' ? '' : colorHex,
+          isTheme: false
         });
       }
     },
@@ -55794,7 +55794,10 @@ __webpack_require__.r(__webpack_exports__);
     genColorPicker: function genColorPicker() {
       var data = {
         props: {
-          value: this.colorHex
+          value: this.colorHex,
+          // dotSize: '10',
+          hideModeSwitch: true,
+          mode: 'hexa'
         },
         on: {
           'update:color': this.onUpdateColor,
@@ -55808,19 +55811,28 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var style = {};
+      var classes = ['mr-1'];
 
-      if (type !== 'theme') {
+      if (type === 'theme') {
+        classes.push(colorName);
+      } else {
         style.backgroundColor = colorName;
       }
 
-      var itemClass = 'color--item';
-
       if (colorName === 'transparent') {
-        itemClass = 'color--item-transparent';
+        classes.push('color--item-transparent');
+      } else {
+        classes.push('color--item');
+      }
+
+      var children = [];
+
+      if (colorName === 'none') {
+        children.push(this.$createElement('z-icon', 'mdi-cancel'));
       }
 
       var data = {
-        staticClass: itemClass + " mr-1 " + (type === 'theme' ? colorName : ''),
+        staticClass: classes.join(' '),
         props: {
           flat: true,
           outlined: true,
@@ -55846,8 +55858,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       };
-      var icon = colorName === 'none' && this.$createElement('z-icon', 'mdi-cancel');
-      return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_2__["ZCard"], data, [icon]);
+      return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_2__["ZCard"], data, children);
     },
     genThemeColorContent: function genThemeColorContent() {
       var _this = this;
@@ -55855,7 +55866,12 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         staticClass: 'theme-colors pb-2 px-3'
       };
-      return this.$createElement('div', data, [this.none ? this.genColorCard('none', '无', 'history') : null, this.transparent ? this.genColorCard('transparent', '透明', 'history') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
+      return this.$createElement('div', data, [this.none ? this.genColorCard('none', '无', 'history') : null, this.transparent ? this.genColorCard('transparent', '透明', 'history', '#00000000') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.$createElement('z-divider', {
+        staticClass: 'ml-1 mr-2',
+        props: {
+          vertical: true
+        }
+      }), this.themeOptions.map(function (i) {
         return _this.genColorCard(i.name, i.label, 'theme', i.color);
       })]);
     },
@@ -55865,8 +55881,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         staticClass: 'history-colors pb-4 px-3'
       };
-      var title = this.initialName || this.initialColor;
-      return this.$createElement('div', data, [this.genColorCard(this.initialColor, title, 'history'), this.historyColors.map(function (i) {
+      return this.$createElement('div', data, [this.genColorCard('#FFFFFF', '白色', 'history'), this.historyColors.map(function (i) {
         return _this.genColorCard(i, i, 'history');
       })]);
     }
@@ -55950,8 +55965,14 @@ var __assign = undefined && undefined.__assign || function () {
       type: String,
       default: ''
     },
-    transparent: Boolean,
-    none: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
+    },
     closeOnContentClick: Boolean
   },
   data: function data() {
@@ -55993,8 +56014,6 @@ var __assign = undefined && undefined.__assign || function () {
             this.colorHex = info.color || '';
             this.colorName = info.name;
         }
-
-        console.info(value, info, this.colorHex, this.colorName);
       }
     }
   },
@@ -56143,9 +56162,16 @@ var __assign = undefined && undefined.__assign || function () {
     },
     inputWidth: {
       type: String || Number,
-      default: '120px'
+      default: '140px'
     },
-    transparent: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
+    },
     closeOnContentClick: Boolean
   },
   data: function data() {
@@ -56195,9 +56221,13 @@ var __assign = undefined && undefined.__assign || function () {
       return '无效的颜色';
     },
     onColorChange: function onColorChange(info) {
-      this.inputValue = info.name;
+      this.inputValue = info.name === 'none' ? '' : info.name;
       this.rectColor = info.color;
-      this.$emit('change', info);
+      this.$emit('change', {
+        name: info.name,
+        color: info.color,
+        isTheme: info.isTheme || false
+      });
     },
     onInputValue: function onInputValue(val) {
       this.inputValue = val;
@@ -56205,11 +56235,22 @@ var __assign = undefined && undefined.__assign || function () {
     },
     onInputChange: function onInputChange(event) {
       if (event.key === 'Enter' || event.type === 'blur') {
-        var val = this.inputValue.trim();
-        this.emitChange(val);
+        this.emitChange(this.inputValue);
       }
     },
     emitChange: function emitChange(val) {
+      val = val.trim();
+
+      if (val === '' || val === 'none') {
+        this.rectColor = '';
+        this.$emit('change', {
+          name: 'none',
+          color: '',
+          isTheme: false
+        });
+        return;
+      }
+
       if (val) {
         var theme = this.findThemeByName(val);
 
@@ -56227,7 +56268,8 @@ var __assign = undefined && undefined.__assign || function () {
             this.rectColor = info.value === 'transparent' ? 'transparent' : info.hex || '';
             this.$emit('change', {
               name: val,
-              color: info.hex
+              color: info.hex,
+              isTheme: false
             });
           }
         }
@@ -56242,6 +56284,7 @@ var __assign = undefined && undefined.__assign || function () {
           value: this.rectColor,
           defaultValue: this.defaultValue,
           transparent: this.transparent,
+          none: this.none,
           closeOnContentClick: this.closeOnContentClick
         },
         on: {
@@ -56263,7 +56306,7 @@ var __assign = undefined && undefined.__assign || function () {
         rules: [this.checkColor]
       },
       style: {
-        width: this.inputWidth || '120px'
+        width: this.inputWidth || '140px'
       },
       on: {
         blur: this.onInputChange,
@@ -57678,7 +57721,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58420,11 +58463,11 @@ var ZColorSelectorMixin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
 
       value = value.trim();
       var data = {
-        name: '',
-        color: this.defaultValue
+        name: value === 'none' || value === '' ? 'none' : '',
+        color: value === 'none' || value === '' ? '' : this.defaultValue
       };
 
-      if (value) {
+      if (value && value !== 'none') {
         var theme = this.findThemeByName(value);
 
         if (theme) {

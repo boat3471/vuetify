@@ -1,8 +1,8 @@
 <template>
   <div>
-<!--    <z-color-selector none transparent @change="onChange"/>-->
-    <z-color-selector-rect :value="color" none transparent @change="onChange" />
-<!--    <z-color-selector-text-field transparent @change="onChange"/>-->
+<!--    <z-color-selector :value="color" none transparent @change="onChange"/>-->
+<!--    <z-color-selector-rect :value="color" none transparent @change="onChange" />-->
+    <z-color-selector-text-field :value="color" @change="onChange"/>
   </div>
 
 </template>
@@ -11,11 +11,16 @@
   export default {
     data () {
       return {
-        color: '',
+        color: 'transparent',
       }
     },
+    mounted () {
+      setTimeout(() => {
+        this.color = 'green'
+      }, 3000)
+    },
     methods: {
-      onChange(val) {
+      onChange (val) {
         console.info(111, val)
       },
     },

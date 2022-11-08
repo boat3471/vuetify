@@ -110,11 +110,11 @@ var ZColorSelectorMixin = _vue.default.extend({
       var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       value = value.trim();
       var data = {
-        name: '',
-        color: this.defaultValue
+        name: value === 'none' || value === '' ? 'none' : '',
+        color: value === 'none' || value === '' ? '' : this.defaultValue
       };
 
-      if (value) {
+      if (value && value !== 'none') {
         var theme = this.findThemeByName(value);
 
         if (theme) {

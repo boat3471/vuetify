@@ -18,9 +18,16 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     inputWidth: {
       type: String || Number,
-      default: '120px'
+      default: '140px'
     },
-    transparent: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
+    },
     closeOnContentClick: Boolean
   },
 
@@ -75,9 +82,13 @@ export default mixins(ZColorSelectorMixin).extend({
     },
 
     onColorChange(info) {
-      this.inputValue = info.name;
+      this.inputValue = info.name === 'none' ? '' : info.name;
       this.rectColor = info.color;
-      this.$emit('change', info);
+      this.$emit('change', {
+        name: info.name,
+        color: info.color,
+        isTheme: info.isTheme || false
+      });
     },
 
     onInputValue(val) {
@@ -87,12 +98,23 @@ export default mixins(ZColorSelectorMixin).extend({
 
     onInputChange(event) {
       if (event.key === 'Enter' || event.type === 'blur') {
-        const val = this.inputValue.trim();
-        this.emitChange(val);
+        this.emitChange(this.inputValue);
       }
     },
 
     emitChange(val) {
+      val = val.trim();
+
+      if (val === '' || val === 'none') {
+        this.rectColor = '';
+        this.$emit('change', {
+          name: 'none',
+          color: '',
+          isTheme: false
+        });
+        return;
+      }
+
       if (val) {
         const theme = this.findThemeByName(val);
 
@@ -110,7 +132,8 @@ export default mixins(ZColorSelectorMixin).extend({
             this.rectColor = info.value === 'transparent' ? 'transparent' : info.hex || '';
             this.$emit('change', {
               name: val,
-              color: info.hex
+              color: info.hex,
+              isTheme: false
             });
           }
         }
@@ -126,6 +149,7 @@ export default mixins(ZColorSelectorMixin).extend({
           value: this.rectColor,
           defaultValue: this.defaultValue,
           transparent: this.transparent,
+          none: this.none,
           closeOnContentClick: this.closeOnContentClick
         },
         on: {
@@ -150,7 +174,7 @@ export default mixins(ZColorSelectorMixin).extend({
         rules: [this.checkColor]
       },
       style: {
-        width: this.inputWidth || '120px'
+        width: this.inputWidth || '140px'
       },
       on: {
         blur: this.onInputChange,
