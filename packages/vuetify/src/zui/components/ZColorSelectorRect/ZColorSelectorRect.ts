@@ -22,8 +22,14 @@ export default mixins(ZColorSelectorMixin).extend({
       type: String,
       default: '',
     },
-    transparent: Boolean,
-    none: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true,
+    },
+    none: {
+      type: Boolean,
+      default: true,
+    },
     closeOnContentClick: Boolean,
   },
 
@@ -64,8 +70,6 @@ export default mixins(ZColorSelectorMixin).extend({
             this.colorHex = info.color || ''
             this.colorName = info.name
         }
-
-        console.info(value, info, this.colorHex, this.colorName);
       },
     },
   },
