@@ -100,10 +100,10 @@ export const ZColorSelectorMixin = Vue.extend({
     getColorByName (value = ''): ColorInfo {
       value = value.trim()
       const data = {
-        name: '',
-        color: this.defaultValue,
+        name: value === 'none' || value === '' ? 'none' : '',
+        color: value === 'none' || value === '' ? '' : this.defaultValue,
       }
-      if (value) {
+      if (value && value !== 'none') {
         const theme = this.findThemeByName(value)
         if (theme) {
           data.name = theme.name
