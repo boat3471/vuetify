@@ -10379,6 +10379,10 @@
     "type": "string",
     "description": ""
   },
+  "z-color-selector-rect/content-style": {
+    "type": "object",
+    "description": ""
+  },
   "z-color-selector-rect/default-value": {
     "type": "string",
     "description": ""

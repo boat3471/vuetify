@@ -20,6 +20,14 @@ export default mixins(ZColorSelectorMixin).extend({
       type: String,
       default: ''
     },
+    contentStyle: {
+      type: Object,
+
+      default() {
+        return {};
+      }
+
+    },
     transparent: {
       type: Boolean,
       default: true
@@ -114,17 +122,17 @@ export default mixins(ZColorSelectorMixin).extend({
     genActivatorSlot(props) {
       const bg = this.colorName === 'transparent' ? 'transparent-bg' : '';
       const data = {
-        staticClass: `d-flex align-center justify-center ${bg}`,
+        staticClass: `d-flex align-center justify-center ${bg} ${this.contentClass}`,
         props: {
           outlined: true,
-          flat: true,
-          class: this.contentClass
+          flat: true
         },
         style: {
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.colorHex
+          backgroundColor: this.colorHex,
+          ...this.contentStyle
         },
         ...props
       };

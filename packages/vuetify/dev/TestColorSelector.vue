@@ -2,8 +2,8 @@
   <div>
     <input v-model="color" type="text">
 <!--    <z-color-selector :value="color" none transparent @change="onChange"/>-->
-<!--    <z-color-selector-rect :value="color" none transparent @change="onChange" />-->
-    <z-color-selector-text-field :value="color" position="append-outer" @change="onChange"/>
+    <z-color-selector-rect :value="color" none transparent @change="onChange" />
+<!--    <z-color-selector-text-field :value="color" position="append-outer" @change="onChange"/>-->
   </div>
 
 </template>

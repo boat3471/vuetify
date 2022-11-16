@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.821",
+  "version": "2.5.822",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -32089,6 +32089,16 @@
               "value": {
                 "kind": "expression",
                 "type": "string"
+              }
+            },
+            {
+              "name": "content-style",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "{}",
+              "value": {
+                "kind": "expression",
+                "type": "object"
               }
             },
             {

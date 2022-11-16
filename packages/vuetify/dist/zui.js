@@ -40145,7 +40145,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.821";
+  Zui.version = "2.5.822";
   Zui.config = {
     silent: false
   };
@@ -55966,6 +55966,12 @@ var __assign = undefined && undefined.__assign || function () {
       type: String,
       default: ''
     },
+    contentStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
     transparent: {
       type: Boolean,
       default: true
@@ -56052,18 +56058,17 @@ var __assign = undefined && undefined.__assign || function () {
       var bg = this.colorName === 'transparent' ? 'transparent-bg' : '';
 
       var data = __assign({
-        staticClass: "d-flex align-center justify-center " + bg,
+        staticClass: "d-flex align-center justify-center " + bg + " " + this.contentClass,
         props: {
           outlined: true,
-          flat: true,
-          class: this.contentClass
+          flat: true
         },
-        style: {
+        style: __assign({
           cursor: 'pointer',
           width: this.w,
           height: this.h,
           backgroundColor: this.colorHex
-        }
+        }, this.contentStyle)
       }, props);
 
       var icons = [];

@@ -19,7 +19,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).extend({
+var _default2 = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).extend({
   name: 'z-color-selector-rect',
   props: {
     height: {
@@ -37,6 +37,12 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     contentClass: {
       type: String,
       default: ''
+    },
+    contentStyle: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
     },
     transparent: {
       type: Boolean,
@@ -124,18 +130,17 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var bg = this.colorName === 'transparent' ? 'transparent-bg' : '';
 
       var data = _objectSpread({
-        staticClass: "d-flex align-center justify-center ".concat(bg),
+        staticClass: "d-flex align-center justify-center ".concat(bg, " ").concat(this.contentClass),
         props: {
           outlined: true,
-          flat: true,
-          class: this.contentClass
+          flat: true
         },
-        style: {
+        style: _objectSpread({
           cursor: 'pointer',
           width: this.w,
           height: this.h,
           backgroundColor: this.colorHex
-        }
+        }, this.contentStyle)
       }, props);
 
       var icons = [];
@@ -167,5 +172,5 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
   }
 });
 
-exports.default = _default;
+exports.default = _default2;
 //# sourceMappingURL=ZColorSelectorRect.js.map

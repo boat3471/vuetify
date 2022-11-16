@@ -3517,6 +3517,7 @@
     "attributes": [
       "close-on-content-click",
       "content-class",
+      "content-style",
       "default-value",
       "height",
       "none",
