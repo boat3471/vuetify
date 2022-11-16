@@ -121,7 +121,7 @@ export default mixins(ZColorSelectorMixin).extend({
         ...props,
       }
       const icons = []
-      if (this.colorName === 'none') {
+      if (this.colorName === 'none' || this.colorName === '') {
         icons.push(this.$createElement('z-icon', { props: { size: '16'} },'mdi-cancel'))
       }
       return this.$createElement(ZCard, data, icons)

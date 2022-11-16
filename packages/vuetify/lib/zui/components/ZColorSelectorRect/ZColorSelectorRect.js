@@ -130,7 +130,7 @@ export default mixins(ZColorSelectorMixin).extend({
       };
       const icons = [];
 
-      if (this.colorName === 'none') {
+      if (this.colorName === 'none' || this.colorName === '') {
         icons.push(this.$createElement('z-icon', {
           props: {
             size: '16'

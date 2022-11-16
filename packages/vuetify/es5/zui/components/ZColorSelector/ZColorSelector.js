@@ -158,6 +158,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           value: this.colorHex,
           // dotSize: '10',
           hideModeSwitch: true,
+          hideInputs: true,
           mode: 'hexa'
         },
         on: {

@@ -28,11 +28,11 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     },
     defaultValue: {
       type: String,
-      default: '#FFFFFF'
+      default: ''
     },
     position: {
       type: String,
-      default: 'prepend'
+      default: 'append-outer'
     },
     inputWidth: {
       type: String || Number,
@@ -151,7 +151,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     },
     genPrependSlot: function genPrependSlot() {
       return this.$createElement(_components.ZColorSelectorRect, {
-        slot: 'prepend',
+        slot: this.position || 'append-outer',
         props: {
           width: '22',
           height: '22',

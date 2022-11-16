@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.820",
+  "version": "2.5.821",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -4655,7 +4655,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2022-11-08",
+              "default": "2022-11-16",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5032,7 +5032,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2022-11-08",
+              "default": "2022-11-16",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5314,7 +5314,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2022-11-08",
+              "default": "2022-11-16",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5532,7 +5532,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2022-11-08",
+              "default": "2022-11-16",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5750,7 +5750,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2022-11-08",
+              "default": "2022-11-16",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -31989,7 +31989,7 @@
               "name": "default-value",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "'#FFFFFF'",
+              "default": "undefined",
               "value": {
                 "kind": "expression",
                 "type": "string"
@@ -32095,7 +32095,7 @@
               "name": "default-value",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "'#FFFFFF'",
+              "default": "undefined",
               "value": {
                 "kind": "expression",
                 "type": "string"
@@ -32191,7 +32191,7 @@
               "name": "default-value",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'#FFFFFF'",
+              "default": "undefined",
               "value": {
                 "kind": "expression",
                 "type": "string"
@@ -32222,7 +32222,7 @@
               "name": "position",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'prepend'",
+              "default": "'append-outer'",
               "value": {
                 "kind": "expression",
                 "type": "string"

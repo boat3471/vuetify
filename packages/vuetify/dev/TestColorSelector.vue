@@ -1,8 +1,9 @@
 <template>
   <div>
+    <input v-model="color" type="text">
 <!--    <z-color-selector :value="color" none transparent @change="onChange"/>-->
 <!--    <z-color-selector-rect :value="color" none transparent @change="onChange" />-->
-    <z-color-selector-text-field :value="color" @change="onChange"/>
+    <z-color-selector-text-field :value="color" position="append-outer" @change="onChange"/>
   </div>
 
 </template>
@@ -11,16 +12,14 @@
   export default {
     data () {
       return {
-        color: 'transparent',
+        color: '2',
       }
     },
     mounted () {
-      setTimeout(() => {
-        this.color = 'green'
-      }, 3000)
     },
     methods: {
       onChange (val) {
+        this.color = val.name === 'none' ? '' : val.name
         console.info(111, val)
       },
     },

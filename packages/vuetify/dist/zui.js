@@ -40145,7 +40145,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.820";
+  Zui.version = "2.5.821";
   Zui.config = {
     silent: false
   };
@@ -55797,6 +55797,7 @@ __webpack_require__.r(__webpack_exports__);
           value: this.colorHex,
           // dotSize: '10',
           hideModeSwitch: true,
+          hideInputs: true,
           mode: 'hexa'
         },
         on: {
@@ -56067,7 +56068,7 @@ var __assign = undefined && undefined.__assign || function () {
 
       var icons = [];
 
-      if (this.colorName === 'none') {
+      if (this.colorName === 'none' || this.colorName === '') {
         icons.push(this.$createElement('z-icon', {
           props: {
             size: '16'
@@ -56154,11 +56155,11 @@ var __assign = undefined && undefined.__assign || function () {
     },
     defaultValue: {
       type: String,
-      default: '#FFFFFF'
+      default: ''
     },
     position: {
       type: String,
-      default: 'prepend'
+      default: 'append-outer'
     },
     inputWidth: {
       type: String || Number,
@@ -56277,7 +56278,7 @@ var __assign = undefined && undefined.__assign || function () {
     },
     genPrependSlot: function genPrependSlot() {
       return this.$createElement(_components__WEBPACK_IMPORTED_MODULE_2__["ZColorSelectorRect"], {
-        slot: 'prepend',
+        slot: this.position || 'append-outer',
         props: {
           width: '22',
           height: '22',
@@ -58395,7 +58396,7 @@ var ZColorSelectorMixin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
   props: {
     defaultValue: {
       type: String,
-      default: '#FFFFFF'
+      default: ''
     }
   },
   methods: {
@@ -58463,9 +58464,16 @@ var ZColorSelectorMixin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
 
       value = value.trim();
       var data = {
-        name: value === 'none' || value === '' ? 'none' : '',
-        color: value === 'none' || value === '' ? '' : this.defaultValue
+        name: '',
+        color: this.defaultValue,
+        valid: true
       };
+
+      if (value === 'none' || value === '') {
+        data.name = 'none';
+        data.color = '';
+        data.valid = false;
+      }
 
       if (value && value !== 'none') {
         var theme = this.findThemeByName(value);
@@ -58475,6 +58483,7 @@ var ZColorSelectorMixin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           data.color = theme.color || '';
         } else {
           var info = this.getColorInfo(value);
+          data.valid = info.valid;
 
           if (info.valid) {
             data.name = value;

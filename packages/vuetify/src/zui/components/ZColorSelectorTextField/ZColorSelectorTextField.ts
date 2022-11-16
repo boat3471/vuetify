@@ -12,11 +12,11 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     defaultValue: {
       type: String,
-      default: '#FFFFFF',
+      default: '',
     },
     position: {
       type: String,
-      default: 'prepend',
+      default: 'append-outer',
     },
     inputWidth: {
       type: String || Number,
@@ -125,7 +125,7 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     genPrependSlot () {
       return this.$createElement(ZColorSelectorRect, {
-        slot: 'prepend',
+        slot: this.position || 'append-outer',
         props: {
           width: '22',
           height: '22',

@@ -45,7 +45,7 @@ var ZColorSelectorMixin = _vue.default.extend({
   props: {
     defaultValue: {
       type: String,
-      default: '#FFFFFF'
+      default: ''
     }
   },
   methods: {
@@ -110,9 +110,16 @@ var ZColorSelectorMixin = _vue.default.extend({
       var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       value = value.trim();
       var data = {
-        name: value === 'none' || value === '' ? 'none' : '',
-        color: value === 'none' || value === '' ? '' : this.defaultValue
+        name: '',
+        color: this.defaultValue,
+        valid: true
       };
+
+      if (value === 'none' || value === '') {
+        data.name = 'none';
+        data.color = '';
+        data.valid = false;
+      }
 
       if (value && value !== 'none') {
         var theme = this.findThemeByName(value);
@@ -122,6 +129,7 @@ var ZColorSelectorMixin = _vue.default.extend({
           data.color = theme.color || '';
         } else {
           var info = this.getColorInfo(value);
+          data.valid = info.valid;
 
           if (info.valid) {
             data.name = value;

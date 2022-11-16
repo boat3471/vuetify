@@ -155,6 +155,7 @@ export default mixins(ZColorSelectorMixin).extend({
           value: this.colorHex,
           // dotSize: '10',
           hideModeSwitch: true,
+          hideInputs: true,
           mode: 'hexa'
         },
         on: {
