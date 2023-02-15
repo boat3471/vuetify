@@ -18,6 +18,10 @@
     > .v-list-item--dense,
     > .v-list-item {
         min-height: $currentHeight;
+
+        .v-list-item__action {
+            margin: 0 12px 0 0;
+        }
     }
 
     /* 定制下拉框紧凑模式列表样式 */

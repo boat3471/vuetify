@@ -2,8 +2,8 @@
 import './VAutocomplete.sass'
 
 // Extensions
-import VSelect, { defaultMenuProps as VSelectMenuProps } from '../VSelect/VSelect'
-import VTextField from '../VTextField/VTextField'
+import VSelect, { defaultMenuProps as VSelectMenuProps } from '../VSelect/ZSelect'
+import VTextField from '../VTextField/ZTextField'
 
 // Utilities
 import mergeData from '../../util/mergeData'

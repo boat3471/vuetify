@@ -116,3 +116,5 @@ export const ZSelect = mixins(VSelect, Sizeable).extend({
 })
 
 export default ZSelect
+
+export * from './VSelect'
