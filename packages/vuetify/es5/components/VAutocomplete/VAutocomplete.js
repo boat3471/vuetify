@@ -7,9 +7,9 @@ exports.default = void 0;
 
 require("../../../src/components/VAutocomplete/VAutocomplete.sass");
 
-var _VSelect = _interopRequireWildcard(require("../VSelect/VSelect"));
+var _ZSelect = _interopRequireWildcard(require("../VSelect/ZSelect"));
 
-var _VTextField = _interopRequireDefault(require("../VTextField/VTextField"));
+var _ZTextField = _interopRequireDefault(require("../VTextField/ZTextField"));
 
 var _mergeData = _interopRequireDefault(require("../../util/mergeData"));
 
@@ -25,7 +25,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var defaultMenuProps = _objectSpread({}, _VSelect.defaultMenuProps, {
+var defaultMenuProps = _objectSpread({}, _ZSelect.defaultMenuProps, {
   offsetY: true,
   offsetOverflow: true,
   transition: false
@@ -33,7 +33,7 @@ var defaultMenuProps = _objectSpread({}, _VSelect.defaultMenuProps, {
 /* @vue/component */
 
 
-var _default2 = _VSelect.default.extend({
+var _default2 = _ZSelect.default.extend({
   name: 'v-autocomplete',
   props: {
     allowOverflow: {
@@ -52,7 +52,7 @@ var _default2 = _VSelect.default.extend({
     },
     hideNoData: Boolean,
     menuProps: {
-      type: _VSelect.default.options.props.menuProps.type,
+      type: _ZSelect.default.options.props.menuProps.type,
       default: function _default() {
         return defaultMenuProps;
       }
@@ -69,7 +69,7 @@ var _default2 = _VSelect.default.extend({
   },
   computed: {
     classes: function classes() {
-      return _objectSpread({}, _VSelect.default.options.computed.classes.call(this), {
+      return _objectSpread({}, _ZSelect.default.options.computed.classes.call(this), {
         'v-autocomplete': true,
         'v-autocomplete--is-selecting-index': this.selectedIndex > -1
       });
@@ -132,7 +132,7 @@ var _default2 = _VSelect.default.extend({
       return this.hasDisplayedItems || !this.hideNoData;
     },
     $_menuProps: function $_menuProps() {
-      var props = _VSelect.default.options.computed.$_menuProps.call(this);
+      var props = _ZSelect.default.options.computed.$_menuProps.call(this);
 
       props.contentClass = "v-autocomplete__content ".concat(props.contentClass || '').trim();
       return _objectSpread({}, defaultMenuProps, {}, props);
@@ -149,7 +149,7 @@ var _default2 = _VSelect.default.extend({
       });
     },
     listData: function listData() {
-      var data = _VSelect.default.options.computed.listData.call(this);
+      var data = _ZSelect.default.options.computed.listData.call(this);
 
       data.props = _objectSpread({}, data.props, {
         items: this.virtualizedItems,
@@ -268,10 +268,10 @@ var _default2 = _VSelect.default.extend({
     clearableCallback: function clearableCallback() {
       this.internalSearch = null;
 
-      _VSelect.default.options.methods.clearableCallback.call(this);
+      _ZSelect.default.options.methods.clearableCallback.call(this);
     },
     genInput: function genInput() {
-      var input = _VTextField.default.options.methods.genInput.call(this);
+      var input = _ZTextField.default.options.methods.genInput.call(this);
 
       input.data = (0, _mergeData.default)(input.data, {
         attrs: {
@@ -285,13 +285,13 @@ var _default2 = _VSelect.default.extend({
       return input;
     },
     genInputSlot: function genInputSlot() {
-      var slot = _VSelect.default.options.methods.genInputSlot.call(this);
+      var slot = _ZSelect.default.options.methods.genInputSlot.call(this);
 
       slot.data.attrs.role = 'combobox';
       return slot;
     },
     genSelections: function genSelections() {
-      return this.hasSlot || this.multiple ? _VSelect.default.options.methods.genSelections.call(this) : [];
+      return this.hasSlot || this.multiple ? _ZSelect.default.options.methods.genSelections.call(this) : [];
     },
     onClick: function onClick(e) {
       if (!this.isInteractive) return;
@@ -311,7 +311,7 @@ var _default2 = _VSelect.default.extend({
       var keyCode = e.keyCode;
 
       if (e.ctrlKey || ![_helpers.keyCodes.home, _helpers.keyCodes.end].includes(keyCode)) {
-        _VSelect.default.options.methods.onKeyDown.call(this, e);
+        _ZSelect.default.options.methods.onKeyDown.call(this, e);
       } // The ordering is important here
       // allows new value to be updated
       // and then moves the index to the
@@ -322,7 +322,7 @@ var _default2 = _VSelect.default.extend({
     },
     onSpaceDown: function onSpaceDown(e) {},
     onTabDown: function onTabDown(e) {
-      _VSelect.default.options.methods.onTabDown.call(this, e);
+      _ZSelect.default.options.methods.onTabDown.call(this, e);
 
       this.updateSelf();
     },
@@ -335,12 +335,12 @@ var _default2 = _VSelect.default.extend({
       this.activateMenu();
     },
     selectItem: function selectItem(item) {
-      _VSelect.default.options.methods.selectItem.call(this, item);
+      _ZSelect.default.options.methods.selectItem.call(this, item);
 
       this.setSearch();
     },
     setSelectedItems: function setSelectedItems() {
-      _VSelect.default.options.methods.setSelectedItems.call(this); // #4273 Don't replace if searching
+      _ZSelect.default.options.methods.setSelectedItems.call(this); // #4273 Don't replace if searching
       // #4403 Don't replace if focused
 
 

@@ -118,4 +118,5 @@ export const ZSelect = mixins(VSelect, Sizeable).extend({
   name: 'z-select'
 });
 export default ZSelect;
+export * from './VSelect';
 //# sourceMappingURL=ZSelect.js.map

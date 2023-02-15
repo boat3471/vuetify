@@ -7,7 +7,7 @@ exports.default = void 0;
 
 require("../../../src/components/VAutocomplete/VAutocomplete.sass");
 
-var _VSelect = _interopRequireDefault(require("../VSelect/VSelect"));
+var _ZSelect = _interopRequireDefault(require("../VSelect/ZSelect"));
 
 var _VAutocomplete2 = _interopRequireDefault(require("../VAutocomplete/VAutocomplete"));
 
@@ -48,7 +48,7 @@ var _default2 = _VAutocomplete2.default.extend({
       return this.multiple ? this.selectedItems.length : (this.internalSearch || '').toString().length;
     },
     hasSlot: function hasSlot() {
-      return _VSelect.default.options.computed.hasSlot.call(this) || this.multiple;
+      return _ZSelect.default.options.computed.hasSlot.call(this) || this.multiple;
     },
     isAnyValueAllowed: function isAnyValueAllowed() {
       return true;
@@ -86,7 +86,7 @@ var _default2 = _VAutocomplete2.default.extend({
     genChipSelection: function genChipSelection(item, index) {
       var _this = this;
 
-      var chip = _VSelect.default.options.methods.genChipSelection.call(this, item, index); // Allow user to update an existing value
+      var chip = _ZSelect.default.options.methods.genChipSelection.call(this, item, index); // Allow user to update an existing value
 
 
       if (this.multiple) {
@@ -102,7 +102,7 @@ var _default2 = _VAutocomplete2.default.extend({
       return chip;
     },
     onChipInput: function onChipInput(item) {
-      _VSelect.default.options.methods.onChipInput.call(this, item);
+      _ZSelect.default.options.methods.onChipInput.call(this, item);
 
       this.editingIndex = -1;
     },
@@ -123,7 +123,7 @@ var _default2 = _VAutocomplete2.default.extend({
       var keyCode = e.keyCode;
 
       if (e.ctrlKey || ![_helpers.keyCodes.home, _helpers.keyCodes.end].includes(keyCode)) {
-        _VSelect.default.options.methods.onKeyDown.call(this, e);
+        _ZSelect.default.options.methods.onKeyDown.call(this, e);
       } // If user is at selection index of 0
       // create a new tag
 
@@ -176,7 +176,7 @@ var _default2 = _VAutocomplete2.default.extend({
     setValue: function setValue(value) {
       var _value;
 
-      _VSelect.default.options.methods.setValue.call(this, (_value = value) != null ? _value : this.internalSearch);
+      _ZSelect.default.options.methods.setValue.call(this, (_value = value) != null ? _value : this.internalSearch);
     },
     updateEditing: function updateEditing() {
       var _this2 = this;
@@ -257,7 +257,7 @@ var _default2 = _VAutocomplete2.default.extend({
       if (pastedItemText && this.findExistingIndex(pastedItemText) === -1) {
         event.preventDefault();
 
-        _VSelect.default.options.methods.selectItem.call(this, pastedItemText);
+        _ZSelect.default.options.methods.selectItem.call(this, pastedItemText);
       }
     },
     clearableCallback: function clearableCallback() {

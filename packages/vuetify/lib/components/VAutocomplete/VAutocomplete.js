@@ -1,8 +1,8 @@
 // Styles
 import "../../../src/components/VAutocomplete/VAutocomplete.sass"; // Extensions
 
-import VSelect, { defaultMenuProps as VSelectMenuProps } from '../VSelect/VSelect';
-import VTextField from '../VTextField/VTextField'; // Utilities
+import VSelect, { defaultMenuProps as VSelectMenuProps } from '../VSelect/ZSelect';
+import VTextField from '../VTextField/ZTextField'; // Utilities
 
 import mergeData from '../../util/mergeData';
 import { getObjectValueByPath, getPropertyFromItem, keyCodes } from '../../util/helpers';

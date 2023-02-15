@@ -4193,8 +4193,8 @@ var ZAppBarTitle = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_3__["default"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VAutocomplete.sass */ "./src/components/VAutocomplete/VAutocomplete.sass");
 /* harmony import */ var _VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VSelect/VSelect */ "./src/components/VSelect/VSelect.ts");
-/* harmony import */ var _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VTextField/VTextField */ "./src/components/VTextField/VTextField.ts");
+/* harmony import */ var _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VSelect/ZSelect */ "./src/components/VSelect/ZSelect.ts");
+/* harmony import */ var _VTextField_ZTextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VTextField/ZTextField */ "./src/components/VTextField/ZTextField.ts");
 /* harmony import */ var _util_mergeData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/mergeData */ "./src/util/mergeData.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 var __assign = undefined && undefined.__assign || function () {
@@ -4222,7 +4222,7 @@ var __assign = undefined && undefined.__assign || function () {
 
 
 
-var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["defaultMenuProps"]), {
+var defaultMenuProps = __assign(__assign({}, _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["defaultMenuProps"]), {
   offsetY: true,
   offsetOverflow: true,
   transition: false
@@ -4230,7 +4230,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
 /* @vue/component */
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
+/* harmony default export */ __webpack_exports__["default"] = (_VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].extend({
   name: 'v-autocomplete',
   props: {
     allowOverflow: {
@@ -4249,7 +4249,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
     },
     hideNoData: Boolean,
     menuProps: {
-      type: _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.props.menuProps.type,
+      type: _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.props.menuProps.type,
       default: function _default() {
         return defaultMenuProps;
       }
@@ -4266,7 +4266,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
   },
   computed: {
     classes: function classes() {
-      return __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.classes.call(this)), {
+      return __assign(__assign({}, _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.classes.call(this)), {
         'v-autocomplete': true,
         'v-autocomplete--is-selecting-index': this.selectedIndex > -1
       });
@@ -4329,7 +4329,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       return this.hasDisplayedItems || !this.hideNoData;
     },
     $_menuProps: function $_menuProps() {
-      var props = _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.$_menuProps.call(this);
+      var props = _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.$_menuProps.call(this);
       props.contentClass = ("v-autocomplete__content " + (props.contentClass || '')).trim();
       return __assign(__assign({}, defaultMenuProps), props);
     },
@@ -4345,7 +4345,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       });
     },
     listData: function listData() {
-      var data = _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.listData.call(this);
+      var data = _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.listData.call(this);
       data.props = __assign(__assign({}, data.props), {
         items: this.virtualizedItems,
         noFilter: this.noFilter || !this.isSearching || !this.filteredItems.length,
@@ -4462,10 +4462,10 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
     },
     clearableCallback: function clearableCallback() {
       this.internalSearch = null;
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.clearableCallback.call(this);
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.clearableCallback.call(this);
     },
     genInput: function genInput() {
-      var input = _VTextField_VTextField__WEBPACK_IMPORTED_MODULE_2__["default"].options.methods.genInput.call(this);
+      var input = _VTextField_ZTextField__WEBPACK_IMPORTED_MODULE_2__["default"].options.methods.genInput.call(this);
       input.data = Object(_util_mergeData__WEBPACK_IMPORTED_MODULE_3__["default"])(input.data, {
         attrs: {
           'aria-activedescendant': Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(this.$refs.menu, 'activeTile.id'),
@@ -4478,12 +4478,12 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       return input;
     },
     genInputSlot: function genInputSlot() {
-      var slot = _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genInputSlot.call(this);
+      var slot = _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genInputSlot.call(this);
       slot.data.attrs.role = 'combobox';
       return slot;
     },
     genSelections: function genSelections() {
-      return this.hasSlot || this.multiple ? _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genSelections.call(this) : [];
+      return this.hasSlot || this.multiple ? _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genSelections.call(this) : [];
     },
     onClick: function onClick(e) {
       if (!this.isInteractive) return;
@@ -4503,7 +4503,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       var keyCode = e.keyCode;
 
       if (e.ctrlKey || ![_util_helpers__WEBPACK_IMPORTED_MODULE_4__["keyCodes"].home, _util_helpers__WEBPACK_IMPORTED_MODULE_4__["keyCodes"].end].includes(keyCode)) {
-        _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onKeyDown.call(this, e);
+        _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onKeyDown.call(this, e);
       } // The ordering is important here
       // allows new value to be updated
       // and then moves the index to the
@@ -4514,7 +4514,7 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
     },
     onSpaceDown: function onSpaceDown(e) {},
     onTabDown: function onTabDown(e) {
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onTabDown.call(this, e);
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onTabDown.call(this, e);
       this.updateSelf();
     },
     onUpDown: function onUpDown(e) {
@@ -4526,11 +4526,11 @@ var defaultMenuProps = __assign(__assign({}, _VSelect_VSelect__WEBPACK_IMPORTED_
       this.activateMenu();
     },
     selectItem: function selectItem(item) {
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.selectItem.call(this, item);
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.selectItem.call(this, item);
       this.setSearch();
     },
     setSelectedItems: function setSelectedItems() {
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.setSelectedItems.call(this); // #4273 Don't replace if searching
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.setSelectedItems.call(this); // #4273 Don't replace if searching
       // #4403 Don't replace if focused
 
       if (!this.isFocused) this.setSearch();
@@ -12901,7 +12901,7 @@ function hasAlpha(color) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _VAutocomplete_VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../VAutocomplete/VAutocomplete.sass */ "./src/components/VAutocomplete/VAutocomplete.sass");
 /* harmony import */ var _VAutocomplete_VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_VAutocomplete_VAutocomplete_sass__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VSelect/VSelect */ "./src/components/VSelect/VSelect.ts");
+/* harmony import */ var _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../VSelect/ZSelect */ "./src/components/VSelect/ZSelect.ts");
 /* harmony import */ var _VAutocomplete_VAutocomplete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VAutocomplete/VAutocomplete */ "./src/components/VAutocomplete/VAutocomplete.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/helpers */ "./src/util/helpers.ts");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -12955,7 +12955,7 @@ var __assign = undefined && undefined.__assign || function () {
       return this.multiple ? this.selectedItems.length : (this.internalSearch || '').toString().length;
     },
     hasSlot: function hasSlot() {
-      return _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.hasSlot.call(this) || this.multiple;
+      return _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.computed.hasSlot.call(this) || this.multiple;
     },
     isAnyValueAllowed: function isAnyValueAllowed() {
       return true;
@@ -12992,7 +12992,7 @@ var __assign = undefined && undefined.__assign || function () {
     genChipSelection: function genChipSelection(item, index) {
       var _this = this;
 
-      var chip = _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genChipSelection.call(this, item, index); // Allow user to update an existing value
+      var chip = _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.genChipSelection.call(this, item, index); // Allow user to update an existing value
 
       if (this.multiple) {
         chip.componentOptions.listeners = __assign(__assign({}, chip.componentOptions.listeners), {
@@ -13007,7 +13007,7 @@ var __assign = undefined && undefined.__assign || function () {
       return chip;
     },
     onChipInput: function onChipInput(item) {
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onChipInput.call(this, item);
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onChipInput.call(this, item);
       this.editingIndex = -1;
     },
     // Requires a manual definition
@@ -13026,7 +13026,7 @@ var __assign = undefined && undefined.__assign || function () {
       var keyCode = e.keyCode;
 
       if (e.ctrlKey || ![_util_helpers__WEBPACK_IMPORTED_MODULE_3__["keyCodes"].home, _util_helpers__WEBPACK_IMPORTED_MODULE_3__["keyCodes"].end].includes(keyCode)) {
-        _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onKeyDown.call(this, e);
+        _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.onKeyDown.call(this, e);
       } // If user is at selection index of 0
       // create a new tag
 
@@ -13076,7 +13076,7 @@ var __assign = undefined && undefined.__assign || function () {
       }
     },
     setValue: function setValue(value) {
-      _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.setValue.call(this, value !== null && value !== void 0 ? value : this.internalSearch);
+      _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.setValue.call(this, value !== null && value !== void 0 ? value : this.internalSearch);
     },
     updateEditing: function updateEditing() {
       var _this = this;
@@ -13156,7 +13156,7 @@ var __assign = undefined && undefined.__assign || function () {
 
       if (pastedItemText && this.findExistingIndex(pastedItemText) === -1) {
         event.preventDefault();
-        _VSelect_VSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.selectItem.call(this, pastedItemText);
+        _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_1__["default"].options.methods.selectItem.call(this, pastedItemText);
       }
     },
     clearableCallback: function clearableCallback() {
@@ -29073,7 +29073,7 @@ var __assign = undefined && undefined.__assign || function () {
 /*!*******************************************!*\
   !*** ./src/components/VSelect/ZSelect.ts ***!
   \*******************************************/
-/*! exports provided: ZSelect, default */
+/*! exports provided: ZSelect, default, defaultMenuProps */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29086,6 +29086,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zui_util_generateZSizeable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../zui/util/generateZSizeable */ "./src/zui/util/generateZSizeable.ts");
 /* harmony import */ var _ZSelect_index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ZSelect/index.scss */ "./src/components/VSelect/ZSelect/index.scss");
 /* harmony import */ var _ZSelect_index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ZSelect_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultMenuProps", function() { return _VSelect__WEBPACK_IMPORTED_MODULE_2__["defaultMenuProps"]; });
+
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -29206,6 +29208,7 @@ var ZSelect = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_0__["default"])(_VSel
   name: 'z-select'
 });
 /* harmony default export */ __webpack_exports__["default"] = (ZSelect);
+
 
 /***/ }),
 
@@ -38154,7 +38157,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, defaultMenuProps, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38422,6 +38425,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./VSelect/ZSelect */ "./src/components/VSelect/ZSelect.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZSelect", function() { return _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_57__["ZSelect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultMenuProps", function() { return _VSelect_ZSelect__WEBPACK_IMPORTED_MODULE_57__["defaultMenuProps"]; });
 
 /* harmony import */ var _VSkeletonLoader_ZSkeletonLoader__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./VSkeletonLoader/ZSkeletonLoader */ "./src/components/VSkeletonLoader/ZSkeletonLoader.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZSkeletonLoader", function() { return _VSkeletonLoader_ZSkeletonLoader__WEBPACK_IMPORTED_MODULE_58__["ZSkeletonLoader"]; });
@@ -40145,7 +40150,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.822";
+  Zui.version = "2.5.823-beta.1";
   Zui.config = {
     silent: false
   };

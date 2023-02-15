@@ -1,7 +1,7 @@
 // Styles
 import "../../../src/components/VAutocomplete/VAutocomplete.sass"; // Extensions
 
-import VSelect from '../VSelect/VSelect';
+import VSelect from '../VSelect/ZSelect';
 import VAutocomplete from '../VAutocomplete/VAutocomplete'; // Utils
 
 import { keyCodes } from '../../util/helpers';

@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.822",
+  "version": "2.5.823-beta.1",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -966,6 +966,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1249,7 +1269,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -1363,6 +1383,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1408,6 +1439,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -1607,6 +1649,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1745,6 +1798,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -4655,7 +4730,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2022-11-16",
+              "default": "2023-02-15",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5032,7 +5107,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2022-11-16",
+              "default": "2023-02-15",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5314,7 +5389,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2022-11-16",
+              "default": "2023-02-15",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5532,7 +5607,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2022-11-16",
+              "default": "2023-02-15",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5750,7 +5825,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2022-11-16",
+              "default": "2023-02-15",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -8166,6 +8241,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8459,7 +8554,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -8573,6 +8668,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8618,6 +8724,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -8817,6 +8934,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8955,6 +9083,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -17705,6 +17855,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -17999,7 +18169,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -18113,6 +18283,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -18158,6 +18339,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -18357,6 +18549,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -18506,6 +18709,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -21395,7 +21620,7 @@
               "name": "menu-props",
               "description": "Pass props through to the `v-menu` component. Accepts either a string for boolean props `menu-props=\"auto, overflowY\"`, or an object `:menu-props=\"{ auto: true, overflowY: true }\"`",
               "doc-url": "https://www.vuetifyjs.com/api/z-select#props",
-              "default": "{\"closeOnClick\":false,\"closeOnContentClick\":false,\"disableKeys\":true,\"openOnClick\":false,\"maxHeight\":304}",
+              "default": "{\"closeOnClick\":false,\"closeOnContentClick\":false,\"disableKeys\":true,\"openOnClick\":false,\"maxHeight\":304,\"name\":\"defaultMenuProps\",\"_Ctor\":{}}",
               "value": {
                 "kind": "expression",
                 "type": [
