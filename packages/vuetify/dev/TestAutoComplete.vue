@@ -14,9 +14,9 @@
       >
         <z-row
           v-for="(mode, index) in modes"
+          :key="index"
           no-gutters
           style="min-height: 60px"
-          :key="index"
           justify="start"
           align="start"
         >
@@ -27,14 +27,20 @@
               :items="items"
             />
           </z-col>
-          <z-divider vertical class="mx-2" />
+          <z-divider
+            vertical
+            class="mx-2"
+          />
           <z-col>
             <z-select
               v-bind="{[size]: true, ...mode}"
               :items="items"
             />
           </z-col>
-          <z-divider vertical class="mx-2" />
+          <z-divider
+            vertical
+            class="mx-2"
+          />
         </z-row>
       </z-col>
     </z-row>
