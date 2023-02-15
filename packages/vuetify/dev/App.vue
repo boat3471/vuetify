@@ -1,15 +1,17 @@
 <template>
   <div class="my-app">
-    <div>App-{{ msg }}</div>
+    <TestAutoComplete v-if="false"></TestAutoComplete>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
   import { ZMessage } from '@zwd/z-ui'
+  import TestAutoComplete from './TestAutoComplete.vue'
 
   export default {
     components: {
+      TestAutoComplete,
     },
     data () {
       return {
