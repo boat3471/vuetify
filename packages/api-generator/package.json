@@ -1,6 +1,6 @@
 {
   "name": "@zwd/z-ui-api-generator",
-  "version": "2.5.823-beta.1",
+  "version": "2.5.823",
   "private": true,
   "description": "",
   "main": "src/index.js",

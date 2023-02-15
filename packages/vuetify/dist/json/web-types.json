@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.823-beta.1",
+  "version": "2.5.823",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
