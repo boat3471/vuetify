@@ -93,6 +93,7 @@ let instance: ZMenuClass
 
 export class ZMenuClass implements ZMenuDescription {
   selectedMenu: ZMenuOption | null = null
+  isRender = false;
 
   get menusData (): ZMenuOption[] {
     return ZMenuClass.__menusData
@@ -103,6 +104,7 @@ export class ZMenuClass implements ZMenuDescription {
   }
 
   settingMenus (menus: ZMenuOption[], autoGenRoute = true): void {
+    this.isRender = (menus ? menus.length > 0 : false)
     if (menus && menus.length > 0) {
       if (autoGenRoute) {
         this.$router.addRoutesByMenus(menus)

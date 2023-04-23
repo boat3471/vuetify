@@ -2,6 +2,11 @@ import { ZMenuOption } from './options'
 
 export interface ZMenuDescription {
   /**
+   * 是否渲染菜单
+   */
+  isRender: boolean
+
+  /**
    * 当前选中的菜单
    */
   selectedMenu: ZMenuOption | null
