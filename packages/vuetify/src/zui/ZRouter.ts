@@ -231,7 +231,7 @@ export class ZAdminRouter extends ZAppRouter {
 
     usrRoutes.forEach(route => {
       if (route.path === '/' || route.path === '') {
-        const children = route.children
+        const children = route.children || []
         delete route.children
 
         if ('component' in route && route.component) {
