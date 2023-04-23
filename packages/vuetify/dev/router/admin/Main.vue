@@ -1,17 +1,19 @@
 <template>
-  <div class="my-app">
-    <TestAutoComplete v-if="false"></TestAutoComplete>
-    <router-view></router-view>
-  </div>
+  <z-admin class="my-app">
+    <template #main>
+      <div class="d-flex">
+        asdas
+      </div>
+      <router-view></router-view>
+    </template>
+  </z-admin>
 </template>
 
 <script>
   import { ZMessage } from '@zwd/z-ui'
-  import TestAutoComplete from './TestAutoComplete.vue'
 
   export default {
     components: {
-      TestAutoComplete,
     },
     data () {
       return {
@@ -36,7 +38,6 @@
       },
     },
     mounted () {
-      this.msg = JSON.stringify(this.$route.meta)
     },
     methods: {
       click () {

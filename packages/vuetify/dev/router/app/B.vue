@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'B',
+    name: 'b',
     data () {
       return {
         title: 'B',

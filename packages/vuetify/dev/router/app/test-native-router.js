@@ -10,7 +10,7 @@ const component2 = {
   template: `<div class="title">Page 2</div>`,
 }
 
-const router = new Router({
+export const router = new Router({
   routes: [
     {
       path: '/page1',

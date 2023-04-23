@@ -7,7 +7,3 @@
     name: 'components',
   }
 </script>
-
-<style scoped>
-
-</style>
