@@ -3494,35 +3494,6 @@
     ],
     "description": ""
   },
-  "z-admin": {
-    "attributes": [
-      "project-name",
-      "toolbar-color",
-      "toolbar-dark",
-      "toolbar-elevation"
-    ],
-    "description": ""
-  },
-  "z-admin-app": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-view403": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-view404": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-view500": {
-    "attributes": [],
-    "description": ""
-  },
-  "z-default-login": {
-    "attributes": [],
-    "description": ""
-  },
   "z-color-selector": {
     "attributes": [
       "default-value",
@@ -3570,6 +3541,35 @@
       "show-current",
       "value"
     ],
+    "description": ""
+  },
+  "z-admin": {
+    "attributes": [
+      "project-name",
+      "toolbar-color",
+      "toolbar-dark",
+      "toolbar-elevation"
+    ],
+    "description": ""
+  },
+  "z-admin-app": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-view403": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-view404": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-view500": {
+    "attributes": [],
+    "description": ""
+  },
+  "z-default-login": {
+    "attributes": [],
     "description": ""
   }
 }

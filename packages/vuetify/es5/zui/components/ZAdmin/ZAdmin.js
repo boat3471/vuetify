@@ -23,6 +23,8 @@ var _ZDefaultThemeOptionPanel = require("./ZDefaultThemeOptionPanel");
 
 var _ZDefaultNavDrawer = require("./menu/ZDefaultNavDrawer");
 
+var _ZDefaultThemeIcon = require("./menu/ZDefaultThemeIcon");
+
 require("../../../../src/zui/components/ZAdmin/styles/ZViewRoot.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -96,6 +98,9 @@ var ZAdmin = _vue.default.extend({
         mainNavVisible: !this.$themeStore.mainNavVisible
       });
     },
+    onShowThemePanel: function onShowThemePanel() {
+      this.themePanelVisible = !this.themePanelVisible;
+    },
     actionProfile: function actionProfile(item) {
       switch (item.key) {
         case 'logout':
@@ -119,15 +124,20 @@ var ZAdmin = _vue.default.extend({
       /* 导航按钮 */
 
 
-      var appBarNavIcon = this.showNavIcon ? h(_components.ZAppBarNavIcon, {
-        style: {
-          marginRight: '16px'
-        },
-        on: {
-          click: this.onShowNavDrawer
-        }
-      }) : '';
+      var navIcon = null;
+
+      if (this.$menu.isRender && this.showNavIcon) {
+        navIcon = h(_components.ZAppBarNavIcon, {
+          style: {
+            marginRight: '16px'
+          },
+          on: {
+            click: this.onShowNavDrawer
+          }
+        });
+      }
       /* logo插槽 */
+
 
       var logoSlot = (0, _helpers.getSlot)(this, 'logo') || h(_ZDefaultLogo.ZDefaultLogo, {
         staticClass: 'mr-3'
@@ -187,10 +197,14 @@ var ZAdmin = _vue.default.extend({
           dense: this.$themeStore.denseMode,
           dark: this.toolbarDark
         }
-      }, [appBarNavIcon, logoSlot, toolbarTitle].concat(toolbarChildren, [profileAreaSlot]));
+      }, [navIcon, logoSlot, toolbarTitle].concat(toolbarChildren, [profileAreaSlot]));
     },
     genAppMenus: function genAppMenus(h) {
       var _this2 = this;
+
+      if (!this.$menu.isRender) {
+        return [];
+      }
 
       if (this.$themeStore.cameraModel) {
         return [];
@@ -226,7 +240,7 @@ var ZAdmin = _vue.default.extend({
         },
         on: {
           'click:theme': function clickTheme() {
-            _this2.themePanelVisible = !_this2.themePanelVisible;
+            _this2.onShowThemePanel();
           }
         }
       }, [menusSlot])];
@@ -255,6 +269,8 @@ var ZAdmin = _vue.default.extend({
       }, [mainSlot])];
     },
     genAppFooter: function genAppFooter(h) {
+      var _this3 = this;
+
       if (this.footerVisible) {
         return [];
       }
@@ -266,6 +282,29 @@ var ZAdmin = _vue.default.extend({
           transformOrigin: 'left'
         }
       }, ["Copyright \xA9 2019-2020 ".concat(this.projectDisplayName, " | Powered By ZPMC")])];
+      var navIcon = null;
+
+      if (this.$menu.isRender && this.showNavIcon) {
+        navIcon = h(_components.ZIcon, {
+          staticClass: 'mr-3',
+          props: {
+            size: 14
+          },
+          on: {
+            click: this.onShowNavDrawer
+          }
+        }, ['mdi-menu']);
+      } else {
+        navIcon = h(_ZDefaultThemeIcon.ZDefaultThemeIcon, {
+          staticClass: 'mr-2',
+          on: {
+            'click:theme': function clickTheme() {
+              _this3.onShowThemePanel();
+            }
+          }
+        });
+      }
+
       var defaultFooter = h(_components.ZFooter, {
         staticClass: 'z-admin-footer',
         props: {
@@ -274,19 +313,11 @@ var ZAdmin = _vue.default.extend({
           inset: !this.$themeStore.mainNavPosition,
           dark: this.toolbarDark
         }
-      }, [this.showNavIcon ? h(_components.ZIcon, {
-        staticClass: 'mr-3',
-        props: {
-          size: 14
-        },
-        on: {
-          click: this.onShowNavDrawer
-        }
-      }, ['mdi-menu']) : '', footerSlot]);
+      }, [navIcon, footerSlot]);
       return (0, _helpers.getSlot)(this, 'footer-area') || [defaultFooter];
     },
     genAppDefaultThemeOptionPanel: function genAppDefaultThemeOptionPanel(h) {
-      var _this3 = this;
+      var _this4 = this;
 
       return h(_ZDefaultThemeOptionPanel.ZDefaultThemeOptionPanel, {
         props: {
@@ -294,7 +325,7 @@ var ZAdmin = _vue.default.extend({
         },
         on: {
           input: function input(value) {
-            _this3.themePanelVisible = value;
+            _this4.themePanelVisible = value;
           }
         }
       });
@@ -303,7 +334,7 @@ var ZAdmin = _vue.default.extend({
       return h('div');
     },
     genExitButton: function genExitButton(h) {
-      var _this4 = this;
+      var _this5 = this;
 
       if (!this.$themeStore.cameraModel) {
         return '';
@@ -321,7 +352,7 @@ var ZAdmin = _vue.default.extend({
         },
         on: {
           click: function click() {
-            _this4.$theme.settingTheme({
+            _this5.$theme.settingTheme({
               cameraModel: false
             });
           }

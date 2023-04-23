@@ -346,7 +346,7 @@ function (_ZAppRouter) {
       var usrRedirect = '';
       usrRoutes.forEach(function (route) {
         if (route.path === '/' || route.path === '') {
-          var children = route.children;
+          var children = route.children || [];
           delete route.children;
 
           if ('component' in route && route.component) {

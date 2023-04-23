@@ -38157,7 +38157,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, defaultMenuProps, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, defaultMenuProps, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38609,6 +38609,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38620,14 +38628,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -40150,7 +40150,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.823";
+  Zui.version = "2.5.824-beta.1";
   Zui.config = {
     silent: false
   };
@@ -51677,6 +51677,7 @@ var ZMenuClass =
 function () {
   function ZMenuClass() {
     this.selectedMenu = null;
+    this.isRender = false;
 
     if (!instance) {
       instance = this;
@@ -51704,6 +51705,8 @@ function () {
     if (autoGenRoute === void 0) {
       autoGenRoute = true;
     }
+
+    this.isRender = menus ? menus.length > 0 : false;
 
     if (menus && menus.length > 0) {
       if (autoGenRoute) {
@@ -52669,7 +52672,7 @@ function (_super) {
     var usrRedirect = '';
     usrRoutes.forEach(function (route) {
       if (route.path === '/' || route.path === '') {
-        var children = route.children;
+        var children = route.children || [];
         delete route.children;
 
         if ('component' in route && route.component) {
@@ -53562,8 +53565,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ZDefaultMenus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ZDefaultMenus */ "./src/zui/components/ZAdmin/ZDefaultMenus.ts");
 /* harmony import */ var _ZDefaultThemeOptionPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ZDefaultThemeOptionPanel */ "./src/zui/components/ZAdmin/ZDefaultThemeOptionPanel.ts");
 /* harmony import */ var _menu_ZDefaultNavDrawer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./menu/ZDefaultNavDrawer */ "./src/zui/components/ZAdmin/menu/ZDefaultNavDrawer.ts");
-/* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./styles/ZViewRoot.scss */ "./src/zui/components/ZAdmin/styles/ZViewRoot.scss");
-/* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _menu_ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./menu/ZDefaultThemeIcon */ "./src/zui/components/ZAdmin/menu/ZDefaultThemeIcon.ts");
+/* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/ZViewRoot.scss */ "./src/zui/components/ZAdmin/styles/ZViewRoot.scss");
+/* harmony import */ var _styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_ZViewRoot_scss__WEBPACK_IMPORTED_MODULE_10__);
 var __read = undefined && undefined.__read || function (o, n) {
   var m = typeof Symbol === "function" && o[Symbol.iterator];
   if (!m) return o;
@@ -53598,6 +53602,7 @@ var __spread = undefined && undefined.__spread || function () {
 
   return ar;
 };
+
 
 
 
@@ -53678,6 +53683,9 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
         mainNavVisible: !this.$themeStore.mainNavVisible
       });
     },
+    onShowThemePanel: function onShowThemePanel() {
+      this.themePanelVisible = !this.themePanelVisible;
+    },
     actionProfile: function actionProfile(item) {
       switch (item.key) {
         case 'logout':
@@ -53701,15 +53709,20 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
       /* 导航按钮 */
 
 
-      var appBarNavIcon = this.showNavIcon ? h(_components__WEBPACK_IMPORTED_MODULE_1__["ZAppBarNavIcon"], {
-        style: {
-          marginRight: '16px'
-        },
-        on: {
-          click: this.onShowNavDrawer
-        }
-      }) : '';
+      var navIcon = null;
+
+      if (this.$menu.isRender && this.showNavIcon) {
+        navIcon = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZAppBarNavIcon"], {
+          style: {
+            marginRight: '16px'
+          },
+          on: {
+            click: this.onShowNavDrawer
+          }
+        });
+      }
       /* logo插槽 */
+
 
       var logoSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'logo') || h(_ZDefaultLogo__WEBPACK_IMPORTED_MODULE_4__["ZDefaultLogo"], {
         staticClass: 'mr-3'
@@ -53769,10 +53782,14 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           dense: this.$themeStore.denseMode,
           dark: this.toolbarDark
         }
-      }, __spread([appBarNavIcon, logoSlot, toolbarTitle], toolbarChildren, [profileAreaSlot]));
+      }, __spread([navIcon, logoSlot, toolbarTitle], toolbarChildren, [profileAreaSlot]));
     },
     genAppMenus: function genAppMenus(h) {
       var _this = this;
+
+      if (!this.$menu.isRender) {
+        return [];
+      }
 
       if (this.$themeStore.cameraModel) {
         return [];
@@ -53808,7 +53825,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
         },
         on: {
           'click:theme': function clickTheme() {
-            _this.themePanelVisible = !_this.themePanelVisible;
+            _this.onShowThemePanel();
           }
         }
       }, [menusSlot])];
@@ -53836,6 +53853,8 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
       }, [mainSlot])];
     },
     genAppFooter: function genAppFooter(h) {
+      var _this = this;
+
       if (this.footerVisible) {
         return [];
       }
@@ -53847,6 +53866,29 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           transformOrigin: 'left'
         }
       }, ["Copyright \xA9 2019-2020 " + this.projectDisplayName + " | Powered By ZPMC"])];
+      var navIcon = null;
+
+      if (this.$menu.isRender && this.showNavIcon) {
+        navIcon = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZIcon"], {
+          staticClass: 'mr-3',
+          props: {
+            size: 14
+          },
+          on: {
+            click: this.onShowNavDrawer
+          }
+        }, ['mdi-menu']);
+      } else {
+        navIcon = h(_menu_ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_9__["ZDefaultThemeIcon"], {
+          staticClass: 'mr-2',
+          on: {
+            'click:theme': function clickTheme() {
+              _this.onShowThemePanel();
+            }
+          }
+        });
+      }
+
       var defaultFooter = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZFooter"], {
         staticClass: 'z-admin-footer',
         props: {
@@ -53855,15 +53897,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           inset: !this.$themeStore.mainNavPosition,
           dark: this.toolbarDark
         }
-      }, [this.showNavIcon ? h(_components__WEBPACK_IMPORTED_MODULE_1__["ZIcon"], {
-        staticClass: 'mr-3',
-        props: {
-          size: 14
-        },
-        on: {
-          click: this.onShowNavDrawer
-        }
-      }, ['mdi-menu']) : '', footerSlot]);
+      }, [navIcon, footerSlot]);
       return Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this, 'footer-area') || [defaultFooter];
     },
     genAppDefaultThemeOptionPanel: function genAppDefaultThemeOptionPanel(h) {
@@ -55401,6 +55435,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../components */ "./src/components/index.ts");
 /* harmony import */ var _options__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../options */ "./src/zui/options/index.ts");
 /* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ZDefaultThemeIcon */ "./src/zui/components/ZAdmin/menu/ZDefaultThemeIcon.ts");
+
 
 
 
@@ -55431,9 +55467,6 @@ var ZDefaultNavDrawer = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
     },
     permanent: function permanent() {
       return this.$themeStore.mainNavMode === _options__WEBPACK_IMPORTED_MODULE_2__["MainNavMode"].Flex;
-    },
-    themeIcon: function themeIcon() {
-      return this.$themeStore.darkStatus ? 'mdi-brightness-4' : 'mdi-brightness-7';
     },
     foldIcon: function foldIcon() {
       return this.$themeStore.mainNavMiniMode ? 'mdi-chevron-right' : 'mdi-chevron-left';
@@ -55498,12 +55531,11 @@ var ZDefaultNavDrawer = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
      * @param h
      */
     genDefaultAppend: function genDefaultAppend(h) {
-      var ThemePanelIcon = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZIcon"], {
+      var ThemePanelIcon = h(_ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_4__["ZDefaultThemeIcon"], {
         props: {
-          color: 'grey darken-1',
-          size: 18
+          color: 'grey darken-1'
         }
-      }, [this.themeIcon]);
+      });
       /* 皮肤入口 */
 
       var ThemePanel = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZListItem"], {
@@ -55571,6 +55603,59 @@ var ZDefaultNavDrawer = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (ZDefaultNavDrawer);
+
+/***/ }),
+
+/***/ "./src/zui/components/ZAdmin/menu/ZDefaultThemeIcon.ts":
+/*!*************************************************************!*\
+  !*** ./src/zui/components/ZAdmin/menu/ZDefaultThemeIcon.ts ***!
+  \*************************************************************/
+/*! exports provided: ZDefaultThemeIcon, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZDefaultThemeIcon", function() { return ZDefaultThemeIcon; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../components */ "./src/components/index.ts");
+
+
+var ZDefaultThemeIcon = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
+  name: 'z-default-theme-icon',
+  props: {
+    color: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    themeIcon: function themeIcon() {
+      return this.$themeStore.darkStatus ? 'mdi-brightness-4' : 'mdi-brightness-7';
+    }
+  },
+  methods: {
+    onThemeClick: function onThemeClick() {
+      this.$emit('click:theme');
+    }
+  },
+  render: function render(h) {
+    var _this = this;
+
+    return h(_components__WEBPACK_IMPORTED_MODULE_1__["ZIcon"], {
+      props: {
+        color: this.color,
+        size: 18
+      },
+      on: {
+        click: function click() {
+          _this.onThemeClick();
+        }
+      }
+    }, [this.themeIcon]);
+  }
+});
+/* harmony default export */ __webpack_exports__["default"] = (ZDefaultThemeIcon);
 
 /***/ }),
 
@@ -57732,7 +57817,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
+/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57974,8 +58059,11 @@ function createApp(options) {
     appMain = options.appMain;
     appHome = options.appHome;
     isRenderRouterView = false;
-  }
+  } // 如果存在路由，但未设置appMain和appHome，则使用options中的配置；
 
+
+  appMain = appMain || options.appMain;
+  appHome = appHome || options.appHome;
   _ZuiCore__WEBPACK_IMPORTED_MODULE_1__["ZuiCoreClass"].$app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(__assign({
     el: options.appId || '#app',
     vuetify: ui,

@@ -101,6 +101,7 @@ let instance;
 export class ZMenuClass {
   constructor() {
     this.selectedMenu = null;
+    this.isRender = false;
 
     if (!instance) {
       instance = this;
@@ -118,6 +119,8 @@ export class ZMenuClass {
   }
 
   settingMenus(menus, autoGenRoute = true) {
+    this.isRender = menus ? menus.length > 0 : false;
+
     if (menus && menus.length > 0) {
       if (autoGenRoute) {
         this.$router.addRoutesByMenus(menus);

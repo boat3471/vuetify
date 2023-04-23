@@ -76,8 +76,11 @@ function createApp(options) {
     appMain = options.appMain;
     appHome = options.appHome;
     isRenderRouterView = false;
-  }
+  } // 如果存在路由，但未设置appMain和appHome，则使用options中的配置；
 
+
+  appMain = appMain || options.appMain;
+  appHome = appHome || options.appHome;
   _ZuiCore.ZuiCoreClass.$app = new _vue.default(_objectSpread({
     el: options.appId || '#app',
     vuetify: ui,
