@@ -315,7 +315,7 @@ const shades = Object.freeze({
   transparent: 'transparent',
 })
 
-export default Object.freeze({
+export const colors = Object.freeze({
   red,
   pink,
   purple,
@@ -337,3 +337,5 @@ export default Object.freeze({
   grey,
   shades,
 })
+
+export default colors

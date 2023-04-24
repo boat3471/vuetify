@@ -3,7 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+Object.defineProperty(exports, "colors", {
+  enumerable: true,
+  get: function get() {
+    return _colors.colors;
+  }
+});
+exports.colorUtils = exports.default = void 0;
 
 var _framework = require("./framework");
 
@@ -18,6 +24,14 @@ var _createRouter = require("./zui/createRouter");
 var _ZuiCore = require("./zui/ZuiCore");
 
 var _ZIconLoader = require("./zui/ZIconLoader");
+
+var _colors = require("./util/colors");
+
+var colorUtils = _interopRequireWildcard(require("./util/colorUtils"));
+
+exports.colorUtils = colorUtils;
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(_framework.Zui);

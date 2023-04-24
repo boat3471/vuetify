@@ -10,6 +10,8 @@ import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
 import { ZRouterClass } from './zui/ZRouter'
 import { ZIconLoader } from './zui/ZIconLoader'
+import { colors } from './util/colors'
+import * as colorUtils from './util/colorUtils'
 
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(Zui)
@@ -60,3 +62,5 @@ export default {
     return ZuiCoreClass.genInstance().$router
   },
 }
+
+export { colors, colorUtils }

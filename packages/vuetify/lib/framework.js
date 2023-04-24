@@ -47,7 +47,7 @@ export class Zui {
 
 }
 Zui.installed = false;
-Zui.version = "2.5.824-beta.1";
+Zui.version = "2.5.824-beta.3";
 Zui.config = {
   silent: false
 };

@@ -1,7 +1,10 @@
 import Vue, { Component, PluginFunction, VueConstructor, DirectiveOptions, ComponentOptions, AsyncComponent } from 'vue'
 import './lib'
 import './alacarte'
-import './colors'
+
+import * as colorUtils from './util/colorUtils'
+import { colors }  from './colors'
+export { colors, colorUtils }
 
 // Services
 import { Application } from './services/application'

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.colors = void 0;
 var red = Object.freeze({
   base: '#f44336',
   lighten5: '#ffebee',
@@ -301,8 +301,7 @@ var shades = Object.freeze({
   white: '#ffffff',
   transparent: 'transparent'
 });
-
-var _default = Object.freeze({
+var colors = Object.freeze({
   red: red,
   pink: pink,
   purple: purple,
@@ -324,6 +323,7 @@ var _default = Object.freeze({
   grey: grey,
   shades: shades
 });
-
+exports.colors = colors;
+var _default = colors;
 exports.default = _default;
 //# sourceMappingURL=colors.js.map
