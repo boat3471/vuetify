@@ -1,4 +1,4 @@
-import { Zui } from './framework'
+import { Zui, ZComponents } from './framework'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
 import { createMenus } from './zui/createMenus'
@@ -11,7 +11,7 @@ import { ZThemeClass } from './zui/ZTheme'
 import { ZRouterClass } from './zui/ZRouter'
 import { ZIconLoader } from './zui/ZIconLoader'
 import { colors } from './util/colors'
-import * as colorUtils from './util/colorUtils'
+import * as ZColorUtils from './util/colorUtils'
 
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(Zui)
@@ -63,4 +63,4 @@ export default {
   },
 }
 
-export { colors, colorUtils }
+export { colors as ZColors, ZColorUtils, ZComponents }

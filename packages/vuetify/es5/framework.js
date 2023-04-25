@@ -3,9 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Zui = void 0;
+exports.ZComponents = exports.default = exports.Zui = void 0;
 
 var components = _interopRequireWildcard(require("./components"));
+
+exports.ZComponents = components;
 
 var directives = _interopRequireWildcard(require("./directives"));
 
@@ -86,7 +88,7 @@ function () {
 
 exports.Zui = Zui;
 Zui.installed = false;
-Zui.version = "2.5.824-beta.3";
+Zui.version = "2.5.824-beta.4";
 Zui.config = {
   silent: false
 };

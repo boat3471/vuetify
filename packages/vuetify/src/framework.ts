@@ -87,4 +87,6 @@ Zui.install = (IVue, options) => {
   })
 }
 
+export { components as ZComponents }
+
 export default Zui

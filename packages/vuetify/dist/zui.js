@@ -40067,13 +40067,14 @@ var Touch = {
 /*!**************************!*\
   !*** ./src/framework.ts ***!
   \**************************/
-/*! exports provided: Zui, default */
+/*! exports provided: Zui, ZComponents, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Zui", function() { return Zui; });
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./src/components/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "ZComponents", function() { return _components__WEBPACK_IMPORTED_MODULE_0__; });
 /* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./directives */ "./src/directives/index.ts");
 /* harmony import */ var _install__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./install */ "./src/install.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services */ "./src/services/index.ts");
@@ -40150,7 +40151,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.824-beta.3";
+  Zui.version = "2.5.824-beta.4";
   Zui.config = {
     silent: false
   };
@@ -40166,6 +40167,7 @@ Zui.install = function (IVue, options) {
   }, options));
 };
 
+
 /* harmony default export */ __webpack_exports__["default"] = (Zui);
 
 /***/ }),
@@ -40174,12 +40176,14 @@ Zui.install = function (IVue, options) {
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: default, colors, colorUtils */
+/*! exports provided: default, ZColors, ZColorUtils, ZComponents */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _framework__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./framework */ "./src/framework.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZComponents", function() { return _framework__WEBPACK_IMPORTED_MODULE_0__["ZComponents"]; });
+
 /* harmony import */ var _zui_createApp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./zui/createApp */ "./src/zui/createApp.ts");
 /* harmony import */ var _zui_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./zui/createAdmin */ "./src/zui/createAdmin.ts");
 /* harmony import */ var _zui_createMenus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./zui/createMenus */ "./src/zui/createMenus.ts");
@@ -40187,10 +40191,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./zui/ZuiCore */ "./src/zui/ZuiCore.ts");
 /* harmony import */ var _zui_ZIconLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./zui/ZIconLoader */ "./src/zui/ZIconLoader.ts");
 /* harmony import */ var _util_colors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/colors */ "./src/util/colors.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return _util_colors__WEBPACK_IMPORTED_MODULE_7__["colors"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColors", function() { return _util_colors__WEBPACK_IMPORTED_MODULE_7__["colors"]; });
 
 /* harmony import */ var _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util/colorUtils */ "./src/util/colorUtils.ts");
-/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "colorUtils", function() { return _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__; });
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "ZColorUtils", function() { return _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__; });
 
 
 

@@ -2,9 +2,10 @@ import Vue, { Component, PluginFunction, VueConstructor, DirectiveOptions, Compo
 import './lib'
 import './alacarte'
 
-import * as colorUtils from './util/colorUtils'
+import * as ZColorUtils from './util/colorUtils'
 import { colors }  from './colors'
-export { colors, colorUtils }
+export { colors as ZColors, ZColorUtils }
+export const ZComponents: Record<string, Component>;
 
 // Services
 import { Application } from './services/application'

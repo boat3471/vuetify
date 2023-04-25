@@ -47,7 +47,7 @@ export class Zui {
 
 }
 Zui.installed = false;
-Zui.version = "2.5.824-beta.3";
+Zui.version = "2.5.824-beta.4";
 Zui.config = {
   silent: false
 };
@@ -60,5 +60,6 @@ Zui.install = (IVue, options) => {
   });
 };
 
+export { components as ZComponents };
 export default Zui;
 //# sourceMappingURL=framework.js.map

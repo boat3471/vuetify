@@ -3,13 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "colors", {
+Object.defineProperty(exports, "ZComponents", {
+  enumerable: true,
+  get: function get() {
+    return _framework.ZComponents;
+  }
+});
+Object.defineProperty(exports, "ZColors", {
   enumerable: true,
   get: function get() {
     return _colors.colors;
   }
 });
-exports.colorUtils = exports.default = void 0;
+exports.ZColorUtils = exports.default = void 0;
 
 var _framework = require("./framework");
 
@@ -27,9 +33,9 @@ var _ZIconLoader = require("./zui/ZIconLoader");
 
 var _colors = require("./util/colors");
 
-var colorUtils = _interopRequireWildcard(require("./util/colorUtils"));
+var ZColorUtils = _interopRequireWildcard(require("./util/colorUtils"));
 
-exports.colorUtils = colorUtils;
+exports.ZColorUtils = ZColorUtils;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
