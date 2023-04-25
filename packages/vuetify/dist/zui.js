@@ -97,9 +97,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ ({
 
 /***/ "../../node_modules/vue-router/dist/vue-router.esm.js":
-/*!***********************************************************************************************!*\
-  !*** /Users/wenchaoxin/code/zpmc-modules/z-ui/node_modules/vue-router/dist/vue-router.esm.js ***!
-  \***********************************************************************************************/
+/*!********************************************************************************!*\
+  !*** /Users/xwc/code/zpmc/z-ui/node_modules/vue-router/dist/vue-router.esm.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40067,14 +40067,13 @@ var Touch = {
 /*!**************************!*\
   !*** ./src/framework.ts ***!
   \**************************/
-/*! exports provided: Zui, ZComponents, default */
+/*! exports provided: Zui, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Zui", function() { return Zui; });
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./src/components/index.ts");
-/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "ZComponents", function() { return _components__WEBPACK_IMPORTED_MODULE_0__; });
 /* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./directives */ "./src/directives/index.ts");
 /* harmony import */ var _install__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./install */ "./src/install.ts");
 /* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services */ "./src/services/index.ts");
@@ -40151,10 +40150,11 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.824-beta.4";
+  Zui.version = "2.5.824-beta.7";
   Zui.config = {
     silent: false
   };
+  Zui.Components = {};
   return Zui;
 }();
 
@@ -40167,7 +40167,7 @@ Zui.install = function (IVue, options) {
   }, options));
 };
 
-
+Zui.Components = _components__WEBPACK_IMPORTED_MODULE_0__;
 /* harmony default export */ __webpack_exports__["default"] = (Zui);
 
 /***/ }),
@@ -40176,14 +40176,12 @@ Zui.install = function (IVue, options) {
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-/*! exports provided: default, ZColors, ZColorUtils, ZComponents */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _framework__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./framework */ "./src/framework.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZComponents", function() { return _framework__WEBPACK_IMPORTED_MODULE_0__["ZComponents"]; });
-
 /* harmony import */ var _zui_createApp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./zui/createApp */ "./src/zui/createApp.ts");
 /* harmony import */ var _zui_createAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./zui/createAdmin */ "./src/zui/createAdmin.ts");
 /* harmony import */ var _zui_createMenus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./zui/createMenus */ "./src/zui/createMenus.ts");
@@ -40191,10 +40189,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./zui/ZuiCore */ "./src/zui/ZuiCore.ts");
 /* harmony import */ var _zui_ZIconLoader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./zui/ZIconLoader */ "./src/zui/ZIconLoader.ts");
 /* harmony import */ var _util_colors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/colors */ "./src/util/colors.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColors", function() { return _util_colors__WEBPACK_IMPORTED_MODULE_7__["colors"]; });
-
 /* harmony import */ var _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util/colorUtils */ "./src/util/colorUtils.ts");
-/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "ZColorUtils", function() { return _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__; });
 
 
 
@@ -40217,6 +40212,7 @@ if (typeof window !== 'undefined') {
   createRouter: _zui_createRouter__WEBPACK_IMPORTED_MODULE_4__["createRouter"],
   createAdminRouter: _zui_createRouter__WEBPACK_IMPORTED_MODULE_4__["createAdminRouter"],
   ZIconLoader: _zui_ZIconLoader__WEBPACK_IMPORTED_MODULE_6__["ZIconLoader"],
+  ZColorUtils: _util_colorUtils__WEBPACK_IMPORTED_MODULE_8__,
 
   get $zui() {
     return _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__["ZuiCoreClass"].genInstance();
@@ -40264,10 +40260,16 @@ if (typeof window !== 'undefined') {
 
   get ZRouter() {
     return _zui_ZuiCore__WEBPACK_IMPORTED_MODULE_5__["ZuiCoreClass"].genInstance().$router;
+  },
+
+  get ZColors() {
+    return _util_colors__WEBPACK_IMPORTED_MODULE_7__["colors"];
+  },
+
+  getComponent: function getComponent(name) {
+    return _framework__WEBPACK_IMPORTED_MODULE_0__["Zui"].Components[name];
   }
-
 });
-
 
 /***/ }),
 
@@ -40309,13 +40311,13 @@ function install(Vue, args) {
     Vue.directive(name, directive);
   }
 
-  (function registerComponents(components) {
-    if (components) {
-      for (var key in components) {
-        var component = components[key];
+  (function registerComponents(list) {
+    if (list) {
+      for (var key in list) {
+        var comp = list[key];
 
-        if (component && !registerComponents(component.$_vuetify_subcomponents)) {
-          Vue.component(key, component);
+        if (comp && !registerComponents(comp.$_vuetify_subcomponents)) {
+          Vue.component(key, comp);
         }
       }
 

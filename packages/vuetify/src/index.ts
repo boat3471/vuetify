@@ -1,4 +1,4 @@
-import { Zui, ZComponents } from './framework'
+import { Zui } from './framework'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
 import { createMenus } from './zui/createMenus'
@@ -25,6 +25,7 @@ export default {
   createRouter,
   createAdminRouter,
   ZIconLoader,
+  ZColorUtils,
   get $zui (): ZuiCoreClass {
     return ZuiCoreClass.genInstance()
   },
@@ -61,6 +62,10 @@ export default {
   get ZRouter (): ZRouterClass {
     return ZuiCoreClass.genInstance().$router
   },
+  get ZColors (): any {
+    return colors
+  },
+  getComponent(name: string): any {
+    return Zui.Components[name]
+  },
 }
-
-export { colors as ZColors, ZColorUtils, ZComponents }

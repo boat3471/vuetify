@@ -3,19 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "ZComponents", {
-  enumerable: true,
-  get: function get() {
-    return _framework.ZComponents;
-  }
-});
-Object.defineProperty(exports, "ZColors", {
-  enumerable: true,
-  get: function get() {
-    return _colors.colors;
-  }
-});
-exports.ZColorUtils = exports.default = void 0;
+exports.default = void 0;
 
 var _framework = require("./framework");
 
@@ -35,8 +23,6 @@ var _colors = require("./util/colors");
 
 var ZColorUtils = _interopRequireWildcard(require("./util/colorUtils"));
 
-exports.ZColorUtils = ZColorUtils;
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 if (typeof window !== 'undefined') {
@@ -51,6 +37,7 @@ var _default = {
   createRouter: _createRouter.createRouter,
   createAdminRouter: _createRouter.createAdminRouter,
   ZIconLoader: _ZIconLoader.ZIconLoader,
+  ZColorUtils: ZColorUtils,
 
   get $zui() {
     return _ZuiCore.ZuiCoreClass.genInstance();
@@ -98,8 +85,15 @@ var _default = {
 
   get ZRouter() {
     return _ZuiCore.ZuiCoreClass.genInstance().$router;
-  }
+  },
 
+  get ZColors() {
+    return _colors.colors;
+  },
+
+  getComponent: function getComponent(name) {
+    return _framework.Zui.Components[name];
+  }
 };
 exports.default = _default;
 //# sourceMappingURL=index.js.map

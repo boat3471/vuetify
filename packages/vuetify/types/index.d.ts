@@ -2,17 +2,14 @@ import Vue, { Component, PluginFunction, VueConstructor, DirectiveOptions, Compo
 import './lib'
 import './alacarte'
 
-import * as ZColorUtils from './util/colorUtils'
-import { colors }  from './colors'
-export { colors as ZColors, ZColorUtils }
-export const ZComponents: Record<string, Component>;
-
 // Services
 import { Application } from './services/application'
 import { Breakpoint } from './services/breakpoint'
 import { Icons } from './services/icons'
 import { Lang } from './services/lang'
 import { Theme } from './services/theme'
+import * as ZColorUtils from './util/colorUtils'
+import { colors }  from './colors'
 import {
   Presets,
   UserVuetifyPreset,
@@ -48,6 +45,8 @@ export const $menu: ZMenuDescription
 export const $router: ZRouterDescription
 export const $theme: ZThemeDescription
 export const $auth: ZAuthDescription
+export function getComponent(name: string): ComponentOptions<Vue> | typeof Vue | AsyncComponent
+export { colors as ZColors, ZColorUtils }
 export type RouteComponent = ComponentOptions<Vue> | typeof Vue | AsyncComponent
 
 export * from './zui/ZIconLoader';
@@ -59,6 +58,7 @@ export class Zui {
   static install: PluginFunction<VuetifyUseOptions>
   static version: string
   static config: Config
+  static Components: Record<string, ComponentOptions<Vue>>
 
   framework: Framework
   preset: VuetifyPreset

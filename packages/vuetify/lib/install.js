@@ -22,13 +22,13 @@ If you're seeing "$attrs is readonly", it's caused by this`);
     Vue.directive(name, directive);
   }
 
-  (function registerComponents(components) {
-    if (components) {
-      for (const key in components) {
-        const component = components[key];
+  (function registerComponents(list) {
+    if (list) {
+      for (const key in list) {
+        const comp = list[key];
 
-        if (component && !registerComponents(component.$_vuetify_subcomponents)) {
-          Vue.component(key, component);
+        if (comp && !registerComponents(comp.$_vuetify_subcomponents)) {
+          Vue.component(key, comp);
         }
       }
 

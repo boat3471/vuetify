@@ -3,11 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ZComponents = exports.default = exports.Zui = void 0;
+exports.default = exports.Zui = void 0;
 
 var components = _interopRequireWildcard(require("./components"));
-
-exports.ZComponents = components;
 
 var directives = _interopRequireWildcard(require("./directives"));
 
@@ -88,10 +86,11 @@ function () {
 
 exports.Zui = Zui;
 Zui.installed = false;
-Zui.version = "2.5.824-beta.4";
+Zui.version = "2.5.824-beta.7";
 Zui.config = {
   silent: false
 };
+Zui.Components = {};
 
 Zui.install = function (IVue, options) {
   _install.install.call(Zui, IVue, _objectSpread({
@@ -100,6 +99,7 @@ Zui.install = function (IVue, options) {
   }, options));
 };
 
+Zui.Components = components;
 var _default = Zui;
 exports.default = _default;
 //# sourceMappingURL=framework.js.map
