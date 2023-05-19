@@ -8,6 +8,14 @@ import Vue from 'vue'
 
 let instance: ZRouterClass
 
+interface CreateAdminRouterOptionsInner extends CreateAdminRouterOptions {
+  router?: VueRouter
+}
+
+interface CreateAppRouterOptionsInner extends CreateAppRouterOptions {
+  router?: VueRouter
+}
+
 export class ZAppRouter {
   protected _router: VueRouter | null = null
   appHome?: RouteComponent
@@ -50,7 +58,14 @@ export class ZAppRouter {
     }
   }
 
-  setting (options: CreateAppRouterOptions) {
+  setting (options: CreateAppRouterOptionsInner): void {
+    // 如果存在自定义router,则不做任何处理
+    const router = options.router
+    if (router) {
+      this._router = router
+      return
+    }
+
     if (options) {
       this.isRenderRouterView = !options.appMain && !options.appHome
 
@@ -203,7 +218,14 @@ export class ZAdminRouter extends ZAppRouter {
     return []
   }
 
-  setting (options: CreateAdminRouterOptions) {
+  setting (options: CreateAdminRouterOptionsInner): void {
+    // 如果存在自定义router
+    const router = options.router
+    if (router) {
+      this._router = router
+      return
+    }
+
     const NotFoundElement = this.genComp(options.appNotFound, ZView404)
     const NotFoundRoute = { path: '*', component: NotFoundElement }
     const routeLogin: RouteConfig = { name: 'r__login', path: '/login', component: this.genComp(options.appLogin, ZDefaultLogin) }
@@ -317,17 +339,19 @@ export class ZRouterClass implements ZRouterDescription {
 
   static appRouter: ZAppRouter;
   static adminRouter: ZAdminRouter;
-  static genAppRouter (options: CreateAppRouterOptions): ZAppRouter {
+  static genAppRouter (options: CreateAppRouterOptionsInner): ZAppRouter {
     const appRouter = new ZAppRouter()
     appRouter.setting(options)
     ZRouterClass.appRouter = appRouter
+    options && options.router && (ZRouterClass.router = options.router)
     return appRouter
   }
 
-  static genAdminRouter (options: CreateAdminRouterOptions): ZAdminRouter {
+  static genAdminRouter (options: CreateAdminRouterOptionsInner): ZAdminRouter {
     const adminRouter = new ZAdminRouter()
     adminRouter.setting(options)
     ZRouterClass.adminRouter = adminRouter
+    options && options.router && (ZRouterClass.router = options.router)
     return adminRouter
   }
 

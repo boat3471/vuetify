@@ -1,9 +1,6 @@
 <template>
   <z-admin class="my-app">
     <template #main>
-      <div class="d-flex">
-        asdas
-      </div>
       <router-view></router-view>
     </template>
   </z-admin>

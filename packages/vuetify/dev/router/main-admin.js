@@ -7,7 +7,7 @@ import { menus } from './admin/menus'
 import { createAdmin } from '@zwd/z-ui'
 import { router } from './admin/test-createAdminRouter'
 
-const app = createAdmin({
+createAdmin({
   appMain: Main,
   defaultMenuWidth: 300,
   defaultDense: true,
@@ -15,9 +15,9 @@ const app = createAdmin({
   componentOptions: {
     router,
   },
-  openHome () {
-    console.info(1111)
-  },
+  // openHome () {
+  //   console.info(1111)
+  // },
 })
 
-app.$router && console.info(app.$router.options)
+// app.$router && console.info(app.$router.options)
