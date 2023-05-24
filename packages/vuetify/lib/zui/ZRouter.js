@@ -53,6 +53,14 @@ export class ZAppRouter {
   }
 
   setting(options) {
+    // 如果存在自定义router,则不做任何处理
+    const router = options.router;
+
+    if (router) {
+      this._router = router;
+      return;
+    }
+
     if (options) {
       this.isRenderRouterView = !options.appMain && !options.appHome;
       this.appHome = options.appHome;
@@ -215,6 +223,14 @@ export class ZAdminRouter extends ZAppRouter {
   }
 
   setting(options) {
+    // 如果存在自定义router
+    const router = options.router;
+
+    if (router) {
+      this._router = router;
+      return;
+    }
+
     const NotFoundElement = this.genComp(options.appNotFound, ZView404);
     const NotFoundRoute = {
       path: '*',
@@ -351,6 +367,7 @@ export class ZRouterClass {
     const appRouter = new ZAppRouter();
     appRouter.setting(options);
     ZRouterClass.appRouter = appRouter;
+    options && options.router && (ZRouterClass.router = options.router);
     return appRouter;
   }
 
@@ -358,6 +375,7 @@ export class ZRouterClass {
     const adminRouter = new ZAdminRouter();
     adminRouter.setting(options);
     ZRouterClass.adminRouter = adminRouter;
+    options && options.router && (ZRouterClass.router = options.router);
     return adminRouter;
   }
 

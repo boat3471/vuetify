@@ -114,6 +114,14 @@ function () {
   }, {
     key: "setting",
     value: function setting(options) {
+      // 如果存在自定义router,则不做任何处理
+      var router = options.router;
+
+      if (router) {
+        this._router = router;
+        return;
+      }
+
       if (options) {
         this.isRenderRouterView = !options.appMain && !options.appHome;
         this.appHome = options.appHome;
@@ -295,6 +303,14 @@ function (_ZAppRouter) {
   }, {
     key: "setting",
     value: function setting(options) {
+      // 如果存在自定义router
+      var router = options.router;
+
+      if (router) {
+        this._router = router;
+        return;
+      }
+
       var NotFoundElement = this.genComp(options.appNotFound, _ZAdmin.ZView404);
       var NotFoundRoute = {
         path: '*',
@@ -460,6 +476,7 @@ function () {
       var appRouter = new ZAppRouter();
       appRouter.setting(options);
       ZRouterClass.appRouter = appRouter;
+      options && options.router && (ZRouterClass.router = options.router);
       return appRouter;
     }
   }, {
@@ -468,6 +485,7 @@ function () {
       var adminRouter = new ZAdminRouter();
       adminRouter.setting(options);
       ZRouterClass.adminRouter = adminRouter;
+      options && options.router && (ZRouterClass.router = options.router);
       return adminRouter;
     }
   }, {

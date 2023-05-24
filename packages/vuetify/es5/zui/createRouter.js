@@ -6,20 +6,16 @@ Object.defineProperty(exports, "__esModule", {
 exports.createRouter = createRouter;
 exports.createAdminRouter = createAdminRouter;
 
-var _vue = _interopRequireDefault(require("vue"));
-
-var _vueRouter = _interopRequireDefault(require("vue-router"));
-
 var _ZRouter = require("./ZRouter");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _installRouter = require("./util/installRouter");
 
 /**
  * 创建路由，可根据菜单生成路由，菜单为可选项
  * @param options
  */
 function createRouter(options) {
-  _vue.default.use(_vueRouter.default);
+  (0, _installRouter.installRouter)();
 
   var zRouter = _ZRouter.ZRouterClass.genAppRouter(options);
 
@@ -32,7 +28,7 @@ function createRouter(options) {
 
 
 function createAdminRouter(options) {
-  _vue.default.use(_vueRouter.default);
+  (0, _installRouter.installRouter)();
 
   var zRouter = _ZRouter.ZRouterClass.genAdminRouter(options);
 

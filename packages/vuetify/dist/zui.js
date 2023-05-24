@@ -38157,7 +38157,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/components/index.ts ***!
   \*********************************/
-/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZSelect, defaultMenuProps, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZApp, ZAppBar, ZAppBarNavIcon, ZAppBarTitle, ZAlert, ZAutocomplete, ZAvatar, ZBadge, ZBanner, ZBottomNavigation, ZBottomSheet, ZBreadcrumbs, ZBreadcrumbsItem, ZBreadcrumbsDivider, ZBtn, ZBtnToggle, ZCalendar, ZCalendarCategory, ZCalendarDaily, ZCalendarWeekly, ZCalendarMonthly, ZCard, ZCardActions, ZCardSubtitle, ZCardText, ZCardTitle, ZCarousel, ZCarouselItem, ZCheckbox, ZSimpleCheckbox, ZChip, ZChipGroup, ZColorPicker, ZContent, ZCombobox, ZCounter, ZData, ZDataIterator, ZDataFooter, ZDataTable, ZDataTableHeader, ZEditDialog, ZTableOverflow, ZSimpleTable, ZVirtualTable, ZDatePicker, ZDatePickerTitle, ZDatePickerHeader, ZDatePickerDateTable, ZDatePickerMonthTable, ZDatePickerYears, ZDialog, ZDivider, ZExpansionPanels, ZExpansionPanel, ZExpansionPanelHeader, ZExpansionPanelContent, ZFileInput, ZFooter, ZForm, ZContainer, ZCol, ZRow, ZSpacer, ZLayout, ZFlex, ZHover, ZIcon, ZImg, ZInput, ZItem, ZItemGroup, ZLabel, ZLazy, ZList, ZListGroup, ZListItem, ZListItemAction, ZListItemAvatar, ZListItemGroup, ZListItemIcon, ZListItemActionText, ZListItemContent, ZListItemSubtitle, ZListItemTitle, ZMain, ZMenu, ZMessages, ZNavigationDrawer, ZOverflowBtn, ZOverlay, ZPagination, ZSheet, ZParallax, ZPicker, ZProgressCircular, ZProgressLinear, ZRadioGroup, ZRadio, ZRangeSlider, ZRating, ZResponsive, ZSelect, ZSkeletonLoader, ZSlider, ZSlideGroup, ZSlideItem, ZSnackbar, ZSparkline, ZSpeedDial, ZStepper, ZStepperContent, ZStepperStep, ZStepperHeader, ZStepperItems, ZSubheader, ZSwitch, ZSystemBar, ZTabs, ZTab, ZTabsItems, ZTabItem, ZTabsSlider, ZTextarea, ZTextField, ZThemeProvider, ZTimeline, ZTimelineItem, ZTimePicker, ZTimePickerClock, ZTimePickerTitle, ZToolbar, ZToolbarItems, ZToolbarTitle, ZTooltip, ZTreeview, ZTreeviewNode, ZVirtualScroll, ZWindow, ZWindowItem, VCarouselTransition, VCarouselReverseTransition, VTabTransition, VTabReverseTransition, VMenuTransition, VFabTransition, VDialogTransition, VDialogBottomTransition, VDialogTopTransition, VFadeTransition, VScaleTransition, VScrollXTransition, VScrollXReverseTransition, VScrollYTransition, VScrollYReverseTransition, VSlideXTransition, VSlideXReverseTransition, VSlideYTransition, VSlideYReverseTransition, VExpandTransition, VExpandXTransition, ZCarouselTransition, ZCarouselReverseTransition, ZTabTransition, ZTabReverseTransition, ZMenuTransition, ZFabTransition, ZDialogTransition, ZDialogBottomTransition, ZDialogTopTransition, ZFadeTransition, ZScaleTransition, ZScrollXTransition, ZScrollXReverseTransition, ZScrollYTransition, ZScrollYReverseTransition, ZSlideXTransition, ZSlideXReverseTransition, ZSlideYTransition, ZSlideYReverseTransition, ZExpandTransition, ZExpandXTransition, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, defaultMenuProps, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38609,14 +38609,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZExpandXTransition", function() { return _transitions__WEBPACK_IMPORTED_MODULE_79__["ZExpandXTransition"]; });
 
 /* harmony import */ var _zui_components__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ../zui/components */ "./src/zui/components/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdmin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdmin"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZAdminApp", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZAdminApp"]; });
@@ -38628,6 +38620,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZView500", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZView500"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDefaultLogin", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDefaultLogin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelector", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelector"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorRect", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorRect"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZColorSelectorTextField", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZColorSelectorTextField"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ZDateTimePicker", function() { return _zui_components__WEBPACK_IMPORTED_MODULE_80__["ZDateTimePicker"]; });
 
 
 
@@ -40150,7 +40150,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.824-beta.7";
+  Zui.version = "2.5.824-beta.8";
   Zui.config = {
     silent: false
   };
@@ -54003,22 +54003,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./src/components/index.ts");
-/* harmony import */ var _styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/ZAdmin.scss */ "./src/zui/components/ZAdmin/styles/ZAdmin.scss");
-/* harmony import */ var _styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util/helpers */ "./src/util/helpers.ts");
+/* harmony import */ var _styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/ZAdmin.scss */ "./src/zui/components/ZAdmin/styles/ZAdmin.scss");
+/* harmony import */ var _styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_ZAdmin_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 var ZAdminApp = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
   name: 'z-admin-application',
   render: function render(h) {
+    var defaultSlot = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["getSlot"])(this) || h('RouterView', {
+      staticClass: 'v-application--wrap'
+    });
     return h(_components__WEBPACK_IMPORTED_MODULE_1__["ZApp"], {
       staticClass: 'z-admin-application',
       props: {
         noWrap: true
       }
-    }, [h('RouterView', {
-      staticClass: 'v-application--wrap'
-    })]);
+    }, [defaultSlot]);
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (ZAdminApp);
@@ -57851,7 +57854,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/zui/components/index.ts ***!
   \*************************************/
-/*! exports provided: ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker, ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin */
+/*! exports provided: ZAdmin, ZAdminApp, ZView403, ZView404, ZView500, ZDefaultLogin, ZColorSelector, ZColorSelectorRect, ZColorSelectorTextField, ZDateTimePicker */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57933,13 +57936,14 @@ var __assign = undefined && undefined.__assign || function () {
  * @internal
  */
 
-function createMain(h, options, appHome) {
+function createMain(h, options, appMain, appHome) {
+  var Content = appMain || appHome;
   return h(_components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZAdminApp"], {
     staticClass: "z-app " + (options.appClass || ''),
     props: {
       id: options.appId || 'app'
     }
-  }, [appHome ? h(appHome) : null]);
+  }, [Content ? h(Content) : null]);
 }
 /**
  * 创建Admin, 基于 @zwd/z-ui
@@ -57976,11 +57980,9 @@ function createAdmin(options) {
     router: componentOptions.router
   });
   var router = componentOptions.router;
-  var appHome;
 
   if (adminRouter) {
     router = adminRouter.getRouter();
-    appHome = adminRouter.appHome;
   }
 
   if (router) {
@@ -57992,7 +57994,9 @@ function createAdmin(options) {
     el: options.appId || '#app',
     vuetify: ui,
     render: function render(h) {
-      return createMain(h, options, appHome || options.appHome);
+      var appMain = adminRouter.appMain || options.appMain;
+      var appHome = adminRouter.appHome || options.appHome;
+      return createMain(h, options, appMain, appHome);
     }
   }, componentOptions));
   return _ZuiCore__WEBPACK_IMPORTED_MODULE_2__["ZuiCoreClass"].$app;

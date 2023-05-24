@@ -2,13 +2,12 @@
 
 import '@mdi/font/css/materialdesignicons.css'
 import '../../dist/zui.css'
-import Main from './admin/Main.vue'
 import { menus } from './admin/menus'
 import { createAdmin } from '@zwd/z-ui'
 import { router } from './admin/test-createAdminRouter'
 
 createAdmin({
-  appMain: Main,
+  // appMain: Main,
   defaultMenuWidth: 300,
   defaultDense: true,
   menus,
