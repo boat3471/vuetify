@@ -11,14 +11,15 @@ import { installRouter } from './util/installRouter'
  * 创建主程序
  * @internal
  */
-function createMain (h: CreateElement, options: CreateAdminOptions, appHome?: RouteComponent) {
+function createMain (h: CreateElement, options: CreateAdminOptions, appMain?: any, appHome?: RouteComponent) {
+  const Content = appMain || appHome
   return h(ZAdminApp, {
     staticClass: `z-app ${options.appClass || ''}`,
     props: {
       id: options.appId || 'app',
     },
   },
-  [appHome ? h(appHome) : null]
+  [Content ? h(Content) : null]
   )
 }
 
@@ -60,11 +61,9 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   })
 
   let router = componentOptions.router
-  let appHome: RouteComponent | undefined
 
   if (adminRouter) {
     router = adminRouter.getRouter()
-    appHome = adminRouter.appHome
   }
 
   if (router) {
@@ -76,7 +75,9 @@ export function createAdmin (options: CreateAdminOptions): Vue {
     el: options.appId || '#app',
     vuetify: ui as unknown as Zui,
     render (h) {
-      return createMain(h, options, appHome || options.appHome)
+      const appMain = adminRouter.appMain || options.appMain
+      const appHome = adminRouter.appHome || options.appHome
+      return createMain(h, options, appMain, appHome)
     },
     ...componentOptions,
   })
