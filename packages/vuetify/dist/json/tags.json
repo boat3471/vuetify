@@ -3523,6 +3523,12 @@
     "attributes": [],
     "description": ""
   },
+  "z-default-theme-option-panel": {
+    "attributes": [
+      "value"
+    ],
+    "description": ""
+  },
   "z-color-selector": {
     "attributes": [
       "default-value",

@@ -5,6 +5,7 @@ import ZView403 from './ZView403'
 import ZView404 from './ZView404'
 import ZView500 from './ZView500'
 import ZDefaultLogin from './ZDefaultLogin'
+import ZDefaultThemeOptionPanel from './ZDefaultThemeOptionPanel'
 
 export {
   ZAdmin,
@@ -13,6 +14,7 @@ export {
   ZView404,
   ZView500,
   ZDefaultLogin,
+  ZDefaultThemeOptionPanel,
 }
 
 export default ZAdmin

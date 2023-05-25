@@ -10431,6 +10431,10 @@
     "type": "string",
     "description": ""
   },
+  "z-default-theme-option-panel/value": {
+    "type": "boolean",
+    "description": ""
+  },
   "z-color-selector/default-value": {
     "type": "string",
     "description": ""
