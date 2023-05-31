@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router'
+import VueRouter, { RouteConfig } from 'vue-router'
 import { CreateAppRouterOptions, CreateAdminRouterOptions } from '../../types'
 import { ZRouterClass } from './ZRouter'
 import { installRouter } from './util/installRouter'
@@ -21,4 +21,8 @@ export function createAdminRouter (options: CreateAdminRouterOptions): VueRouter
   installRouter()
   const zRouter = ZRouterClass.genAdminRouter(options)
   return zRouter.getRouter()
+}
+
+export function createRoutes (routes: RouteConfig[]): RouteConfig[] {
+  return routes
 }

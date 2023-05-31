@@ -126,7 +126,7 @@ var ZAdmin = _vue.default.extend({
 
       var navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(_components.ZAppBarNavIcon, {
           style: {
             marginRight: '16px'
@@ -202,7 +202,7 @@ var ZAdmin = _vue.default.extend({
     genAppMenus: function genAppMenus(h) {
       var _this2 = this;
 
-      if (!this.$menu.isRender) {
+      if (!this.$menu.data.isRender) {
         return [];
       }
 
@@ -284,7 +284,7 @@ var ZAdmin = _vue.default.extend({
       }, ["Copyright \xA9 2019-2020 ".concat(this.projectDisplayName, " | Powered By ZPMC")])];
       var navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(_components.ZIcon, {
           staticClass: 'mr-3',
           props: {
@@ -295,14 +295,16 @@ var ZAdmin = _vue.default.extend({
           }
         }, ['mdi-menu']);
       } else {
-        navIcon = h(_ZDefaultThemeIcon.ZDefaultThemeIcon, {
-          staticClass: 'mr-2',
-          on: {
-            'click:theme': function clickTheme() {
-              _this3.onShowThemePanel();
+        if (this.$themeStore.mainNavMode !== _options.MainNavMode.Flex) {
+          navIcon = h(_ZDefaultThemeIcon.ZDefaultThemeIcon, {
+            staticClass: 'mr-2',
+            on: {
+              'click:theme': function clickTheme() {
+                _this3.onShowThemePanel();
+              }
             }
-          }
-        });
+          });
+        }
       }
 
       var defaultFooter = h(_components.ZFooter, {

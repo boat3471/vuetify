@@ -117,7 +117,7 @@ export const ZAdmin = Vue.extend({
 
       let navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(ZAppBarNavIcon, {
           style: {
             marginRight: '16px'
@@ -188,7 +188,7 @@ export const ZAdmin = Vue.extend({
     },
 
     genAppMenus(h) {
-      if (!this.$menu.isRender) {
+      if (!this.$menu.data.isRender) {
         return [];
       }
 
@@ -265,7 +265,7 @@ export const ZAdmin = Vue.extend({
       }, [`Copyright © 2019-2020 ${this.projectDisplayName} | Powered By ZPMC`])];
       let navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(ZIcon, {
           staticClass: 'mr-3',
           props: {
@@ -276,14 +276,16 @@ export const ZAdmin = Vue.extend({
           }
         }, ['mdi-menu']);
       } else {
-        navIcon = h(ZDefaultThemeIcon, {
-          staticClass: 'mr-2',
-          on: {
-            'click:theme': () => {
-              this.onShowThemePanel();
+        if (this.$themeStore.mainNavMode !== MainNavMode.Flex) {
+          navIcon = h(ZDefaultThemeIcon, {
+            staticClass: 'mr-2',
+            on: {
+              'click:theme': () => {
+                this.onShowThemePanel();
+              }
             }
-          }
-        });
+          });
+        }
       }
 
       const defaultFooter = h(ZFooter, {

@@ -101,7 +101,9 @@ let instance;
 export class ZMenuClass {
   constructor() {
     this.selectedMenu = null;
-    this.isRender = false;
+    this.data = Vue.observable({
+      isRender: false
+    });
 
     if (!instance) {
       instance = this;
@@ -118,14 +120,13 @@ export class ZMenuClass {
     return ZRouterClass.genInstance();
   }
 
-  settingMenus(menus, autoGenRoute = true) {
-    this.isRender = menus ? menus.length > 0 : false;
+  settingMenus(menus, autoGenRoute = false) {
+    this.data.isRender = menus ? menus.length > 0 : false;
 
     if (menus && menus.length > 0) {
-      if (autoGenRoute) {
-        this.$router.addRoutesByMenus(menus);
-      }
-
+      // if (autoGenRoute) {
+      //   this.$router.addRoutesByMenus(menus)
+      // }
       const menusData = filterMenusData(menus);
       ZMenuClass.__menusData = menusData;
 

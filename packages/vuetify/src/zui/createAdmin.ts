@@ -44,7 +44,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   $auth.setting(options.auth || {})
 
   // 设置菜单
-  $menu.settingMenus(options.menus || [], false)
+  $menu.settingMenus(options.menus || [])
 
   // 设置 vuetify and zui
   const presetOptions = $theme.getDefaultPreset(options.presetOptions)

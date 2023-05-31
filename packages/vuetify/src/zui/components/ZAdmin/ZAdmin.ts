@@ -115,7 +115,7 @@ export const ZAdmin = Vue.extend({
       /* 导航按钮 */
       let navIcon = null
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(ZAppBarNavIcon, {
           style: { marginRight: '16px' },
           on: { click: this.onShowNavDrawer },
@@ -181,7 +181,7 @@ export const ZAdmin = Vue.extend({
       ])
     },
     genAppMenus (h: CreateElement): VNode[] {
-      if (!this.$menu.isRender) {
+      if (!this.$menu.data.isRender) {
         return []
       }
       if (this.$themeStore.cameraModel) {
@@ -265,21 +265,23 @@ export const ZAdmin = Vue.extend({
       ]
 
       let navIcon = null
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(ZIcon, {
           staticClass: 'mr-3',
           props: { size: 14 },
           on: { click: this.onShowNavDrawer },
         }, ['mdi-menu'])
       } else {
-        navIcon = h(ZDefaultThemeIcon, {
-          staticClass: 'mr-2',
-          on: {
-            'click:theme': () => {
-              this.onShowThemePanel()
+        if (this.$themeStore.mainNavMode !== MainNavMode.Flex) {
+          navIcon = h(ZDefaultThemeIcon, {
+            staticClass: 'mr-2',
+            on: {
+              'click:theme': () => {
+                this.onShowThemePanel()
+              },
             },
-          },
-        })
+          })
+        }
       }
 
       const defaultFooter = h(ZFooter, {

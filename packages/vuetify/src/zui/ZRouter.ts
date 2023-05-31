@@ -1,5 +1,4 @@
-import VueRouter, { Route, RouteConfig } from 'vue-router'
-import { RedirectOption, RouterOptions } from 'vue-router/types/router'
+import VueRouter, { Route, RouteConfig, RedirectOption, RouterOptions } from 'vue-router'
 import { CreateAdminRouterOptions, CreateAppRouterOptions, RouteComponent, ZMenuOption } from '../../types'
 import { ZRouterDescription } from '../../types/zui/ZRouter'
 import { ZAdmin, ZApp } from '../components'

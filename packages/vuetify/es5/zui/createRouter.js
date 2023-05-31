@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createRouter = createRouter;
 exports.createAdminRouter = createAdminRouter;
+exports.createRoutes = createRoutes;
 
 var _ZRouter = require("./ZRouter");
 
@@ -33,5 +34,9 @@ function createAdminRouter(options) {
   var zRouter = _ZRouter.ZRouterClass.genAdminRouter(options);
 
   return zRouter.getRouter();
+}
+
+function createRoutes(routes) {
+  return routes;
 }
 //# sourceMappingURL=createRouter.js.map

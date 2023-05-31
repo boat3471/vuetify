@@ -2,9 +2,9 @@ import { ZMenuOption } from './options'
 
 export interface ZMenuDescription {
   /**
-   * 是否渲染菜单
+   * 菜单响应数据
    */
-  isRender: boolean
+  data: { isRender: boolean }
 
   /**
    * 当前选中的菜单
@@ -19,7 +19,7 @@ export interface ZMenuDescription {
   /**
    * 设置菜单配置信息
    * @param menus
-   * @param autoGenRoute 默认会自动添加路由
+   * @param autoGenRoute 默认false，为true时自动添加路由
    */
   settingMenus (menus: ZMenuOption[], autoGenRoute: boolean): void
 

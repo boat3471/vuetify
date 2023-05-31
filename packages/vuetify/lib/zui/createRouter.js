@@ -20,4 +20,7 @@ export function createAdminRouter(options) {
   const zRouter = ZRouterClass.genAdminRouter(options);
   return zRouter.getRouter();
 }
+export function createRoutes(routes) {
+  return routes;
+}
 //# sourceMappingURL=createRouter.js.map

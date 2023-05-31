@@ -40152,7 +40152,7 @@ function () {
   };
 
   Zui.installed = false;
-  Zui.version = "2.5.824-beta.9";
+  Zui.version = "2.5.824-beta.10";
   Zui.config = {
     silent: false
   };
@@ -51695,7 +51695,9 @@ var ZMenuClass =
 function () {
   function ZMenuClass() {
     this.selectedMenu = null;
-    this.isRender = false;
+    this.data = vue__WEBPACK_IMPORTED_MODULE_0___default.a.observable({
+      isRender: false
+    });
 
     if (!instance) {
       instance = this;
@@ -51721,16 +51723,15 @@ function () {
 
   ZMenuClass.prototype.settingMenus = function (menus, autoGenRoute) {
     if (autoGenRoute === void 0) {
-      autoGenRoute = true;
+      autoGenRoute = false;
     }
 
-    this.isRender = menus ? menus.length > 0 : false;
+    this.data.isRender = menus ? menus.length > 0 : false;
 
     if (menus && menus.length > 0) {
-      if (autoGenRoute) {
-        this.$router.addRoutesByMenus(menus);
-      }
-
+      // if (autoGenRoute) {
+      //   this.$router.addRoutesByMenus(menus)
+      // }
       var menusData = filterMenusData(menus);
       ZMenuClass.__menusData = menusData;
 
@@ -53747,7 +53748,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
 
       var navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZAppBarNavIcon"], {
           style: {
             marginRight: '16px'
@@ -53823,7 +53824,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
     genAppMenus: function genAppMenus(h) {
       var _this = this;
 
-      if (!this.$menu.isRender) {
+      if (!this.$menu.data.isRender) {
         return [];
       }
 
@@ -53904,7 +53905,7 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
       }, ["Copyright \xA9 2019-2020 " + this.projectDisplayName + " | Powered By ZPMC"])];
       var navIcon = null;
 
-      if (this.$menu.isRender && this.showNavIcon) {
+      if (this.$menu.data.isRender && this.showNavIcon) {
         navIcon = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZIcon"], {
           staticClass: 'mr-3',
           props: {
@@ -53915,14 +53916,16 @@ var ZAdmin = vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
           }
         }, ['mdi-menu']);
       } else {
-        navIcon = h(_menu_ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_9__["ZDefaultThemeIcon"], {
-          staticClass: 'mr-2',
-          on: {
-            'click:theme': function clickTheme() {
-              _this.onShowThemePanel();
+        if (this.$themeStore.mainNavMode !== _options__WEBPACK_IMPORTED_MODULE_3__["MainNavMode"].Flex) {
+          navIcon = h(_menu_ZDefaultThemeIcon__WEBPACK_IMPORTED_MODULE_9__["ZDefaultThemeIcon"], {
+            staticClass: 'mr-2',
+            on: {
+              'click:theme': function clickTheme() {
+                _this.onShowThemePanel();
+              }
             }
-          }
-        });
+          });
+        }
       }
 
       var defaultFooter = h(_components__WEBPACK_IMPORTED_MODULE_1__["ZFooter"], {
@@ -57975,7 +57978,7 @@ function createAdmin(options) {
 
   $auth.setting(options.auth || {}); // 设置菜单
 
-  $menu.settingMenus(options.menus || [], false); // 设置 vuetify and zui
+  $menu.settingMenus(options.menus || []); // 设置 vuetify and zui
 
   var presetOptions = $theme.getDefaultPreset(options.presetOptions);
   var ui = Object(_createZui__WEBPACK_IMPORTED_MODULE_3__["createZui"])(presetOptions, options.useOptions);
@@ -58138,13 +58141,14 @@ function createMenus(menus) {
 /*!*********************************!*\
   !*** ./src/zui/createRouter.ts ***!
   \*********************************/
-/*! exports provided: createRouter, createAdminRouter */
+/*! exports provided: createRouter, createAdminRouter, createRoutes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createRouter", function() { return createRouter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAdminRouter", function() { return createAdminRouter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createRoutes", function() { return createRoutes; });
 /* harmony import */ var _ZRouter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ZRouter */ "./src/zui/ZRouter.ts");
 /* harmony import */ var _util_installRouter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util/installRouter */ "./src/zui/util/installRouter.ts");
 
@@ -58168,6 +58172,9 @@ function createAdminRouter(options) {
   Object(_util_installRouter__WEBPACK_IMPORTED_MODULE_1__["installRouter"])();
   var zRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_0__["ZRouterClass"].genAdminRouter(options);
   return zRouter.getRouter();
+}
+function createRoutes(routes) {
+  return routes;
 }
 
 /***/ }),
@@ -58922,7 +58929,13 @@ __webpack_require__.r(__webpack_exports__);
 
 function installRouter() {
   var installVueRouter = vue_router__WEBPACK_IMPORTED_MODULE_1__["default"].install;
-  installVueRouter.installed !== true || vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+  if (installVueRouter.installed !== true) {
+    try {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+    } catch (e) {// ignore
+    }
+  }
 }
 
 

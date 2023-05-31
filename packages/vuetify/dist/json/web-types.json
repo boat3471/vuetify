@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.824-beta.9",
+  "version": "2.5.824-beta.10",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -4730,7 +4730,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2023-05-25",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5107,7 +5107,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2023-05-25",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5389,7 +5389,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2023-05-25",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5607,7 +5607,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2023-05-25",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5825,7 +5825,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2023-05-25",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [

@@ -39,7 +39,7 @@ export function createAdmin(options) {
 
   $auth.setting(options.auth || {}); // 设置菜单
 
-  $menu.settingMenus(options.menus || [], false); // 设置 vuetify and zui
+  $menu.settingMenus(options.menus || []); // 设置 vuetify and zui
 
   const presetOptions = $theme.getDefaultPreset(options.presetOptions);
   const ui = createZui(presetOptions, options.useOptions);

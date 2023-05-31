@@ -93,7 +93,10 @@ let instance: ZMenuClass
 
 export class ZMenuClass implements ZMenuDescription {
   selectedMenu: ZMenuOption | null = null
-  isRender = false;
+
+  data = Vue.observable({
+    isRender: false,
+  })
 
   get menusData (): ZMenuOption[] {
     return ZMenuClass.__menusData
@@ -103,12 +106,12 @@ export class ZMenuClass implements ZMenuDescription {
     return ZRouterClass.genInstance()
   }
 
-  settingMenus (menus: ZMenuOption[], autoGenRoute = true): void {
-    this.isRender = (menus ? menus.length > 0 : false)
+  settingMenus (menus: ZMenuOption[], autoGenRoute = false): void {
+    this.data.isRender = (menus ? menus.length > 0 : false)
     if (menus && menus.length > 0) {
-      if (autoGenRoute) {
-        this.$router.addRoutesByMenus(menus)
-      }
+      // if (autoGenRoute) {
+      //   this.$router.addRoutesByMenus(menus)
+      // }
       const menusData = filterMenusData(menus)
       ZMenuClass.__menusData = menusData
       __events.$emit('update-menus', menusData)

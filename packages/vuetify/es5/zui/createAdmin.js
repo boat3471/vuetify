@@ -60,7 +60,7 @@ function createAdmin(options) {
 
   $auth.setting(options.auth || {}); // 设置菜单
 
-  $menu.settingMenus(options.menus || [], false); // 设置 vuetify and zui
+  $menu.settingMenus(options.menus || []); // 设置 vuetify and zui
 
   var presetOptions = $theme.getDefaultPreset(options.presetOptions);
   var ui = (0, _createZui.createZui)(presetOptions, options.useOptions);

@@ -19,6 +19,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function installRouter() {
   var installVueRouter = _vueRouter.default.install;
-  installVueRouter.installed !== true || _vue.default.use(_vueRouter.default);
+
+  if (installVueRouter.installed !== true) {
+    try {
+      _vue.default.use(_vueRouter.default);
+    } catch (e) {// ignore
+    }
+  }
 }
 //# sourceMappingURL=installRouter.js.map

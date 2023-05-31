@@ -6,7 +6,7 @@ import { menus } from './admin/menus'
 import { createAdmin } from '@zwd/z-ui'
 import { router } from './admin/test-createAdminRouter'
 
-createAdmin({
+const app = createAdmin({
   // appMain: Main,
   defaultMenuWidth: 300,
   defaultDense: true,
@@ -20,3 +20,18 @@ createAdmin({
 })
 
 // app.$router && console.info(app.$router.options)
+
+setTimeout(() => {
+  app.$menu.settingMenus([
+    {
+      name: 'aaa',
+      path: '/aaa',
+      icon: 'mdi-view-dashboard-outline',
+    },
+    {
+      name: 'bbb',
+      path: '/bbb',
+      icon: 'mdi-view-dashboard-outline',
+    },
+  ])
+}, 3000)
