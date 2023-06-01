@@ -227,7 +227,6 @@ export class ZAdminRouter extends ZAppRouter {
 
     const NotFoundElement = this.genComp(options.appNotFound, ZView404)
     const NotFoundRoute = { path: '*', component: NotFoundElement }
-    const routeLogin: RouteConfig = { name: 'r__login', path: '/login', component: this.genComp(options.appLogin, ZDefaultLogin) }
     const route500: RouteConfig = { name: 'r__500', path: '/500', component: this.genComp(options.appServerError, ZView500) }
     const route403: RouteConfig = { name: 'r__403', path: '/403', component: this.genComp(options.appNotAccess, ZView403) }
     const route404: RouteConfig = { name: 'r__404', path: '/404', component: NotFoundElement }
@@ -247,41 +246,59 @@ export class ZAdminRouter extends ZAppRouter {
     options.redirect && (routeHome.redirect = options.redirect)
 
     const routerOptions = options.routerOptions || {}
-    const usrRoutes = routerOptions.routes || []
-    let usrRedirect: any = ''
+    const userRoutes = routerOptions.routes || []
+    let useUserLogin = false
+    let userRedirect: any = ''
 
-    usrRoutes.forEach(route => {
-      if (route.path === '/' || route.path === '') {
-        const children = route.children || []
-        delete route.children
+    userRoutes.forEach(route => {
+      switch (route.path) {
+        case '':
+        case '/': {
+          const children = route.children || []
+          delete route.children
 
-        if ('component' in route && route.component) {
-          routeHome.component = route.component
+          if ('component' in route && route.component) {
+            routeHome.component = route.component
+          }
+          // 设置用户自定义的重定向，会忽略options中定义的重定向
+          !userRedirect && (userRedirect = route.redirect)
+
+          // 添加所有子组件到跟路由
+          middleChildren.push(...children)
+          break
         }
-        // 设置用户自定义的重定向，会忽略options中定义的重定向
-        !usrRedirect && (usrRedirect = route.redirect)
-
-        // 添加所有子组件到跟路由
-        middleChildren.push(...children)
-      } else {
-        middleChildren.push(route)
+        case '/login': {
+          useUserLogin = true
+          middleChildren.push(route)
+          break
+        }
+        default: {
+          middleChildren.push(route)
+          break
+        }
       }
     })
 
-    usrRedirect && (routeHome.redirect = usrRedirect)
+    userRedirect && (routeHome.redirect = userRedirect)
 
     const menuRoutes = this.createRoutesByMenus(options.menus, '')
 
     routeRoot.children = [...beforeChildren, ...middleChildren, ...menuRoutes, ...afterChildren]
 
-    routerOptions.routes = [
-      routeLogin,
-      route500,
-      route403,
-      route404,
-      routeRoot,
-      routeRoot404,
-    ]
+    const routes: RouteConfig[] = []
+    if (!useUserLogin) {
+      // 添加登录路由；
+      routes.push({ name: 'r__login', path: '/login', component: this.genComp(options.appLogin, ZDefaultLogin) })
+    }
+
+    // 添加异常路由
+    routes.push(route500, route403, route404)
+
+    // 添加主视图异常路由
+    routes.push(routeRoot, routeRoot404)
+
+    routerOptions.routes = routes
+
     this.routerOptions = routerOptions
   }
 }

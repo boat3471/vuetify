@@ -5,6 +5,7 @@ import { createAdminRouter } from '@zwd/z-ui'
 // import App from './App.vue'
 import Test from './Test.vue'
 import Test1 from './Test1.vue'
+import TestLogin from '../components/TestLogin.vue'
 import Main from '../admin/Main.vue'
 
 export const router = createAdminRouter({
@@ -21,6 +22,15 @@ export const router = createAdminRouter({
       //     a: 'home',
       //   },
       // },
+      {
+        name: 'login',
+        path: '/login',
+        meta: {
+          title: 'Login - 登录',
+          hideInMenu: true,
+        },
+        component: TestLogin,
+      },
       {
         name: 'aaa',
         path: '/aaa',

@@ -2,7 +2,7 @@ import { Zui } from './framework'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
 import { createMenus } from './zui/createMenus'
-import { createRouter, createAdminRouter } from './zui/createRouter'
+import { createRouter, createAdminRouter, createRoutes } from './zui/createRouter'
 import { ZMessageClass } from './zui/ZMessage'
 import { ZModalClass } from './zui/ZModal'
 import { ZuiCoreClass } from './zui/ZuiCore'
@@ -24,6 +24,7 @@ export default {
   createMenus,
   createRouter,
   createAdminRouter,
+  createRoutes,
   ZIconLoader,
   ZColorUtils,
   get $zui (): ZuiCoreClass {
@@ -65,7 +66,7 @@ export default {
   get ZColors (): any {
     return colors
   },
-  getComponent(name: string): any {
+  getComponent (name: string): any {
     return Zui.Components[name]
   },
 }
