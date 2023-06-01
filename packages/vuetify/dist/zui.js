@@ -52649,9 +52649,7 @@ function (_super) {
   };
 
   ZAdminRouter.prototype.setting = function (options) {
-    // eslint-disable-next-line no-debugger
-    debugger; // 如果存在自定义router
-
+    // 如果存在自定义router
     var router = options.router;
 
     if (router) {
@@ -52756,7 +52754,6 @@ function (_super) {
 
     routes.push(routeRoot, routeRoot404);
     routerOptions.routes = routes;
-    window.console.info(routes);
     this.routerOptions = routerOptions;
   };
 
