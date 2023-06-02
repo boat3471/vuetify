@@ -8,7 +8,7 @@ import { ZModalClass } from './zui/ZModal'
 import { ZuiCoreClass } from './zui/ZuiCore'
 import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
-import { ZRouterClass } from './zui/ZRouter'
+import { ZRouterCore } from './zui/ZRouter'
 import { ZIconLoader } from './zui/ZIconLoader'
 import { colors } from './util/colors'
 import * as ZColorUtils from './util/colorUtils'
@@ -57,10 +57,10 @@ export default {
   get ZTheme (): ZThemeClass {
     return ZuiCoreClass.genInstance().$theme
   },
-  get $router (): ZRouterClass {
+  get $router (): ZRouterCore {
     return ZuiCoreClass.genInstance().$router
   },
-  get ZRouter (): ZRouterClass {
+  get ZRouter (): ZRouterCore {
     return ZuiCoreClass.genInstance().$router
   },
   get ZColors (): any {

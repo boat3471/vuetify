@@ -24,7 +24,7 @@ import { ZuiCoreDescription } from './zui/ZuiCore';
 import { ZMessageDescription } from './zui/ZMessage';
 import { ZModalDescription } from './zui/ZModal';
 import { ZMenuDescription } from "./zui/ZMenu";
-import { ZRouterDescription } from "./zui/ZRouter";
+import { IZRouter } from "./zui/ZRouter";
 import { ZThemeDescription } from "./zui/ZTheme";
 import { ZAuthDescription } from "./zui/ZAuth";
 import { ZThemeCustomOptions } from "./zui";
@@ -35,14 +35,14 @@ export const ZuiCore: ZuiCoreDescription
 export const ZMessage: ZMessageDescription
 export const ZModal: ZModalDescription
 export const ZMenu: ZMenuDescription
-export const ZRouter: ZRouterDescription
+export const ZRouter: IZRouter
 export const ZTheme: ZThemeDescription
 export const ZAuth: ZAuthDescription
 export const $zui: ZuiCoreDescription
 export const $message: ZMessageDescription
 export const $modal: ZModalDescription
 export const $menu: ZMenuDescription
-export const $router: ZRouterDescription
+export const $router: IZRouter
 export const $theme: ZThemeDescription
 export const $auth: ZAuthDescription
 export function getComponent(name: string): ComponentOptions<Vue> | typeof Vue | AsyncComponent

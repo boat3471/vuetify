@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { ZMenuOption } from '../../types'
 import { ZMenuDescription } from '../../types/zui/ZMenu'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 
 function filterMenusData (list: ZMenuOption[], level = 0, parent: ZMenuOption | null = null): ZMenuOption[] {
   if (list && list.length > 0) {
@@ -102,8 +102,8 @@ export class ZMenuClass implements ZMenuDescription {
     return ZMenuClass.__menusData
   }
 
-  get $router (): ZRouterClass {
-    return ZRouterClass.genInstance()
+  get $router (): ZRouterCore {
+    return ZRouterCore.genInstance()
   }
 
   settingMenus (menus: ZMenuOption[], autoGenRoute = false): void {

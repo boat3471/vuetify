@@ -1,7 +1,7 @@
 import Vue, { ComponentOptions, CreateElement, VNode } from 'vue'
 import { CreateAppOptions, RouteComponent, Zui } from '../../types'
 import { ZuiCoreClass } from './ZuiCore'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 import { createZui } from './createZui'
 import { ZApp } from '../components/VApp/ZApp'
 
@@ -46,7 +46,7 @@ export function createApp (options: CreateAppOptions): Vue {
 
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
 
-  const appRouter = ZRouterClass.appRouter
+  const appRouter = ZRouterCore.appRouter
 
   let appMain: RouteComponent | undefined
   let appHome: RouteComponent | undefined
@@ -60,7 +60,7 @@ export function createApp (options: CreateAppOptions): Vue {
 
   // 如果用户传了自定义的 router
   if (componentOptions.router) {
-    ZRouterClass.router = componentOptions.router
+    ZRouterCore.router = componentOptions.router
   } else {
     appMain = options.appMain
     appHome = options.appHome

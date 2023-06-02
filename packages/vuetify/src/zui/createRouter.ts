@@ -1,6 +1,6 @@
 import VueRouter, { RouteConfig } from 'vue-router'
 import { CreateAppRouterOptions, CreateAdminRouterOptions } from '../../types'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 import { installRouter } from './util/installRouter'
 
 /**
@@ -9,7 +9,7 @@ import { installRouter } from './util/installRouter'
  */
 export function createRouter (options: CreateAppRouterOptions): VueRouter {
   installRouter()
-  const zRouter = ZRouterClass.genAppRouter(options)
+  const zRouter = ZRouterCore.genAppRouter(options)
   return zRouter.getRouter()
 }
 
@@ -19,7 +19,7 @@ export function createRouter (options: CreateAppRouterOptions): VueRouter {
  */
 export function createAdminRouter (options: CreateAdminRouterOptions): VueRouter {
   installRouter()
-  const zRouter = ZRouterClass.genAdminRouter(options)
+  const zRouter = ZRouterCore.genAdminRouter(options)
   return zRouter.getRouter()
 }
 

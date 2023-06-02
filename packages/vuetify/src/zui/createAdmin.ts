@@ -4,7 +4,7 @@ import { CreateAdminOptions, RouteComponent, Zui } from '../../types'
 
 import { ZuiCoreClass } from './ZuiCore'
 import { createZui } from './createZui'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 import { installRouter } from './util/installRouter'
 
 /**
@@ -53,7 +53,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
 
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
 
-  const adminRouter = ZRouterClass.adminRouter || ZRouterClass.genAdminRouter({
+  const adminRouter = ZRouterCore.adminRouter || ZRouterCore.genAdminRouter({
     appMain: options.appMain,
     appHome: options.appHome,
     redirect: options.redirect,
@@ -68,7 +68,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
 
   if (router) {
     componentOptions.router = router
-    ZRouterClass.router = router
+    ZRouterCore.router = router
   }
 
   ZuiCoreClass.$app = new Vue({
