@@ -1,11 +1,11 @@
 import VueRouter, { Route, RouteConfig, RedirectOption, RouterOptions } from 'vue-router'
 import { CreateAdminRouterOptions, CreateAppRouterOptions, RouteComponent, ZMenuOption } from '../../types'
-import { ZRouterDescription } from '../../types/zui/ZRouter'
+import { IZRouter } from '../../types/zui/ZRouter'
 import { ZAdmin, ZApp } from '../components'
 import { ZView403, ZView404, ZView500, ZDefaultLogin } from './components/ZAdmin'
-import Vue from 'vue'
+import { genComp, genDefaultHome, genDefaultLoginRoute, genExceptionRoutes } from './route'
 
-let instance: ZRouterClass
+let instance: ZRouterCore
 
 interface CreateAdminRouterOptionsInner extends CreateAdminRouterOptions {
   router?: VueRouter
@@ -87,46 +87,6 @@ export class ZAppRouter {
 }
 
 export class ZAdminRouter extends ZAppRouter {
-  genComp (usr: RouteComponent | boolean | undefined, def: RouteComponent): RouteComponent | undefined {
-    if (typeof usr === 'boolean') {
-      return usr ? def : undefined
-    }
-    return usr || def
-  }
-
-  get defaultHome () {
-    return Vue.extend({
-      name: 'z-admin-default-home',
-      render (h) {
-        return h('div', { staticClass: 'z-admin-default-home' })
-      },
-    })
-  }
-
-  /**
-   * 生成完整路径
-   * @param path
-   * @param parentPath
-   */
-  genFullPathByMenu (path: string, parentPath?: string): string {
-    if (path.indexOf('/') !== 0) {
-      return `/${parentPath || ''}/${path}`.replace(/\/+/g, '/')
-    }
-    return path
-  }
-
-  parseUsrRoutes (routes: RouteConfig[], parentPath: string): RouteConfig[] {
-    const list: RouteConfig[] = []
-    routes.forEach(route => {
-      if (route) {
-        route.path = this.genFullPathByMenu(route.path)
-        route.name = route.name || `usr-${route.path.replace(/\//g, '-')}`
-        list.push(route)
-      }
-    })
-    return list
-  }
-
   /**
    * 根据菜单生成路由列表
    * @param menus
@@ -180,27 +140,6 @@ export class ZAdminRouter extends ZAppRouter {
     return list
   }
 
-  /** 生成异常路由 */
-  genExceptionRoute (name = '', path = ''): RouteConfig[] {
-    const list: RouteConfig[] = []
-    list.push({
-      name: `${name}-403`,
-      path: `${path}/403`.replace(/\/\//g, '/'),
-      component: ZView403,
-    })
-    list.push({
-      name: `${name}-500`,
-      path: `${path}/500`.replace(/\/\//g, '/'),
-      component: ZView500,
-    })
-    list.push({
-      name: `${name}-404`,
-      path: `${path}/*`.replace(/\/\//g, '/'),
-      component: ZView404,
-    })
-    return list
-  }
-
   /**
    * 根据菜单创建路由列表
    * @param menus
@@ -210,7 +149,7 @@ export class ZAdminRouter extends ZAppRouter {
     if (menus && menus.length > 0) {
       const children: RouteConfig[] = []
       children.push(...this.genRoutesByMenus(menus, children, '/'))
-      children.push(...this.genExceptionRoute())
+      children.push(...genExceptionRoutes())
       // children.push({ name: '--empty', path: '', redirect })
       return children
     }
@@ -225,57 +164,56 @@ export class ZAdminRouter extends ZAppRouter {
       return
     }
 
-    const NotFoundElement = this.genComp(options.appNotFound, ZView404)
-    const NotFoundRoute = { path: '*', component: NotFoundElement }
-    const route500: RouteConfig = { name: 'r__500', path: '/500', component: this.genComp(options.appServerError, ZView500) }
-    const route403: RouteConfig = { name: 'r__403', path: '/403', component: this.genComp(options.appNotAccess, ZView403) }
-    const route404: RouteConfig = { name: 'r__404', path: '/404', component: NotFoundElement }
+    const NotFoundElement = genComp(options.appNotFound, ZView404)
 
-    const routeRoot404: RouteConfig = { name: 'r__root_404', path: '*', component: NotFoundElement }
     const routeRoot: RouteConfig = { path: '/', component: options.appMain || ZAdmin }
-    const routeHome: RouteConfig = { path: '', component: options.appHome || this.defaultHome }
+    const routeHome: RouteConfig = { path: '', component: options.appHome || genDefaultHome() }
 
     // 跟节点所有前置子节点
     const beforeChildren: RouteConfig[] = [routeHome]
     // 跟节点所有中置子节点
     const middleChildren: RouteConfig[] = []
     // 跟节点所有后置子节点
-    const afterChildren: RouteConfig[] = [NotFoundRoute]
+    const afterChildren: RouteConfig[] = [{ path: '*', component: NotFoundElement }]
 
     // 给Home设置重定向
     options.redirect && (routeHome.redirect = options.redirect)
 
     const routerOptions = options.routerOptions || {}
     const userRoutes = routerOptions.routes || []
-    let useUserLogin = false
+    const userMap: any = {
+      login: null,
+      e500: null,
+      e403: null,
+      e404: null,
+    }
     let userRedirect: any = ''
 
     userRoutes.forEach(route => {
-      switch (route.path) {
-        case '':
-        case '/': {
-          const children = route.children || []
-          delete route.children
+      const path = route.path
+      const name = route.name
+      if (path === '' || path === '/') {
+        const children = route.children || []
+        delete route.children
 
-          if ('component' in route && route.component) {
-            routeHome.component = route.component
-          }
-          // 设置用户自定义的重定向，会忽略options中定义的重定向
-          !userRedirect && (userRedirect = route.redirect)
+        if ('component' in route && route.component) {
+          routeHome.component = route.component
+        }
+        // 设置用户自定义的重定向，会忽略options中定义的重定向
+        !userRedirect && (userRedirect = route.redirect)
 
-          // 添加所有子组件到跟路由
-          middleChildren.push(...children)
-          break
-        }
-        case '/login': {
-          useUserLogin = true
-          middleChildren.push(route)
-          break
-        }
-        default: {
-          middleChildren.push(route)
-          break
-        }
+        // 添加所有子组件到跟路由
+        middleChildren.push(...children)
+      } else if (path === '/login' || name === 'login') {
+        userMap.login = route
+      } else if (path === '/500') {
+        userMap.e500 = route
+      } else if (path === '/403') {
+        userMap.e403 = route
+      } else if (path === '/404') {
+        userMap.e404 = route
+      } else {
+        middleChildren.push(route)
       }
     })
 
@@ -286,49 +224,55 @@ export class ZAdminRouter extends ZAppRouter {
     routeRoot.children = [...beforeChildren, ...middleChildren, ...menuRoutes, ...afterChildren]
 
     const routes: RouteConfig[] = []
-    if (!useUserLogin) {
-      // 添加登录路由；
-      routes.push({ name: 'r__login', path: '/login', component: this.genComp(options.appLogin, ZDefaultLogin) })
-    }
+
+    // 添加登录路由；
+    routes.push(userMap.login || genDefaultLoginRoute(options.appLogin))
 
     // 添加异常路由
-    routes.push(route500, route403, route404)
+    routes.push(userMap.e500 || { name: '500', path: '/500', component: genComp(options.appServerError, ZView500) })
+    routes.push(userMap.e403 || { name: '403', path: '/403', component: genComp(options.appNotAccess, ZView403) })
+    routes.push(userMap.e404 || { name: '404', path: '/404', component: NotFoundElement })
 
-    // 添加主视图异常路由
-    routes.push(routeRoot, routeRoot404)
+    // 添加主视图路由
+    routes.push(routeRoot)
+
+    // 添加主视图404路由, 无法命中时跳转该路由
+    routes.push({ name: 'root-not-found', path: '*', component: NotFoundElement })
 
     routerOptions.routes = routes
+
+    window.console.info(routes)
 
     this.routerOptions = routerOptions
   }
 }
 
-export class ZRouterClass implements ZRouterDescription {
+export class ZRouterCore implements IZRouter {
   get self (): VueRouter {
-    return ZRouterClass.router
+    return ZRouterCore.router
   }
 
   get currentRouter (): VueRouter {
-    return ZRouterClass.router
+    return ZRouterCore.router
   }
 
   get currentRoute (): Route {
-    return ZRouterClass.router.currentRoute
+    return ZRouterCore.router.currentRoute
   }
 
   get currentRoutePath (): string {
-    return ZRouterClass.router.currentRoute.path
+    return ZRouterCore.router.currentRoute.path
   }
 
   getRouter (): VueRouter {
-    return ZRouterClass.router
+    return ZRouterCore.router
   }
 
   addRoutesByMenus (menus: ZMenuOption[] = []) {
     const router = this.currentRouter
     if (router) {
-      const options = ZRouterClass.adminRouter || {}
-      ZRouterClass.menus = menus = menus || []
+      const options = ZRouterCore.adminRouter || {}
+      ZRouterCore.menus = menus = menus || []
 
       // todo 待完成，动态添加菜单
       const routes: RouteConfig[] = [] // genRoutesByOptions(options)
@@ -358,16 +302,16 @@ export class ZRouterClass implements ZRouterDescription {
   static genAppRouter (options: CreateAppRouterOptionsInner): ZAppRouter {
     const appRouter = new ZAppRouter()
     appRouter.setting(options)
-    ZRouterClass.appRouter = appRouter
-    options && options.router && (ZRouterClass.router = options.router)
+    ZRouterCore.appRouter = appRouter
+    options && options.router && (ZRouterCore.router = options.router)
     return appRouter
   }
 
   static genAdminRouter (options: CreateAdminRouterOptionsInner): ZAdminRouter {
     const adminRouter = new ZAdminRouter()
     adminRouter.setting(options)
-    ZRouterClass.adminRouter = adminRouter
-    options && options.router && (ZRouterClass.router = options.router)
+    ZRouterCore.adminRouter = adminRouter
+    options && options.router && (ZRouterCore.router = options.router)
     return adminRouter
   }
 
@@ -375,12 +319,12 @@ export class ZRouterClass implements ZRouterDescription {
 
   static router: VueRouter
 
-  static genInstance (): ZRouterClass {
+  static genInstance (): ZRouterCore {
     if (!instance) {
-      instance = new ZRouterClass()
+      instance = new ZRouterCore()
     }
     return instance
   }
 }
 
-export const ZRouter = ZRouterClass.genInstance()
+export const ZRouter = ZRouterCore.genInstance()

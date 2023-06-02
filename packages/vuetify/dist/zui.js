@@ -51716,7 +51716,7 @@ function () {
   });
   Object.defineProperty(ZMenuClass.prototype, "$router", {
     get: function get() {
-      return _ZRouter__WEBPACK_IMPORTED_MODULE_1__["ZRouterClass"].genInstance();
+      return _ZRouter__WEBPACK_IMPORTED_MODULE_1__["ZRouterCore"].genInstance();
     },
     enumerable: false,
     configurable: true
@@ -52288,20 +52288,19 @@ var ZModal = ZModalClass.genInstance();
 /*!****************************!*\
   !*** ./src/zui/ZRouter.ts ***!
   \****************************/
-/*! exports provided: ZAppRouter, ZAdminRouter, ZRouterClass, ZRouter */
+/*! exports provided: ZAppRouter, ZAdminRouter, ZRouterCore, ZRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZAppRouter", function() { return ZAppRouter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZAdminRouter", function() { return ZAdminRouter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZRouterClass", function() { return ZRouterClass; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZRouterCore", function() { return ZRouterCore; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZRouter", function() { return ZRouter; });
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "../../node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components */ "./src/components/index.ts");
 /* harmony import */ var _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/ZAdmin */ "./src/zui/components/ZAdmin/index.ts");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _route__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./route */ "./src/zui/route/index.ts");
 var __extends = undefined && undefined.__extends || function () {
   var _extendStatics = function extendStatics(d, b) {
     _extendStatics = Object.setPrototypeOf || {
@@ -52479,56 +52478,6 @@ function (_super) {
   function ZAdminRouter() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
-
-  ZAdminRouter.prototype.genComp = function (usr, def) {
-    if (typeof usr === 'boolean') {
-      return usr ? def : undefined;
-    }
-
-    return usr || def;
-  };
-
-  Object.defineProperty(ZAdminRouter.prototype, "defaultHome", {
-    get: function get() {
-      return vue__WEBPACK_IMPORTED_MODULE_3___default.a.extend({
-        name: 'z-admin-default-home',
-        render: function render(h) {
-          return h('div', {
-            staticClass: 'z-admin-default-home'
-          });
-        }
-      });
-    },
-    enumerable: false,
-    configurable: true
-  });
-  /**
-   * 生成完整路径
-   * @param path
-   * @param parentPath
-   */
-
-  ZAdminRouter.prototype.genFullPathByMenu = function (path, parentPath) {
-    if (path.indexOf('/') !== 0) {
-      return ("/" + (parentPath || '') + "/" + path).replace(/\/+/g, '/');
-    }
-
-    return path;
-  };
-
-  ZAdminRouter.prototype.parseUsrRoutes = function (routes, parentPath) {
-    var _this = this;
-
-    var list = [];
-    routes.forEach(function (route) {
-      if (route) {
-        route.path = _this.genFullPathByMenu(route.path);
-        route.name = route.name || "usr-" + route.path.replace(/\//g, '-');
-        list.push(route);
-      }
-    });
-    return list;
-  };
   /**
    * 根据菜单生成路由列表
    * @param menus
@@ -52591,36 +52540,6 @@ function (_super) {
 
     return list;
   };
-  /** 生成异常路由 */
-
-
-  ZAdminRouter.prototype.genExceptionRoute = function (name, path) {
-    if (name === void 0) {
-      name = '';
-    }
-
-    if (path === void 0) {
-      path = '';
-    }
-
-    var list = [];
-    list.push({
-      name: name + "-403",
-      path: (path + "/403").replace(/\/\//g, '/'),
-      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"]
-    });
-    list.push({
-      name: name + "-500",
-      path: (path + "/500").replace(/\/\//g, '/'),
-      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"]
-    });
-    list.push({
-      name: name + "-404",
-      path: (path + "/*").replace(/\/\//g, '/'),
-      component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"]
-    });
-    return list;
-  };
   /**
    * 根据菜单创建路由列表
    * @param menus
@@ -52640,7 +52559,7 @@ function (_super) {
     if (menus && menus.length > 0) {
       var children = [];
       children.push.apply(children, __spread(this.genRoutesByMenus(menus, children, '/')));
-      children.push.apply(children, __spread(this.genExceptionRoute())); // children.push({ name: '--empty', path: '', redirect })
+      children.push.apply(children, __spread(Object(_route__WEBPACK_IMPORTED_MODULE_3__["genExceptionRoutes"])())); // children.push({ name: '--empty', path: '', redirect })
 
       return children;
     }
@@ -52657,103 +52576,95 @@ function (_super) {
       return;
     }
 
-    var NotFoundElement = this.genComp(options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"]);
-    var NotFoundRoute = {
-      path: '*',
-      component: NotFoundElement
-    };
-    var route500 = {
-      name: 'r__500',
-      path: '/500',
-      component: this.genComp(options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"])
-    };
-    var route403 = {
-      name: 'r__403',
-      path: '/403',
-      component: this.genComp(options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"])
-    };
-    var route404 = {
-      name: 'r__404',
-      path: '/404',
-      component: NotFoundElement
-    };
-    var routeRoot404 = {
-      name: 'r__root_404',
-      path: '*',
-      component: NotFoundElement
-    };
+    var NotFoundElement = Object(_route__WEBPACK_IMPORTED_MODULE_3__["genComp"])(options.appNotFound, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView404"]);
     var routeRoot = {
       path: '/',
       component: options.appMain || _components__WEBPACK_IMPORTED_MODULE_1__["ZAdmin"]
     };
     var routeHome = {
       path: '',
-      component: options.appHome || this.defaultHome
+      component: options.appHome || Object(_route__WEBPACK_IMPORTED_MODULE_3__["genDefaultHome"])()
     }; // 跟节点所有前置子节点
 
     var beforeChildren = [routeHome]; // 跟节点所有中置子节点
 
     var middleChildren = []; // 跟节点所有后置子节点
 
-    var afterChildren = [NotFoundRoute]; // 给Home设置重定向
+    var afterChildren = [{
+      path: '*',
+      component: NotFoundElement
+    }]; // 给Home设置重定向
 
     options.redirect && (routeHome.redirect = options.redirect);
     var routerOptions = options.routerOptions || {};
     var userRoutes = routerOptions.routes || [];
-    var useUserLogin = false;
+    var userMap = {
+      login: null,
+      e500: null,
+      e403: null,
+      e404: null
+    };
     var userRedirect = '';
     userRoutes.forEach(function (route) {
-      switch (route.path) {
-        case '':
-        case '/':
-          {
-            var children = route.children || [];
-            delete route.children;
+      var path = route.path;
+      var name = route.name;
 
-            if ('component' in route && route.component) {
-              routeHome.component = route.component;
-            } // 设置用户自定义的重定向，会忽略options中定义的重定向
+      if (path === '' || path === '/') {
+        var children = route.children || [];
+        delete route.children;
+
+        if ('component' in route && route.component) {
+          routeHome.component = route.component;
+        } // 设置用户自定义的重定向，会忽略options中定义的重定向
 
 
-            !userRedirect && (userRedirect = route.redirect); // 添加所有子组件到跟路由
+        !userRedirect && (userRedirect = route.redirect); // 添加所有子组件到跟路由
 
-            middleChildren.push.apply(middleChildren, __spread(children));
-            break;
-          }
-
-        case '/login':
-          {
-            useUserLogin = true;
-            middleChildren.push(route);
-            break;
-          }
-
-        default:
-          {
-            middleChildren.push(route);
-            break;
-          }
+        middleChildren.push.apply(middleChildren, __spread(children));
+      } else if (path === '/login' || name === 'login') {
+        userMap.login = route;
+      } else if (path === '/500') {
+        userMap.e500 = route;
+      } else if (path === '/403') {
+        userMap.e403 = route;
+      } else if (path === '/404') {
+        userMap.e404 = route;
+      } else {
+        middleChildren.push(route);
       }
     });
     userRedirect && (routeHome.redirect = userRedirect);
     var menuRoutes = this.createRoutesByMenus(options.menus, '');
     routeRoot.children = __spread(beforeChildren, middleChildren, menuRoutes, afterChildren);
-    var routes = [];
+    var routes = []; // 添加登录路由；
 
-    if (!useUserLogin) {
-      // 添加登录路由；
-      routes.push({
-        name: 'r__login',
-        path: '/login',
-        component: this.genComp(options.appLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZDefaultLogin"])
-      });
-    } // 添加异常路由
+    routes.push(userMap.login || Object(_route__WEBPACK_IMPORTED_MODULE_3__["genDefaultLoginRoute"])(options.appLogin)); // 添加异常路由
 
+    routes.push(userMap.e500 || {
+      name: '500',
+      path: '/500',
+      component: Object(_route__WEBPACK_IMPORTED_MODULE_3__["genComp"])(options.appServerError, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView500"])
+    });
+    routes.push(userMap.e403 || {
+      name: '403',
+      path: '/403',
+      component: Object(_route__WEBPACK_IMPORTED_MODULE_3__["genComp"])(options.appNotAccess, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_2__["ZView403"])
+    });
+    routes.push(userMap.e404 || {
+      name: '404',
+      path: '/404',
+      component: NotFoundElement
+    }); // 添加主视图路由
 
-    routes.push(route500, route403, route404); // 添加主视图异常路由
+    routes.push(routeRoot); // 添加主视图404路由, 无法命中时跳转该路由
 
-    routes.push(routeRoot, routeRoot404);
+    routes.push({
+      name: 'root-not-found',
+      path: '*',
+      component: NotFoundElement
+    });
     routerOptions.routes = routes;
+    window.console.info(routes);
     this.routerOptions = routerOptions;
   };
 
@@ -52762,10 +52673,10 @@ function (_super) {
 
 
 
-var ZRouterClass =
+var ZRouterCore =
 /** @class */
 function () {
-  function ZRouterClass() {
+  function ZRouterCore() {
     if (!instance) {
       instance = this;
     }
@@ -52773,40 +52684,40 @@ function () {
     return instance;
   }
 
-  Object.defineProperty(ZRouterClass.prototype, "self", {
+  Object.defineProperty(ZRouterCore.prototype, "self", {
     get: function get() {
-      return ZRouterClass.router;
+      return ZRouterCore.router;
     },
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(ZRouterClass.prototype, "currentRouter", {
+  Object.defineProperty(ZRouterCore.prototype, "currentRouter", {
     get: function get() {
-      return ZRouterClass.router;
+      return ZRouterCore.router;
     },
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(ZRouterClass.prototype, "currentRoute", {
+  Object.defineProperty(ZRouterCore.prototype, "currentRoute", {
     get: function get() {
-      return ZRouterClass.router.currentRoute;
+      return ZRouterCore.router.currentRoute;
     },
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(ZRouterClass.prototype, "currentRoutePath", {
+  Object.defineProperty(ZRouterCore.prototype, "currentRoutePath", {
     get: function get() {
-      return ZRouterClass.router.currentRoute.path;
+      return ZRouterCore.router.currentRoute.path;
     },
     enumerable: false,
     configurable: true
   });
 
-  ZRouterClass.prototype.getRouter = function () {
-    return ZRouterClass.router;
+  ZRouterCore.prototype.getRouter = function () {
+    return ZRouterCore.router;
   };
 
-  ZRouterClass.prototype.addRoutesByMenus = function (menus) {
+  ZRouterCore.prototype.addRoutesByMenus = function (menus) {
     if (menus === void 0) {
       menus = [];
     }
@@ -52814,8 +52725,8 @@ function () {
     var router = this.currentRouter;
 
     if (router) {
-      var options = ZRouterClass.adminRouter || {};
-      ZRouterClass.menus = menus = menus || []; // todo 待完成，动态添加菜单
+      var options = ZRouterCore.adminRouter || {};
+      ZRouterCore.menus = menus = menus || []; // todo 待完成，动态添加菜单
 
       var routes = []; // genRoutesByOptions(options)
 
@@ -52838,35 +52749,35 @@ function () {
     }
   };
 
-  ZRouterClass.genAppRouter = function (options) {
+  ZRouterCore.genAppRouter = function (options) {
     var appRouter = new ZAppRouter();
     appRouter.setting(options);
-    ZRouterClass.appRouter = appRouter;
-    options && options.router && (ZRouterClass.router = options.router);
+    ZRouterCore.appRouter = appRouter;
+    options && options.router && (ZRouterCore.router = options.router);
     return appRouter;
   };
 
-  ZRouterClass.genAdminRouter = function (options) {
+  ZRouterCore.genAdminRouter = function (options) {
     var adminRouter = new ZAdminRouter();
     adminRouter.setting(options);
-    ZRouterClass.adminRouter = adminRouter;
-    options && options.router && (ZRouterClass.router = options.router);
+    ZRouterCore.adminRouter = adminRouter;
+    options && options.router && (ZRouterCore.router = options.router);
     return adminRouter;
   };
 
-  ZRouterClass.genInstance = function () {
+  ZRouterCore.genInstance = function () {
     if (!instance) {
-      instance = new ZRouterClass();
+      instance = new ZRouterCore();
     }
 
     return instance;
   };
 
-  return ZRouterClass;
+  return ZRouterCore;
 }();
 
 
-var ZRouter = ZRouterClass.genInstance();
+var ZRouter = ZRouterCore.genInstance();
 
 /***/ }),
 
@@ -53333,7 +53244,7 @@ function (_super) {
   });
   Object.defineProperty(ZuiCoreClass.prototype, "$router", {
     get: function get() {
-      return _ZRouter__WEBPACK_IMPORTED_MODULE_3__["ZRouterClass"].genInstance();
+      return _ZRouter__WEBPACK_IMPORTED_MODULE_3__["ZRouterCore"].genInstance();
     },
     enumerable: false,
     configurable: true
@@ -53474,7 +53385,7 @@ function (_super) {
     var openHome = ZuiCoreClass.$options.openHome;
 
     if (openHome) {
-      openHome();
+      openHome(_ZRouter__WEBPACK_IMPORTED_MODULE_3__["ZRouterCore"].router);
       return true;
     } else {
       var type = '';
@@ -53489,7 +53400,8 @@ function (_super) {
           break;
       }
 
-      _util_debug__WEBPACK_IMPORTED_MODULE_8__["default"].warn("\u8BF7\u5728 " + type + " \u4E2D\u914D\u7F6E openHome\uFF0C\u5B9E\u73B0\u91CD\u5B9A\u5411\u8DF3\u8F6C\uFF01");
+      _ZRouter__WEBPACK_IMPORTED_MODULE_3__["ZRouterCore"].router.push('/');
+      _util_debug__WEBPACK_IMPORTED_MODULE_8__["default"].warn("\u9ED8\u8BA4\u5C06\u8DF3\u8F6C / \u8DEF\u7531\uFF0C\u53EF\u5728 " + type + " \u4E2D\u914D\u7F6E openHome\uFF0C\u5B9A\u5236\u5F02\u5E38\u9875\u9762\u91CD\u5B9A\u5411\u8DF3\u8F6C\uFF01");
     }
 
     return false;
@@ -58012,7 +57924,7 @@ function createAdmin(options) {
   var ui = Object(_createZui__WEBPACK_IMPORTED_MODULE_3__["createZui"])(presetOptions, options.useOptions);
   _ZuiCore__WEBPACK_IMPORTED_MODULE_2__["ZuiCoreClass"].settingVuetify(ui.framework);
   var componentOptions = options.componentOptions || {};
-  var adminRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterClass"].adminRouter || _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterClass"].genAdminRouter({
+  var adminRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterCore"].adminRouter || _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterCore"].genAdminRouter({
     appMain: options.appMain,
     appHome: options.appHome,
     redirect: options.redirect,
@@ -58026,7 +57938,7 @@ function createAdmin(options) {
 
   if (router) {
     componentOptions.router = router;
-    _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterClass"].router = router;
+    _ZRouter__WEBPACK_IMPORTED_MODULE_4__["ZRouterCore"].router = router;
   }
 
   _ZuiCore__WEBPACK_IMPORTED_MODULE_2__["ZuiCoreClass"].$app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(__assign({
@@ -58114,7 +58026,7 @@ function createApp(options) {
   var ui = Object(_createZui__WEBPACK_IMPORTED_MODULE_3__["createZui"])(presetOptions, options.useOptions);
   _ZuiCore__WEBPACK_IMPORTED_MODULE_1__["ZuiCoreClass"].settingVuetify(ui.framework);
   var componentOptions = options.componentOptions || {};
-  var appRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_2__["ZRouterClass"].appRouter;
+  var appRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_2__["ZRouterCore"].appRouter;
   var appMain;
   var appHome;
   var isRenderRouterView = false;
@@ -58127,7 +58039,7 @@ function createApp(options) {
 
 
   if (componentOptions.router) {
-    _ZRouter__WEBPACK_IMPORTED_MODULE_2__["ZRouterClass"].router = componentOptions.router;
+    _ZRouter__WEBPACK_IMPORTED_MODULE_2__["ZRouterCore"].router = componentOptions.router;
   } else {
     appMain = options.appMain;
     appHome = options.appHome;
@@ -58188,7 +58100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function createRouter(options) {
   Object(_util_installRouter__WEBPACK_IMPORTED_MODULE_1__["installRouter"])();
-  var zRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_0__["ZRouterClass"].genAppRouter(options);
+  var zRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_0__["ZRouterCore"].genAppRouter(options);
   return zRouter.getRouter();
 }
 /**
@@ -58198,7 +58110,7 @@ function createRouter(options) {
 
 function createAdminRouter(options) {
   Object(_util_installRouter__WEBPACK_IMPORTED_MODULE_1__["installRouter"])();
-  var zRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_0__["ZRouterClass"].genAdminRouter(options);
+  var zRouter = _ZRouter__WEBPACK_IMPORTED_MODULE_0__["ZRouterCore"].genAdminRouter(options);
   return zRouter.getRouter();
 }
 function createRoutes(routes) {
@@ -58760,6 +58672,106 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MainNavMode", function() { return _MainNavMode__WEBPACK_IMPORTED_MODULE_0__["MainNavMode"]; });
 
 
+
+/***/ }),
+
+/***/ "./src/zui/route/index.ts":
+/*!********************************!*\
+  !*** ./src/zui/route/index.ts ***!
+  \********************************/
+/*! exports provided: genComp, genDefaultLoginRoute, genDefaultHome, genExceptionRoutes, genFullPathByMenu, parseUsrRoutes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genComp", function() { return genComp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genDefaultLoginRoute", function() { return genDefaultLoginRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genDefaultHome", function() { return genDefaultHome; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genExceptionRoutes", function() { return genExceptionRoutes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genFullPathByMenu", function() { return genFullPathByMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseUsrRoutes", function() { return parseUsrRoutes; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ZAdmin */ "./src/zui/components/ZAdmin/index.ts");
+
+
+function genComp(usr, def) {
+  if (typeof usr === 'boolean') {
+    return usr ? def : undefined;
+  }
+
+  return usr || def;
+}
+function genDefaultLoginRoute(userLogin) {
+  return {
+    name: 'login',
+    path: '/login',
+    component: genComp(userLogin, _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZDefaultLogin"])
+  };
+}
+function genDefaultHome() {
+  return vue__WEBPACK_IMPORTED_MODULE_0___default.a.extend({
+    name: 'z-admin-default-home',
+    render: function render(h) {
+      return h('div', {
+        staticClass: 'z-admin-default-home'
+      });
+    }
+  });
+}
+/** 生成异常路由 */
+
+function genExceptionRoutes(name, path) {
+  if (name === void 0) {
+    name = '';
+  }
+
+  if (path === void 0) {
+    path = '';
+  }
+
+  var list = [];
+  list.push({
+    name: name + "-403",
+    path: (path + "/403").replace(/\/\//g, '/'),
+    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView403"]
+  });
+  list.push({
+    name: name + "-500",
+    path: (path + "/500").replace(/\/\//g, '/'),
+    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView500"]
+  });
+  list.push({
+    name: name + "-404",
+    path: (path + "/*").replace(/\/\//g, '/'),
+    component: _components_ZAdmin__WEBPACK_IMPORTED_MODULE_1__["ZView404"]
+  });
+  return list;
+}
+/**
+ * 生成完整路径
+ * @param path
+ * @param parentPath
+ */
+
+function genFullPathByMenu(path, parentPath) {
+  if (path.indexOf('/') !== 0) {
+    return ("/" + (parentPath || '') + "/" + path).replace(/\/+/g, '/');
+  }
+
+  return path;
+}
+function parseUsrRoutes(routes, parentPath) {
+  var list = [];
+  routes.forEach(function (route) {
+    if (route) {
+      route.path = genFullPathByMenu(route.path);
+      route.name = route.name || "usr-" + route.path.replace(/\//g, '-');
+      list.push(route);
+    }
+  });
+  return list;
+}
 
 /***/ }),
 
