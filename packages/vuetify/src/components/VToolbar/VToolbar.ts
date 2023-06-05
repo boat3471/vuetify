@@ -7,22 +7,24 @@ import VSheet from '../VSheet/VSheet'
 // Components
 import VImg, { srcObject } from '../VImg/VImg'
 
+// Mixins
+import DenseMode from '../../mixins/denseMode'
+
 // Utilities
 import { convertToUnit, getSlot } from '../../util/helpers'
 import { breaking } from '../../util/console'
 
 // Types
+import mixins from '../../util/mixins'
 import { VNode, PropType } from 'vue'
 
 /* @vue/component */
-export default VSheet.extend({
+export default mixins(VSheet, DenseMode).extend({
   name: 'v-toolbar',
-
   props: {
     absolute: Boolean,
     bottom: Boolean,
     collapse: Boolean,
-    dense: { type: [Boolean, String], default: false },
     extended: Boolean,
     extensionHeight: {
       default: 48,
@@ -47,12 +49,6 @@ export default VSheet.extend({
   }),
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     computedHeight (): number {
       const height = this.computedContentHeight
 

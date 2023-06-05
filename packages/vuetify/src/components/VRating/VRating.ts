@@ -10,6 +10,7 @@ import Delayable from '../../mixins/delayable'
 import Sizeable from '../../mixins/sizeable'
 import Rippleable from '../../mixins/rippleable'
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import { createRange } from '../../util/helpers'
@@ -34,7 +35,8 @@ export default mixins(
   Delayable,
   Rippleable,
   Sizeable,
-  Themeable
+  Themeable,
+  DenseMode
 ).extend({
   name: 'v-rating',
 
@@ -48,7 +50,6 @@ export default mixins(
       default: 'primary',
     },
     clearable: Boolean,
-    dense: { type: [Boolean, String], default: false },
     emptyIcon: {
       type: String,
       default: '$ratingEmpty',
@@ -87,12 +88,6 @@ export default mixins(
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     directives (): VNodeDirective[] {
       if (this.readonly || !this.ripple) return []
 

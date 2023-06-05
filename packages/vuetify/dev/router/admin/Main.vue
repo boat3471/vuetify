@@ -1,6 +1,7 @@
 <template>
   <z-admin class="my-app">
     <template #main>
+      <TestDense />
       <router-view></router-view>
     </template>
   </z-admin>
@@ -8,9 +9,11 @@
 
 <script>
   import { ZMessage } from '@zwd/z-ui'
+  import TestDense from '../../components/TestDense.vue'
 
   export default {
     components: {
+      TestDense,
     },
     data () {
       return {

@@ -2,25 +2,19 @@ import './VSimpleTable.sass'
 
 import { convertToUnit } from '../../util/helpers'
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 import mixins from '../../util/mixins'
 import { VNode } from 'vue'
 
-export default mixins(Themeable).extend({
+export default mixins(Themeable, DenseMode).extend({
   name: 'v-simple-table',
 
   props: {
-    dense: { type: [Boolean, String], default: false },
     fixedHeader: Boolean,
     height: [Number, String],
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     classes (): Record<string, boolean> {
       return {
         'v-data-table--dense': this.computedDense,

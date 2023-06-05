@@ -9,6 +9,7 @@ import VMessages from '../VMessages'
 // Mixins
 import BindsAttrs from '../../mixins/binds-attrs'
 import Validatable from '../../mixins/validatable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import {
@@ -26,6 +27,7 @@ import { InputValidationRule } from '@zwd/z-ui/types'
 const baseMixins = mixins(
   BindsAttrs,
   Validatable,
+  DenseMode,
 )
 
 interface options extends InstanceType<typeof baseMixins> {
@@ -45,7 +47,6 @@ export default baseMixins.extend<options>().extend({
       type: String,
       default: '',
     },
-    dense: { type: [Boolean, String], default: false },
     height: [Number, String],
     hideDetails: [Boolean, String] as PropType<boolean | 'auto'>,
     hint: String,
@@ -65,12 +66,6 @@ export default baseMixins.extend<options>().extend({
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     classes (): object {
       return {
         'v-input--has-state': this.hasState,

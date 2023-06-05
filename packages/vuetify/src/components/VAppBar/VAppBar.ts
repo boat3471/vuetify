@@ -12,6 +12,7 @@ import Applicationable from '../../mixins/applicationable'
 import Scrollable from '../../mixins/scrollable'
 import SSRBootable from '../../mixins/ssr-bootable'
 import Toggleable from '../../mixins/toggleable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import { convertToUnit } from '../../util/helpers'
@@ -25,6 +26,7 @@ const baseMixins = mixins(
   Scrollable,
   SSRBootable,
   Toggleable,
+  DenseMode,
   Applicationable('top', [
     'clippedLeft',
     'clippedRight',
@@ -69,9 +71,6 @@ export default baseMixins.extend({
   },
 
   computed: {
-    computedDense (): boolean {
-      return this.dense || this.$themeStore.denseMode || false
-    },
     applicationProperty (): string {
       return !this.bottom ? 'top' : 'bottom'
     },

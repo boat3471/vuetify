@@ -8,11 +8,12 @@ import VInput from '../VInput'
 
 // Mixins
 import Selectable from '../../mixins/selectable'
+import DenseMode from '../../mixins/denseMode'
 
 /* @vue/component */
 export default Selectable.extend({
   name: 'v-checkbox',
-
+  mixins: [DenseMode],
   props: {
     indeterminate: Boolean,
     indeterminateIcon: {
@@ -36,9 +37,6 @@ export default Selectable.extend({
   },
 
   computed: {
-    computedDense (): boolean {
-      return this.dense || this.$themeStore.denseMode || false
-    },
     classes (): object {
       return {
         ...VInput.options.computed.classes.call(this),

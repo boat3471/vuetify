@@ -31,6 +31,7 @@ import MobileRow from './MobileRow'
 
 // Mixins
 import Loadable from '../../mixins/loadable'
+import DenseMode from '../../mixins/denseMode'
 
 // Directives
 import ripple from '../../directives/ripple'
@@ -74,6 +75,7 @@ function searchTableItems (
 export default mixins(
   VDataIterator,
   Loadable,
+  DenseMode,
 ).extend({
   name: 'v-data-table',
 
@@ -96,7 +98,6 @@ export default mixins(
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: { type: [Boolean, String], default: false },
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -128,12 +129,6 @@ export default mixins(
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     computedHeaders (): DataTableHeader[] {
       if (!this.headers) return []
       const headers = this.headers.filter(h => h.value === undefined || !this.internalGroupBy.find(v => v === h.value))

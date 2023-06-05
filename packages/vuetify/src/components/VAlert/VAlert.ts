@@ -12,6 +12,7 @@ import VIcon from '../VIcon'
 import Toggleable from '../../mixins/toggleable'
 import Themeable from '../../mixins/themeable'
 import Transitionable from '../../mixins/transitionable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import mixins from '../../util/mixins'
@@ -25,7 +26,8 @@ import { VNode } from 'vue/types'
 export default mixins(
   VSheet,
   Toggleable,
-  Transitionable
+  Transitionable,
+  DenseMode
 ).extend({
   name: 'v-alert',
 
@@ -46,7 +48,6 @@ export default mixins(
       default: '$vuetify.close',
     },
     coloredBorder: Boolean,
-    dense: { type: [Boolean, String], default: false },
     dismissible: Boolean,
     closeIcon: {
       type: String,
@@ -80,12 +81,6 @@ export default mixins(
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     __cachedBorder (): VNode | null {
       if (!this.border) return null
 

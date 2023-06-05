@@ -4,6 +4,7 @@ import './VBtnToggle.sass'
 // Mixins
 import ButtonGroup from '../../mixins/button-group'
 import Colorable from '../../mixins/colorable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import mixins from '../../util/mixins'
@@ -11,14 +12,14 @@ import mixins from '../../util/mixins'
 /* @vue/component */
 export default mixins(
   ButtonGroup,
-  Colorable
+  Colorable,
+  DenseMode
 ).extend({
   name: 'v-btn-toggle',
 
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: { type: [Boolean, String], default: false },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
@@ -26,12 +27,6 @@ export default mixins(
   },
 
   computed: {
-    computedDense (): boolean {
-      if (typeof this.dense === 'string') {
-        return this.dense === 'true' || this.dense === '1'
-      }
-      return this.dense || this.$themeStore.denseMode || false
-    },
     classes (): object {
       return {
         ...ButtonGroup.options.computed.classes.call(this),
