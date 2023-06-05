@@ -13,7 +13,7 @@ related:
 
 Vuetify supports language Internationalization (i18n) of its components. When bootstrapping your application you can specify available locales and the currently active locale with the **current** option. The **lang** service also supports easy integration with [vue-i18n](#vue-i18n).
 
-<entry-ad />
+<vuetify-ad slug="vs-video-i18n" />
 
 ## Getting started
 
@@ -22,12 +22,13 @@ To set the available locales or the current locale, supply the `lang` option whe
 Currently Vuetify provides translations in the following languages:
 
 - **af** - Afrikaans (Afrikaans)
-- **ar** - Arabic (اللغة العربية)
+- **ar** - Arabic (العربية)
 - **az** - Azerbaijani (Azərbaycan)
 - **bg** - Bulgarian (български)
 - **ca** - Catalan (català)
 - **ckb** - Central Kurdish (کوردی)
 - **cs** - Czech (čeština)
+- **da** - Danish (Dansk)
 - **de** - German (Deutsch)
 - **el** - Greek (Ελληνικά)
 - **en** - English
@@ -100,7 +101,7 @@ export default new Vuetify({
 
 - [internationalization](/api/internationalization)
 
-<api-section page="features/internationalization" />
+<inline-api page="features/internationalization" />
 
 ## Caveats
 

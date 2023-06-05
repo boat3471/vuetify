@@ -34,7 +34,7 @@ export default new Vuetify({
 })
 ```
 
-Using a predefined option will pre-fill defaults based upon the selected preset. This will overwrite the defaults of components that have default **icon** values. For more information, view the default [icon preset values](https://github.com/vuetifyjs/vuetify/tree/master/packages/vuetify/src/services/icons/presets).
+Using a predefined option will pre-fill defaults based upon the selected preset. This will overwrite the defaults of components that have default **icon** values. For more information, view the default [icon preset values](https://github.com/vuetifyjs/vuetify/tree/v2-stable/packages/vuetify/src/services/icons/presets).
 
 ## Installing icon fonts
 
@@ -55,7 +55,7 @@ Use this tool to search for any Material Design Icons and copy them to your clip
 This is the default icon font for Vuetify. You can include it through a CDN:
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
 ```
 
 Or as a local dependency:
@@ -263,8 +263,6 @@ export default new Vuetify({
   },
 })
 ```
-
-<vuetify-ad slug="enterprise-support-through-tidelift" />
 
 ## Using custom icons
 

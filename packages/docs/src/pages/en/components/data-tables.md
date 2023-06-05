@@ -13,7 +13,7 @@ related:
 
 The `v-data-table` component is used for displaying tabular data. Features include sorting, searching, pagination, content-editing, and row selection.
 
-<promoted-ad type="theme" />
+<vuetify-ad slug="vs-vuetify-subscribe" />
 
 ## Usage
 
@@ -29,7 +29,7 @@ The standard data-table will by default render your data as simple rows.
 - [v-edit-dialog](/api/v-edit-dialog)
 - [v-simple-checkbox](/api/v-simple-checkbox)
 
-<api-section page="components/data-tables" />
+<inline-api page="components/data-tables" />
 
 <!-- ## Sub-components
 
@@ -115,7 +115,9 @@ The data table exposes a **search** prop that allows you to filter your data.
 
 ### Slots
 
-The `v-data-table` provides a large number of slots for customizing the table. This example showcases some of these slots and what you can do with each. It is important to note some slot (eg: `item`/`body`/`header`) will completely takes over the internal rendering of the component which will require you to re-implement functionalities such as selection and expansion. Some slots will override each other such as: `body` > `item` > `item.<name>` and `header`/`header.<name>`.
+<vuetify-ad slug="vs-vue-3-slots" />
+
+The `v-data-table` provides a large number of slots for customizing the table. This example showcases some of these slots and what you can do with each. It is important to note some slots (eg: `item`/`body`/`header`) will completely take over the internal rendering of the component which will require you to re-implement functionalities such as selection and expansion. Some slots will override each other such as: `body` > `item` > `item.<name>` and `header`/`header.<name>`.
 
 <alert type="info">
 

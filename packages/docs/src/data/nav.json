@@ -8,8 +8,10 @@
       "roadmap",
       { "divider": true },
       { "heading": "professional-support" },
-      "support",
-      "enterprise"
+      {
+        "title": "enterprise",
+        "href": "https://vuetifyjs.com/en/introduction/enterprise-support/"
+      }
     ]
   },
   {
@@ -56,6 +58,7 @@
       "elevation",
       "flex",
       "float",
+      "overflow",
       "spacing",
       "text-and-typography",
       "transitions"
@@ -104,6 +107,7 @@
           "file-inputs",
           "forms",
           "inputs",
+          "otp-input",
           "overflow-btns",
           "radio-buttons",
           "range-sliders",
@@ -198,7 +202,7 @@
   },
   {
     "title": "resources",
-    "icon": "$mdiTeach",
+    "icon": "$mdiHumanMaleBoard",
     "items": [
       "jobs-for-vue",
       "themes",

@@ -25,7 +25,7 @@ The `v-img` component is packed with features to support rich media. Combined wi
 
 - [v-img](/api/v-img)
 
-<api-section page="components/images" />
+<inline-api page="components/images" />
 
 ## Caveats
 
@@ -44,8 +44,6 @@ The `v-img` component is packed with features to support rich media. Combined wi
 You can set a fixed aspect ratio if you want to change aspect ratio of the image.
 
 <example file="v-img/prop-aspect-ratio" />
-
-<promoted-ad slug="vuetify-zero-theme-pro" />
 
 #### Contain
 

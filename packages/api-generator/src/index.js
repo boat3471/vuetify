@@ -129,6 +129,10 @@ const getComponentApi = (componentName, locales) => {
   const api = deepmerge(propsAndMixins, slotsEventsAndFunctions, { name: componentName, sass: sassVariables, component: true })
   api.props = api.props.sort((a, b) => a.name.localeCompare(b.name))
 
+  if (api.exclude?.props) {
+    api.props = api.props.filter(prop => !api.exclude.props.includes(prop.name))
+  }
+
   return addComponentApiDescriptions(componentName, api, locales)
 }
 
@@ -204,15 +208,9 @@ const getCompleteApi = locales => {
   ].sort((a, b) => a.name.localeCompare(b.name))
 }
 
-const getHeaderLocale = locale => {
-  const { headers } = loadLocale('generic', locale)
-  return headers || {}
-}
-
 module.exports = {
   getApi,
   getCompleteApi,
   getComponentsApi,
   getDirectivesApi,
-  getHeaderLocale,
 }

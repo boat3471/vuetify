@@ -5,6 +5,7 @@
   "alpha": "Alpha",
   "api": "API",
   "api-headers": {
+    "links": "Component Pages",
     "argument": "Argument",
     "events": "Events",
     "functions": "Functions",
@@ -75,7 +76,7 @@
   "done": "All done",
   "edit-in-codepen": "Edit in Codepen",
   "edit": "Edit",
-  "enterprise": "For Enterprise",
+  "enterprise": "Enterprise",
   "email-address": "Email address",
   "extra-large": "Extra large",
   "extra-small": "Extra small",

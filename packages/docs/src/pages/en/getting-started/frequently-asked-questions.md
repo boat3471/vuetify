@@ -5,7 +5,6 @@ meta:
   keywords: frequently asked questions, faq
 related:
   - /getting-started/contributing/
-  - /introduction/support/
   - /features/treeshaking/
 ---
 
@@ -17,7 +16,6 @@ Stuck on a particular problem? Check some of these common gotchas before creatin
 
 ## Table of Contents
 
-- [How do I get to the old v2.3 documentation?](#v23-legacy)
 - [When will Vuetify v3 be released?](#version-3)
 - [Why is Search Vuetify not working properly?](#search-broke)
 - [My application won't compile due to sass / scss errors.](#sass-compile-error)
@@ -67,12 +65,6 @@ Have a question that belongs here? Tell us in our [Discord Community](https://co
 - **Why is Search Vuetify not working properly?**{ #search-broke }
 
   At the moment, Algolia docsearch only crawls the main production site: [https://vuetifyjs.com/](https://vuetifyjs.com/).
-
-<br>
-
-- **How do I get to the old v2.3 documentation?**{ #v23-legacy }
-
-  Navigate to [https://v2.vuetifyjs.com/](https://v2.vuetifyjs.com/). It will remain active until the release of [Vuetify 3](/introduction/roadmap/#v30-titan) in 2021.
 
 <br>
 
@@ -301,7 +293,7 @@ export default {
 
 If you need help with an issue, please use one of our help channels:
 
-- [Vuetify Professional Support](/introduction/support/)
+- [Vuetify Professional Support](https://vuetifyjs.com/en/introduction/enterprise-support/)
 - [Discord Community](https://community.vuetifyjs.com/)
 - [GitHub Discussions](https://discussions.vuetifyjs.com/)
 

@@ -29,9 +29,11 @@ A card has 4 basic components, `v-card-title`, `v-card-subtitle`, `v-card-text` 
 - [v-card-text](/api/v-card-text)
 - [v-card-title](/api/v-card-title)
 
-<api-section page="components/cards" />
+<inline-api page="components/cards" />
 
 ## Functional Components
+
+<vuetify-ad slug="vs-video-functional-components" />
 
 ### v-card-actions
 
@@ -48,8 +50,6 @@ Primarily used for **text content** in a card. Applies padding for text, reduces
 ### v-card-title
 
 Provides a default **font-size** and **padding** for card titles. Font-size can be overwritten with [typography classes](/styles/typography).
-
-<promoted-ad slug="vuetify-zero-theme-pro" />
 
 ## Examples
 
@@ -71,7 +71,7 @@ An **outlined** card has 0 elevation and contains a soft border.
 
 #### Card Reveal
 
-Using [v-expand-transition](https://vuetifyjs.com/en/api/v-expand-transition/) and a `@click` event you can have a card that reveals more information once the button is clicked, activating the hidden card to be revealed.
+Using [v-expand-transition](/api/v-expand-transition/) and a `@click` event you can have a card that reveals more information once the button is clicked, activating the hidden card to be revealed.
 
 <example file="v-card/misc-card-reveal" />
 

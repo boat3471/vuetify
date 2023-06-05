@@ -1,9 +1,10 @@
 <template>
   <v-snackbar
     v-model="value"
-    :color="snackbar.color"
+    :color="snackbar.color.value"
     :timeout="-1"
-    top
+    bottom
+    right
   >
     <div class="d-flex">
       <span

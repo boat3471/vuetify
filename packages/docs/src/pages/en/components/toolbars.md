@@ -12,7 +12,7 @@ meta:
 
 # Toolbars
 
-The `v-toolbar` component is pivotal to any gui, as it generally is the primary source of site navigation. The toolbar component works great in conjunction with [v-navigation-drawer](/components/navigation-drawers) and [v-card](/components/cards).
+The `v-toolbar` component is pivotal to any graphical user interface (GUI), as it generally is the primary source of site navigation. The toolbar component works great in conjunction with [v-navigation-drawer](/components/navigation-drawers) and [v-card](/components/cards).
 
 <entry-ad />
 
@@ -28,7 +28,7 @@ A toolbar is a flexible container that can be used in a number of ways. By defau
 - [v-toolbar-items](/api/v-toolbar-items)
 - [v-toolbar-title](/api/v-toolbar-title)
 
-<api-section page="components/toolbars" />
+<inline-api page="components/toolbars" />
 
 <!-- ## Sub-components
 
@@ -96,7 +96,7 @@ Toolbars come in **2** variants, light and dark. Light toolbars have dark tinted
 
 #### Prominent toolbars
 
-Prominent toolbars increase the `v-toolbar`'s height to _128px_ and positions the `v-toolbar-title` towards the bottom of the container. This is expanded upon in [v-app](/components/app-bars#prominent-w-scroll-shrink) with the ability to shrink a **prominent** toolbar to a **dense** or **short** one.
+Prominent toolbars increase the `v-toolbar`'s height to _128px_ and positions the `v-toolbar-title` towards the bottom of the container. This is expanded upon in [v-app-bar](/components/app-bars#prominent-w-scroll-shrink) with the ability to shrink a **prominent** toolbar to a **dense** or **short** one.
 
 <example file="v-toolbar/prop-prominent" />
 

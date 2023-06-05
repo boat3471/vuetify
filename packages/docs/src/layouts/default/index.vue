@@ -1,7 +1,5 @@
 <template>
   <v-app>
-    <default-system-bar />
-
     <default-bar />
 
     <default-drawer />
@@ -31,7 +29,6 @@
   import DefaultPwaSnackbar from './PwaSnackbar'
   import DefaultSettings from './settings/Settings'
   import DefaultSnackbar from './Snackbar'
-  import DefaultSystemBar from '@/layouts/default/SystemBar'
   import DefaultToc from './Toc'
   import DefaultView from './View'
 
@@ -50,7 +47,6 @@
       DefaultPwaSnackbar,
       DefaultSettings,
       DefaultSnackbar,
-      DefaultSystemBar,
       DefaultToc,
       DefaultView,
     },
@@ -78,7 +74,7 @@
     methods: {
       async init () {
         this.getPages()
-        this.$load(['https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css'])
+        this.$load(['https://unpkg.com/@mdi/font@6.5.95/css/materialdesignicons.min.css'])
       },
       async getPages () {
         const locale = localeLookup(this.locale)

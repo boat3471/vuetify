@@ -30,13 +30,13 @@ The Vuetify grid is heavily inspired by the [Bootstrap grid](https://getbootstra
 - [v-col](/api/v-col)
 - [v-spacer](/api/v-spacer)
 
-<api-section page="components/grids" />
+<inline-api page="components/grids" />
 
 ## Sub-components
 
 ### v-container
 
-`v-container` provides the ability to center and horizontally pad your site's contents. You can also use the **fluid** prop to fully extend the container across all viewport and device sizes. Maintains previous 1.x functionality in which props are passed through as classes on `v-container` allowing for the application of helper classes (such as `ma-#`/`pa-#`/`fill-height`) to easily be applied
+`v-container` provides the ability to center and horizontally pad your site's contents. You can also use the **fluid** prop to fully extend the container across all viewport and device sizes. Maintains previous 1.x functionality in which props are passed through as classes on `v-container` allowing for the application of helper classes (such as `ma-#`/`pa-#`/`fill-height`) to easily be applied.
 
 ### v-col
 
@@ -49,6 +49,10 @@ The Vuetify grid is heavily inspired by the [Bootstrap grid](https://getbootstra
 ### v-spacer
 
 `v-spacer` is a basic yet versatile spacing component used to distribute remaining width in-between a parents child components. When placing a single `v-spacer` before or after the child components, the components will push to the right and left of its container. When more than one `v-spacer`'s are used between multiple components, the remaining width is evenly distributed between each spacer.
+
+## Helper Classes
+
+`fill-height` applies `height: 100%` to an element. When applied to `v-container` it will also `align-items: center`.
 
 ## Caveats
 
