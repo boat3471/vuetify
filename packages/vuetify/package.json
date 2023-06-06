@@ -1,12 +1,8 @@
 {
   "name": "@zwd/z-ui",
-  "version": "2.5.815",
-  "vuetifyVersion": "2.5.8",
   "description": "Vue Material Component Framework",
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
+  "version": "2.6.1500-beta.1",
+  "vuetifyVersion": "2.6.15",
   "author": {
     "name": "xinwenchao",
     "email": "xinwenchao@zpmc.com"
@@ -38,7 +34,8 @@
   "files": [
     "dist/",
     "styles/",
-    "types/"
+    "types/",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "prepublishOnly": "node ./build/publish.js",
@@ -65,9 +62,10 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/vue-fontawesome": "^0.1.10",
-    "@mdi/font": "^4.5.95",
+    "@mdi/font": "^7.2.96",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.10",
+    "@types/resize-observer-browser": "^0.1.7",
     "@vue/test-utils": "1.0.0-beta.29",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
@@ -102,6 +100,10 @@
   },
   "peerDependencies": {
     "vue": "^2.6.11"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
   },
   "vetur": {
     "tags": "dist/json/tags.json",

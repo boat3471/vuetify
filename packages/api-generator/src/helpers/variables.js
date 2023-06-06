@@ -128,7 +128,7 @@ const VTextField = {
     },
   ],
   slots: [
-    ...VInput.slots,
+    ...VInput.slots.filter(v => v.name !== 'default'),
     ...createItems([
       'append-outer',
       'prepend-inner',
@@ -231,6 +231,9 @@ const VSelect = {
       source: 'v-select',
     },
   ],
+  exclude: {
+    props: ['type', 'hide-spin-buttons'],
+  },
 }
 
 const VAutocomplete = {
@@ -282,8 +285,10 @@ const VSlider = {
       },
       source: 'v-slider',
     },
-
   ],
+  exclude: {
+    props: ['type', 'hide-spin-buttons'],
+  },
 }
 
 const VRangeSlider = {
@@ -374,6 +379,11 @@ const VCalendarEventSlot = {
   eventSummary: '(): string',
 }
 
+const VCalendarEventEvent = {
+  ...VCalendarEventSlot,
+  nativeEvent: 'MouseEvent | TouchEvent',
+}
+
 const VTimestampWithTime = {
   date: 'string',
   time: 'string',
@@ -437,6 +447,7 @@ module.exports = {
   createItems,
   VCalendarDay,
   VCalendarEvent,
+  VCalendarEventEvent,
   VCalendarEventSlot,
   VGridProps,
   VInput,

@@ -110,6 +110,7 @@ declare module '@zwd/z-ui/lib/components' {
   const ZNavigationDrawer: VueConstructor
   const ZOverflowBtn: VueConstructor
   const ZOverlay: VueConstructor
+  const ZOtpInput: VueConstructor
   const ZPagination: VueConstructor
   const ZSheet: VueConstructor
   const ZParallax: VueConstructor
@@ -275,6 +276,7 @@ declare module '@zwd/z-ui/lib/components' {
     ZNavigationDrawer,
     ZOverflowBtn,
     ZOverlay,
+    ZOtpInput,
     ZPagination,
     ZSheet,
     ZParallax,

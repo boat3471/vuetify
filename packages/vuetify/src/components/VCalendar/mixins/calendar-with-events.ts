@@ -10,9 +10,6 @@ import ripple from '../../../directives/ripple'
 // Mixins
 import CalendarBase from './calendar-base'
 
-// Helpers
-import { escapeHTML } from '../../../util/helpers'
-
 // Util
 import props from '../util/props'
 import {
@@ -116,7 +113,7 @@ export default CalendarBase.extend({
     eventNameFunction (): CalendarEventNameFunction {
       return typeof this.eventName === 'function'
         ? this.eventName
-        : (event, timedEvent) => escapeHTML(event.input[this.eventName as string] as string || '')
+        : (event, timedEvent) => event.input[this.eventName as string] as string || ''
     },
     eventModeFunction (): CalendarEventOverlapMode {
       return typeof this.eventOverlapMode === 'function'
@@ -302,21 +299,28 @@ export default CalendarBase.extend({
       const timeSummary = () => formatTime(event.start, overlapsNoon) + ' - ' + formatTime(event.end, true)
       const eventSummary = () => {
         const name = this.eventNameFunction(event, timedEvent)
-
         if (event.start.hasTime) {
           if (timedEvent) {
             const time = timeSummary()
-            const delimiter = singline ? ', ' : '<br>'
+            const delimiter = singline ? ', ' : this.$createElement('br')
 
-            return `<strong>${name}</strong>${delimiter}${time}`
+            return this.$createElement('span', { staticClass: 'v-event-summary' }, [
+              this.$createElement('strong', [name]),
+              delimiter,
+              time,
+            ])
           } else {
             const time = formatTime(event.start, true)
 
-            return `<strong>${time}</strong> ${name}`
+            return this.$createElement('span', { staticClass: 'v-event-summary' }, [
+              this.$createElement('strong', [time]),
+              ' ',
+              name,
+            ])
           }
         }
 
-        return name
+        return this.$createElement('span', { staticClass: 'v-event-summary' }, [name])
       }
 
       const scope = {
@@ -345,13 +349,10 @@ export default CalendarBase.extend({
           : [this.genName(eventSummary)]
       )
     },
-    genName (eventSummary: () => string): VNode {
+    genName (eventSummary: () => string | VNode): VNode {
       return this.$createElement('div', {
         staticClass: 'pl-1',
-        domProps: {
-          innerHTML: eventSummary(),
-        },
-      })
+      }, [eventSummary()])
     },
     genPlaceholder (day: CalendarTimestamp): VNode {
       const height = this.eventHeight + this.eventMarginBottom
@@ -384,9 +385,10 @@ export default CalendarBase.extend({
           name: 'ripple',
           value: this.eventRipple ?? true,
         }],
-        on: {
-          click: () => this.$emit('click:more', day),
-        },
+        on: this.getDefaultMouseEventHandlers(':more', nativeEvent => {
+          return { nativeEvent, ...day }
+        }),
+
         style: {
           display: 'none',
           height: `${eventHeight}px`,
