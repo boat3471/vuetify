@@ -30,7 +30,10 @@ export default mixins(VSheet, Toggleable, Transitionable).extend({
       default: '$vuetify.close'
     },
     coloredBorder: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     dismissible: Boolean,
     closeIcon: {
       type: String,
@@ -62,6 +65,14 @@ export default mixins(VSheet, Toggleable, Transitionable).extend({
     }
   },
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     __cachedBorder() {
       if (!this.border) return null;
       let data = {
@@ -115,7 +126,7 @@ export default mixins(VSheet, Toggleable, Transitionable).extend({
     classes() {
       const classes = { ...VSheet.options.computed.classes.call(this),
         'v-alert--border': Boolean(this.border),
-        'v-alert--dense': this.dense,
+        'v-alert--dense': this.computedDense,
         'v-alert--outlined': this.outlined,
         'v-alert--prominent': this.prominent,
         'v-alert--text': this.text

@@ -86,10 +86,11 @@ function () {
 
 exports.Zui = Zui;
 Zui.installed = false;
-Zui.version = "2.5.815";
+Zui.version = "2.5.824-beta.10";
 Zui.config = {
   silent: false
 };
+Zui.Components = {};
 
 Zui.install = function (IVue, options) {
   _install.install.call(Zui, IVue, _objectSpread({
@@ -98,6 +99,7 @@ Zui.install = function (IVue, options) {
   }, options));
 };
 
+Zui.Components = components;
 var _default = Zui;
 exports.default = _default;
 //# sourceMappingURL=framework.js.map

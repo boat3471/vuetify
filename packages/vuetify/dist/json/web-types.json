@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "vuetify",
-  "version": "2.5.815",
+  "version": "2.5.824-beta.10",
   "contributions": {
     "html": {
       "types-syntax": "typescript",
@@ -182,9 +182,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "elevate-on-scroll",
@@ -654,9 +656,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "dismissible",
@@ -962,6 +966,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1109,9 +1133,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -1243,7 +1269,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -1357,6 +1383,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1402,6 +1439,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -1601,6 +1649,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
@@ -1739,6 +1798,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-autocomplete#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -3972,9 +4053,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "group",
@@ -4647,7 +4730,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar#props",
-              "default": "2022-07-26",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5024,7 +5107,7 @@
               "name": "start",
               "description": "",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-category#props",
-              "default": "2022-07-26",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5306,7 +5389,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-daily#props",
-              "default": "2022-07-26",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5524,7 +5607,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-weekly#props",
-              "default": "2022-07-26",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -5742,7 +5825,7 @@
               "name": "start",
               "description": "The starting date on the calendar (inclusive) in the format of `YYYY-MM-DD`. This may be ignored depending on the `type` of the calendar.",
               "doc-url": "https://www.vuetifyjs.com/api/z-calendar-monthly#props",
-              "default": "2022-07-26",
+              "default": "2023-05-31",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -6841,9 +6924,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -8156,6 +8241,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8313,9 +8418,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -8447,7 +8554,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -8561,6 +8668,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8606,6 +8724,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -8805,6 +8934,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
@@ -8943,6 +9083,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-combobox#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -9875,9 +10037,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-filtering",
@@ -10626,9 +10790,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "fixed-header",
@@ -10710,9 +10876,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "fixed-header",
@@ -13021,9 +13189,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -14492,9 +14662,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -14930,9 +15102,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -15620,9 +15794,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -16070,9 +16246,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -17677,6 +17855,26 @@
               }
             },
             {
+              "name": "async",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "null",
+              "value": {
+                "kind": "expression",
+                "type": "function"
+              }
+            },
+            {
+              "name": "async-params",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
               "name": "attach",
               "description": "Specifies which DOM element that this component should detach to. String can be any valid querySelector and Object can be any valid Node. This will attach to the root `v-app` component by default.",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -17824,9 +18022,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -17969,7 +18169,7 @@
               "name": "hide-details",
               "description": "Hides hint and validation errors. When set to `auto` messages will be rendered only if there's a message (hint, error message, counter value etc) to display",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
-              "default": "undefined",
+              "default": "auto",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -18083,6 +18283,17 @@
               }
             },
             {
+              "name": "l",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "label",
               "description": "Sets input label",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -18128,6 +18339,17 @@
                   "string"
                 ]
               }
+            },
+            {
+              "name": "m",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             },
             {
               "name": "menu-props",
@@ -18327,6 +18549,17 @@
               }
             },
             {
+              "name": "s",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
               "name": "search-input",
               "description": "Search value. Can be used with `.sync` modifier.",
               "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
@@ -18476,6 +18709,28 @@
                 "kind": "expression",
                 "type": "function"
               }
+            },
+            {
+              "name": "xl",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "xs",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-overflow-btn#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
             }
           ],
           "events": [],
@@ -19551,9 +19806,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -20075,9 +20332,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -20552,9 +20811,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "empty-icon",
@@ -21055,12 +21316,14 @@
               "name": "dense",
               "description": "Reduces the input height",
               "doc-url": "https://www.vuetifyjs.com/api/z-select#props",
-              "default": "true",
+              "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disable-lookup",
@@ -21357,7 +21620,7 @@
               "name": "menu-props",
               "description": "Pass props through to the `v-menu` component. Accepts either a string for boolean props `menu-props=\"auto, overflowY\"`, or an object `:menu-props=\"{ auto: true, overflowY: true }\"`",
               "doc-url": "https://www.vuetifyjs.com/api/z-select#props",
-              "default": "{\"closeOnClick\":false,\"closeOnContentClick\":false,\"disableKeys\":true,\"openOnClick\":false,\"maxHeight\":304}",
+              "default": "{\"closeOnClick\":false,\"closeOnContentClick\":false,\"disableKeys\":true,\"openOnClick\":false,\"maxHeight\":304,\"name\":\"defaultMenuProps\",\"_Ctor\":{}}",
               "value": {
                 "kind": "expression",
                 "type": [
@@ -21960,9 +22223,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -23849,9 +24114,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -25273,9 +25540,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -25912,9 +26181,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "disabled",
@@ -26479,9 +26750,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "light",
@@ -27287,9 +27560,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "elevation",
@@ -28051,9 +28326,11 @@
               "default": "false",
               "value": {
                 "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
+                "type": [
+                  "boolean",
+                  "string"
+                ]
+              }
             },
             {
               "name": "expand-icon",
@@ -31787,354 +32064,6 @@
           }
         },
         {
-          "name": "ZColorSelector",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZColorSelector"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector",
-          "attributes": [
-            {
-              "name": "default-value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "'#FFFFFF'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "height",
-              "description": "Sets the height for the component",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "20",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "number",
-                  "string"
-                ]
-              }
-            },
-            {
-              "name": "transparent",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "false",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "width",
-              "description": "Sets the width for the component.",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
-              "default": "20",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "number",
-                  "string"
-                ]
-              }
-            }
-          ],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZColorSelectorRect",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZColorSelectorRect"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect",
-          "attributes": [
-            {
-              "name": "close-on-content-click",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "false",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "content-class",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "default-value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "'#FFFFFF'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "height",
-              "description": "Sets the height for the component",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "20",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "number",
-                  "string"
-                ]
-              }
-            },
-            {
-              "name": "transparent",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "false",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "width",
-              "description": "Sets the width for the component.",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
-              "default": "20",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "number",
-                  "string"
-                ]
-              }
-            }
-          ],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZColorSelectorTextField",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZColorSelectorTextField"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field",
-          "attributes": [
-            {
-              "name": "close-on-content-click",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "false",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "default-value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'#FFFFFF'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "input-width",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'120px'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "position",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "'prepend'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "transparent",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "false",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            }
-          ],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
-          "name": "ZDateTimePicker",
-          "source": {
-            "module": "./src/components/index.ts",
-            "symbol": "ZDateTimePicker"
-          },
-          "description": "",
-          "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker",
-          "attributes": [
-            {
-              "name": "color",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "input-width",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "155px",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "string",
-                  "number"
-                ]
-              }
-            },
-            {
-              "name": "max",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "string",
-                  "number"
-                ]
-              }
-            },
-            {
-              "name": "min",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "string",
-                  "number"
-                ]
-              }
-            },
-            {
-              "name": "placeholder",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "'setting datetime'",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            },
-            {
-              "name": "show-current",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "true",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              },
-              "type": "boolean"
-            },
-            {
-              "name": "value",
-              "description": "",
-              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
-              "default": "undefined",
-              "value": {
-                "kind": "expression",
-                "type": [
-                  "string",
-                  "number"
-                ]
-              }
-            }
-          ],
-          "events": [],
-          "slots": [],
-          "vue-model": {
-            "prop": "value",
-            "event": "input"
-          }
-        },
-        {
           "name": "ZAdmin",
           "source": {
             "module": "./src/components/index.ts",
@@ -32265,6 +32194,425 @@
           "description": "",
           "doc-url": "https://www.vuetifyjs.com/api/z-default-login",
           "attributes": [],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZDefaultThemeOptionPanel",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZDefaultThemeOptionPanel"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-default-theme-option-panel",
+          "attributes": [
+            {
+              "name": "value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-default-theme-option-panel#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            }
+          ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZColorSelector",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZColorSelector"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector",
+          "attributes": [
+            {
+              "name": "default-value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "height",
+              "description": "Sets the height for the component",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "20",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            },
+            {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "transparent",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "width",
+              "description": "Sets the width for the component.",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector#props",
+              "default": "20",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            }
+          ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZColorSelectorRect",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZColorSelectorRect"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect",
+          "attributes": [
+            {
+              "name": "close-on-content-click",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "content-class",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "content-style",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "{}",
+              "value": {
+                "kind": "expression",
+                "type": "object"
+              }
+            },
+            {
+              "name": "default-value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "height",
+              "description": "Sets the height for the component",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "20",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            },
+            {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "transparent",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "width",
+              "description": "Sets the width for the component.",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-rect#props",
+              "default": "20",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "number",
+                  "string"
+                ]
+              }
+            }
+          ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZColorSelectorTextField",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZColorSelectorTextField"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field",
+          "attributes": [
+            {
+              "name": "close-on-content-click",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "false",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "default-value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "input-width",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "'140px'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "none",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "position",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "'append-outer'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "transparent",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-color-selector-text-field#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [],
+          "slots": [],
+          "vue-model": {
+            "prop": "value",
+            "event": "input"
+          }
+        },
+        {
+          "name": "ZDateTimePicker",
+          "source": {
+            "module": "./src/components/index.ts",
+            "symbol": "ZDateTimePicker"
+          },
+          "description": "",
+          "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker",
+          "attributes": [
+            {
+              "name": "color",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "input-width",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "155px",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            },
+            {
+              "name": "max",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            },
+            {
+              "name": "min",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            },
+            {
+              "name": "placeholder",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "'setting datetime'",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "show-current",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "true",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "type": "boolean"
+            },
+            {
+              "name": "value",
+              "description": "",
+              "doc-url": "https://www.vuetifyjs.com/api/z-date-time-picker#props",
+              "default": "undefined",
+              "value": {
+                "kind": "expression",
+                "type": [
+                  "string",
+                  "number"
+                ]
+              }
+            }
+          ],
           "events": [],
           "slots": [],
           "vue-model": {

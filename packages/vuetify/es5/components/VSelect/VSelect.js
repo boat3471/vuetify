@@ -126,6 +126,10 @@ var _default2 = baseMixins.extend().extend({
     };
   },
   computed: {
+    computedDense: function computedDense() {
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     /* All items that the select has */
     allItems: function allItems() {
       return this.filterDuplicates(this.cachedItems.concat(this.items));
@@ -192,7 +196,7 @@ var _default2 = baseMixins.extend().extend({
         props: {
           action: this.multiple,
           color: this.itemColor,
-          dense: this.dense,
+          dense: this.computedDense,
           hideSelected: this.hideSelected,
           items: this.virtualizedItems,
           itemDisabled: this.itemDisabled,

@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { RouteConfig } from 'vue-router'
 import { CreateAppRouterOptions, CreateAdminRouterOptions } from '../../types'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
+import { installRouter } from './util/installRouter'
 
 /**
  * 创建路由，可根据菜单生成路由，菜单为可选项
  * @param options
  */
 export function createRouter (options: CreateAppRouterOptions): VueRouter {
-  Vue.use(VueRouter)
-  const zRouter = ZRouterClass.genAppRouter(options)
+  installRouter()
+  const zRouter = ZRouterCore.genAppRouter(options)
   return zRouter.getRouter()
 }
 
@@ -18,7 +18,11 @@ export function createRouter (options: CreateAppRouterOptions): VueRouter {
  * @param options
  */
 export function createAdminRouter (options: CreateAdminRouterOptions): VueRouter {
-  Vue.use(VueRouter)
-  const zRouter = ZRouterClass.genAdminRouter(options)
+  installRouter()
+  const zRouter = ZRouterCore.genAdminRouter(options)
   return zRouter.getRouter()
+}
+
+export function createRoutes (routes: RouteConfig[]): RouteConfig[] {
+  return routes
 }

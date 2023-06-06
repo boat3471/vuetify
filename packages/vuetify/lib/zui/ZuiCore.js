@@ -120,6 +120,14 @@ export class ZuiCoreClass extends UIEvent {
     return ZuiCoreClass.$options.defaultSize || 's';
   }
   /**
+   * 获取默认主题大小
+   */
+
+
+  get defaultDense() {
+    return ZuiCoreClass.$options.defaultDense === true;
+  }
+  /**
    * 获取默认的提示背景色
    */
 
@@ -191,7 +199,8 @@ export class ZuiCoreClass extends UIEvent {
     if (options) {
       ZuiCoreClass.$options = options;
       ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '', {
-        mainMenuWidth: options.defaultMenuWidth
+        mainMenuWidth: options.defaultMenuWidth,
+        denseMode: options.defaultDense
       });
       ZMessageClass.appId = options.appId || 'app';
     }
@@ -217,6 +226,7 @@ export class ZuiCoreClass extends UIEvent {
     Object.keys(directives).forEach(name => {
       Vue.directive(name, directives[name]);
     });
+    Vue.prototype.$themeStore = core.$theme.themeStore;
     Vue.mixin({
       beforeCreate() {
         const $options = this.$options; // 安装 ZuiCore

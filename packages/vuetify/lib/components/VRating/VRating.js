@@ -25,7 +25,10 @@ export default mixins(Colorable, Delayable, Rippleable, Sizeable, Themeable).ext
       default: 'primary'
     },
     clearable: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     emptyIcon: {
       type: String,
       default: '$ratingEmpty'
@@ -64,6 +67,14 @@ export default mixins(Colorable, Delayable, Rippleable, Sizeable, Themeable).ext
   },
 
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     directives() {
       if (this.readonly || !this.ripple) return [];
       return [{
@@ -223,7 +234,7 @@ export default mixins(Colorable, Delayable, Rippleable, Sizeable, Themeable).ext
       staticClass: 'v-rating',
       class: {
         'v-rating--readonly': this.readonly,
-        'v-rating--dense': this.dense
+        'v-rating--dense': this.computedDense
       }
     }, children);
   }

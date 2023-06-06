@@ -7,8 +7,6 @@ exports.createAdmin = createAdmin;
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _vueRouter = _interopRequireDefault(require("vue-router"));
-
 var _ZAdmin = require("./components/ZAdmin");
 
 var _ZuiCore = require("./ZuiCore");
@@ -16,6 +14,8 @@ var _ZuiCore = require("./ZuiCore");
 var _createZui = require("./createZui");
 
 var _ZRouter = require("./ZRouter");
+
+var _installRouter = require("./util/installRouter");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,14 +29,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * 创建主程序
  * @internal
  */
-function createMain(h, options, appHome) {
+function createMain(h, options, appMain, appHome) {
+  var Content = appMain || appHome;
   return h(_ZAdmin.ZAdminApp, {
     staticClass: "z-app ".concat(options.appClass || ''),
     props: {
       id: options.appId || 'app'
     }
-  }, // 子元素列表
-  [appHome ? h(appHome) : '']);
+  }, [Content ? h(Content) : null]);
 }
 /**
  * 创建Admin, 基于 @zwd/z-ui
@@ -48,8 +48,7 @@ function createAdmin(options) {
   options = options || {};
   _ZuiCore.ZuiCoreClass.type = 'admin'; // 安装 vue-router
 
-  _vue.default.use(_vueRouter.default); // 安装 zui-core
-
+  (0, _installRouter.installRouter)(); // 安装 zui-core
 
   _vue.default.use(_ZuiCore.ZuiCoreClass, options);
 
@@ -61,7 +60,7 @@ function createAdmin(options) {
 
   $auth.setting(options.auth || {}); // 设置菜单
 
-  $menu.settingMenus(options.menus || [], false); // 设置 vuetify and zui
+  $menu.settingMenus(options.menus || []); // 设置 vuetify and zui
 
   var presetOptions = $theme.getDefaultPreset(options.presetOptions);
   var ui = (0, _createZui.createZui)(presetOptions, options.useOptions);
@@ -73,33 +72,30 @@ function createAdmin(options) {
   var adminRouter = _ZRouter.ZRouterClass.adminRouter || _ZRouter.ZRouterClass.genAdminRouter({
     appMain: options.appMain,
     appHome: options.appHome,
-    redirect: options.redirect
+    redirect: options.redirect,
+    router: componentOptions.router
   });
 
   var router = componentOptions.router;
-  var appHome;
 
   if (adminRouter) {
     router = adminRouter.getRouter();
-    appHome = adminRouter.appHome;
   }
 
   if (router) {
     componentOptions.router = router;
     _ZRouter.ZRouterClass.router = router;
-  } // 生成 vue 选项
+  }
 
-
-  var vueOptions = _objectSpread({
+  _ZuiCore.ZuiCoreClass.$app = new _vue.default(_objectSpread({
     el: options.appId || '#app',
     vuetify: ui,
-    mounted: function mounted() {},
     render: function render(h) {
-      return createMain(h, options, appHome || options.appHome);
+      var appMain = adminRouter.appMain || options.appMain;
+      var appHome = adminRouter.appHome || options.appHome;
+      return createMain(h, options, appMain, appHome);
     }
-  }, componentOptions);
-
-  _ZuiCore.ZuiCoreClass.$app = new _vue.default(vueOptions);
+  }, componentOptions));
   return _ZuiCore.ZuiCoreClass.$app;
 }
 //# sourceMappingURL=createAdmin.js.map

@@ -1,25 +1,25 @@
 import Vue, { ComponentOptions, CreateElement } from 'vue'
-import VueRouter from 'vue-router'
 import { ZAdminApp } from './components/ZAdmin'
 import { CreateAdminOptions, RouteComponent, Zui } from '../../types'
 
 import { ZuiCoreClass } from './ZuiCore'
 import { createZui } from './createZui'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
+import { installRouter } from './util/installRouter'
 
 /**
  * 创建主程序
  * @internal
  */
-function createMain (h: CreateElement, options: CreateAdminOptions, appHome?: RouteComponent) {
+function createMain (h: CreateElement, options: CreateAdminOptions, appMain?: any, appHome?: RouteComponent) {
+  const Content = appMain || appHome
   return h(ZAdminApp, {
     staticClass: `z-app ${options.appClass || ''}`,
     props: {
       id: options.appId || 'app',
     },
   },
-  // 子元素列表
-  [appHome ? h(appHome) : '']
+  [Content ? h(Content) : null]
   )
 }
 
@@ -33,7 +33,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   ZuiCoreClass.type = 'admin'
 
   // 安装 vue-router
-  Vue.use(VueRouter)
+  installRouter()
 
   // 安装 zui-core
   Vue.use(ZuiCoreClass, options)
@@ -44,7 +44,7 @@ export function createAdmin (options: CreateAdminOptions): Vue {
   $auth.setting(options.auth || {})
 
   // 设置菜单
-  $menu.settingMenus(options.menus || [], false)
+  $menu.settingMenus(options.menus || [])
 
   // 设置 vuetify and zui
   const presetOptions = $theme.getDefaultPreset(options.presetOptions)
@@ -53,37 +53,33 @@ export function createAdmin (options: CreateAdminOptions): Vue {
 
   const componentOptions: ComponentOptions<any> = options.componentOptions || {}
 
-  const adminRouter = ZRouterClass.adminRouter || ZRouterClass.genAdminRouter({
+  const adminRouter = ZRouterCore.adminRouter || ZRouterCore.genAdminRouter({
     appMain: options.appMain,
     appHome: options.appHome,
     redirect: options.redirect,
+    router: componentOptions.router,
   })
 
   let router = componentOptions.router
-  let appHome: RouteComponent | undefined
 
   if (adminRouter) {
     router = adminRouter.getRouter()
-    appHome = adminRouter.appHome
   }
 
   if (router) {
     componentOptions.router = router
-    ZRouterClass.router = router
+    ZRouterCore.router = router
   }
 
-  // 生成 vue 选项
-  const vueOptions: ComponentOptions<any> = {
+  ZuiCoreClass.$app = new Vue({
     el: options.appId || '#app',
     vuetify: ui as unknown as Zui,
-    mounted () {
-    },
     render (h) {
-      return createMain(h, options, appHome || options.appHome)
+      const appMain = adminRouter.appMain || options.appMain
+      const appHome = adminRouter.appHome || options.appHome
+      return createMain(h, options, appMain, appHome)
     },
     ...componentOptions,
-  }
-
-  ZuiCoreClass.$app = new Vue(vueOptions)
+  })
   return ZuiCoreClass.$app
 }

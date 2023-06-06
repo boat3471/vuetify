@@ -2,6 +2,7 @@ import Vue from 'vue';
 import { ZIcon, ZList, ZListItem, ZListItemIcon, ZListItemTitle, ZNavigationDrawer } from '../../../../components';
 import { MainNavMode } from '../../../options';
 import { getSlot } from '../../../../util/helpers';
+import { ZDefaultThemeIcon } from './ZDefaultThemeIcon';
 export const ZDefaultNavDrawer = Vue.extend({
   name: 'z-default-nav-drawer',
   props: {},
@@ -33,10 +34,6 @@ export const ZDefaultNavDrawer = Vue.extend({
 
     permanent() {
       return this.$themeStore.mainNavMode === MainNavMode.Flex;
-    },
-
-    themeIcon() {
-      return this.$themeStore.darkStatus ? 'mdi-brightness-4' : 'mdi-brightness-7';
     },
 
     foldIcon() {
@@ -108,12 +105,11 @@ export const ZDefaultNavDrawer = Vue.extend({
      * @param h
      */
     genDefaultAppend(h) {
-      const ThemePanelIcon = h(ZIcon, {
+      const ThemePanelIcon = h(ZDefaultThemeIcon, {
         props: {
-          color: 'grey darken-1',
-          size: 18
+          color: 'grey darken-1'
         }
-      }, [this.themeIcon]);
+      });
       /* 皮肤入口 */
 
       const ThemePanel = h(ZListItem, {

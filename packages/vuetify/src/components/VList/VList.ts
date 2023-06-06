@@ -5,7 +5,11 @@ import VListGroup from './VListGroup'
 // Components
 import VSheet from '../VSheet/VSheet'
 
+// Mixins
+import DenseMode from '../../mixins/denseMode'
+
 // Types
+import mixins from '../../util/mixins'
 import { VNode } from 'vue'
 
 type VListGroupInstance = InstanceType<typeof VListGroup>
@@ -16,9 +20,8 @@ interface options extends InstanceType<typeof VSheet> {
 }
 
 /* @vue/component */
-export default VSheet.extend<options>().extend({
+export default mixins(VSheet, DenseMode).extend<options>().extend({
   name: 'v-list',
-
   provide (): object {
     return {
       isInList: true,
@@ -36,7 +39,6 @@ export default VSheet.extend<options>().extend({
   },
 
   props: {
-    dense: Boolean,
     disabled: Boolean,
     expand: Boolean,
     flat: Boolean,
@@ -55,7 +57,7 @@ export default VSheet.extend<options>().extend({
     classes (): object {
       return {
         ...VSheet.options.computed.classes.call(this),
-        'v-list--dense': this.dense,
+        'v-list--dense': (this as any).computedDense,
         'v-list--disabled': this.disabled,
         'v-list--flat': this.flat,
         'v-list--nav': this.nav,

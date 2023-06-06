@@ -46,7 +46,10 @@ export default baseMixins.extend().extend({
       }
 
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     inactive: Boolean,
     link: Boolean,
     selectable: {
@@ -64,11 +67,19 @@ export default baseMixins.extend().extend({
     proxyClass: 'v-list-item--active'
   }),
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     classes() {
       return {
         'v-list-item': true,
         ...Routable.options.computed.classes.call(this),
-        'v-list-item--dense': this.dense,
+        'v-list-item--dense': this.computedDense,
         'v-list-item--disabled': this.disabled,
         'v-list-item--link': this.isClickable && !this.inactive,
         'v-list-item--selectable': this.selectable,

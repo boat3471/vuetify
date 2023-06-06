@@ -220,6 +220,15 @@ function (_UIEvent) {
       return ZuiCoreClass.$options.defaultSize || 's';
     }
     /**
+     * 获取默认主题大小
+     */
+
+  }, {
+    key: "defaultDense",
+    get: function get() {
+      return ZuiCoreClass.$options.defaultDense === true;
+    }
+    /**
      * 获取默认的提示背景色
      */
 
@@ -258,7 +267,8 @@ function (_UIEvent) {
       if (options) {
         ZuiCoreClass.$options = options;
         ZuiCoreClass.$theme = new _ZTheme.ZThemeClass(options.appKey || '', {
-          mainMenuWidth: options.defaultMenuWidth
+          mainMenuWidth: options.defaultMenuWidth,
+          denseMode: options.defaultDense
         });
         _ZMessage.ZMessageClass.appId = options.appId || 'app';
       }
@@ -286,6 +296,7 @@ function (_UIEvent) {
       Object.keys(directives).forEach(function (name) {
         Vue.directive(name, directives[name]);
       });
+      Vue.prototype.$themeStore = core.$theme.themeStore;
       Vue.mixin({
         beforeCreate: function beforeCreate() {
           var $options = this.$options; // 安装 ZuiCore

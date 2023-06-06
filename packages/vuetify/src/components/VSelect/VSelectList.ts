@@ -16,6 +16,7 @@ import ripple from '../../directives/ripple'
 // Mixins
 import Colorable from '../../mixins/colorable'
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 
 // Helpers
 import { getPropertyFromItem } from '../../util/helpers'
@@ -29,7 +30,7 @@ import { SelectItemKey } from '@zwd/z-ui/types'
 type ListTile = { item: any, disabled?: null | boolean, value?: boolean, index: number };
 
 /* @vue/component */
-export default mixins(Colorable, Themeable).extend({
+export default mixins(Colorable, Themeable, DenseMode).extend({
   name: 'v-select-list',
 
   // https://github.com/vuejs/vue/issues/6872
@@ -39,7 +40,6 @@ export default mixins(Colorable, Themeable).extend({
 
   props: {
     action: Boolean,
-    dense: Boolean,
     hideSelected: Boolean,
     items: {
       type: Array,
@@ -253,7 +253,7 @@ export default mixins(Colorable, Themeable).extend({
         role: 'listbox',
         tabindex: -1,
       },
-      props: { dense: this.dense },
+      props: { dense: this.computedDense },
     }, children)
   },
 })

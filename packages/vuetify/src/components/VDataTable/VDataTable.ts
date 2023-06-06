@@ -31,6 +31,7 @@ import MobileRow from './MobileRow'
 
 // Mixins
 import Loadable from '../../mixins/loadable'
+import DenseMode from '../../mixins/denseMode'
 
 // Directives
 import ripple from '../../directives/ripple'
@@ -74,6 +75,7 @@ function searchTableItems (
 export default mixins(
   VDataIterator,
   Loadable,
+  DenseMode,
 ).extend({
   name: 'v-data-table',
 
@@ -96,7 +98,6 @@ export default mixins(
     height: [Number, String],
     hideDefaultHeader: Boolean,
     caption: String,
-    dense: Boolean,
     headerProps: Object,
     calculateWidths: Boolean,
     fixedHeader: Boolean,
@@ -575,7 +576,7 @@ export default mixins(
       const simpleProps = {
         height: this.height,
         fixedHeader: this.fixedHeader,
-        dense: this.dense,
+        dense: this.computedDense,
       }
 
       // if (this.virtualRows) {
@@ -583,8 +584,8 @@ export default mixins(
       //     props: Object.assign(simpleProps, {
       //       items: props.items,
       //       height: this.height,
-      //       rowHeight: this.dense ? 24 : 48,
-      //       headerHeight: this.dense ? 32 : 48,
+      //       rowHeight: this.computedDense ? 24 : 48,
+      //       headerHeight: this.computedDense ? 32 : 48,
       //       // TODO: expose rest of props from virtual table?
       //     }),
       //     scopedSlots: {

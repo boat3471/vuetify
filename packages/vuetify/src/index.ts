@@ -2,14 +2,16 @@ import { Zui } from './framework'
 import { createApp } from './zui/createApp'
 import { createAdmin } from './zui/createAdmin'
 import { createMenus } from './zui/createMenus'
-import { createRouter, createAdminRouter } from './zui/createRouter'
+import { createRouter, createAdminRouter, createRoutes } from './zui/createRouter'
 import { ZMessageClass } from './zui/ZMessage'
 import { ZModalClass } from './zui/ZModal'
 import { ZuiCoreClass } from './zui/ZuiCore'
 import { ZMenuClass } from './zui/ZMenu'
 import { ZThemeClass } from './zui/ZTheme'
-import { ZRouterClass } from './zui/ZRouter'
+import { ZRouterCore } from './zui/ZRouter'
 import { ZIconLoader } from './zui/ZIconLoader'
+import { colors } from './util/colors'
+import * as ZColorUtils from './util/colorUtils'
 
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(Zui)
@@ -22,7 +24,9 @@ export default {
   createMenus,
   createRouter,
   createAdminRouter,
+  createRoutes,
   ZIconLoader,
+  ZColorUtils,
   get $zui (): ZuiCoreClass {
     return ZuiCoreClass.genInstance()
   },
@@ -53,10 +57,16 @@ export default {
   get ZTheme (): ZThemeClass {
     return ZuiCoreClass.genInstance().$theme
   },
-  get $router (): ZRouterClass {
+  get $router (): ZRouterCore {
     return ZuiCoreClass.genInstance().$router
   },
-  get ZRouter (): ZRouterClass {
+  get ZRouter (): ZRouterCore {
     return ZuiCoreClass.genInstance().$router
+  },
+  get ZColors (): any {
+    return colors
+  },
+  getComponent (name: string): any {
+    return Zui.Components[name]
   },
 }

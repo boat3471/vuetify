@@ -2,14 +2,14 @@ import './VSimpleTable.sass'
 
 import { convertToUnit } from '../../util/helpers'
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 import mixins from '../../util/mixins'
 import { VNode } from 'vue'
 
-export default mixins(Themeable).extend({
+export default mixins(Themeable, DenseMode).extend({
   name: 'v-simple-table',
 
   props: {
-    dense: Boolean,
     fixedHeader: Boolean,
     height: [Number, String],
   },
@@ -17,7 +17,7 @@ export default mixins(Themeable).extend({
   computed: {
     classes (): Record<string, boolean> {
       return {
-        'v-data-table--dense': this.dense,
+        'v-data-table--dense': this.computedDense,
         'v-data-table--fixed-height': !!this.height && !this.fixedHeader,
         'v-data-table--fixed-header': this.fixedHeader,
         'v-data-table--has-top': !!this.$slots.top,

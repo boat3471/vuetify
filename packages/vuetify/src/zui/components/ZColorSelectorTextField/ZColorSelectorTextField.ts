@@ -12,17 +12,24 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     defaultValue: {
       type: String,
-      default: '#FFFFFF',
+      default: '',
     },
     position: {
       type: String,
-      default: 'prepend',
+      default: 'append-outer',
     },
     inputWidth: {
       type: String || Number,
-      default: '120px',
+      default: '140px',
     },
-    transparent: Boolean,
+    transparent: {
+      type: Boolean,
+      default: true,
+    },
+    none: {
+      type: Boolean,
+      default: true,
+    },
     closeOnContentClick: Boolean,
   },
 
@@ -66,9 +73,13 @@ export default mixins(ZColorSelectorMixin).extend({
       return '无效的颜色'
     },
     onColorChange (info: ColorInfo) {
-      this.inputValue = info.name
+      this.inputValue = info.name === 'none' ? '' : info.name
       this.rectColor = info.color
-      this.$emit('change', info)
+      this.$emit('change', {
+        name: info.name,
+        color: info.color,
+        isTheme: (info as any).isTheme || false,
+      })
     },
     onInputValue (val: string) {
       this.inputValue = val
@@ -76,11 +87,20 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     onInputChange (event: KeyboardEvent | FocusEvent) {
       if ((event as KeyboardEvent).key === 'Enter' || (event as FocusEvent).type === 'blur') {
-        const val = this.inputValue.trim()
-        this.emitChange(val)
+        this.emitChange(this.inputValue)
       }
     },
     emitChange (val: string) {
+      val = val.trim()
+      if (val === '' || val === 'none') {
+        this.rectColor = ''
+        this.$emit('change', {
+          name: 'none',
+          color: '',
+          isTheme: false,
+        })
+        return
+      }
       if (val) {
         const theme = this.findThemeByName(val)
         if (theme) {
@@ -97,6 +117,7 @@ export default mixins(ZColorSelectorMixin).extend({
             this.$emit('change', {
               name: val,
               color: info.hex,
+              isTheme: false,
             })
           }
         }
@@ -104,13 +125,14 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     genPrependSlot () {
       return this.$createElement(ZColorSelectorRect, {
-        slot: 'prepend',
+        slot: this.position || 'append-outer',
         props: {
           width: '22',
           height: '22',
           value: this.rectColor,
           defaultValue: this.defaultValue,
           transparent: this.transparent,
+          none: this.none,
           closeOnContentClick: this.closeOnContentClick,
         },
         on: {
@@ -135,7 +157,7 @@ export default mixins(ZColorSelectorMixin).extend({
         rules: [this.checkColor],
       },
       style: {
-        width: this.inputWidth || '120px',
+        width: this.inputWidth || '140px',
       },
       on: {
         blur: this.onInputChange,

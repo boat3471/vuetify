@@ -1,5 +1,11 @@
+@import "./ver";
 @import "./scrollbar";
 
 html {
   overflow-y: auto;
+}
+
+.transparent-bg {
+    background-image: var(--transparent);
+    background-repeat: repeat;
 }

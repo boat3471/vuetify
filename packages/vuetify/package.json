@@ -1,8 +1,8 @@
 {
   "name": "@zwd/z-ui",
-  "description": "Vue Material Component Framework",
   "version": "2.6.1500-beta.1",
   "vuetifyVersion": "2.6.15",
+  "description": "Vue Material Component Framework",
   "author": {
     "name": "xinwenchao",
     "email": "xinwenchao@zpmc.com"
@@ -34,8 +34,7 @@
   "files": [
     "dist/",
     "styles/",
-    "types/",
-    "CHANGELOG.md"
+    "types/"
   ],
   "scripts": {
     "prepublishOnly": "node ./build/publish.js",

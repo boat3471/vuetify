@@ -7,6 +7,7 @@ import Routable from '../../mixins/routable'
 import { factory as GroupableFactory } from '../../mixins/groupable'
 import Themeable from '../../mixins/themeable'
 import { factory as ToggleableFactory } from '../../mixins/toggleable'
+import DenseMode, { calcDense } from '../../mixins/denseMode'
 
 // Directives
 import Ripple from '../../directives/ripple'
@@ -25,6 +26,7 @@ const baseMixins = mixins(
   Colorable,
   Routable,
   Themeable,
+  DenseMode,
   GroupableFactory('listItemGroup'),
   ToggleableFactory('inputValue')
 )
@@ -71,7 +73,6 @@ export default baseMixins.extend<options>().extend({
         return this.listItemGroup.activeClass
       },
     } as any as PropValidator<string>,
-    dense: Boolean,
     inactive: Boolean,
     link: Boolean,
     selectable: {
@@ -91,11 +92,39 @@ export default baseMixins.extend<options>().extend({
   }),
 
   computed: {
+    computedDense (): boolean {
+      let dense = calcDense(this)
+
+      if (dense !== undefined) {
+        return dense
+      }
+
+      let $parent = this.$parent as any
+      if ($parent) {
+        let parentTag = $parent.$vnode.tag || ''
+        if (/z-list$/.test(parentTag)) {
+          dense = calcDense(this)
+          if (dense !== undefined) {
+            return dense
+          }
+        }
+
+        if (/(z-list-group|z-list-item-group)$/.test(parentTag)) {
+          $parent = $parent.$parent
+          parentTag = $parent.$vnode.tag || ''
+          dense = calcDense($parent)
+          if (dense !== undefined) {
+            return dense
+          }
+        }
+      }
+      return this.$themeStore.denseMode || false
+    },
     classes (): object {
       return {
         'v-list-item': true,
         ...Routable.options.computed.classes.call(this),
-        'v-list-item--dense': this.dense,
+        'v-list-item--dense': this.computedDense,
         'v-list-item--disabled': this.disabled,
         'v-list-item--link': this.isClickable && !this.inactive,
         'v-list-item--selectable': this.selectable,

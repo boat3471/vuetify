@@ -23,21 +23,25 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     transparent: {
       type: Boolean,
-      default: false,
+      default: true,
+    },
+    none: {
+      type: Boolean,
+      default: true,
     },
   },
 
   data () {
-    const info = this.getColorByName(this.value)
     return {
       colorData: {},
-      colorName: info.name,
-      colorHex: info.color,
+      colorName: '',
+      colorHex: '',
       initialName: '',
       initialColor: '',
       historyColors: this.getHistoryColors(),
       themeOptions: this.getThemeColorOptions(),
       lastInfo: {},
+      firstUpdateColor: true,
     }
   },
 
@@ -52,6 +56,7 @@ export default mixins(ZColorSelectorMixin).extend({
           return
         }
         const info = this.getColorByName(value)
+        this.colorData = info
         this.colorName = info.name || ''
         this.colorHex = info.color
         this.lastInfo = info
@@ -71,6 +76,12 @@ export default mixins(ZColorSelectorMixin).extend({
   },
   methods: {
     onUpdateColor (value: any) {
+      if (this.firstUpdateColor) {
+        this.firstUpdateColor = false
+        if (this.value === 'none' || this.value === '' || this.value === 'transparent') {
+          return
+        }
+      }
       this.colorData = value
       this.colorHex = value.hex
       this.colorName = value.hex
@@ -88,8 +99,8 @@ export default mixins(ZColorSelectorMixin).extend({
       if (colorHex) {
         this.$emit('change', {
           name: colorName || colorHex,
-          color: colorHex,
-          data: this.colorData,
+          color: colorName === 'none' ? '' : colorHex,
+          isTheme: false,
         })
       }
     },
@@ -124,6 +135,11 @@ export default mixins(ZColorSelectorMixin).extend({
       const data: VNodeData = {
         props: {
           value: this.colorHex,
+          // dotSize: '10',
+          hideModeSwitch: true,
+          hideInputs: true,
+          mode: 'hexa',
+          // swatchesMaxHeight: '100',
         },
         on: {
           'update:color': this.onUpdateColor,
@@ -135,17 +151,27 @@ export default mixins(ZColorSelectorMixin).extend({
     },
     genColorCard (colorName: string, title: string, type: ClickType, colorValue?: string): VNode {
       const style: any = {}
-      if (type !== 'theme') {
+      const classes = ['mr-1']
+
+      if (type === 'theme') {
+        classes.push(colorName)
+      } else {
         style.backgroundColor = colorName
       }
 
-      let itemClass = 'color--item'
       if (colorName === 'transparent') {
-        itemClass = 'color--item-transparent'
+        classes.push('color--item-transparent')
+      } else {
+        classes.push('color--item')
+      }
+
+      const children = []
+      if (colorName === 'none') {
+        children.push(this.$createElement('z-icon', 'mdi-cancel'))
       }
 
       const data: VNodeData = {
-        staticClass: `${itemClass} mr-1 ${type === 'theme' ? colorName : ''}`,
+        staticClass: classes.join(' '),
         props: {
           flat: true,
           outlined: true,
@@ -167,16 +193,19 @@ export default mixins(ZColorSelectorMixin).extend({
           },
         },
       }
-      return this.$createElement(ZCard, data)
+
+      return this.$createElement(ZCard, data, children)
     },
     genThemeColorContent (): VNode {
       const data: VNodeData = {
         staticClass: 'theme-colors pb-2 px-3',
       }
       return this.$createElement('div', data, [
-        this.transparent ? this.genColorCard('transparent', '透明', 'history') : null,
+        this.none ? this.genColorCard('none', '无', 'history') : null,
+        this.transparent ? this.genColorCard('transparent', '透明', 'history', '#00000000') : null,
         this.genColorCard('#FFFFFF', '白色', 'history'),
         this.genColorCard('#000000', '黑色', 'history'),
+        this.$createElement('z-divider', { staticClass: 'ml-1 mr-2', props: { vertical: true } }),
         this.themeOptions.map(i => this.genColorCard(i.name, i.label, 'theme', i.color)),
       ])
     },
@@ -184,9 +213,8 @@ export default mixins(ZColorSelectorMixin).extend({
       const data: VNodeData = {
         staticClass: 'history-colors pb-4 px-3',
       }
-      const title = this.initialName || this.initialColor
       return this.$createElement('div', data, [
-        this.genColorCard(this.initialColor, title, 'history'),
+        this.genColorCard('#FFFFFF', '白色', 'history'),
         this.historyColors.map(i => {
           return this.genColorCard(i, i, 'history')
         }),

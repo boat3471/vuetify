@@ -1,7 +1,4 @@
-@import "./default.scss";
-@import "./small.scss";
-@import "./large.scss";
-@import "./x-large.scss";
+@import "../../../zui/styles/input-icon.scss";
 
 .v-input--dense {
   .v-label {
@@ -12,4 +9,193 @@
 .v-input--selection-controls {
   margin-top: 0;
   padding-top: 0;
+}
+
+@mixin customTextFieldBase($inputFontSize, $currentHeight) {
+    &.v-input {
+        font-size: $inputFontSize;
+    }
+
+    .v-label {
+        font-size: $inputFontSize;
+    }
+
+    &.v-text-field {
+        &.v-text-field--solo,
+        &.v-text-field--outlined {
+            > .v-input__control {
+                min-height: $currentHeight;
+
+                > .v-input__slot {
+                    min-height: $currentHeight;
+
+                    > .v-text-field__slot {
+                        input {
+                            max-height: $currentHeight;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin customTextFieldOutlined($iconFontSize, $innerIconTop: 0, $outerIconTop: 0, $labelTop, $labelTranslateTop) {
+    &.v-text-field {
+        &.v-text-field--outlined {
+            > .v-input__control {
+                > .v-input__slot {
+                    > .v-text-field__slot,
+                    > .v-select__slot {
+                        .v-label {
+                            top: $labelTop;
+                        }
+                    }
+                }
+            }
+            .v-label--active {
+                transform: translateY($labelTranslateTop) scale(0.75);
+            }
+
+            /* solo 输入框 icon 定制 */
+            @include input-icon-all($iconFontSize, $innerIconTop, $outerIconTop);
+        }
+
+        //&.v-text-field--enclosed
+        &.v-input--dense:not(.v-text-field--solo).v-text-field--outlined {
+            @include input-icon-all($iconFontSize, $innerIconTop, $outerIconTop);
+        }
+    }
+}
+
+@mixin customTextFieldSolo($iconFontSize, $innerIconTop: 0, $outerIconTop: 0) {
+    &.v-text-field {
+        &.v-text-field--solo {
+            /* solo 输入框 icon 定制 */
+            @include input-icon-all($iconFontSize, $innerIconTop, $outerIconTop);
+        }
+    }
+}
+
+@mixin customTextFieldFilled($iconFontSize, $labelTop, $labelTranslateTop) {
+    &.v-text-field {
+        &.v-text-field--filled {
+            > .v-input__control {
+                > .v-input__slot {
+                    > .v-text-field__slot {
+                        .v-label {
+                            top: 15px;
+                        }
+                    }
+                }
+            }
+
+            .v-label--active {
+                transform: translateY(-8px) scale(0.75);
+            }
+
+            @include input-icon-font($iconFontSize);
+        }
+    }
+}
+
+@mixin textFieldSmall() {
+    $currentHeight: 28px;
+    $inputFontSize: 13px;
+    $iconFontSize: $inputFontSize + 3px;
+
+    &.v-input--dense {
+        @include customTextFieldBase($inputFontSize, $currentHeight);
+        @include customTextFieldOutlined($iconFontSize, 3px, 3px, 4px, -11px);
+        @include customTextFieldSolo($iconFontSize, 2px, 3px);
+        @include customTextFieldFilled($iconFontSize, 15px, -8px);
+
+        &:not(.v-text-field--outlined):not(.v-text-field--solo):not(.v-text-field--filled) {
+            @include input-icon-all($iconFontSize, 3px, 3px);
+        }
+    }
+
+    &:not(.v-input--dense) {
+        @include input-icon-font($iconFontSize);
+    }
+}
+
+@mixin textFieldDefault() {
+    $currentHeight: 32px;
+    $inputFontSize: 13px;
+    $iconFontSize: $inputFontSize + 5px;
+
+    &.v-input--dense {
+        @include customTextFieldBase($inputFontSize, $currentHeight);
+        @include customTextFieldOutlined($iconFontSize, 5px, 5px, 6px, -13px);
+        @include customTextFieldSolo($iconFontSize, 0, 4px);
+        @include customTextFieldFilled($iconFontSize, 17px, -8px);
+
+        &:not(.v-text-field--outlined):not(.v-text-field--solo):not(.v-text-field--filled) {
+            @include input-icon-all($iconFontSize, 3px, 3px);
+        }
+    }
+
+    &:not(.v-input--dense) {
+        @include input-icon-font($iconFontSize);
+    }
+}
+
+@mixin textFieldLarge() {
+    $currentHeight: 38px;
+    $inputFontSize: 14px;
+    $iconFontSize: $inputFontSize + 5px;
+
+    &.v-input--dense {
+        @include customTextFieldBase($inputFontSize, $currentHeight);
+        @include customTextFieldOutlined($iconFontSize, 7px, 7px, 9px, -16px);
+        @include customTextFieldSolo($iconFontSize, 0, 7px);
+        @include customTextFieldFilled($iconFontSize, 20px, -10px);
+
+        &:not(.v-text-field--outlined):not(.v-text-field--solo):not(.v-text-field--filled) {
+            @include input-icon-all($iconFontSize, 3px, 3px);
+        }
+    }
+
+    &:not(.v-input--dense) {
+        @include input-icon-font($iconFontSize);
+    }
+}
+
+@mixin textFieldXLarge() {
+    $currentHeight: 44px;
+    $inputFontSize: 15px;
+    $iconFontSize: $inputFontSize + 7px;
+
+    &.v-input--dense {
+        @include customTextFieldBase($inputFontSize, $currentHeight);
+        @include customTextFieldOutlined($iconFontSize, 11px, 11px, 13px, -20px);
+        @include customTextFieldSolo($iconFontSize, 0, 10px);
+        @include customTextFieldFilled($iconFontSize, 20px, -10px);
+
+        &:not(.v-text-field--outlined):not(.v-text-field--solo):not(.v-text-field--filled) {
+            @include input-icon-all($iconFontSize, 3px, 3px);
+        }
+    }
+
+    &:not(.v-input--dense) {
+        @include input-icon-font($iconFontSize);
+    }
+}
+
+.v-text-field-size--small,
+.v-text-field-size--x-small {
+    @include textFieldSmall();
+}
+
+.v-text-field-size--default {
+    @include textFieldDefault();
+}
+
+.v-text-field-size--large {
+    @include textFieldLarge();
+}
+
+.v-text-field-size--x-large {
+    @include textFieldXLarge();
 }

@@ -5,6 +5,7 @@ import BindsAttrs from '../../mixins/binds-attrs'
 import Colorable from '../../mixins/colorable'
 import Sizeable from '../../mixins/sizeable'
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 
 // Util
 import { convertToUnit, keys, remapInternalIcon } from '../../util/helpers'
@@ -35,13 +36,13 @@ const VIcon = mixins(
   BindsAttrs,
   Colorable,
   Sizeable,
-  Themeable
+  Themeable,
+  DenseMode
   /* @vue/component */
 ).extend({
   name: 'v-icon',
 
   props: {
-    dense: Boolean,
     disabled: Boolean,
     left: Boolean,
     right: Boolean,
@@ -74,7 +75,7 @@ const VIcon = mixins(
       // 如果存在图标加载器，则使用加载器的格式化，进行图标名称的处理
       const $iconLoader = (this as any).$iconLoader
       if ($iconLoader && $iconLoader.format && typeof $iconLoader.format === 'function') {
-        (this as any).loadFileName = iconName;
+        (this as any).loadFileName = iconName
         iconName = $iconLoader.format(iconName)
       }
 
@@ -109,7 +110,7 @@ const VIcon = mixins(
           'v-icon--left': this.left,
           'v-icon--link': this.hasClickListener,
           'v-icon--right': this.right,
-          'v-icon--dense': this.dense,
+          'v-icon--dense': this.computedDense,
         },
         attrs: {
           'aria-hidden': !this.hasClickListener,
@@ -235,10 +236,10 @@ const VIcon = mixins(
           transition: 'none',
           width: size,
           height: size,
-        };
+        }
 
         if ($iconLoader.defaultOpacity !== undefined) {
-          style.opacity = $iconLoader.defaultOpacity;
+          style.opacity = $iconLoader.defaultOpacity
         }
         return this.renderFontIcon($iconLoader.defaultIcon, h, style)
       }
@@ -260,7 +261,7 @@ const VIcon = mixins(
         typeof $iconLoader.check === 'function' &&
         typeof $iconLoader.load === 'function'
       ) {
-        const fileName = (this as any).loadFileName || icon;
+        const fileName = (this as any).loadFileName || icon
         const regName = /^\$/.test(icon) ? icon.substring(1) : icon
         if ($iconLoader.check(regName) === true) {
           $iconLoader.load(this, regName, fileName).then((res: any) => {

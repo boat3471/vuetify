@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter, { RouteConfig } from 'vue-router'
 import {
   CreateAdminOptions,
   CreateAppOptions,
@@ -15,3 +15,4 @@ export function createAdmin (options: CreateAdminOptions): Vue
 export function createMenus (menus: ZMenuOption[]): ZMenuOption[]
 export function createRouter (options: CreateAppRouterOptions): VueRouter
 export function createAdminRouter (options: CreateAdminRouterOptions): VueRouter
+export function createRoutes (routes: RouteConfig[]): RouteConfig[]

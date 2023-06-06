@@ -25,6 +25,8 @@ export class Zui {
     silent: false,
   }
 
+  static Components: any = {}
+
   public framework: Dictionary<VuetifyServiceContract> = {
     isHydrating: false,
   } as any
@@ -86,5 +88,7 @@ Zui.install = (IVue, options) => {
     ...options,
   })
 }
+
+Zui.Components = components as any
 
 export default Zui

@@ -26,7 +26,10 @@ export default mixins(RegistrableProvide('treeview'), Themeable
       type: Array,
       default: () => []
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     filter: Function,
     hoverable: Boolean,
     items: {
@@ -58,6 +61,14 @@ export default mixins(RegistrableProvide('treeview'), Themeable
     selectedCache: new Set()
   }),
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     excludedItems() {
       const excluded = new Set();
       if (!this.search) return excluded;
@@ -386,7 +397,7 @@ export default mixins(RegistrableProvide('treeview'), Themeable
       staticClass: 'v-treeview',
       class: {
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense,
+        'v-treeview--dense': this.computedDense,
         ...this.themeClasses
       }
     }, children);

@@ -155,6 +155,9 @@ function () {
     _classCallCheck(this, ZMenuClass);
 
     this.selectedMenu = null;
+    this.data = _vue.default.observable({
+      isRender: false
+    });
 
     if (!instance) {
       instance = this;
@@ -166,13 +169,13 @@ function () {
   _createClass(ZMenuClass, [{
     key: "settingMenus",
     value: function settingMenus(menus) {
-      var autoGenRoute = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var autoGenRoute = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      this.data.isRender = menus ? menus.length > 0 : false;
 
       if (menus && menus.length > 0) {
-        if (autoGenRoute) {
-          this.$router.addRoutesByMenus(menus);
-        }
-
+        // if (autoGenRoute) {
+        //   this.$router.addRoutesByMenus(menus)
+        // }
         var menusData = filterMenusData(menus);
         ZMenuClass.__menusData = menusData;
 

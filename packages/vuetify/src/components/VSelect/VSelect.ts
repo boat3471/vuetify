@@ -201,7 +201,7 @@ export default baseMixins.extend<options>().extend({
         props: {
           action: this.multiple,
           color: this.itemColor,
-          dense: this.dense,
+          dense: this.computedDense,
           hideSelected: this.hideSelected,
           items: this.virtualizedItems,
           itemDisabled: this.itemDisabled,

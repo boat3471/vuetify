@@ -1,33 +1,33 @@
 <template>
-  <z-admin
-    v-if="false"
-    class="my-app"
-  >
+  <z-admin class="my-app">
     <template #main>
+      <TestDense />
       <router-view></router-view>
     </template>
   </z-admin>
-  <div v-else>
-    <z-icon size="100">{{ iconName }}</z-icon>
-    <z-text-field v-model="iconName"></z-text-field>
-    <z-btn @click="iconName = '$error'">$error</z-btn>
-    <z-btn @click="iconName = 'success'">success</z-btn>
-    <z-btn @click="iconName = 'mdi-home'">mdi-home</z-btn>
-    <z-btn @click="iconName = '$ko'">$ko</z-btn>
-    <z-btn @click="iconName = 'ko'">ko</z-btn>
-  </div>
 </template>
 
 <script>
   import { ZMessage } from '@zwd/z-ui'
+  import TestDense from '../../components/TestDense.vue'
 
   export default {
-    components: {},
+    components: {
+      TestDense,
+    },
     data () {
       return {
         iconName: 'mdi-close',
         msg: '',
         time: Date.now(),
+        hide: false,
+        options: {
+          prependIcon: 'mdi-home',
+          prependInnerIcon: 'mdi-home',
+          appendIcon: 'mdi-home',
+          appendOuterIcon: 'mdi-home',
+        },
+        color: '',
       }
     },
     watch: {

@@ -6,6 +6,7 @@ import {
 import { MainNavMode } from '../../../options'
 import { getSlot } from '../../../../util/helpers'
 import { ZThemeCustomOptions } from '../../../../../types'
+import { ZDefaultThemeIcon } from './ZDefaultThemeIcon'
 
 export const ZDefaultNavDrawer = Vue.extend({
   name: 'z-default-nav-drawer',
@@ -32,9 +33,6 @@ export const ZDefaultNavDrawer = Vue.extend({
     },
     permanent (): boolean {
       return this.$themeStore.mainNavMode === MainNavMode.Flex
-    },
-    themeIcon (): string {
-      return this.$themeStore.darkStatus ? 'mdi-brightness-4' : 'mdi-brightness-7'
     },
     foldIcon (): string {
       return this.$themeStore.mainNavMiniMode ? 'mdi-chevron-right' : 'mdi-chevron-left'
@@ -94,10 +92,7 @@ export const ZDefaultNavDrawer = Vue.extend({
      * @param h
      */
     genDefaultAppend (h: CreateElement): VNode {
-      const ThemePanelIcon = h(ZIcon, {
-        props: { color: 'grey darken-1', size: 18 },
-      }, [this.themeIcon])
-
+      const ThemePanelIcon = h(ZDefaultThemeIcon, { props: { color: 'grey darken-1' } })
       /* 皮肤入口 */
       const ThemePanel = h(ZListItem, {
         on: {

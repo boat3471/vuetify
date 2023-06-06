@@ -20,14 +20,30 @@ export default mixins(ZColorSelectorMixin).extend({
       type: String,
       default: ''
     },
-    transparent: Boolean,
+    contentStyle: {
+      type: Object,
+
+      default() {
+        return {};
+      }
+
+    },
+    transparent: {
+      type: Boolean,
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
+    },
     closeOnContentClick: Boolean
   },
 
   data() {
     return {
       colorData: {},
-      colorHex: ''
+      colorHex: '',
+      colorName: ''
     };
   },
 
@@ -49,18 +65,36 @@ export default mixins(ZColorSelectorMixin).extend({
 
       handler(value) {
         const info = this.getColorByName(value);
-        this.colorHex = info.color;
+
+        switch (value) {
+          case 'transparent':
+            this.colorHex = 'transparent';
+            this.colorName = 'transparent';
+            break;
+
+          case '':
+          case 'none':
+            this.colorHex = '';
+            this.colorName = 'none';
+            break;
+
+          default:
+            this.colorHex = info.color || '';
+            this.colorName = info.name;
+        }
       }
 
     }
   },
   methods: {
     onColorReady(info) {
-      this.colorHex = info.color || '';
+      this.colorHex = info.color === 'none' ? '' : info.color || '';
+      this.colorName = info.name;
     },
 
     onColorChange(info) {
-      this.colorHex = info.color;
+      this.colorHex = info.color === 'none' ? '' : info.color || '';
+      this.colorName = info.name;
       this.$emit('change', info);
     },
 
@@ -69,7 +103,8 @@ export default mixins(ZColorSelectorMixin).extend({
         props: {
           value: this.colorHex,
           defaultValue: this.colorHex,
-          transparent: this.transparent
+          transparent: this.transparent,
+          none: this.none
         },
         on: {
           ready: this.onColorReady,
@@ -85,22 +120,33 @@ export default mixins(ZColorSelectorMixin).extend({
     },
 
     genActivatorSlot(props) {
+      const bg = this.colorName === 'transparent' ? 'transparent-bg' : '';
       const data = {
+        staticClass: `d-flex align-center justify-center ${bg} ${this.contentClass}`,
         props: {
           outlined: true,
-          flat: true,
-          class: this.contentClass
+          flat: true
         },
         style: {
-          display: 'inline-block',
           cursor: 'pointer',
           width: this.w,
           height: this.h,
-          backgroundColor: this.value === 'transparent' ? 'transparent' : this.colorHex
+          backgroundColor: this.colorHex,
+          ...this.contentStyle
         },
         ...props
       };
-      return this.$createElement(ZCard, data, []);
+      const icons = [];
+
+      if (this.colorName === 'none' || this.colorName === '') {
+        icons.push(this.$createElement('z-icon', {
+          props: {
+            size: '16'
+          }
+        }, 'mdi-cancel'));
+      }
+
+      return this.$createElement(ZCard, data, icons);
     }
 
   },

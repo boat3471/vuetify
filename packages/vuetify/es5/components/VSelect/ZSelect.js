@@ -3,19 +3,35 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _exportNames = {
+  ZSelect: true
+};
 exports.default = exports.ZSelect = void 0;
 
 var _mixins = _interopRequireDefault(require("../../util/mixins"));
 
 var _console = require("../../util/console");
 
-var _VSelect = _interopRequireDefault(require("./VSelect"));
+var _VSelect = _interopRequireWildcard(require("./VSelect"));
+
+Object.keys(_VSelect).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _VSelect[key];
+    }
+  });
+});
 
 var _VSelectList = _interopRequireDefault(require("./VSelectList"));
 
 var _generateZSizeable = _interopRequireDefault(require("../../zui/util/generateZSizeable"));
 
 require("../../../src/components/VSelect/ZSelect/index.scss");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27,6 +43,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Sizeable = (0, _generateZSizeable.default)(['v-select-size--x-small', 'v-select-size--small', 'v-select-size--default', 'v-select-size--large', 'v-select-size--x-large']);
 var ZSelectList = (0, _mixins.default)(_VSelectList.default).extend({
+  name: 'z-select-list',
   props: {
     sizeableClasses: Object
   },
@@ -41,10 +58,6 @@ var ZSelectList = (0, _mixins.default)(_VSelectList.default).extend({
 });
 var ZSelect = (0, _mixins.default)(_VSelect.default, Sizeable).extend({
   props: {
-    dense: {
-      type: Boolean,
-      default: true
-    },
     async: {
       type: Function,
       default: null

@@ -13,6 +13,8 @@ var _options = require("../../../options");
 
 var _helpers = require("../../../../util/helpers");
 
+var _ZDefaultThemeIcon = require("./ZDefaultThemeIcon");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ZDefaultNavDrawer = _vue.default.extend({
@@ -41,9 +43,6 @@ var ZDefaultNavDrawer = _vue.default.extend({
     },
     permanent: function permanent() {
       return this.$themeStore.mainNavMode === _options.MainNavMode.Flex;
-    },
-    themeIcon: function themeIcon() {
-      return this.$themeStore.darkStatus ? 'mdi-brightness-4' : 'mdi-brightness-7';
     },
     foldIcon: function foldIcon() {
       return this.$themeStore.mainNavMiniMode ? 'mdi-chevron-right' : 'mdi-chevron-left';
@@ -108,12 +107,11 @@ var ZDefaultNavDrawer = _vue.default.extend({
      * @param h
      */
     genDefaultAppend: function genDefaultAppend(h) {
-      var ThemePanelIcon = h(_components.ZIcon, {
+      var ThemePanelIcon = h(_ZDefaultThemeIcon.ZDefaultThemeIcon, {
         props: {
-          color: 'grey darken-1',
-          size: 18
+          color: 'grey darken-1'
         }
-      }, [this.themeIcon]);
+      });
       /* 皮肤入口 */
 
       var ThemePanel = h(_components.ZListItem, {

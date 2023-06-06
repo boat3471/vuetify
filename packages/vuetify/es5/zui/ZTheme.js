@@ -87,7 +87,7 @@ function (_UIEvent) {
         infoColor: ZThemeClass.getColor('info', darkStatus),
         successColor: ZThemeClass.getColor('success', darkStatus),
         warningColor: ZThemeClass.getColor('warning', darkStatus),
-        denseMode: ZThemeClass.getLocalOption('denseMode', true),
+        denseMode: ZThemeClass.getLocalOption('denseMode', options.denseMode || false),
         mainMenuWidth: ZThemeClass.getLocalOption('mainMenuWidth', options.mainMenuWidth || 275),
         mainMenuExpandMode: ZThemeClass.getLocalOption('mainMenuExpandMode', false),
         mainNavMode: ZThemeClass.getLocalOption('mainNavMode', _options.MainNavMode.Visible),

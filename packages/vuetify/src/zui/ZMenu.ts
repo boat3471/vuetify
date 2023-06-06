@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { ZMenuOption } from '../../types'
 import { ZMenuDescription } from '../../types/zui/ZMenu'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 
 function filterMenusData (list: ZMenuOption[], level = 0, parent: ZMenuOption | null = null): ZMenuOption[] {
   if (list && list.length > 0) {
@@ -94,19 +94,24 @@ let instance: ZMenuClass
 export class ZMenuClass implements ZMenuDescription {
   selectedMenu: ZMenuOption | null = null
 
+  data = Vue.observable({
+    isRender: false,
+  })
+
   get menusData (): ZMenuOption[] {
     return ZMenuClass.__menusData
   }
 
-  get $router (): ZRouterClass {
-    return ZRouterClass.genInstance()
+  get $router (): ZRouterCore {
+    return ZRouterCore.genInstance()
   }
 
-  settingMenus (menus: ZMenuOption[], autoGenRoute = true): void {
+  settingMenus (menus: ZMenuOption[], autoGenRoute = false): void {
+    this.data.isRender = (menus ? menus.length > 0 : false)
     if (menus && menus.length > 0) {
-      if (autoGenRoute) {
-        this.$router.addRoutesByMenus(menus)
-      }
+      // if (autoGenRoute) {
+      //   this.$router.addRoutesByMenus(menus)
+      // }
       const menusData = filterMenusData(menus)
       ZMenuClass.__menusData = menusData
       __events.$emit('update-menus', menusData)

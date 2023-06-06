@@ -87,7 +87,10 @@ function uploadCss (distPath, name, version) {
   return Promise.all(list)
 }
 
-(async () => {
+(async (enabled = false) => {
+  if (!enabled) {
+    return
+  }
   let distPath = ''
   let err
 

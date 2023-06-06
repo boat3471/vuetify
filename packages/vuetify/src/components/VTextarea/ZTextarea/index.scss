@@ -1,4 +1,16 @@
-@import "./default.scss";
-@import "./small.scss";
-@import "./large.scss";
-@import "./x-large.scss";
+.z-textarea-size--x-small,
+.z-textarea-size--small {
+  font-size: 13px;
+}
+
+.z-textarea-size--default {
+  font-size: 13px;
+}
+
+.z-textarea-size--large {
+  font-size: 14px;
+}
+
+.z-textarea-size--x-large {
+  font-size: 15px;
+}

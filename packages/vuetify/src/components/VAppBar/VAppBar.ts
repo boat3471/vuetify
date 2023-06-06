@@ -12,6 +12,7 @@ import Applicationable from '../../mixins/applicationable'
 import Scrollable from '../../mixins/scrollable'
 import SSRBootable from '../../mixins/ssr-bootable'
 import Toggleable from '../../mixins/toggleable'
+import DenseMode from '../../mixins/denseMode'
 
 // Utilities
 import { convertToUnit } from '../../util/helpers'
@@ -25,6 +26,7 @@ const baseMixins = mixins(
   Scrollable,
   SSRBootable,
   Toggleable,
+  DenseMode,
   Applicationable('top', [
     'clippedLeft',
     'clippedRight',
@@ -109,7 +111,7 @@ export default baseMixins.extend({
     computedContentHeight (): number {
       if (!this.shrinkOnScroll) return VToolbar.options.computed.computedContentHeight.call(this)
 
-      const min = this.dense ? 48 : 56
+      const min = this.computedDense ? 48 : 56
       const max = this.computedOriginalHeight
 
       return min + (max - min) * this.scrollRatio
@@ -150,7 +152,7 @@ export default baseMixins.extend({
     computedScrollThreshold (): number {
       if (this.scrollThreshold) return Number(this.scrollThreshold)
 
-      return this.computedOriginalHeight - (this.dense ? 48 : 56)
+      return this.computedOriginalHeight - (this.computedDense ? 48 : 56)
     },
     computedTransform (): number {
       if (

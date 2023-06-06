@@ -1,16 +1,13 @@
 <template>
-  <div>
-    {{ name }}
-  </div>
+  <div>B</div>
 </template>
 
 <script>
   export default {
-    components: {
-    },
+    name: 'b',
     data () {
       return {
-        name: this.$route.meta.name,
+        title: 'B',
       }
     },
   }

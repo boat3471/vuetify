@@ -23,7 +23,10 @@ export default baseMixins.extend().extend({
       type: String,
       default: ''
     },
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     height: [Number, String],
     hideDetails: [Boolean, String],
     hint: String,
@@ -43,6 +46,14 @@ export default baseMixins.extend().extend({
   },
 
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     classes() {
       return {
         'v-input--has-state': this.hasState,
@@ -54,7 +65,7 @@ export default baseMixins.extend().extend({
         // <v-switch loading>.loading === '' so we can't just cast to boolean
         'v-input--is-loading': this.loading !== false && this.loading != null,
         'v-input--is-readonly': this.isReadonly,
-        'v-input--dense': this.dense,
+        'v-input--dense': this.computedDense,
         ...this.themeClasses
       };
     },

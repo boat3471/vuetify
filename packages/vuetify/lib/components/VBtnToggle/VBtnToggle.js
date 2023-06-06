@@ -12,18 +12,29 @@ export default mixins(ButtonGroup, Colorable).extend({
   props: {
     backgroundColor: String,
     borderless: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     group: Boolean,
     rounded: Boolean,
     shaped: Boolean,
     tile: Boolean
   },
   computed: {
+    computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
+
     classes() {
       return { ...ButtonGroup.options.computed.classes.call(this),
         'v-btn-toggle': true,
         'v-btn-toggle--borderless': this.borderless,
-        'v-btn-toggle--dense': this.dense,
+        'v-btn-toggle--dense': this.computedDense,
         'v-btn-toggle--group': this.group,
         'v-btn-toggle--rounded': this.rounded,
         'v-btn-toggle--shaped': this.shaped,

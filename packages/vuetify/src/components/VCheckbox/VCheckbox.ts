@@ -8,11 +8,12 @@ import VInput from '../VInput'
 
 // Mixins
 import Selectable from '../../mixins/selectable'
+import DenseMode from '../../mixins/denseMode'
 
 /* @vue/component */
 export default Selectable.extend({
   name: 'v-checkbox',
-
+  mixins: [DenseMode],
   props: {
     indeterminate: Boolean,
     indeterminateIcon: {
@@ -87,7 +88,7 @@ export default Selectable.extend({
       }, [
         this.$createElement(VIcon, this.setTextColor(this.validationState, {
           props: {
-            dense: this.dense,
+            dense: this.computedDense,
             dark: this.dark,
             light: this.light,
           },

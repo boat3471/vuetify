@@ -32,13 +32,13 @@ function install(Vue) {
     Vue.directive(name, directive);
   }
 
-  (function registerComponents(components) {
-    if (components) {
-      for (var key in components) {
-        var component = components[key];
+  (function registerComponents(list) {
+    if (list) {
+      for (var key in list) {
+        var comp = list[key];
 
-        if (component && !registerComponents(component.$_vuetify_subcomponents)) {
-          Vue.component(key, component);
+        if (comp && !registerComponents(comp.$_vuetify_subcomponents)) {
+          Vue.component(key, comp);
         }
       }
 

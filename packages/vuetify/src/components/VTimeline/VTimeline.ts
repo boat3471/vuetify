@@ -7,9 +7,11 @@ import mixins from '../../util/mixins'
 
 // Mixins
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 
 export default mixins(
-  Themeable
+  Themeable,
+  DenseMode,
 /* @vue/component */
 ).extend({
   name: 'v-timeline',
@@ -20,7 +22,6 @@ export default mixins(
 
   props: {
     alignTop: Boolean,
-    dense: Boolean,
     reverse: Boolean,
   },
 
@@ -28,7 +29,7 @@ export default mixins(
     classes (): {} {
       return {
         'v-timeline--align-top': this.alignTop,
-        'v-timeline--dense': this.dense,
+        'v-timeline--dense': this.computedDense,
         'v-timeline--reverse': this.reverse,
         ...this.themeClasses,
       }

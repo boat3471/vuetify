@@ -11,6 +11,7 @@ import VTreeviewNode, { VTreeviewNodeProps } from './VTreeviewNode'
 
 // Mixins
 import Themeable from '../../mixins/themeable'
+import DenseMode from '../../mixins/denseMode'
 import { provide as RegistrableProvide } from '../../mixins/registrable'
 
 // Utils
@@ -44,7 +45,8 @@ type NodeState = {
 
 export default mixins(
   RegistrableProvide('treeview'),
-  Themeable
+  Themeable,
+  DenseMode
   /* @vue/component */
 ).extend({
   name: 'v-treeview',
@@ -58,7 +60,6 @@ export default mixins(
       type: Array,
       default: () => ([]),
     } as PropValidator<NodeArray>,
-    dense: Boolean,
     disabled: Boolean,
     filter: Function as PropType<TreeviewItemFunction>,
     hoverable: Boolean,
@@ -430,7 +431,7 @@ export default mixins(
       staticClass: 'v-treeview',
       class: {
         'v-treeview--hoverable': this.hoverable,
-        'v-treeview--dense': this.dense,
+        'v-treeview--dense': this.computedDense,
         ...this.themeClasses,
       },
     }, children)

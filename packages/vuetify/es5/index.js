@@ -19,6 +19,12 @@ var _ZuiCore = require("./zui/ZuiCore");
 
 var _ZIconLoader = require("./zui/ZIconLoader");
 
+var _colors = require("./util/colors");
+
+var ZColorUtils = _interopRequireWildcard(require("./util/colorUtils"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
 if (typeof window !== 'undefined') {
   window.Vue && window.Vue.use(_framework.Zui);
 }
@@ -31,6 +37,7 @@ var _default = {
   createRouter: _createRouter.createRouter,
   createAdminRouter: _createRouter.createAdminRouter,
   ZIconLoader: _ZIconLoader.ZIconLoader,
+  ZColorUtils: ZColorUtils,
 
   get $zui() {
     return _ZuiCore.ZuiCoreClass.genInstance();
@@ -78,8 +85,15 @@ var _default = {
 
   get ZRouter() {
     return _ZuiCore.ZuiCoreClass.genInstance().$router;
-  }
+  },
 
+  get ZColors() {
+    return _colors.colors;
+  },
+
+  getComponent: function getComponent(name) {
+    return _framework.Zui.Components[name];
+  }
 };
 exports.default = _default;
 //# sourceMappingURL=index.js.map

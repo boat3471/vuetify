@@ -39,13 +39,14 @@ interface ColorValidInfo {
 export interface ColorInfo {
   name: string
   color: string
+  value?: string
 }
 
 export const ZColorSelectorMixin = Vue.extend({
   props: {
     defaultValue: {
       type: String,
-      default: '#FFFFFF',
+      default: '',
     },
   },
   methods: {
@@ -102,14 +103,23 @@ export const ZColorSelectorMixin = Vue.extend({
       const data = {
         name: '',
         color: this.defaultValue,
+        valid: true,
       }
-      if (value) {
+
+      if (value === 'none' || value === '') {
+        data.name = 'none'
+        data.color = ''
+        data.valid = false
+      }
+
+      if (value && value !== 'none') {
         const theme = this.findThemeByName(value)
         if (theme) {
           data.name = theme.name
           data.color = theme.color || ''
         } else {
           const info = this.getColorInfo(value)
+          data.valid = info.valid
           if (info.valid) {
             data.name = value
             data.color = info.hex || ''

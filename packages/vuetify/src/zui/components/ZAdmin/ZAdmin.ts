@@ -18,6 +18,7 @@ import { ZDefaultProfile } from './ZDefaultProfile'
 import { ZDefaultMenus } from './ZDefaultMenus'
 import { ZDefaultThemeOptionPanel } from './ZDefaultThemeOptionPanel'
 import { ZDefaultNavDrawer } from './menu/ZDefaultNavDrawer'
+import { ZDefaultThemeIcon } from './menu/ZDefaultThemeIcon'
 
 import './styles/ZViewRoot.scss'
 
@@ -90,6 +91,9 @@ export const ZAdmin = Vue.extend({
         mainNavVisible: !this.$themeStore.mainNavVisible,
       })
     },
+    onShowThemePanel () {
+      this.themePanelVisible = !this.themePanelVisible
+    },
     actionProfile (item: any) {
       switch (item.key) {
         case 'logout':
@@ -109,10 +113,14 @@ export const ZAdmin = Vue.extend({
         return ''
       }
       /* 导航按钮 */
-      const appBarNavIcon = this.showNavIcon ? h(ZAppBarNavIcon, {
-        style: { marginRight: '16px' },
-        on: { click: this.onShowNavDrawer },
-      }) : ''
+      let navIcon = null
+
+      if (this.$menu.data.isRender && this.showNavIcon) {
+        navIcon = h(ZAppBarNavIcon, {
+          style: { marginRight: '16px' },
+          on: { click: this.onShowNavDrawer },
+        })
+      }
 
       /* logo插槽 */
       const logoSlot = getSlot(this, 'logo') || h(ZDefaultLogo, { staticClass: 'mr-3' })
@@ -122,10 +130,18 @@ export const ZAdmin = Vue.extend({
         h('span', { staticClass: 'title', style: { userSelect: 'none' } }, [this.projectDisplayName])
       const toolbarTitle = h(ZToolbarTitle, { staticClass: 'mr-2' }, [titleSlot])
 
+      /* 工具栏 */
+      const toolbarSlot = getSlot(this, 'toolbar')
       /* 工具栏左侧插槽 */
       const toolbarPrependSlot = getSlot(this, 'toolbar-prepend')
       /* 工具栏右侧侧插槽 */
       const toolbarAppendSlot = getSlot(this, 'toolbar-append')
+
+      const toolbarChildren = toolbarSlot ? [toolbarSlot] : [
+        toolbarPrependSlot,
+        h(ZSpacer),
+        toolbarAppendSlot,
+      ]
 
       /* 个人中心主体插槽 */
       const profileSlot = getSlot(this, 'profile')
@@ -157,16 +173,17 @@ export const ZAdmin = Vue.extend({
           dark: this.toolbarDark,
         },
       }, [
-        appBarNavIcon,
+        navIcon,
         logoSlot,
         toolbarTitle,
-        toolbarPrependSlot,
-        h(ZSpacer),
-        toolbarAppendSlot,
+        ...toolbarChildren,
         profileAreaSlot,
       ])
     },
     genAppMenus (h: CreateElement): VNode[] {
+      if (!this.$menu.data.isRender) {
+        return []
+      }
       if (this.$themeStore.cameraModel) {
         return []
       }
@@ -194,7 +211,7 @@ export const ZAdmin = Vue.extend({
           },
           on: {
             'click:theme': () => {
-              this.themePanelVisible = !this.themePanelVisible
+              this.onShowThemePanel()
             },
           },
         }, [
@@ -246,6 +263,27 @@ export const ZAdmin = Vue.extend({
             `Copyright © 2019-2020 ${this.projectDisplayName} | Powered By ZPMC`,
           ]),
       ]
+
+      let navIcon = null
+      if (this.$menu.data.isRender && this.showNavIcon) {
+        navIcon = h(ZIcon, {
+          staticClass: 'mr-3',
+          props: { size: 14 },
+          on: { click: this.onShowNavDrawer },
+        }, ['mdi-menu'])
+      } else {
+        if (this.$themeStore.mainNavMode !== MainNavMode.Flex) {
+          navIcon = h(ZDefaultThemeIcon, {
+            staticClass: 'mr-2',
+            on: {
+              'click:theme': () => {
+                this.onShowThemePanel()
+              },
+            },
+          })
+        }
+      }
+
       const defaultFooter = h(ZFooter, {
         staticClass: 'z-admin-footer',
         props: {
@@ -255,11 +293,7 @@ export const ZAdmin = Vue.extend({
           dark: this.toolbarDark,
         },
       }, [
-        this.showNavIcon ? h(ZIcon, {
-          staticClass: 'mr-3',
-          props: { size: 14 },
-          on: { click: this.onShowNavDrawer },
-        }, ['mdi-menu']) : '',
+        navIcon,
         footerSlot,
       ])
       return getSlot(this, 'footer-area') || [defaultFooter]

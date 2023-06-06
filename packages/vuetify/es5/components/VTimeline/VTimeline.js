@@ -30,14 +30,24 @@ var _default = (0, _mixins.default)(_themeable.default
   },
   props: {
     alignTop: Boolean,
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     reverse: Boolean
   },
   computed: {
+    computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({
         'v-timeline--align-top': this.alignTop,
-        'v-timeline--dense': this.dense,
+        'v-timeline--dense': this.computedDense,
         'v-timeline--reverse': this.reverse
       }, this.themeClasses);
     }

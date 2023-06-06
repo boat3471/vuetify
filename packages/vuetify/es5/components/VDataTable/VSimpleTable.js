@@ -24,14 +24,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var _default = (0, _mixins.default)(_themeable.default).extend({
   name: 'v-simple-table',
   props: {
-    dense: Boolean,
+    dense: {
+      type: [Boolean, String],
+      default: false
+    },
     fixedHeader: Boolean,
     height: [Number, String]
   },
   computed: {
+    computedDense: function computedDense() {
+      if (typeof this.dense === 'string') {
+        return this.dense === 'true' || this.dense === '1';
+      }
+
+      return this.dense || this.$themeStore.denseMode || false;
+    },
     classes: function classes() {
       return _objectSpread({
-        'v-data-table--dense': this.dense,
+        'v-data-table--dense': this.computedDense,
         'v-data-table--fixed-height': !!this.height && !this.fixedHeader,
         'v-data-table--fixed-header': this.fixedHeader,
         'v-data-table--has-top': !!this.$slots.top,

@@ -32,20 +32,24 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     },
     transparent: {
       type: Boolean,
-      default: false
+      default: true
+    },
+    none: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
-    var info = this.getColorByName(this.value);
     return {
       colorData: {},
-      colorName: info.name,
-      colorHex: info.color,
+      colorName: '',
+      colorHex: '',
       initialName: '',
       initialColor: '',
       historyColors: this.getHistoryColors(),
       themeOptions: this.getThemeColorOptions(),
-      lastInfo: {}
+      lastInfo: {},
+      firstUpdateColor: true
     };
   },
   computed: {},
@@ -60,6 +64,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
         }
 
         var info = this.getColorByName(value);
+        this.colorData = info;
         this.colorName = info.name || '';
         this.colorHex = info.color;
         this.lastInfo = info;
@@ -79,6 +84,14 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
   },
   methods: {
     onUpdateColor: function onUpdateColor(value) {
+      if (this.firstUpdateColor) {
+        this.firstUpdateColor = false;
+
+        if (this.value === 'none' || this.value === '' || this.value === 'transparent') {
+          return;
+        }
+      }
+
       this.colorData = value;
       this.colorHex = value.hex;
       this.colorName = value.hex;
@@ -100,8 +113,8 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       if (colorHex) {
         this.$emit('change', {
           name: colorName || colorHex,
-          color: colorHex,
-          data: this.colorData
+          color: colorName === 'none' ? '' : colorHex,
+          isTheme: false
         });
       }
     },
@@ -142,7 +155,11 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
     genColorPicker: function genColorPicker() {
       var data = {
         props: {
-          value: this.colorHex
+          value: this.colorHex,
+          // dotSize: '10',
+          hideModeSwitch: true,
+          hideInputs: true,
+          mode: 'hexa'
         },
         on: {
           'update:color': this.onUpdateColor,
@@ -156,19 +173,28 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var _this = this;
 
       var style = {};
+      var classes = ['mr-1'];
 
-      if (type !== 'theme') {
+      if (type === 'theme') {
+        classes.push(colorName);
+      } else {
         style.backgroundColor = colorName;
       }
 
-      var itemClass = 'color--item';
-
       if (colorName === 'transparent') {
-        itemClass = 'color--item-transparent';
+        classes.push('color--item-transparent');
+      } else {
+        classes.push('color--item');
+      }
+
+      var children = [];
+
+      if (colorName === 'none') {
+        children.push(this.$createElement('z-icon', 'mdi-cancel'));
       }
 
       var data = {
-        staticClass: "".concat(itemClass, " mr-1 ").concat(type === 'theme' ? colorName : ''),
+        staticClass: classes.join(' '),
         props: {
           flat: true,
           outlined: true,
@@ -194,7 +220,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
           }
         }
       };
-      return this.$createElement(_components.ZCard, data);
+      return this.$createElement(_components.ZCard, data, children);
     },
     genThemeColorContent: function genThemeColorContent() {
       var _this2 = this;
@@ -202,7 +228,12 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var data = {
         staticClass: 'theme-colors pb-2 px-3'
       };
-      return this.$createElement('div', data, [this.transparent ? this.genColorCard('transparent', '透明', 'history') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.themeOptions.map(function (i) {
+      return this.$createElement('div', data, [this.none ? this.genColorCard('none', '无', 'history') : null, this.transparent ? this.genColorCard('transparent', '透明', 'history', '#00000000') : null, this.genColorCard('#FFFFFF', '白色', 'history'), this.genColorCard('#000000', '黑色', 'history'), this.$createElement('z-divider', {
+        staticClass: 'ml-1 mr-2',
+        props: {
+          vertical: true
+        }
+      }), this.themeOptions.map(function (i) {
         return _this2.genColorCard(i.name, i.label, 'theme', i.color);
       })]);
     },
@@ -212,8 +243,7 @@ var _default = (0, _mixins.default)(_ZColorSelectorMixin.ZColorSelectorMixin).ex
       var data = {
         staticClass: 'history-colors pb-4 px-3'
       };
-      var title = this.initialName || this.initialColor;
-      return this.$createElement('div', data, [this.genColorCard(this.initialColor, title, 'history'), this.historyColors.map(function (i) {
+      return this.$createElement('div', data, [this.genColorCard('#FFFFFF', '白色', 'history'), this.historyColors.map(function (i) {
         return _this3.genColorCard(i, i, 'history');
       })]);
     }

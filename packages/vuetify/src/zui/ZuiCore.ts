@@ -7,7 +7,7 @@ import {
 } from '../../types'
 import { UIEvent } from './events/UIEvent'
 import { ZMenuClass } from './ZMenu'
-import { ZRouterClass } from './ZRouter'
+import { ZRouterCore } from './ZRouter'
 import { ZThemeClass } from './ZTheme'
 import { ZModalClass } from './ZModal'
 import { ZMessageClass } from './ZMessage'
@@ -52,8 +52,8 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     return ZMenuClass.genInstance()
   }
 
-  get $router (): ZRouterClass {
-    return ZRouterClass.genInstance()
+  get $router (): ZRouterCore {
+    return ZRouterCore.genInstance()
   }
 
   get $theme (): ZThemeClass {
@@ -122,6 +122,13 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
   }
 
   /**
+   * 获取默认主题大小
+   */
+  get defaultDense (): boolean {
+    return ZuiCoreClass.$options.defaultDense === true
+  }
+
+  /**
    * 获取默认的提示背景色
    */
   get defaultTooltipColor (): string {
@@ -142,7 +149,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     const { openHome } = ZuiCoreClass.$options as any
 
     if (openHome) {
-      openHome()
+      openHome(ZRouterCore.router)
       return true
     } else {
       let type = ''
@@ -154,7 +161,9 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
           type = 'createAdmin'
           break
       }
-      debug.warn(`请在 ${type} 中配置 openHome，实现重定向跳转！`)
+      ZRouterCore.router.push('/')
+
+      debug.warn(`默认将跳转 / 路由，可在 ${type} 中配置 openHome，定制异常页面重定向跳转！`)
     }
     return false
   }
@@ -199,6 +208,7 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
       ZuiCoreClass.$options = options
       ZuiCoreClass.$theme = new ZThemeClass(options.appKey || '', {
         mainMenuWidth: (options as CreateAdminOptions).defaultMenuWidth,
+        denseMode: (options as CreateAdminOptions).defaultDense,
       })
       ZMessageClass.appId = options.appId || 'app'
     }
@@ -223,6 +233,8 @@ export class ZuiCoreClass extends UIEvent implements ZuiCoreDescription {
     Object.keys(directives).forEach(name => {
       Vue.directive(name, (directives as any)[name])
     })
+
+    Vue.prototype.$themeStore = core.$theme.themeStore
 
     Vue.mixin({
       beforeCreate () {
